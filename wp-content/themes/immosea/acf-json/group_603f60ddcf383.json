@@ -1,0 +1,100 @@
+{
+    "key": "group_603f60ddcf383",
+    "title": "Theme Options",
+    "fields": [
+        {
+            "key": "field_603f60e8e764d",
+            "label": "Association of products",
+            "name": "association_of_products",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_603f612ce764e",
+                    "label": "Association",
+                    "name": "association",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "advertising_copy": "Advertising copy",
+                        "expose": "Exposé",
+                        "floor_plan": "Floor plan",
+                        "photography_property": "Photography Property",
+                        "photography_flat": "Photography Flat",
+                        "photography_house": "Photography House",
+                        "energy_certificate": "Energy certificate",
+                        "energy_certificate_bg_house": "Energy certificate BJ House",
+                        "virtual_staging": "Virtual Staging",
+                        "drone_footage": "Drone footage"
+                    },
+                    "default_value": false,
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_603f6145e764f",
+                    "label": "Product",
+                    "name": "product",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "product"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1614768133
+}
