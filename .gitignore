@@ -73,7 +73,7 @@ wp-content/mysql.sql
 .DS_Store
 ._.DS_Store
 
-.htaccess
+#.htaccess
 .user.ini
 malcare-waf.php
 wp-salt.php
