@@ -25,6 +25,7 @@ class Rest_API {
         if ( is_null( self::$instance ) )
         {
             self::$instance = new self($api_namespace, $version);
+
         }
         return self::$instance;
     }
@@ -41,7 +42,26 @@ class Rest_API {
     {
         $this->api_namespace = $api_namespace;
         $this->version = $version;
+
         add_action( 'rest_api_init', array($this, 'register_routes'));
+        add_action( 'woocommerce_admin_order_totals_after_discount', array($this,'render_order_custom_fields' ), 10 );
+    }
+    public function render_order_custom_fields($order) {
+        $order = wc_get_order($order);
+        $template = "
+            <tbody>";
+        foreach ($order->get_meta_data() as $meta_datum) {
+            $template .= '
+                <tr>
+                    <td class="total">'.$meta_datum->key.'</td>
+                    <td class="%1"></td>
+                    <td><span class="amount">'.$meta_datum->value.'</span></td>
+                    
+                </tr>';
+
+        }
+        $template .= '</tbody>';
+        echo $template;
     }
     /**
      * Register our endpoints

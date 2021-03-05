@@ -46,8 +46,7 @@ class Order extends HttpError {
         if ( isset( $session ) )
             $session->set('order_awaiting_payment', $this->getOrderID());
 
-        add_action( 'woocommerce_admin_order_totals_after_discount', array($this, 'render_order_custom_fields'), 10 );
-
+//        add_action( 'woocommerce_admin_order_totals_after_discount', array($this, 'render_order_custom_fields'), 10 );
         $order_items = $this->getOrder()->get_items();
         $response['order_id'] = $this->getOrderID();
         if ($order_items) {
@@ -97,29 +96,11 @@ class Order extends HttpError {
     }
 
     private function update_order_post_meta($order_metas, $order_ID) {
-
         foreach ($order_metas as $key => $value) {
             update_post_meta( $order_ID, $key, $value);
         }
     }
-    private function render_order_custom_fields() {
-        $order = $this->getOrder();
 
-        $template = "
-            <tbody>";
-        foreach ($order->get_meta_data() as $meta_datum) {
-            $template .= '
-                <tr>
-                    <td class="total"><span class="amount">'.$meta_datum->key.'</span></td>
-                    <td class="%1"></td>
-                    <td>'.$meta_datum->value.'</td>
-                    
-                </tr>';
-
-        }
-        $template .= '</tbody>';
-        echo $template;
-    }
 
     private function prepare_order_fields($fields) {
         $fields = array(
@@ -130,7 +111,7 @@ class Order extends HttpError {
         if ($fields) {
             foreach ($fields as $key => $field) {
                 if ($key === '_year') {
-                    $response['Year'] = $field;
+                    $response[$key] = $field;
                 }
             }
             return $response;
