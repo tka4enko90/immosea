@@ -1,9 +1,13 @@
 <?php
 
-class Order extends HttpError {
+class Coupon extends HttpError {
     private $params;
     private $order;
     private $orderID;
+    private $coupon;
+
+
+
     private $order_metas;
     private $order_products;
 
@@ -13,42 +17,30 @@ class Order extends HttpError {
      *
      * @return array
      */
-    public function create_order($request)
+    public function apply_coupon($request)
     {
-        $session = new WC_Session_Handler();
-        $this->setParams($request -> get_params());
 
-        $order = wc_create_order();
+        $this->setParams($request->get_params());
+
+        if (empty($this->params['order_id'])) { $this->setStatusCode(404)->setMessage('order_id wasn\'t add to endpoint'); return $this->report();}
+        if (empty($this->params['coupon'])){ $this->setStatusCode(404)->setMessage('coupon wasn\'t add to endpoint'); return $this->report();}
+
+
+
+        $order = wc_get_order($this->params['order_id']);
+        if (!$order) {
+            $this->setStatusCode(404)->setMessage('order dosen\'t exist'); return $this->report();
+        }
+
         $this->setOrder($order);
+        $this->setCoupon($this->params['coupon']);
+
         $this->setOrderID($this->getOrder()->ID);
 
-        $this->setOrderMetas($this->prepare_order_fields($this->getParams()));
-        $this->setOrderProducts(
-            array(
-                array(
-                    'product_id' => 48,
-                    'qty' => 1,
-                ),
-                array(
-                    'product_id' => 47,
-                    'qty' => 2,
-                ),
-                array(
-                    'product_id' => 43,
-                    'qty' => 1,
-                )
-            )
-        );
-
-        $this->update_order_products($this->getOrderProducts());
-        $this->update_order_post_meta($this->getOrderMetas(), $this->getOrderID());
-
-        if ( isset( $session ) )
-            $session->set('order_awaiting_payment', $this->getOrderID());
-
-        add_action( 'woocommerce_admin_order_totals_after_discount', array($this, 'render_order_custom_fields'), 10 );
-
         $order_items = $this->getOrder()->get_items();
+
+        $this->getOrder()->apply_coupon($this->getCoupon());
+
         $response['order_id'] = $this->getOrderID();
         if ($order_items) {
             foreach ($order_items as $order_item) {
@@ -62,8 +54,11 @@ class Order extends HttpError {
                         'price' => $product->get_price(),
                 );
             }
-            $response['total_price'] = $this->getOrder()->calculate_totals();
-            $response['currency'] = $this->getOrder()->get_currency();
+            $coupon = new WC_Coupon($this->getCoupon());
+            $response['sub_total'] = $this->getOrder()->get_subtotal();
+            $response['total_price'] = $this->getOrder()->get_total();
+            $response['amount'] = $coupon->get_amount();
+            $response['amount_type'] = $coupon->get_discount_type();
         }
 
         $this->set_user_to_order();
@@ -215,5 +210,20 @@ class Order extends HttpError {
     public function setOrderProducts($order_products)
     {
         $this->order_products = $order_products;
+    }
+    /**
+     * @return mixed
+     */
+    public function getCoupon()
+    {
+        return $this->coupon;
+    }
+
+    /**
+     * @param mixed $coupon
+     */
+    public function setCoupon($coupon)
+    {
+        $this->coupon = $coupon;
     }
 }

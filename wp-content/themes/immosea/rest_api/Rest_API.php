@@ -1,7 +1,13 @@
 <?php
 include 'interfaces/Endpoint.php';
-include 'endpoints/Products.php';
+include 'services/ErrorService.php';
+include 'services/HttpError.php';
+
 include 'endpoints/Order.php';
+include 'endpoints/Products.php';
+include 'endpoints/Coupon.php';
+
+
 class Rest_API {
     /**
      * Constructor for class
@@ -70,6 +76,17 @@ class Rest_API {
                 array(
                     'methods'         => \WP_REST_Server::READABLE,
                     'callback'        => array(new Order(), 'create_order' ),
+                    'permission_callback' => array($this, 'permissions_check' )
+                ),
+            )
+        );
+        /**
+         * Coupon order endpoints
+         */
+        register_rest_route("{$root}/{$version}", '/apply_coupon/', array(
+                array(
+                    'methods'         => \WP_REST_Server::CREATABLE,
+                    'callback'        => array(new Coupon(), 'apply_coupon' ),
                     'permission_callback' => array($this, 'permissions_check' )
                 ),
             )
