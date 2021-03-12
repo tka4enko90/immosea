@@ -6,6 +6,7 @@ include 'services/HttpError.php';
 include 'endpoints/Order.php';
 include 'endpoints/Products.php';
 include 'endpoints/Coupon.php';
+include 'endpoints/Media.php';
 
 
 class Rest_API {
@@ -56,7 +57,6 @@ class Rest_API {
                     <td class="total">'.$meta_datum->key.'</td>
                     <td class="%1"></td>
                     <td><span class="amount">'.$meta_datum->value.'</span></td>
-                    
                 </tr>';
 
         }
@@ -107,6 +107,17 @@ class Rest_API {
                 array(
                     'methods'         => \WP_REST_Server::CREATABLE,
                     'callback'        => array(new Coupon(), 'apply_coupon' ),
+                    'permission_callback' => array($this, 'permissions_check' )
+                ),
+            )
+        );
+        /**
+         * Upload media endpoints
+         */
+        register_rest_route("{$root}/{$version}", '/media/', array(
+                array(
+                    'methods'         => \WP_REST_Server::CREATABLE,
+                    'callback'        => array(new Media(), 'create_media' ),
                     'permission_callback' => array($this, 'permissions_check' )
                 ),
             )

@@ -40,3 +40,11 @@ foreach ($include_folders as $inc_folder) {
 //		$templates .= '</table>';
 //    print_r($templates);
 //}), 10, 2);
+function my_load_scripts($hook) {
+    //TODO add hash to url for uncached
+
+    wp_enqueue_script( 'vue', 'https://unpkg.com/vue', array());
+    wp_enqueue_script( 'my-app', get_template_directory_uri().'/app/dist/my-app.js');
+
+}
+add_action('wp_enqueue_scripts', 'my_load_scripts');

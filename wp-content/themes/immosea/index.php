@@ -1,7 +1,8 @@
 <?php
-use Timber\Timber;
-
 get_header();
-
-echo 1;
+?>
+<main>
+    <my-app></my-app>
+</main>
+<?php
 get_footer();
