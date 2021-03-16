@@ -1,0 +1,87 @@
+.hero {
+    position: relative;
+    padding: 0;
+    margin-bottom: 40px;
+    @media (min-width: $breakpoint-small) {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        margin-bottom: 60px;
+    }
+    @media (min-width: $breakpoint-medium) {
+        padding-top: 100px;
+        padding-bottom: 100px;
+        margin-bottom: 100px;
+    }
+    
+    &__content {
+        position: relative;
+        z-index: 5;
+        @media (max-width: $breakpoint-small-max) {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(360deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 71.83%);
+            padding: 40px 16px;
+        }
+        @media (min-width: $breakpoint-small) {
+            max-width: 460px;
+            background: #fff;
+            padding: 60px 10px 60px 0;
+        }
+        @media (min-width: $breakpoint-medium) {
+            max-width: 580px;
+        }
+    }
+    
+    &__slider {
+        height: 500px;
+        @media (min-width: $breakpoint-small) {
+            height: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 65%;
+        }
+        
+        .slick-slide {
+            position: relative;
+            &::after {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                content:'';
+                background: linear-gradient(256.52deg, rgba(255, 255, 255, 0) -0.29%, rgba(37, 100, 105, 0.46) 100%);
+            }
+            > div > div {
+                height: 100%;
+                display: block;
+            }
+            
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    
+    &__slider-number {
+        position: absolute;
+        right: 226px;
+        bottom: 15px;
+        font-weight: bold;
+        font-size: 50px;
+        color: #fff;
+        z-index: 4;
+    }
+    
+    &__button {
+        @media (max-width: $breakpoint-small-max) {
+            text-align: center;
+        }
+    }
+}

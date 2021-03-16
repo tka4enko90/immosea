@@ -1,0 +1,29 @@
+$base-color:           #595959;
+$body-bg:              #fff;
+
+$font-family:          'Fira Sans', Helvetica, Arial, 'Open Sans', sans-serif;
+$font-family-heading:  'Sora', sans-serif;
+
+$primary-color:        #256469;
+$link-color:           $primary-color;
+
+$error-color:          #FF665C;
+$success-color:        #215E59;
+
+// gray colors
+$gray-200:             #C4C4C4;
+$gray-300:             #E8E8E8;
+
+
+// Breakpoints
+$breakpoint-xsmall:         480px;
+$breakpoint-small:          760px;
+$breakpoint-medium:         1000px;
+$breakpoint-large:          1200px;
+$breakpoint-xlarge:         1600px;
+
+$breakpoint-xsmall-max:     ($breakpoint-xsmall - 1);
+$breakpoint-small-max:      ($breakpoint-small - 1);
+$breakpoint-medium-max:     ($breakpoint-medium - 1);
+$breakpoint-large-max:      ($breakpoint-large - 1);
+$breakpoint-xlarge-max:     ($breakpoint-xlarge - 1);

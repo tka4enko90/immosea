@@ -1,0 +1,46 @@
+.text-primary {
+    color: $primary-color;
+}
+
+
+.tablet-landscape {
+    &-visible {
+        @media (min-width: $breakpoint-medium) {
+            display: none !important;
+        }
+    }
+    
+    &-hidden {
+        @media (max-width: $breakpoint-medium-max) {
+            display: none !important;
+        }
+    }
+}
+
+.tablet {
+    &-visible {
+        @media (min-width: $breakpoint-small) {
+            display: none !important;
+        }
+    }
+    
+    &-hidden {
+        @media (max-width: $breakpoint-small-max) {
+            display: none !important;
+        }
+    }
+}
+
+.mobile {
+    &-visible {
+        @media (min-width: $breakpoint-xsmall) {
+            display: none !important;
+        }
+    }
+    
+    &-hidden {
+        @media (max-width: $breakpoint-xsmall-max) {
+            display: none !important;
+        }
+    }
+}

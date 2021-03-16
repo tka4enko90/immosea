@@ -1,0 +1,87 @@
+.features {
+    margin-bottom: 100px;
+    @media (max-width: $breakpoint-medium-max) {
+        margin-bottom: 60px;
+    }
+    @media (max-width: $breakpoint-small-max) {
+        margin-bottom: 40px;
+    }
+    
+    &__title {
+        max-width: 880px;
+        margin-bottom: 32px;
+    }
+    
+    &__list {
+        display: flex;
+        margin: 0 -20px;
+        flex-wrap: wrap;
+
+        > div {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            flex: 1 1 25%;
+            
+            @media (max-width: $breakpoint-medium-max) {
+                flex: 1 1 50%;
+                margin-bottom: 32px;
+            }
+            @media (max-width: $breakpoint-small-max) {
+                flex: 1 1 100%;
+            }
+            
+            &:not(:first-child) {
+                .features__list-holder {
+                    @media (min-width: $breakpoint-medium) {
+                        &::after {
+                            position: absolute;
+                            width: 1px;
+                            top: 10px;
+                            left: 0;
+                            bottom: 10px;
+                            content: '';
+                            background: $gray-300;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    &__list-icon {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        background: #fff;
+        box-shadow: 0 4px 44px rgba(0, 0, 0, 0.1);
+        border-radius: 30px;
+        margin: 0 auto 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &::before {
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            top: 20px;
+            bottom: 20px;
+            content: '';
+            border: 2px dashed #BED1D2;
+            opacity: .5;
+            border-radius: 20px;
+        }
+    }
+    
+    &__list-holder {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        flex: 1 1 auto;
+        padding: 0 25px;
+    }
+    
+    &__list-title {
+        color: $primary-color;
+    }
+}

@@ -2,14 +2,16 @@
   "name": "immosea",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "private": true,
   "scripts": {
     "prod": "webpack --mode production",
     "dev": "webpack --mode development --watch"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.11.5"
+    "@babel/polyfill": "^7.11.5",
+    "jquery": "^3.6.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
@@ -20,7 +22,7 @@
     "browser-sync": "^2.26.12",
     "browser-sync-webpack-plugin": "^2.2.2",
     "css-loader": "^4.3.0",
-    "file-loader": "^6.1.0",
+    "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^0.11.3",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.1.1",

@@ -1,0 +1,50 @@
+.faq-section {
+    position: relative;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F9F9F9 100%);
+    
+    &__content {
+        @media (min-width: $breakpoint-medium) {
+            margin-left: auto;
+            width: 50%;
+        }
+    }
+    
+    &__image {
+        position: relative;
+        overflow: hidden;
+        &::after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            content:'';
+            background: linear-gradient(125.03deg, rgba(37, 100, 105, 0.4) 0%, rgba(255, 255, 255, 0) 100%),
+                        linear-gradient(125.03deg, rgba(37, 100, 105, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+        
+        @media (min-width: $breakpoint-medium) {
+            width: 47%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+    
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        
+        @media (max-width: $breakpoint-medium-max) {
+            height: 400px;
+    
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}

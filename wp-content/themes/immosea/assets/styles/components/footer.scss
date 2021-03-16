@@ -1,0 +1,80 @@
+.footer {
+    font-size: 16px;
+    padding-top: 100px;
+    
+    @media (max-width: $breakpoint-medium-max) {
+        padding-top: 60px;
+    }
+    
+    @media (max-width: $breakpoint-small-max) {
+        padding-top: 40px;
+    }
+    
+    &__copy {
+        text-align: center;
+        border-top: 1px solid $gray-200;
+        font-size: 14px;
+        padding: 40px 0;
+    }
+    
+    &__holder {
+        padding-bottom: 30px;
+        position: relative;
+        @media (min-width: $breakpoint-small) {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    
+    &__info {
+        flex: 0 0 auto;
+        @media (min-width: $breakpoint-small) {
+            width: 30%;
+        }
+    }
+    
+    &__nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        @media (min-width: $breakpoint-small) {
+            width: 61%;
+        }
+        > li {
+            padding: 0 20px 20px 0;
+            @media (min-width: $breakpoint-small) {
+                padding: 0 0 0 20px;
+            }
+            > a {
+                cursor: default;
+                pointer-events: none;
+                font-weight: bold;
+                color: $base-color;
+            }
+        }
+        
+        .sub-menu {
+            margin-top: 16px;
+            > li {
+                margin-bottom: 16px;
+                > a {
+                    color: $base-color;
+                    &:hover {
+                        color: $primary-color;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+    
+    .social-links {
+        @media (max-width: $breakpoint-small-max) {
+            position: absolute;
+            left: 0;
+            justify-content: center;
+            bottom: 10px;
+            right: 0;
+        }
+    }
+}

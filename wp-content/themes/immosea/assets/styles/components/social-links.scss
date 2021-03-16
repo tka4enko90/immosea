@@ -1,0 +1,31 @@
+.social-links {
+    li {
+        padding-bottom: 26px;
+    }
+    
+    a {
+        display: block;
+        width: 20px;
+        height: 20px;
+        color: $base-color;
+        cursor: pointer;
+        &:hover {
+            text-decoration: none;
+            color: $primary-color;
+        }
+        svg {
+            color: currentColor;
+            path {
+                fill: currentColor;
+            }
+        }
+    }
+    
+    &--inline {
+        display: flex;
+        li {
+            padding-right: 36px;
+            padding-bottom: 0;
+        }
+    }
+}

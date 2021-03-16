@@ -17,6 +17,8 @@
         as="style"
         onload="this.onload=null;this.rel='stylesheet'"
     />
+
+
     <noscript>
         <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;700;900&family=Open+Sans:wght@300;400;600;700;800&family=Yeseva+One&display=swap"
@@ -31,4 +33,42 @@
     <?php wp_head(); ?>
 </head>
 <body <?php body_class()?>>
+
 <div class="wrapper">
+    <header class="header">
+        <div class="header__logo">Logo</div>
+        <button class="header__toggle" data-toggle><span>Menu</span></button>
+        <div class="header__content">
+            <?php
+                $args = array(
+                    'theme_location'=>'menu',
+                    'container'=>'',
+                    'menu_class'=>'header__nav',
+                );
+                wp_nav_menu($args);
+            ?>
+
+            <?php
+                $social = get_field('social_links', 'option');
+            ?>
+            <?php if($social): ?>
+                <ul class="social-links">
+                    <?php foreach($social as $row) { ?>
+                        <li>
+                            <a href="<?php echo $row['link']['url'] ?>" target="_blank">
+                                <img src="<?php echo $row['icon']['url'] ?>" class="style-svg">
+                            </a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            <?php endif; ?>
+
+            <?php
+                $button = get_field('link_to_form', 'option');
+            ?>
+            <?php if($button): ?>
+                <a href="<?php echo $button['url'] ?>" class="button button--outline button--small
+                header__button">Start Now</a>
+            <?php endif; ?>
+        </div>
+    </header>

@@ -1,0 +1,46 @@
+.accordion {
+    overflow: hidden;
+    position: relative;
+    
+    &__item {
+        margin-bottom: -1px;
+    }
+    
+    &__item-title {
+        position: relative;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 700;
+        padding: 30px 50px 30px 0;
+        transition: color .3s;
+        border-bottom: 1px solid rgba($gray-200, .5);
+        
+        @media (max-width: $breakpoint-medium-max) {
+            font-size: 18px;
+            padding: 15px 40px 15px 0;
+        }
+        
+    
+        .show & {
+            border-bottom-color: $primary-color;
+            color: $primary-color;
+        }
+    }
+    
+    &__item-content {
+        overflow: hidden;
+        opacity: 0;
+        height: 0;
+        transition: opacity .3s;
+        
+        .show & {
+            display: block;
+            opacity: 1;
+            height: auto;
+            padding: 20px 0;
+        }
+        table {
+            width: 100%;
+        }
+    }
+}

@@ -2,9 +2,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var path = require('path');
 
-// change these variables to fit your project
 const jsPath= './assets/js';
 const cssPath = './assets/styles';
+const fontsPath = './assets/fonts';
 const outputPath = 'dist';
 const localDomain = 'http://localhost:3000/';
 const entryPoints = {
@@ -53,8 +53,26 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpg|jpeg|png|gif|woff|woff2|eot|ttf|svg)$/i,
-        use: 'url-loader?limit=1024'
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'images'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(woff|woff2|ttf|otf|eot)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'fonts'
+            }
+          }
+        ]
       }
     ]
   },

@@ -1,0 +1,171 @@
+.header {
+    padding: 20px 16px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+    
+    @media (min-width: $breakpoint-small) {
+        padding-left: 24px;
+        padding-right: 24px;
+        display: flex;
+        align-items: center;
+    }
+    @media (min-width: $breakpoint-large) {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    @media (min-width: $breakpoint-xlarge) {
+        padding: 30px 50px;
+    }
+    
+    &__content {
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+        justify-content: space-between;
+        @media (max-width: $breakpoint-small-max) {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            display: block;
+            transform: translateY(-100%);
+            transition: transform .2s;
+            padding: 50px 30px;
+            
+            .nav-open & {
+                transform: translateY(0);
+            }
+            
+            .admin-bar & {
+                padding-top: 140px;
+            }
+        }
+    }
+    
+    &__logo {
+        width: 200px;
+        height: 29px;
+        background: red;
+        margin: 0 auto;
+        @media (min-width: $breakpoint-small) {
+            margin-right: 50px;
+        }
+        @media (min-width: $breakpoint-large) {
+            margin-right: 100px;
+        }
+    }
+    
+    &__toggle {
+        width: 26px;
+        height: 26px;
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        z-index: 3;
+        overflow: hidden;
+        text-indent: -9999px;
+        outline: none !important;
+        padding: 0;
+        border: 0;
+        cursor: pointer;
+        background: none;
+    
+        @media (min-width: $breakpoint-small) {
+            display: none;
+        }
+        
+        &::before,
+        &::after,
+        span {
+            height: 2px;
+            width: 100%;
+            border-radius: 3px;
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            background: $base-color;
+            transition: transform .2s;
+        }
+        
+        span {
+            top: 11px;
+            transition: opacity .2s;
+            
+            .nav-open & {
+                opacity: 0;
+            }
+        }
+        
+        &::before {
+            .nav-open & {
+                top: 11px;
+                transform: rotate(45deg);
+            }
+        }
+        
+        &::after {
+            top: 18px;
+            
+            .nav-open & {
+                top: 11px;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+    
+    &__nav {
+        font-size: 18px;
+        @media (min-width: $breakpoint-small) {
+            display: flex;
+        }
+        li {
+            padding-right: 60px;
+            @media (max-width: $breakpoint-small-max) {
+                padding: 0 0 16px;
+            }
+        }
+        a {
+            color: $base-color;
+            &:hover {
+                color: $link-color;
+            }
+        }
+    }
+    
+    &__button {
+        @media (max-width: $breakpoint-small-max) {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+        }
+    }
+    
+    
+    .social-links {
+        @media (min-width: 1321px) {
+            position: fixed;
+            top: 200px;
+            left: 30px;
+            background: #fff;
+        }
+        
+        @media (max-width: 1320px) {
+            display: none;
+        }
+        
+        @media (max-width: $breakpoint-small-max) {
+            display: block;
+            position: absolute;
+            left: 30px;
+            bottom: 10px;
+        }
+        a {
+            opacity: .5;
+        }
+    }
+}
