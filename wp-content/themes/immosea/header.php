@@ -51,17 +51,17 @@
             <?php
                 $social = get_field('social_links', 'option');
             ?>
-            <?php if($social): ?>
-                <ul class="social-links">
-                    <?php foreach($social as $row) { ?>
-                        <li>
-                            <a href="<?php echo $row['link']['url'] ?>" target="_blank">
-                                <img src="<?php echo $row['icon']['url'] ?>" class="style-svg">
-                            </a>
-                        </li>
-                    <?php } ?>
-                </ul>
-            <?php endif; ?>
+<!--            --><?php //if($social): ?>
+<!--                <ul class="social-links">-->
+<!--                    --><?php //foreach($social as $row) { ?>
+<!--                        <li>-->
+<!--                            <a href="--><?php //echo $row['link']['url'] ?><!--" target="_blank">-->
+<!--                                <img src="--><?php //echo $row['icon']['url'] ?><!--" class="style-svg">-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    --><?php //} ?>
+<!--                </ul>-->
+<!--            --><?php //endif; ?>
 
             <?php
                 $button = get_field('link_to_form', 'option');

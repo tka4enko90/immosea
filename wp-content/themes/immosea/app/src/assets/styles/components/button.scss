@@ -1,0 +1,60 @@
+.button {
+    font-size: 22px;
+    border: 2px solid;
+    padding: 15px 45px;
+    border-radius: 35px;
+    line-height: 1.2;
+    transition: background-color .2s, color .2s, box-shadow .2s;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+    font-family: $font-family;
+    
+    @media (max-width: $breakpoint-small-max) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    &:hover {
+        text-decoration: none;
+    }
+    
+    &--primary {
+        border-color: $primary-color;
+        background: $primary-color;
+        color: #fff;
+        box-shadow: 0 20px 20px rgba(37, 100, 105, 0.2);
+        &:hover {
+            box-shadow: none;
+        }
+    }
+    
+    &--outline {
+        border-color: $primary-color;
+        color: $primary-color;
+        background: none;
+        &:hover {
+            background: $primary-color;
+            color: #fff;
+        }
+    }
+    
+    &--outline-inverse {
+        color: #fff;
+        border-color: #fff;
+    }
+    
+    &--small {
+        padding: 13px 40px;
+        border-radius: 30px;
+        font-size: 18px;
+    }
+    
+    &--disabled {
+        background: $base-color;
+        pointer-events: none;
+        border-color: $base-color;
+        box-shadow: none !important;
+    }
+}

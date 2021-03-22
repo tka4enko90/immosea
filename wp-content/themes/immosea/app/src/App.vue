@@ -6,14 +6,16 @@
 
 <script>
 import Form from './components/Form'
+import store from './store'
 
 export default {
   name: 'App',
+  store,
   components: {
     Form
   },
 }
 </script>
-<style>
-  @import './assets/main.scss';
+<style lang="scss">
+  @import "assets/styles/main";
 </style>

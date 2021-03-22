@@ -1,0 +1,69 @@
+.step {
+    @media (min-width: $breakpoint-small) {
+        display: flex;
+    }
+    
+    &__title {
+        background: $primary-color;
+        border-radius: 8px;
+        box-sizing: border-box;
+        color: #fff;
+        padding: 16px;
+        margin-bottom: 24px;
+        
+        @media (min-width: $breakpoint-large) {
+            padding: 60px;
+            flex: 0 0 50%;
+        }
+    
+        @media (min-width: $breakpoint-small) {
+            padding: 40px 24px;
+            flex: 0 0 40%;
+            min-height: 500px;
+            margin-bottom: 0;
+        }
+        
+        h1 {
+            margin: 0;
+        }
+    }
+    
+    &__content {
+        position: relative;
+        flex: 1 1 auto;
+        box-sizing: border-box;
+        align-content: center;
+        align-items: center;
+    
+        @media (min-width: $breakpoint-large) {
+            padding: 30px 0 72px 30px;
+        }
+        
+        @media (min-width: $breakpoint-small) {
+            padding: 16px 0 72px 16px;
+            display: flex;
+        }
+    }
+    
+    &__holder {
+        width: 100%;
+    }
+    
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        @media (min-width: $breakpoint-small) {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            justify-content: flex-end;
+        }
+        
+        > * {
+            margin: 0 8px;
+            @media (min-width: $breakpoint-small) {
+                margin: 0 0 0 24px;
+            }
+        }
+    }
+}

@@ -1,16 +1,14 @@
 <template>
     <div class="form-checkbox">
-        <label>
-            <input
-                    type='checkbox'
-                    :name='name'
-                    :disabled="disabled"
-                    :id="id"
-                    :value="value"
-                    @input="$emit('change', $event.target.checked)"
-            >
-            <span v-if="label">{{ label }}</span>
-        </label>
+        <input
+                type='checkbox'
+                :name='name'
+                :disabled="disabled"
+                :id="id"
+                :value="value"
+                @input="$emit('change', $event.target.checked)"
+        >
+        <label v-if="label">{{ label }}</label>
     </div>
 </template>
 <script>

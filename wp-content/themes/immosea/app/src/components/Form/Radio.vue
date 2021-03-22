@@ -1,17 +1,14 @@
 <template>
     <div class="form-radio">
-        <label :for="id">
-            <input
-                    :id="id"
-                    type="radio"
-                    :disabled="disabled"
-                    :val="val"
-                    :value="value"
-                    :name="name"
-                    @input="$emit('change', $event.target.value)"
-            >
-            <span v-if="label">{{ label }}</span>
-        </label>
+        <input
+                type="radio"
+                :disabled="disabled"
+                :val="val"
+                :value="value"
+                :name="name"
+                @input="$emit('change', $event.target.value)"
+        >
+        <label :for="value">{{ label }}</label>
     </div>
 </template>
 <script>
@@ -50,4 +47,4 @@
   }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss"></style>

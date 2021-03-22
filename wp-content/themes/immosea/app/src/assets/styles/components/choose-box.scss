@@ -1,0 +1,95 @@
+.choose-box {
+    position: relative;
+    
+    &__label {
+        display: block;
+        background: #fff;
+        box-shadow: $box-shadow;
+        border-radius: 8px;
+        padding: 58px 24px;
+        border: 4px solid #fff;
+        @media (max-width: $breakpoint-medium-max) {
+            padding: 24px 16px;
+        }
+        strong {
+            font-weight: 700;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 20px;
+            @media (max-width: $breakpoint-small-max) {
+                margin-bottom: 10px;
+            }
+        }
+        .button {
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-top: 20px;
+            display: inline-block;
+            @media (max-width: $breakpoint-small-max) {
+                margin-top: 10px;
+            }
+        }
+        &::after {
+            position: absolute;
+            right: -3px;
+            top: -3px;
+            border: 15px solid;
+            border-color: transparent transparent transparent $primary-color;
+            content:'';
+            transform: rotate(-45deg);
+            opacity: 0;
+            transition: opacity .2s;
+        }
+        
+        &--center {
+            text-align: center;
+        }
+    }
+    
+    &__icon {
+        width: 50px;
+        margin: 0 auto 24px;
+    }
+    
+    input[type='radio'] {
+        position: absolute;
+        left: 0;
+        opacity: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        cursor: pointer;
+        &:checked + label {
+            border-color: $primary-color;
+            
+            &::after {
+                opacity: 1;
+            }
+            
+            .button {
+                background: $primary-color;
+                color: #fff;
+            }
+        }
+    }
+    
+    &__row {
+        > div {
+            padding-bottom: 24px;
+            flex: 1;
+        }
+        
+        &--flex {
+            @media (min-width: $breakpoint-medium) {
+                display: flex;
+                margin-right: -14px;
+                margin-left: -14px;
+                > div {
+                    padding: 0 14px 14px;
+                }
+            }
+        }
+    }
+}

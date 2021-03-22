@@ -1,14 +1,14 @@
 <template>
     <div class="form-group">
-        <div class="form-checkbox" v-for="{ label, value, id } in options" :key="id">
-            <label>
+        <div v-for="{ label, value, id } in options" :key="id">
+            <div class="form-checkbox">
                 <input
-                    type="checkbox"
-                    :value="value"
-                    v-model="model"
+                        type="checkbox"
+                        :value="value"
+                        v-model="model"
                 >
-                    <span v-if="label">{{ label }}</span>
-                </label>
+                <label v-if="label">{{ label }}</label>
+            </div>
         </div>
     </div>
 </template>
@@ -32,4 +32,11 @@
     },
   }
 </script>
-<style scoped></style>
+
+<style lang="scss" scoped>
+    .form-group {
+        > div {
+            margin-bottom: 16px;
+        }
+    }
+</style>
