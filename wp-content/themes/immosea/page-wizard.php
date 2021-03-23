@@ -12,7 +12,5 @@ get_header(); ?>
         </div>
 
     </main>
-    <script src="https://unpkg.com/vue"></script>
-    <script src="<?php echo get_template_directory_uri() ?>/app/dist/my-app.js"></script>
 <?php get_footer();
 
