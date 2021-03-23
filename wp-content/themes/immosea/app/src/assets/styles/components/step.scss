@@ -15,6 +15,10 @@
             padding: 60px;
             flex: 0 0 50%;
         }
+        
+        @media (min-width: $breakpoint-medium) {
+            padding: 40px;
+        }
     
         @media (min-width: $breakpoint-small) {
             padding: 40px 24px;
