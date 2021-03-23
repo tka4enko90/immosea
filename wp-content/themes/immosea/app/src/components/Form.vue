@@ -22,7 +22,6 @@
                 ></component>
             </div>
         </div>
-        <!--{{ this.cart}}-->
     </div>
 </template>
 

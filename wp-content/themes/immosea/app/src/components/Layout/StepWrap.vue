@@ -39,17 +39,16 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'app-step-wrap',
     components: {},
     props: ['title', 'text', 'showPrice', 'buttonPrev', 'buttonNext' ],
     computed: {
-      price: {
-        get() {
-          return this.$store.state.price
-        }
-      }
+      ...mapGetters([
+        'price'
+      ]),
     },
     methods: {},
     create: {}

@@ -33,7 +33,7 @@ export const kindProperty = [
   },
   {
     title: 'Grundstück',
-    type: 'land',
+    type: 'property',
     icon: 'static/images/icon01.svg',
     items: [
       'Bauland',

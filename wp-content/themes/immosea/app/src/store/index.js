@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { Product } from '../api';
+import { getPriceByFieldName } from '../utils'
 
 Vue.use(Vuex);
 
@@ -9,14 +10,18 @@ export default new Vuex.Store({
     products: [],
     cart: {
       type: 'flat',
+      year: '',
+      uploads: [],
+      graphics3d: false,
+
       advertising_copy: null,
       floor_plan: false,
       expose: false,
       energy_certificate: false,
+      photography: false,
+
       virtual_staging: false,
       drone_footage: false,
-      photography: false,
-      year: ''
     },
     price: 0,
     name_house: '',
@@ -24,7 +29,29 @@ export default new Vuex.Store({
   },
 
   getters: {
+    price: state => {
+      let advertising = state.cart.advertising_copy ? getPriceByFieldName(state.products, 'advertising_copy') : 0
+      let expose      = state.cart.expose ? getPriceByFieldName(state.products, 'expose') : 0
+      let certificate = state.cart.energy_certificate
+                                  ? state.cart.type === 'house' && state.cart.year < 1979
+                                    ? getPriceByFieldName(state.products, 'energy_certificate_bg_house')
+                                    : getPriceByFieldName(state.products, 'energy_certificate')
+                                  : 0
+      let photography = state.cart.photography
+                                  ? getPriceByFieldName(state.products, `photography_${state.cart.type}`)
+                                  : 0
+      let floor_plan  = state.cart.floor_plan && state.cart.uploads.length > 0
+                                  ? getPriceByFieldName(state.products, 'floor_plan')
+                                  : 0
 
+      // let graphics3d  = state.graphics3d && state.cart.uploads.length > 0
+      //                             ? getPriceByFieldName(state.products, 'floor_plan')
+      //                             : 0
+
+
+
+      return +advertising + +expose + +certificate + +photography + +floor_plan
+    }
   },
 
   mutations: {
@@ -55,6 +82,10 @@ export default new Vuex.Store({
         ...state.cart,
         ...payload
       }
+    },
+
+    SET_PRICE (state, payload) {
+      state.price = payload
     }
   },
 

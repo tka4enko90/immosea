@@ -100,7 +100,9 @@
         </div>
         <div class="form__buttons">
             <button @click="buttonNext.click"
-                    class="button button--primary button--small">
+                    class="button button--primary button--small"
+                    :class="{'button--disabled': !name_house}"
+            >
                 {{ buttonNext.title }}
             </button>
         </div>
