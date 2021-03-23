@@ -130,7 +130,7 @@
         set(value) {
           let type = kindProperty.find(i => i.items.includes(value)).type
           this.$store.commit('SET_NAME_HOUSE', value)
-          this.$store.commit('SET_HOUSE_TYPE', type)
+          this.$store.commit('SET_CART_OPTIONS', { type })
         }
       }
     },

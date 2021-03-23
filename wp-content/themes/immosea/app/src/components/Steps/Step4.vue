@@ -1,6 +1,7 @@
 <template>
     <StepWrap
             :title="title"
+            :text="text"
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{...buttonNext}"
     >
@@ -37,14 +38,14 @@
     components: {
       StepWrap
     },
-    props: ['title', 'price', 'buttonPrev', 'buttonNext'],
+    props: ['title', 'text', 'showPrice', 'buttonPrev', 'buttonNext'],
     data() {
       return {}
     },
     computed: {
       advertising_copy: {
         get() {
-          return this.$store.state.advertising_copy
+          return this.$store.state.cart.advertising_copy
         },
         set(value) {
           this.$store.commit('SET_ADV', value)

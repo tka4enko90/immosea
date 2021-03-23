@@ -18,31 +18,38 @@ export const questions = [
   },
   {
     title: 'Womit können wir dich zusätzlich bei der Vermarktung deiner Immobilie unterstützen?',
-    component: 'Step5'
+    component: 'Step5',
+    showPrice: true
   },
   {
     title: 'Damit wir dein Objekt besser verstehen, benötigen wir ein paar weitere Informationen.',
-    component: 'Step6'
+    component: 'Step6',
+    showPrice: true
   },
   {
     title: 'Für eine rechtssichere Vermarktung deiner Immobilie benötigen Sie einen Energieausweis. Bitte tragen Sie hier die Daten Ihres Energieausweises ein:',
-    component: 'Step7'
+    component: 'Step7',
+    showPrice: true
   },
   {
     title: 'Du hast angegeben, dass für dein Objekt Denkmalschutz besteht. Daher ist für deine Immobilie kein Energieausweis erforderlich. Möchtest du dennoch einen Energieausweis für deine Immobilie erhalten?',
-    component: 'Step8'
+    component: 'Step8',
+    showPrice: true
   },
   {
     title: 'Damit wir das Exposé für dich erstellen können, benötigen wir noch deine Werbetexte:',
-    component: 'Step9'
+    component: 'Step9',
+    showPrice: true
   },
   {
     title: 'Für eine ansprechende Objektbeschreibung benötigen wir noch ein paar weitere Informationen:',
-    component: 'Step10'
+    component: 'Step10',
+    showPrice: true
   },
   {
     title: 'Wie lautet die Anschrift deiner Immobilie? Keine Sorge, wir verwenden diese Information lediglich, um die Objektlage im Exposé optimal zu beschreiben und / oder, um die Objektfotografie zu beauftragen.',
-    component: 'Step11'
+    component: 'Step11',
+    showPrice: true
   },
   {
     title: 'Für die Erstellung des Exposés benötigen wir außerdem noch folgende Dokumente:',
@@ -53,7 +60,7 @@ export const questions = [
     component: 'Step13'
   },
   {
-    title: 'Zu guter Letzt benötigen wir noch deine Kontaktdaten, um deinen Auftrag bearbeiten zu können.\n',
+    title: 'Zu guter Letzt benötigen wir noch deine Kontaktdaten, um deinen Auftrag bearbeiten zu können.',
     component: 'Step14'
   }
 ]

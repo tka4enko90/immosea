@@ -9,7 +9,7 @@
                         :is="item.component"
                         :title="item.title"
                         :text="item.text"
-                        :showPrice="item.price"
+                        :showPrice="item.showPrice"
                         :buttonPrev="{
                             title: buttonPrev.title,
                             click: showPrevScreen,
@@ -20,20 +20,9 @@
                             click: showNextScreen
                         }"
                 ></component>
-
-                <!--<div class="form__buttons">-->
-                    <!--<button @click="showPrevScreen"-->
-                            <!--v-show="buttonPrev.show"-->
-                            <!--class="button button&#45;&#45;outline button&#45;&#45;small">-->
-                        <!--{{ buttonPrev.title }}-->
-                    <!--</button>-->
-                    <!--<button @click="showNextScreen"-->
-                            <!--class="button button&#45;&#45;primary button&#45;&#45;small">-->
-                        <!--{{ buttonNext.title }}-->
-                    <!--</button>-->
-                <!--</div>-->
             </div>
         </div>
+        <!--{{ this.cart}}-->
     </div>
 </template>
 
@@ -78,6 +67,9 @@
       }
     },
     computed: {
+      cart() {
+        return this.$store.state.cart
+      },
       products() {
         return this.$store.state.products
       },
@@ -93,7 +85,7 @@
           },
           {
             step: 2,
-            condition: this.$store.state.type === 'house'
+            condition: this.$store.state.cart.type === 'house'
           },
           {
             step: 3,

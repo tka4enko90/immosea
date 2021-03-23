@@ -1,25 +1,105 @@
 <template>
-    <div v-if="kindProperty">
-        step5
-    </div>
+    <StepWrap
+            :title="title"
+            :buttonPrev="{
+                ...buttonPrev
+            }"
+            :buttonNext="{
+                ...buttonNext,
+            }"
+            :showPrice="showPrice"
+    >
+
+        <div class="step__row">
+            <div>
+                <div class="form-checkbox form-checkbox--custom">
+                    <input id="advertising_copy" type='checkbox' v-model="data.advertising_copy">
+                    <label for="advertising_copy">
+                        <span>1212</span>
+                        <strong>Werbetexte</strong>
+                        Angepasst auf die gängigen Immobilien portale
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div class="form-checkbox form-checkbox--custom form-checkbox--green">
+                    <input id="expose" type='checkbox' v-model="data.expose">
+                    <label for="expose">
+                        <span>1212</span>
+                        <strong>Exposé</strong>
+                        Professionelle Objekt broschüre im PDF Format
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div class="form-checkbox form-checkbox--custom form-checkbox--yellow">
+                    <input id="photography" type='checkbox' v-model="data.photography">
+                    <label for="photography">
+                        <span>1212</span>
+                        <strong>Fotografie</strong>
+                        Professionelles Fotoshooting für dein Objekt.
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div class="form-checkbox form-checkbox--custom form-checkbox--orange">
+                    <input id="energy_certificate" type='checkbox' v-model="data.energy_certificate">
+                    <label for="energy_certificate">
+                        <span>1212</span>
+                        <strong>Energieausweis</strong>
+                        Erfülle die gesetzlichen Anforderungen an einen Energieausweis
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div class="form-checkbox form-checkbox--custom form-checkbox--gray">
+                    <input id="floor_plan" type='checkbox' v-model="data.floor_plan">
+                    <label for="floor_plan">
+                        <span>1212</span>
+                        <strong>Grundriss</strong>
+                        Professionelle Grundriss-Coloration für dein Objekt
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div class="form-checkbox form-checkbox--custom form-checkbox--red">
+                    <input id="drone_footage" type='checkbox' v-model="data.drone_footage">
+                    <label for="drone_footage">
+                        <span>1212</span>
+                        <strong>Drohnenaufnahmen</strong>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </StepWrap>
 </template>
 
 <script>
-  import { kindProperty } from '../../Data/options'
+  import StepWrap from '../Layout/StepWrap';
+
 
   export default {
     name: 'app-step5',
     components: {
-      // Radio
+      StepWrap
     },
-    data() {
-      return {
-        kindProperty,
-        radio: '',
+    props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
+    data() {return {}},
+    computed: {
+      data: {
+        get() {
+          return this.$store.state.cart
+        },
+        set(value) {
+          console.log(value);
+          this.$store.commit('SET_CART_OPTIONS', value)
+        }
       }
     },
-    computed: {},
-    methods: {}
+    methods: {
+
+    }
   }
 </script>
 

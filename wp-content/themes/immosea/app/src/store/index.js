@@ -7,19 +7,20 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     products: [],
-    cart: {},
+    cart: {
+      type: 'flat',
+      advertising_copy: null,
+      floor_plan: false,
+      expose: false,
+      energy_certificate: false,
+      virtual_staging: false,
+      drone_footage: false,
+      photography: false,
+      year: ''
+    },
     price: 0,
-    type: 'flat',
     name_house: '',
-    advertising_copy: false,
-    expose: false,
-    floor_plan: false,
-    energy_certificate: false,
-    energy_certificate_bg_house: false,
-    virtual_staging: false,
-    drone_footage: false,
     sellRent: '',
-    year: ''
   },
 
   getters: {
@@ -35,21 +36,26 @@ export default new Vuex.Store({
       state.name_house = payload
     },
 
-    SET_HOUSE_TYPE (state, payload) {
-      state.type = payload
-    },
-
     SET_SELL_RENT (state, payload) {
       state.sellRent = payload
     },
 
     SET_ADV (state, payload) {
-      state.advertising_copy = payload
+      if (typeof payload === 'string' ) {
+        payload === 'false'
+          ? state.cart.advertising_copy = false
+          : state.cart.advertising_copy = true
+      } else {
+        state.cart.advertising_copy = payload
+      }
     },
 
-    SET_YEAR (state, payload) {
-      state.year = payload
-    },
+    SET_CART_OPTIONS (state, payload) {
+      state.cart = {
+        ...state.cart,
+        ...payload
+      }
+    }
   },
 
   actions: {

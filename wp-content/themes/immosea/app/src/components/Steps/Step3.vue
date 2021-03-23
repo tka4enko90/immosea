@@ -9,15 +9,19 @@
                 ...buttonNext,
                 disabled: !year
             }"
+            :showPrice="showPrice"
     >
-        <div class="form-row">
+        <div class="form__row">
             <InputText label="Baujahr"
                        v-model="year"
+                       type="number"
                        placeholder="Gebe hier das Baujahr der Immobilie an."
             />
         </div>
 
-        <Checkbox label="Ich weiß das genaue Baujahr nicht" v-model="addOption" />
+        <div class="form__row">
+            <Checkbox label="Ich weiß das genaue Baujahr nicht" v-model="addOption" />
+        </div>
         <div v-show="addOption">
             <div class="form__row">
                 <Radio
@@ -46,31 +50,32 @@
   import InputText from '../Form/InputText.vue';
   import StepWrap from '../Layout/StepWrap';
 
+
   export default {
     name: 'app-step3',
     components: {
       Radio, InputText, Checkbox,
       StepWrap
     },
-    props: ['title', 'text', 'buttonPrev', 'buttonNext'],
+    props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
     data() {
       return {
-        // year: '',
         addOption: false,
-        // yearCheck: ''
       }
     },
     computed: {
       year: {
         get() {
-          return this.$store.state.year
+          return this.$store.state.cart.year
         },
         set(value) {
-          this.$store.commit('SET_YEAR', value)
+          this.$store.commit('SET_CART_OPTIONS', { year: value })
         }
       }
     },
-    methods: {}
+    methods: {
+
+    }
   }
 </script>
 

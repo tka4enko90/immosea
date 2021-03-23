@@ -1,5 +1,5 @@
 <template>
-    <div class="step">
+    <div class="step" :class="{'step--price': showPrice}">
         <div class="step__title">
             <h1>{{ title }}</h1>
             <div class="step__info" v-if="text">
@@ -7,8 +7,14 @@
             </div>
         </div>
         <div class="step__content">
-            <div v-if="showPrice" class="price-box">
-                Price box
+            <div v-if="showPrice" class="step__top">
+                <div>
+                    <strong>Mein Marketingpaket</strong>
+                    inkl. MwSt.
+                </div>
+                <div class="step__price-box">
+                    {{ this.price }} EUR
+                </div>
             </div>
             <div class="step__holder">
                 <slot></slot>
@@ -38,7 +44,13 @@
     name: 'app-step-wrap',
     components: {},
     props: ['title', 'text', 'showPrice', 'buttonPrev', 'buttonNext' ],
-    computed: {},
+    computed: {
+      price: {
+        get() {
+          return this.$store.state.price
+        }
+      }
+    },
     methods: {},
     create: {}
   }

@@ -1,19 +1,34 @@
 <template>
-    <div>
-        step11
-    </div>
+    <StepWrap
+            :title="title"
+            :buttonPrev="{...buttonPrev}"
+            :buttonNext="{
+                ...buttonNext,
+            }"
+            :showPrice="showPrice"
+    >
+        step 11
+
+    </StepWrap>
 </template>
 
 <script>
+  import StepWrap from '../Layout/StepWrap';
+
 
   export default {
     name: 'app-step11',
-    components: {},
-    data() {
-      return {}
+    components: {
+      StepWrap
     },
-    computed: {},
-    methods: {}
+    props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
+    data() {return {}},
+    computed: {
+
+    },
+    methods: {
+
+    }
   }
 </script>
 

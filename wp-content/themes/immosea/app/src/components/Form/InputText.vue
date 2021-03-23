@@ -1,5 +1,5 @@
 <template>
-    <div class="form-input">
+    <div class="form-input" :class="{'form-input--error': error}">
         <label for="name" v-if="label">{{ label }}</label>
         <input
                 :id="name"
@@ -10,6 +10,7 @@
                 :disabled="disabled"
                 @input="$emit('input', $event.target.value)"
         >
+        {{error}}
 
         <div class="form-error" v-if="errorMessage">{{ errorMessage }}</div>
     </div>
@@ -21,7 +22,7 @@
     components: {},
     props: {
       disabled: Boolean,
-      error: Boolean,
+      error: {},
       errorMessage: String,
       label: String,
       name: String,
@@ -34,6 +35,7 @@
         type: [String, Number],
         default: ''
       },
+      pattern: {}
     },
     data: () => ({
 

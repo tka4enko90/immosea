@@ -10,15 +10,6 @@
         color: #fff;
         padding: 16px;
         margin-bottom: 24px;
-        
-        @media (min-width: $breakpoint-large) {
-            padding: 60px;
-            flex: 0 0 50%;
-        }
-        
-        @media (min-width: $breakpoint-medium) {
-            padding: 40px;
-        }
     
         @media (min-width: $breakpoint-small) {
             padding: 40px 24px;
@@ -26,9 +17,24 @@
             min-height: 500px;
             margin-bottom: 0;
         }
-        
+    
+        @media (min-width: $breakpoint-medium) {
+            padding: 40px;
+        }
+    
+        @media (min-width: $breakpoint-large) {
+            padding: 60px;
+            flex: 0 0 50%;
+        }
         h1 {
             margin: 0;
+        }
+    }
+    
+    &__info {
+        margin-top: 16px;
+        @media (max-width: $breakpoint-medium-max) {
+            font-size: 16px;
         }
     }
     
@@ -38,19 +44,54 @@
         box-sizing: border-box;
         align-content: center;
         align-items: center;
-    
-        @media (min-width: $breakpoint-large) {
-            padding: 30px 0 72px 30px;
-        }
         
         @media (min-width: $breakpoint-small) {
             padding: 16px 0 72px 16px;
             display: flex;
         }
+    
+        @media (min-width: $breakpoint-large) {
+            padding: 30px 0 72px 30px;
+        }
+    
     }
     
     &__holder {
         width: 100%;
+    }
+    
+    &__top {
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $border-color;
+        padding: 16px;
+        margin-bottom: 24px;
+
+        @media (min-width: $breakpoint-small) {
+            position: absolute;
+            right: 0;
+            top: 0;
+            left: 16px;
+            padding: 20px 16px 16px;
+        }
+        
+        @media (min-width: $breakpoint-large) {
+            left: 30px;
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+        
+        strong {
+            display: block;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+    }
+    
+    &__price-box {
+        font-size: 18px;
     }
     
     &__buttons {
@@ -68,6 +109,30 @@
             @media (min-width: $breakpoint-small) {
                 margin: 0 0 0 24px;
             }
+        }
+    }
+    
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -8px;
+        > div {
+            width: 50%;
+            padding: 0 8px 16px;
+            display: flex;
+        }
+    }
+    
+    &--price {
+        .step__content {
+            @media (min-width: $breakpoint-small) {
+                padding-top: 92px;
+            }
+    
+            @media (min-width: $breakpoint-large) {
+                padding-top: 110px;
+            }
+    
         }
     }
 }
