@@ -22,6 +22,7 @@
                 ></component>
             </div>
         </div>
+        {{collectData}}
     </div>
 </template>
 
@@ -66,6 +67,7 @@
       }
     },
     computed: {
+      collectData() {return this.$store.state.collectData},
       cart() {
         return this.$store.state.cart
       },
@@ -96,7 +98,8 @@
           },
           {
             step: 5,
-            condition: 'process'
+            // condition: this.$store.state.cart.advertising_copy || this.$store.state.cart.expose || this.$store.state.cart.energy_certificate
+            condition: true
           },
           {
             step: 6,

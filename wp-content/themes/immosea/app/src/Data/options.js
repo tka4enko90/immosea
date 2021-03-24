@@ -45,5 +45,51 @@ export const kindProperty = [
 
 
 export const Zustand = [
+  'Abrissobjekt',
+  'Baufällig',
+  'Entkernt',
+  'Erstbezug',
+  'Erstbezug nach Sanierung',
+  'Gepflegt',
+  'Objekt in Bau',
+  'Modernisiert',
+  'Neuwertig',
+  'Projektiert',
+  'Renoviert',
+  'Renovierungsbedürftig',
+  'Rohbau',
+  'Saniert',
+  'Teilsaniert',
+  'Sanierungsbedürftig'
+]
 
+
+export const Fensterart = [
+  'Aluminiumfenster',
+  'Holzfenster',
+  'Kunststofffenster',
+  'Sprossenfenster'
+]
+
+
+export const Verglasung = [
+  'Einfach',
+  'Zweifach',
+  'Dreifach'
+]
+
+
+export const Keller = [
+  'Vollunterkellert',
+  'Teilunterkellert',
+  'Nichtunterkellert'
+]
+
+
+export const Stellplatze = [
+  'Außenstellplatz',
+  'Carport',
+  'Duplex',
+  'Garage',
+  'Tiefgaragenstellplatz'
 ]

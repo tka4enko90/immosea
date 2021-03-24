@@ -13,7 +13,6 @@ export default new Vuex.Store({
       year: '',
       uploads: [],
       graphics3d: false,
-
       advertising_copy: null,
       floor_plan: false,
       expose: false,
@@ -23,9 +22,13 @@ export default new Vuex.Store({
       virtual_staging: false,
       drone_footage: false,
     },
-    price: 0,
     name_house: '',
     sellRent: '',
+    collectData: {
+      monumentProtection: false,
+      ensembleProtection: false,
+      demolitionObject: false
+    }
   },
 
   getters: {
@@ -84,8 +87,11 @@ export default new Vuex.Store({
       }
     },
 
-    SET_PRICE (state, payload) {
-      state.price = payload
+    SET_COLLECT_DATA (state, payload) {
+      state.collectData = {
+        ...state.collectData,
+        ...payload
+      }
     }
   },
 
