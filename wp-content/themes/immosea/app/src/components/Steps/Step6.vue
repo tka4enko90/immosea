@@ -164,6 +164,11 @@
             <div class="form__area form__area--expand" v-if="type === 'property'">
                 <Checkbox v-model="collectData.demolitionObject" label="Abrissobjekt" />
             </div>
+            <div class="form__area">
+                <label for="particularities" class="form__label">Besonderheiten</label>
+                <textarea class="form__textarea" id="particularities" cols="30" rows="10"
+                          v-model="collectData.particularities"></textarea>
+            </div>
         </div>
 
     </StepWrap>
@@ -195,9 +200,7 @@
       options2: Fensterart,
       options3: Verglasung,
       options4: Keller,
-      options5: Stellplatze,
-      time1: '',
-      time2: ''
+      options5: Stellplatze
     }},
     computed: {
         type() {

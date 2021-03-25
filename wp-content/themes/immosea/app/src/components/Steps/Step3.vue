@@ -2,6 +2,7 @@
 
     <StepWrap
             :title="title"
+            :text="text"
             :buttonPrev="{
                 ...buttonPrev
             }"

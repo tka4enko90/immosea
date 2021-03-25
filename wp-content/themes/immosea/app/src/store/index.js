@@ -80,6 +80,16 @@ export default new Vuex.Store({
       }
     },
 
+    SET_CERTIFICATE (state, payload) {
+      if (typeof payload === 'string' ) {
+        payload === 'false'
+          ? state.cart.energy_certificate = false
+          : state.cart.energy_certificate = true
+      } else {
+        state.cart.energy_certificate = payload
+      }
+    },
+
     SET_CART_OPTIONS (state, payload) {
       state.cart = {
         ...state.cart,

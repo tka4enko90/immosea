@@ -54,15 +54,15 @@
     data() {
       return {
         buttonNext: {
-          title: 'Next'
+          title: 'Weiter'
         },
         buttonPrev: {
-          title: 'Prev',
+          title: 'Zurück',
           show: false
         },
         passedSteps: [],
         questions,
-        activeStep: 0
+        activeStep: 6
       }
     },
     computed: {
@@ -97,12 +97,12 @@
           },
           {
             step: 5,
-            // condition: this.$store.state.cart.advertising_copy || this.$store.state.cart.expose || this.$store.state.cart.energy_certificate
-            condition: true
+            condition: this.$store.state.cart.advertising_copy || this.$store.state.cart.expose || this.$store.state.cart.energy_certificate
           },
           {
             step: 6,
-            condition: 'process'
+            condition: true,
+            // condition: this.$store.state.cart.expose && !this.$store.state.cart.energy_certificate && !this.$store.state.collectData.monumentProtection
           },
           {
             step: 7,
@@ -158,7 +158,7 @@
       showPrevScreen() {
         this.activeStep = this.passedSteps[this.passedSteps.length - 1]
         this.buttonPrev.show = true
-        this.buttonNext.title = 'Next'
+        this.buttonNext.title = 'Weiter'
         this.passedSteps.pop(this.passedSteps.length - 1)
 
         if (this.activeStep === 0) {

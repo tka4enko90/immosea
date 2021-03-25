@@ -1,5 +1,5 @@
 <template>
-    <div class="form-radio">
+    <div class="form-radio" :class="{'form-radio--small': small}">
         <input
                 type="radio"
                 :disabled="disabled"
@@ -23,6 +23,7 @@
     props: {
       disabled: Boolean,
       error: Boolean,
+      small: Boolean,
       errorMessage: String,
       label: String,
       id: String,

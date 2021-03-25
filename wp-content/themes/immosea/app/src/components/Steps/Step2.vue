@@ -1,6 +1,7 @@
 <template>
     <StepWrap
             :title="title"
+            :text="text"
             :buttonPrev="{
                 ...buttonPrev
             }"
@@ -60,7 +61,7 @@
     components: {
       StepWrap
     },
-    props: ['title', 'price', 'buttonPrev', 'buttonNext'],
+    props: ['title', 'text', 'price', 'buttonPrev', 'buttonNext'],
     data() {
       return {}
     },

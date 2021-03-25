@@ -27,8 +27,9 @@ export const questions = [
     showPrice: true
   },
   {
-    title: 'Für eine rechtssichere Vermarktung deiner Immobilie benötigen Sie einen Energieausweis. Bitte tragen Sie hier die Daten Ihres Energieausweises ein:',
+    title: 'Daten deines Energieausweises:',
     component: 'Step7',
+    text: 'Für eine rechtssichere Vermarktung deiner Immobilie benötigst du einen Energieausweis',
     showPrice: true
   },
   {
