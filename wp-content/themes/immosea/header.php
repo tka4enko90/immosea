@@ -66,9 +66,19 @@
             <?php
                 $button = get_field('link_to_form', 'option');
             ?>
-            <?php if($button): ?>
-                <a href="<?php echo $button['url'] ?>" class="button button--outline button--small
-                header__button">Start Now</a>
-            <?php endif; ?>
+
+            <?php
+                $body_classes = get_body_class();
+                if(in_array('page-template-page-wizard', $body_classes)) {}
+                else { ?>
+                    <?php if($button): ?>
+                        <a href="<?php echo $button['url'] ?>"
+                           class="button button--outline button--small header__button"
+                        >
+                            Start Now
+                        </a>
+                    <?php endif; ?>
+                <?php }
+            ?>
         </div>
     </header>

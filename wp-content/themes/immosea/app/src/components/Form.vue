@@ -22,7 +22,6 @@
                 ></component>
             </div>
         </div>
-        <!--{{collectData}}-->
     </div>
 </template>
 

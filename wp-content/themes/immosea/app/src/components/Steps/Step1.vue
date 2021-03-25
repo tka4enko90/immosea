@@ -94,17 +94,17 @@
             </div>
 
             <div class="info">
-                <p>Wenn keine der Immobilienarten zu deinem Objekt passt, wähle einfach aus, was am ehesten zutrifft. Bevor du deine Daten abschickst, hast du die Möglichkeit uns noch weitere Details zu deiner Immobilie zu nennen.</p>
-                <p>Bitte berücksichtige, dass wir derzeit unsere Leistungen nicht für Gewerbeimmobilien anbieten.</p>
+                <div>
+                    <p>Wenn keine der Immobilienarten zu deinem Objekt passt, wähle einfach aus, was am ehesten zutrifft. Bevor du deine Daten abschickst, hast du die Möglichkeit uns noch weitere Details zu deiner Immobilie zu nennen.</p>
+                    <p>Bitte berücksichtige, dass wir derzeit unsere Leistungen nicht für Gewerbeimmobilien anbieten.</p>
+                </div>
+                <button @click="buttonNext.click"
+                        class="button button--primary button--small"
+                        :class="{'button--disabled': !name_house}"
+                >
+                    {{ buttonNext.title }}
+                </button>
             </div>
-        </div>
-        <div class="form__buttons">
-            <button @click="buttonNext.click"
-                    class="button button--primary button--small"
-                    :class="{'button--disabled': !name_house}"
-            >
-                {{ buttonNext.title }}
-            </button>
         </div>
     </div>
 </template>
@@ -146,12 +146,12 @@
 
     .columns {
         display: flex;
-        margin: 0 -30px 70px;
+        margin: 0 -30px 40px;
         @media (max-width: $breakpoint-large-max) {
-            margin: 0 -16px 50px;
+            margin: 0 -16px 40px;
         }
         @media (max-width: $breakpoint-medium-max) {
-            margin: 0 -8px 50px;
+            margin: 0 -8px 40px;
         }
         @media (max-width: $breakpoint-small-max) {
             display: block;
@@ -177,7 +177,7 @@
             background: #fff;
             box-shadow: $box-shadow;
             border-radius: 8px;
-            padding: 45px;
+            padding: 30px 45px;
             @media (max-width: $breakpoint-large-max) {
                 padding-left: 20px;
                 padding-right: 20px;
@@ -211,17 +211,22 @@
         padding: 20px 0 0 100px;
         margin-bottom: 50px;
         position: relative;
+        display: flex;
+        align-items: flex-start;
 
         &::before {
             position: absolute;
             left: 0;
-            top: calc(50% + 20px);
+            top: 50%;
             transform: translateY(-50%);
             content: '';
             width: 60px;
             height: 60px;
             background: url('../../assets/info.svg') no-repeat;
 
+        }
+        > div {
+            margin-right: 24px;
         }
     }
 </style>
