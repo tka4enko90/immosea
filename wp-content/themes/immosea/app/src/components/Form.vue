@@ -22,7 +22,7 @@
                 ></component>
             </div>
         </div>
-        {{collectData}}
+        <!--{{collectData}}-->
     </div>
 </template>
 

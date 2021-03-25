@@ -15,7 +15,7 @@
     "vue-currency-input": "^1.22.6",
     "vue-google-autocomplete": "^1.1.1",
     "vue-select": "^3.11.2",
-    "vue2-datepicker": "^3.9.0",
+    "vuejs-datepicker": "^1.6.2",
     "vuelidate": "^0.7.6",
     "vuex": "^3.6.2"
   },

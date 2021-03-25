@@ -93,3 +93,61 @@ export const Stellplatze = [
   'Garage',
   'Tiefgaragenstellplatz'
 ]
+
+
+export const Heizung = [
+  'Blockheizkraftwerk',
+  'Erdwärme',
+  'Fernwärme',
+  'Gas',
+  'Holz',
+  'Kohle',
+  'Luft-Wasser-Wärmepumpe',
+  'Pellets',
+  'Strom',
+  'Öl',
+  'Solar',
+  'Alternative Energien'
+]
+
+
+export const Energieausweis = [
+  'Verbrauch',
+  'Bedarf'
+]
+
+
+export const Ausstattung = [
+  'Rolläden',
+  'Rolläden Elektrisch',
+  'Fußbodenheizung',
+  'Kaminofen',
+  'Zentralheizung',
+  'Dachboden',
+  'Separate Speisekammer',
+  'Alarmanlage',
+  'Einbauküche',
+  'Tageslichtbad',
+  'TV: Antenne',
+  'TV: Kabel',
+  'Hauswirtschaftskammer bzw. Waschkammer',
+  'Bewegungsmelder',
+  'Gepflasterte Einfahrt',
+  'Sicherheits-Eingangstür',
+  'Sauna',
+  'Geräteschuppen',
+  'Offener Wohnbereich',
+  'Direkter Garagenzugang übers Haus',
+  'Hobbyraum'
+]
+
+
+export const Bodenbelage = [
+  'Dielenboden',
+  'Parkett',
+  'Fliesen',
+  'Naturstein',
+  'Laminat',
+  'Vinyl',
+  'Sonstige'
+]

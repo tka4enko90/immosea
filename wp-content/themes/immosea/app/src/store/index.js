@@ -27,7 +27,7 @@ export default new Vuex.Store({
     collectData: {
       monumentProtection: false,
       ensembleProtection: false,
-      demolitionObject: false
+      demolitionObject: false,
     }
   },
 

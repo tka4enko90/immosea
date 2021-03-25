@@ -10,6 +10,7 @@
             :showPrice="showPrice"
     >
         <div class="form__row form__row--flex">
+
             <div class="form__area" v-if="type === 'flat'">
                 <InputText v-model="collectData.year" type="number" label="Baujahr" placeholder="YYYY" />
             </div>
@@ -35,7 +36,10 @@
             <div class="form__area">
                 <label class="form__label">Verfügbar ab</label>
                 <div class="form__date">
-                    <date-picker v-model="collectData.availableFrom" valueType="format"></date-picker>
+                    <datepicker v-model="collectData.availableFrom"
+                                format="yyyy-MM-dd"
+                                placeholder="Select Date"
+                                clearButton calendarButton />
                 </div>
             </div>
             <div class="form__area" v-if="type !== 'property'">
@@ -80,7 +84,10 @@
             <div class="form__area">
                 <label class="form__label">BJ Fenster (falls abweichend)</label>
                 <div class="form__date">
-                    <date-picker v-model="collectData.bjWindow" valueType="format" />
+                    <datepicker v-model="collectData.bjWindow"
+                                format="yyyy-MM-dd"
+                                placeholder="Select Date"
+                                clearButton calendarButton />
                 </div>
             </div>
             <div class="form__area" v-if="type !== 'property'">
@@ -168,9 +175,8 @@
   import Checkbox from '../Form/Checkbox';
   import vSelect from 'vue-select';
   import { Zustand, Fensterart, Verglasung, Keller, Stellplatze } from '../../Data/options';
-  import DatePicker from 'vue2-datepicker';
   import { CurrencyInput } from 'vue-currency-input'
-
+  import Datepicker from 'vuejs-datepicker';
 
 
   export default {
@@ -180,8 +186,8 @@
       InputText,
       Checkbox,
       vSelect,
-      DatePicker,
-      CurrencyInput
+      CurrencyInput,
+      Datepicker
     },
     props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
     data() {return {
@@ -190,6 +196,8 @@
       options3: Verglasung,
       options4: Keller,
       options5: Stellplatze,
+      time1: '',
+      time2: ''
     }},
     computed: {
         type() {
