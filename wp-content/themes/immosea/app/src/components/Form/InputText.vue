@@ -1,5 +1,5 @@
 <template>
-    <div class="form-input" :class="{'form-input--error': error}">
+    <div class="form-input" :class="{'form-input--error': error, 'form-input--inline': inline}">
         <label for="name" v-if="label">{{ label }}</label>
         <input
                 :id="name"
@@ -22,6 +22,7 @@
     components: {},
     props: {
       disabled: Boolean,
+      inline: Boolean,
       error: {},
       errorMessage: String,
       label: String,

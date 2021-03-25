@@ -16,7 +16,7 @@
                 <div class="form-checkbox form-checkbox--custom">
                     <input id="advertising_copy" type='checkbox' v-model="data.advertising_copy">
                     <label for="advertising_copy">
-                        <span>{{ this.prices.advertising_copy }} EUR</span>
+                        <span>{{ prices.advertising_copy }} EUR</span>
                         <strong>Werbetexte</strong>
                         Angepasst auf die gängigen Immobilien portale
                     </label>
@@ -26,7 +26,7 @@
                 <div class="form-checkbox form-checkbox--custom form-checkbox--green">
                     <input id="expose" type='checkbox' v-model="data.expose">
                     <label for="expose">
-                        <span>{{ this.prices.expose }} EUR</span>
+                        <span>{{ prices.expose }} EUR</span>
                         <strong>Exposé</strong>
                         Professionelle Objekt broschüre im PDF Format
                     </label>
@@ -36,7 +36,7 @@
                 <div class="form-checkbox form-checkbox--custom form-checkbox--yellow">
                     <input id="photography" type='checkbox' v-model="data.photography">
                     <label for="photography">
-                        <span>{{ this.prices.photography }} EUR</span>
+                        <span>{{ prices.photography }} EUR</span>
                         <strong>Fotografie</strong>
                         Professionelles Fotoshooting für dein Objekt.
                     </label>
@@ -46,7 +46,7 @@
                 <div class="form-checkbox form-checkbox--custom form-checkbox--orange">
                     <input id="energy_certificate" type='checkbox' v-model="data.energy_certificate">
                     <label for="energy_certificate">
-                        <span>{{ this.prices.energy_certificate }} EUR</span>
+                        <span>{{ prices.energy_certificate }} EUR</span>
                         <strong>Energieausweis</strong>
                         Erfülle die gesetzlichen Anforderungen an einen Energieausweis
                     </label>
@@ -56,7 +56,7 @@
                 <div class="form-checkbox form-checkbox--custom form-checkbox--gray">
                     <input id="floor_plan" type='checkbox' v-model="data.floor_plan">
                     <label for="floor_plan">
-                        <span>{{ this.prices.floor_plan }} EUR</span>
+                        <span>{{ prices.floor_plan }} EUR</span>
                         <strong>Grundriss</strong>
                         Professionelle Grundriss-Coloration für dein Objekt
                     </label>

@@ -97,7 +97,9 @@
     &__buttons {
         display: flex;
         justify-content: center;
+        margin-top: 24px;
         @media (min-width: $breakpoint-small) {
+            margin-top: 0;
             position: absolute;
             right: 0;
             bottom: 0;

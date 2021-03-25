@@ -32,6 +32,16 @@
             margin-right: -8px;
             margin-left: -8px;
         }
+        
+        &--inline {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        &--separate {
+            border-top: 1px solid $border-color;
+            padding: 20px;
+        }
     }
     
     &__area {
@@ -46,6 +56,12 @@
     &__label {
         margin: 0 0 10px 16px;
         display: block;
+        
+        .form__row--inline & {
+            margin-left: 0;
+            margin-right: 16px;
+            flex: 0 0 34%;
+        }
     }
     
     &__date {
@@ -72,6 +88,10 @@
         &:focus {
             background: #fff;
             border-color: $base-color;
+        }
+        
+        &--small {
+            height: 100px;
         }
     }
     

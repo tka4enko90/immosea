@@ -33,7 +33,9 @@ export const questions = [
     showPrice: true
   },
   {
-    title: 'Du hast angegeben, dass für dein Objekt Denkmalschutz besteht. Daher ist für deine Immobilie kein Energieausweis erforderlich. Möchtest du dennoch einen Energieausweis für deine Immobilie erhalten?',
+    title: 'Möchtest du dennoch einen Energieausweis für deine Immobilie erhalten?',
+    text: 'Du hast angegeben, dass für dein Objekt Denkmalschutz besteht. Daher ist für deine Immobilie kein' +
+      ' Energieausweis erforderlich.',
     component: 'Step8',
     showPrice: true
   },
@@ -48,7 +50,8 @@ export const questions = [
     showPrice: true
   },
   {
-    title: 'Wie lautet die Anschrift deiner Immobilie? Keine Sorge, wir verwenden diese Information lediglich, um die Objektlage im Exposé optimal zu beschreiben und / oder, um die Objektfotografie zu beauftragen.',
+    title: 'Wie lautet die Anschrift deiner Immobilie?',
+    text: 'Keine Sorge, wir verwenden diese Information lediglich, um die Objektlage im Exposé optimal zu beschreiben und / oder, um die Objektfotografie zu beauftragen.',
     component: 'Step11',
     showPrice: true
   },
@@ -57,7 +60,8 @@ export const questions = [
     component: 'Step12'
   },
   {
-    title: 'Gerne lassen wir deinen Grundriss ansprechend colorieren. Hierfür benötigen wir einfach ein Foto eines bereits vorhandenen Grundrisses. Dieser kann auch handschriftlich angefertigt sein.',
+    title: 'Dein Grundriss:',
+    text: 'Eingescannt, abfotografiert, handschriftliche Skizze, o. ä.',
     component: 'Step13'
   },
   {

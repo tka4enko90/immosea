@@ -29,4 +29,14 @@
             background: #fff;
         }
     }
+    
+    &--inline {
+        display: flex;
+        
+        label {
+            margin-left: 0;
+            margin-right: 16px;
+            flex: 0 0 34%;
+        }
+    }
 }

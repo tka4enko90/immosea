@@ -10,7 +10,6 @@
             :showPrice="showPrice"
     >
         <div class="form__row form__row--flex">
-
             <div class="form__area" v-if="type === 'flat'">
                 <InputText v-model="collectData.year" type="number" label="Baujahr" placeholder="YYYY" />
             </div>
