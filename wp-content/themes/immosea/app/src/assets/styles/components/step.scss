@@ -26,6 +26,15 @@
             padding: 60px;
             flex: 0 0 50%;
         }
+    
+    
+        @media (max-width: $breakpoint-small-max) {
+            background: none;
+            color: $base-color;
+            text-align: center;
+            padding: 0;
+        }
+        
         h1 {
             margin: 0;
         }
@@ -122,6 +131,10 @@
             width: 50%;
             padding: 0 8px 16px;
             display: flex;
+    
+            @media (max-width: $breakpoint-xsmall-max) {
+                width: 100%;
+            }
         }
     }
     

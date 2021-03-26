@@ -99,7 +99,7 @@
                     <p>Bitte berücksichtige, dass wir derzeit unsere Leistungen nicht für Gewerbeimmobilien anbieten.</p>
                 </div>
                 <button @click="buttonNext.click"
-                        class="button button--primary button--small"
+                        class="button button--primary"
                         :class="{'button--disabled': !name_house}"
                 >
                     {{ buttonNext.title }}
@@ -227,6 +227,22 @@
         }
         > div {
             margin-right: 24px;
+        }
+
+
+        @media (max-width: $breakpoint-small-max) {
+            padding: 100px 0 0;
+            flex-wrap: wrap;
+            justify-content: center;
+            &::before {
+                left: 50%;
+                top: 20px;
+                transform: translateX(-50%);
+            }
+            > div {
+                width: 100%;
+                margin: 0 0 24px;
+            }
         }
     }
 </style>

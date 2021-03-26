@@ -47,6 +47,10 @@
     &__area {
         padding: 0 8px 24px;
         flex: 1 1 50%;
+    
+        @media (max-width: $breakpoint-xsmall-max) {
+            flex: 1 1 100%;
+        }
         &--expand {
             flex: 1 1 100%;
             width: 100%;

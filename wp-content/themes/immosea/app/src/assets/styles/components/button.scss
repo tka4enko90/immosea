@@ -1,7 +1,8 @@
 .button {
-    font-size: 22px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
     border: 2px solid;
-    padding: 15px 45px;
     border-radius: 35px;
     line-height: 1.2;
     transition: background-color .2s, color .2s, box-shadow .2s;
@@ -10,6 +11,10 @@
     cursor: pointer;
     outline: none;
     font-family: $font-family;
+    padding: 20px 45px;
+    text-align: center;
+    min-width: 180px;
+    justify-content: center;
     
     @media (max-width: $breakpoint-small-max) {
         padding-left: 20px;
@@ -51,10 +56,50 @@
         font-size: 18px;
     }
     
+    &--back {
+        background: none;
+        border: 0;
+        color: $primary-color;
+        &::before {
+            width: 12px;
+            height: 10px;
+            content:'';
+            transform: translateX(-9px);
+            background: url('./assets/arrow.svg') no-repeat;
+            display: block;
+            transition: transform .2s;
+        }
+        &:hover {
+            &::before {
+                transform: translateX(-14px);
+            }
+        }
+    
+    
+        @media (max-width: $breakpoint-small-max) {
+            width: 60px;
+            height: 60px;
+            min-width: 40px;
+            padding: 0;
+            line-height: 0;
+            font-size: 0;
+            border: 2px solid $primary-color;
+            &::before {
+                transform: translateX(0);
+            }
+            &:hover {
+                &::before {
+                    transform: translateX(-5px);
+                }
+            }
+        }
+    }
+    
     &--disabled {
         opacity: .5;
         background: $base-color;
         pointer-events: none;
+        color: #fff;
         border-color: $base-color;
         box-shadow: none !important;
     }

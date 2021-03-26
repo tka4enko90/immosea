@@ -31,6 +31,7 @@
                       v-model="collectData.others"></textarea>
         </div>
         <div class="form__row--separate">
+            <h3 class="text-center">Ich möchte die Werbetexte doch lieber erstellen lassen</h3>
             <div class="form-checkbox form-checkbox--custom" style="max-width: 320px; margin: 0 auto;">
                 <input id="advertising_copy" type='checkbox' v-model="data.advertising_copy">
                 <label for="advertising_copy">

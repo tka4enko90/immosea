@@ -23,12 +23,12 @@
             <div class="step__buttons">
                 <button @click="buttonPrev.click"
                     v-show="buttonPrev.show"
-                    class="button button--outline button--small"
+                    class="button button--back"
                 >
                     {{ buttonPrev.title }}
                 </button>
                 <button @click="buttonNext.click"
-                        class="button button--primary button--small"
+                        class="button button--primary"
                         :class="{'button--disabled': buttonNext.disabled}"
                 >
                     {{ buttonNext.title }}
