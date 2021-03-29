@@ -858,24 +858,28 @@ h4 {
     font-weight: 700;
     padding: 30px 50px 30px 0;
     transition: color .3s;
-    border-bottom: 1px solid rgba(196, 196, 196, 0.5); }
+    border-bottom: 1px solid rgba(196, 196, 196, 0.5);
+    margin-bottom: -1px; }
     @media (max-width: 999px) {
       .accordion__item-title {
         font-size: 18px;
         padding: 15px 40px 15px 0; } }
-    .show .accordion__item-title {
+    .accordion__item-title::after {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      font-family: 'icomoon';
+      transform: translateY(-50%);
+      content: '\e900';
+      font-size: 8px;
+      font-weight: normal;
+      transition: transform .2s; }
+    .accordion__item-title.active {
       border-bottom-color: #256469;
       color: #256469; }
+      .accordion__item-title.active::after {
+        transform: translateY(-50%) rotate(-180deg); }
   .accordion__item-content {
-    overflow: hidden;
-    opacity: 0;
-    height: 0;
-    transition: opacity .3s; }
-    .show .accordion__item-content {
-      display: block;
-      opacity: 1;
-      height: auto;
-      padding: 20px 0; }
-    .accordion__item-content table {
-      width: 100%; }
+    display: none;
+    padding: 15px 0; }
 

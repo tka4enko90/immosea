@@ -8,7 +8,7 @@
             }"
             :showPrice="showPrice"
     >
-        step 12
+        
 
     </StepWrap>
 </template>
@@ -25,7 +25,14 @@
     props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
     data() {return {}},
     computed: {
-
+      contactData: {
+        get() {
+          return this.$store.cart.uploads
+        },
+        set(value) {
+          this.$store.commit('SET_CART_OPTIONS', { value })
+        }
+      }
     },
     methods: {
 

@@ -5,27 +5,85 @@
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
                 ...buttonNext,
-            }"
+                disabled: !$v.contactData.name.required
+                        || !$v.contactData.lastName.required
+                        || !$v.contactData.email.required
+                        || !$v.contactData.phone.required
+                        || !$v.contactData.email.email
+                    }"
             :showPrice="showPrice"
     >
-        step 14
-
+        <div class="form__row">
+            <InputText v-model="contactData.name"
+                       label="Name" placeholder="Type" inline required
+                       @blur="$v.contactData.name.$touch()"
+                       :error="!$v.contactData.name.length"
+                       errorMessage="At least 4 characters"
+            />
+        </div>
+        <div class="form__row">
+            <InputText v-model="contactData.lastName"
+                       label="Vorname" placeholder="Type" inline required
+                       @blur="$v.contactData.lastName.$touch()"
+                       :error="!$v.contactData.lastName.length"
+                       errorMessage="At least 4 characters"
+            />
+        </div>
+        <div class="form__row">
+            <InputText v-model="contactData.address" label="Anschrift" placeholder="Type" inline />
+        </div>
+        <div class="form__row">
+            <InputText v-model="contactData.zip" label="PLZ, Ort" placeholder="Type" inline />
+        </div>
+        <div class="form__row">
+            <InputText v-model="contactData.email"
+                       label="E-Mail-Adresse" placeholder="Type" inline type="email" required
+                       @blur="$v.contactData.email.$touch()"
+                       :error="!$v.contactData.email.email"
+                       errorMessage="Must be an email"
+            />
+        </div>
+        <div class="form__row">
+            <InputText v-model="contactData.phone"
+                       label="Telefonnummer" placeholder="Type" inline required
+                       @blur="$v.contactData.phone.$touch()"
+                       :error="!$v.contactData.phone.length"
+                       errorMessage="Required"
+            />
+        </div>
     </StepWrap>
 </template>
 
 <script>
   import StepWrap from '../Layout/StepWrap';
+  import InputText from '../Form/InputText';
+  import { required, email, minLength } from 'vuelidate/lib/validators';
 
 
   export default {
     name: 'app-step14',
     components: {
-      StepWrap
+      StepWrap, InputText
     },
     props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
     data() {return {}},
     computed: {
-
+      contactData: {
+        get() {
+          return this.$store.state.contactData
+        },
+        set(value) {
+          this.$store.commit('SET_COLLECT_DATA', { value })
+        }
+      }
+    },
+    validations: {
+      contactData: {
+        name: { required, length: minLength(4) },
+        lastName: { required, length: minLength(4) },
+        email: { required, email },
+        phone: { required, length: minLength(6) }
+      },
     },
     methods: {
 

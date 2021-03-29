@@ -5,8 +5,12 @@
 </template>
 
 <script>
+
+import Vue from 'vue'
 import Form from './components/Form'
 import store from './store'
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
 
 export default {
   name: 'App',

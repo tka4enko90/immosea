@@ -64,17 +64,13 @@
         },
         passedSteps: [],
         questions,
-        activeStep: 0
+        activeStep: 11
       }
     },
     computed: {
-      collectData() {return this.$store.state.collectData},
-      cart() {
-        return this.$store.state.cart
-      },
-      products() {
-        return this.$store.state.products
-      },
+      collectData() { return this.$store.state.collectData },
+      cart() { return this.$store.state.cart },
+      products() { return this.$store.state.products },
       condition() {
         return [
           {
@@ -120,15 +116,17 @@
           },
           {
             step: 10,
-            condition: 'process'
+            condition: this.$store.state.cart.expose && this.$store.state.cart.photography && this.$store.state.cart.drone_footage
           },
           {
             step: 11,
-            condition: 'process'
+            // condition: this.$store.state.cart.expose
+            condition: true
           },
           {
             step: 12,
-            condition: 'process'
+            // condition: this.$store.state.cart.floor_plan
+            condition: true
           },
           {
             step: 13,

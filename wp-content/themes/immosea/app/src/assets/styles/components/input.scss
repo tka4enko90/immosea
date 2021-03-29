@@ -34,9 +34,21 @@
         display: flex;
         
         label {
-            margin-left: 0;
-            margin-right: 16px;
+            margin: 10px 16px 10px 0;
             flex: 0 0 34%;
+        }
+        div {
+            flex: 1 1 auto;
+        }
+    }
+    
+    &--required {
+        label {
+            &::after {
+                display: inline-block;
+                color: $error;
+                content: '*'
+            }
         }
     }
 }

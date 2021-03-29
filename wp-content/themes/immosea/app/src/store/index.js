@@ -28,6 +28,10 @@ export default new Vuex.Store({
       monumentProtection: false,
       ensembleProtection: false,
       demolitionObject: false,
+    },
+    contactData: {
+      name: '',
+      lastName:'',
     }
   },
 
@@ -43,7 +47,7 @@ export default new Vuex.Store({
       let photography = state.cart.photography
                                   ? getPriceByFieldName(state.products, `photography_${state.cart.type}`)
                                   : 0
-      let floor_plan  = state.cart.floor_plan && state.cart.uploads.length > 0
+      let floor_plan  = state.cart.floor_plan
                                   ? getPriceByFieldName(state.products, 'floor_plan')
                                   : 0
 
@@ -52,7 +56,7 @@ export default new Vuex.Store({
       //                             : 0
 
 
-
+      //3d price * count uploads and futher floor plan * length upload - 1
       return +advertising + +expose + +certificate + +photography + +floor_plan
     }
   },
@@ -100,6 +104,13 @@ export default new Vuex.Store({
     SET_COLLECT_DATA (state, payload) {
       state.collectData = {
         ...state.collectData,
+        ...payload
+      }
+    },
+
+    SET_CONTACT_DATA (state, payload) {
+      state.contactData = {
+        ...state.contactData,
         ...payload
       }
     }

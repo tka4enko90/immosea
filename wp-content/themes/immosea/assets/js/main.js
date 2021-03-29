@@ -17,17 +17,20 @@ $slider.slick({
 
 
 //Accordion
-$('[data-accordion-title]').on('click', function(e) {
-  e.preventDefault();
-  var $this = $(this);
-  if ($this.parent().hasClass('show')) {
-    $this.parent().removeClass('show');
-  }
-  else {
-    $this.parent().parent().find('[data-accordion-item]').removeClass('show');
-    $this.parent().toggleClass('show');
-  }
+$('[data-accordion-title]').on('click', function(){
+  var $speed = '400';
+
+  $(this).toggleClass('active')
+    .siblings()
+    .removeClass('active')
+    .end()
+
+    .next()
+    .slideToggle($speed)
+    .siblings('[data-accordion-content]')
+    .slideUp();
 });
+
 
 // Burger Button
 $('[data-toggle]').on('click', function(e) {
@@ -36,3 +39,4 @@ $('[data-toggle]').on('click', function(e) {
   $(this).toggleClass('active');
   $body.toggleClass('nav-open');
 });
+

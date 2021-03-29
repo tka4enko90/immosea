@@ -107,4 +107,11 @@
             margin-bottom: 16px;
         }
     }
+    
+    &__error {
+        font-size: 13px;
+        color: $error;
+        display: block;
+        margin-top: 4px;
+    }
 }

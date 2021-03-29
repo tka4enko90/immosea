@@ -1,18 +1,23 @@
 <template>
-    <div class="form-input" :class="{'form-input--error': error, 'form-input--inline': inline}">
+    <div class="form-input" :class="{
+     'form-input--error': error,
+     'form-input--inline': inline,
+     'form-input--required': required,
+     }">
         <label for="name" v-if="label">{{ label }}</label>
-        <input
-                :id="name"
-                :error="error"
-                :type="type"
-                :value="value"
-                :placeholder="placeholder"
-                :disabled="disabled"
-                @input="$emit('input', $event.target.value)"
-        >
-        {{error}}
-
-        <div class="form-error" v-if="errorMessage">{{ errorMessage }}</div>
+        <div>
+            <input
+                    :id="name"
+                    :error="error"
+                    :type="type"
+                    :value="value"
+                    :placeholder="placeholder"
+                    :disabled="disabled"
+                    @input="$emit('input', $event.target.value)"
+                    @blur="$emit('blur')"
+            >
+            <div class="form__error" v-if="error && errorMessage">{{ errorMessage }}</div>
+        </div>
     </div>
 </template>
 <script>
@@ -23,8 +28,9 @@
     props: {
       disabled: Boolean,
       inline: Boolean,
-      error: {},
+      error: Boolean,
       errorMessage: String,
+      required: Boolean,
       label: String,
       name: String,
       placeholder: String,
@@ -35,8 +41,7 @@
       value: {
         type: [String, Number],
         default: ''
-      },
-      pattern: {}
+      }
     },
     data: () => ({
 

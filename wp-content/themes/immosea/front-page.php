@@ -139,30 +139,24 @@ get_header(); ?>
             <div class="faq-section__content">
                 <h2><?php echo $faq['title']; ?></h2>
                 <div class="accordion">
-                    <div class="accordion__item" data-accordion-item>
                         <div class="accordion__item-title" data-accordion-title>
                             ddd
                         </div>
                         <div class="accordion__item-content" data-accordion-content>
                             dddddd
                         </div>
-                    </div>
-                    <div class="accordion__item" data-accordion-item>
                         <div class="accordion__item-title" data-accordion-title>
                             ddd
                         </div>
                         <div class="accordion__item-content" data-accordion-content>
                             dddddd
                         </div>
-                    </div>
-                    <div class="accordion__item" data-accordion-item>
                         <div class="accordion__item-title" data-accordion-title>
                             ddd
                         </div>
                         <div class="accordion__item-content" data-accordion-content>
                             dddddd
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

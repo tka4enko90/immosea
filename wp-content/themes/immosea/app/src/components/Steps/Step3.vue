@@ -17,6 +17,9 @@
                        v-model="year"
                        type="number"
                        placeholder="Gebe hier das Baujahr der Immobilie an."
+                       @blur="$v.year.$touch()"
+                       :error="!$v.year.between"
+                       errorMessage="Please enter valid year"
             />
         </div>
 
@@ -50,18 +53,22 @@
   import Checkbox from '../Form/Checkbox.vue';
   import InputText from '../Form/InputText.vue';
   import StepWrap from '../Layout/StepWrap';
+  import { required, between } from 'vuelidate/lib/validators';
 
 
   export default {
     name: 'app-step3',
     components: {
-      Radio, InputText, Checkbox,
+      Radio,
+      InputText,
+      Checkbox,
       StepWrap
     },
     props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
     data() {
       return {
         addOption: false,
+        errors: []
       }
     },
     computed: {
@@ -74,9 +81,13 @@
         }
       }
     },
-    methods: {
-
-    }
+    validations: {
+      year: {
+        required,
+        between: between(1500, new Date().getFullYear()),
+      }
+    },
+    methods: {}
   }
 </script>
 
