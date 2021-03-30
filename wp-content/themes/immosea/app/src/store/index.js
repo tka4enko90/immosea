@@ -11,16 +11,16 @@ export default new Vuex.Store({
     cart: {
       type: 'flat',
       year: '',
-      uploads: [],
+      uploadsImages: [],
       graphics3d: false,
       advertising_copy: null,
       floor_plan: false,
       expose: false,
       energy_certificate: false,
       photography: false,
+      drone_footage: false,
 
       virtual_staging: false,
-      drone_footage: false,
     },
     name_house: '',
     sellRent: '',
@@ -28,6 +28,8 @@ export default new Vuex.Store({
       monumentProtection: false,
       ensembleProtection: false,
       demolitionObject: false,
+      uploadsDocs: [],
+      uploads: []
     },
     contactData: {
       name: '',
@@ -51,7 +53,7 @@ export default new Vuex.Store({
                                   ? getPriceByFieldName(state.products, 'floor_plan')
                                   : 0
 
-      // let graphics3d  = state.graphics3d && state.cart.uploads.length > 0
+      // let graphics3d  = state.graphics3d && state.cart.uploadsImages.length > 0
       //                             ? getPriceByFieldName(state.products, 'floor_plan')
       //                             : 0
 

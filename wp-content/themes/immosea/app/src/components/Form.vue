@@ -23,7 +23,7 @@
             </div>
         </div>
         <!--{{cart}} <br/>-->
-        <!--{{collectData}}-->
+        {{collectData}}
     </div>
 </template>
 
@@ -120,8 +120,7 @@
           },
           {
             step: 11,
-            // condition: this.$store.state.cart.expose
-            condition: true
+            condition: this.$store.state.cart.expose
           },
           {
             step: 12,

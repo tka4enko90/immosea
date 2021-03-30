@@ -1,0 +1,87 @@
+.uploader {
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: $box-shadow;
+    padding: 40px;
+    cursor: pointer;
+    display: block;
+    
+    &::before {
+        display: block;
+        margin: 0 auto 24px;
+        width: 60px;
+        height: 53px;
+        content: '';
+        background: url('./assets/icon-img.svg') no-repeat;
+    }
+    
+    &__input {
+        position: absolute;
+        left: -999px;
+    }
+    
+    &__text {
+        display: block;
+        margin-bottom: 24px;
+    }
+    
+    &__title {
+        font-weight: 500;
+        text-transform: uppercase;
+        color: $primary-color;
+    }
+    
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+        
+        > div {
+            padding: 0 10px 20px;
+            width: 33.33%;
+        }
+    }
+    
+    &__preview {
+        position: relative;
+        overflow: hidden;
+        max-height: 150px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    }
+    
+    &__preview-icon {
+        padding: 30px 10px;
+        svg {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    
+    &__preview-remove {
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        background: #fff url('./assets/icon-del.svg') no-repeat 50% 50%;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        line-height: 0;
+        font-size: 0;
+        cursor: pointer;
+        box-shadow: 0 0 2px rgba(0,0,0,.2);
+    }
+    
+    &--doc {
+        &::before {
+            background: url('./assets/icon-doc.svg') no-repeat;
+        }
+    }
+}

@@ -13,6 +13,7 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-currency-input": "^1.22.6",
+    "vue-file-agent": "^1.7.3",
     "vue-google-autocomplete": "^1.1.1",
     "vue-select": "^3.11.2",
     "vuejs-datepicker": "^1.6.2",
