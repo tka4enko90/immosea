@@ -11,6 +11,7 @@ export default new Vuex.Store({
     cart: {
       type: 'flat',
       year: '',
+      image: '',
       uploadsImages: [],
       graphics3d: false,
       advertising_copy: null,

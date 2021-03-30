@@ -84,4 +84,10 @@
             background: url('./assets/icon-doc.svg') no-repeat;
         }
     }
+    
+    &--no-empty {
+        &::before {
+            display: none;
+        }
+    }
 }

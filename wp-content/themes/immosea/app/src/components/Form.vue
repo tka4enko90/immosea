@@ -23,7 +23,7 @@
             </div>
         </div>
         <!--{{cart}} <br/>-->
-        {{collectData}}
+        <!--{{collectData}}-->
     </div>
 </template>
 
@@ -64,7 +64,7 @@
         },
         passedSteps: [],
         questions,
-        activeStep: 11
+        activeStep: 0
       }
     },
     computed: {

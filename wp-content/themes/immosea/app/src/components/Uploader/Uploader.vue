@@ -4,7 +4,7 @@
         <span class="uploader__title">{{ title }}</span>
 
         <input type="file"
-               :multiple="multiple"
+               multiple
                ref="files"
                class="uploader__input"
                accept="application/pdf, image/jpeg, image/png, image/gif, application/msword, image/bmp"
@@ -16,7 +16,7 @@
   export default {
     name: 'app-uploader',
     components: {},
-    props: ['multiple', 'accept', 'title', 'text', 'docs', 'name'],
+    props: ['accept', 'title', 'text', 'docs', 'name'],
     data: () => ({}),
     computed: {},
     watch: {},

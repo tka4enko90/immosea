@@ -57,12 +57,14 @@ export const questions = [
   },
   {
     title: 'Für die Erstellung des Exposés benötigen wir außerdem noch folgende Dokumente:',
-    component: 'Step12'
+    component: 'Step12',
+    showPrice: true
   },
   {
     title: 'Dein Grundriss:',
     text: 'Eingescannt, abfotografiert, handschriftliche Skizze, o. ä.',
-    component: 'Step13'
+    component: 'Step13',
+    showPrice: true
   },
   {
     title: 'Zu guter Letzt benötigen wir noch deine Kontaktdaten, um deinen Auftrag bearbeiten zu können.',

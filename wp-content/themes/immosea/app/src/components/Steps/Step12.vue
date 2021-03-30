@@ -11,8 +11,7 @@
     >
         <div class="step__row">
             <div>
-                <Uploader multiple
-                          docs
+                <Uploader docs=true
                           title="BILD LADEN"
                           text="JPG, GIF, PNG, BMP je bis 50 VB nicht animert"
                           name="uploadsDocs"
@@ -20,8 +19,7 @@
                 />
             </div>
             <div v-if="!photography">
-                <Uploader multiple
-                          title="BILD LADEN"
+                <Uploader title="BILD LADEN"
                           text="JPG, GIF, PNG, BMP je bis 50 VB nicht animert"
                           name="uploads"
                           @change="handleFilesUpload"
