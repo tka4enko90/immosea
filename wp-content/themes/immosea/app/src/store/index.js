@@ -47,20 +47,24 @@ export default new Vuex.Store({
                                     ? getPriceByFieldName(state.products, 'energy_certificate_bg_house')
                                     : getPriceByFieldName(state.products, 'energy_certificate')
                                   : 0
+
       let photography = state.cart.photography
                                   ? getPriceByFieldName(state.products, `photography_${state.cart.type}`)
                                   : 0
+
       let floor_plan  = state.cart.floor_plan
                                   ? getPriceByFieldName(state.products, 'floor_plan')
                                   : 0
 
-      // let graphics3d  = state.graphics3d && state.cart.uploadsImages.length > 0
-      //                             ? getPriceByFieldName(state.products, 'floor_plan')
-      //                             : 0
+      let graphics3d  = state.cart.graphics3d
+                                  ? getPriceByFieldName(state.products, 'surcharge_3d_floor') * (state.cart.uploadsImages.length + 1)
+                                  : 0
 
+      let further_floor_plan = state.cart.uploadsImages.length > 0
+                                  ? getPriceByFieldName(state.products, 'further_floor_plan') * state.cart.uploadsImages.length
+                                  : 0
 
-      //3d price * count uploads and futher floor plan * length upload - 1
-      return +advertising + +expose + +certificate + +photography + +floor_plan
+      return +advertising + +expose + +certificate + +photography + +floor_plan + +graphics3d + +further_floor_plan
     }
   },
 

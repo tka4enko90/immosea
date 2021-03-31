@@ -5,6 +5,7 @@
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
                 ...buttonNext,
+                disabled: !image,
             }"
             :showPrice="showPrice"
     >
@@ -20,7 +21,7 @@
             <div>
                 <Uploader multiple
                           title="Grundrisse laden"
-                          text="Weitere Grundrisse für 25,- Euro pro Bild hinzufügen"
+                          :text="labels.further_floor_plan"
                           name="uploadsImages"
                           @change="handleFilesUpload"
                 />
@@ -37,7 +38,7 @@
         <div class="form__row">
             <div class="form__area form__area--expand">
                 <Checkbox v-model="graphics3d"
-                          label="Grundrisse lieber als 3D-Grafik erhalten? Pro Grundriss entsteht ein Aufpreis in Höhe von 30,- Euro"
+                          :label="labels.surcharge_3d_floor"
                 />
             </div>
         </div>
@@ -45,6 +46,7 @@
 </template>
 
 <script>
+  import { getPriceByFieldName } from '../../utils';
   import StepWrap from '../Layout/StepWrap';
   import Uploader from '../Uploader/Uploader';
   import UploaderSingle from '../Uploader/UploaderSingle';
@@ -79,6 +81,13 @@
         set(value) {
           this.$store.commit('SET_CART_OPTIONS', {graphics3d: value})
         }
+      },
+      labels() {
+        return {
+          surcharge_3d_floor:
+            `Grundrisse lieber als 3D-Grafik erhalten? Pro Grundriss entsteht ein Aufpreis in Höhe von ${getPriceByFieldName(this.$store.state.products, 'surcharge_3d_floor')},- Euro`,
+          further_floor_plan: `Weitere Grundrisse für ${getPriceByFieldName(this.$store.state.products, 'further_floor_plan')},- Euro pro Bild hinzufügen`
+        }
       }
     },
     methods: {
@@ -86,7 +95,6 @@
         return URL.createObjectURL(file)
       },
       handleUpload(file) {
-        console.log(file);
         this.$store.commit('SET_CART_OPTIONS', { image: file })
       },
       removeFile() {

@@ -94,7 +94,6 @@
           return this.$store.state.cart
         },
         set(value) {
-          console.log(value);
           this.$store.commit('SET_CART_OPTIONS', value)
         }
       },
@@ -106,7 +105,7 @@
           energy_certificate: this.$store.state.cart.type === 'house' && this.$store.state.cart.year < 1979
                                 ? getPriceByFieldName(this.$store.state.products, 'energy_certificate_bg_house')
                                 : getPriceByFieldName(this.$store.state.products, 'energy_certificate'),
-          photography: 0
+          photography: getPriceByFieldName(this.$store.state.products, `photography_${this.$store.state.cart.type}`)
         }
       }
     },
