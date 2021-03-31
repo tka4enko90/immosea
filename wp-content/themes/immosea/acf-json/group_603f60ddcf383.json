@@ -45,7 +45,8 @@
                         "energy_certificate": "Energy certificate",
                         "energy_certificate_bg_house": "Energy certificate BJ House",
                         "virtual_staging": "Virtual Staging",
-                        "drone_footage": "Drone footage"
+                        "drone_footage": "Drone footage",
+                        "surcharge_3d_floor": "Surcharge 3d Floor"
                     },
                     "default_value": false,
                     "allow_null": 0,
@@ -97,5 +98,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1617178399
+    "modified": 1617184707
 }
