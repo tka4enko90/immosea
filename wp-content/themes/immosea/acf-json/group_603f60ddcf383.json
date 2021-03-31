@@ -38,6 +38,7 @@
                         "advertising_copy": "Advertising copy",
                         "expose": "Exposé",
                         "floor_plan": "Floor plan",
+                        "further_floor_plan": "Further Floor plan",
                         "photography_property": "Photography Property",
                         "photography_flat": "Photography Flat",
                         "photography_house": "Photography House",
@@ -96,5 +97,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1614768133
+    "modified": 1617178399
 }
