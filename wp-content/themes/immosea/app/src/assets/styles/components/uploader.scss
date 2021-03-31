@@ -8,6 +8,7 @@
     padding: 40px;
     cursor: pointer;
     display: block;
+    flex: 1 1 auto;
     
     &::before {
         display: block;

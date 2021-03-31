@@ -22,6 +22,7 @@
                 ></component>
             </div>
         </div>
+        <!--{{products}}-->
         <!--{{cart}} <br/>-->
         <!--{{collectData}}-->
     </div>
