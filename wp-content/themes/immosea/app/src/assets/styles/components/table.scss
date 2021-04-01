@@ -1,0 +1,61 @@
+.table {
+    border: solid $border-color;
+    border-width: 1px 0;
+    padding: 20px 10px;
+    margin-bottom: 24px;
+    
+    &__row {
+        display: flex;
+        padding: 10px 0;
+        align-items: center;
+        
+        > div {
+            flex: 1;
+            padding: 0 5px;
+            text-align: center;
+            
+            &:first-child {
+                text-align: left;
+                flex: 0 0 36%;
+                font-size: 14px;
+                
+                strong {
+                    display: block;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                }
+            }
+        }
+        
+        &--head {
+            font-size: 14px;
+            font-weight: 500;
+            color: #BCBCBC;
+        }
+    }
+    
+    &__coupon {
+        max-width: 350px;
+        margin: 0 0 36px;
+    }
+    
+    &__price {
+        font-size: 20px;
+    }
+    
+    &--total {
+        font-size: 14px;
+        
+        .table__row {
+            justify-content: flex-end;
+            
+            > div {
+                flex: 0 0 120px;
+            }
+            
+            &--sale {
+                align-items: flex-start;
+            }
+        }
+    }
+}

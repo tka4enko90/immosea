@@ -5,6 +5,8 @@
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
                 ...buttonNext,
+                title: 'Create Order',
+                click: handlerClick,
                 disabled: !$v.contactData.name.required
                         || !$v.contactData.lastName.required
                         || !$v.contactData.email.required
@@ -86,7 +88,10 @@
       },
     },
     methods: {
-
+      handlerClick() {
+        this.buttonNext.click()
+        console.log('Create order and get respons')
+      }
     }
   }
 </script>

@@ -43,6 +43,7 @@
   import Step12 from './Steps/Step12'
   import Step13 from './Steps/Step13'
   import Step14 from './Steps/Step14'
+  import Step15 from './Steps/Step15'
   import { questions } from '../Data/questions'
 
   export default {
@@ -52,7 +53,7 @@
       Step4, Step5, Step6,
       Step7, Step8, Step9,
       Step10, Step11, Step12,
-      Step13, Step14
+      Step13, Step14, Step15
     },
     data() {
       return {
@@ -125,11 +126,14 @@
           },
           {
             step: 12,
-            // condition: this.$store.state.cart.floor_plan
-            condition: true
+            condition: this.$store.state.cart.floor_plan
           },
           {
             step: 13,
+            condition: true
+          },
+          {
+            step: 14,
             condition: true
           }
         ]
@@ -150,9 +154,6 @@
           this.activeStep = this.findNextScreen(this.activeStep)
         }
 
-        if (this.activeStep === this.questions.length - 1) {
-          this.buttonNext.title = 'Create Order'
-        }
         window.scrollTo(0,0);
       },
       showPrevScreen() {
