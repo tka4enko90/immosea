@@ -134,6 +134,20 @@
                     color: $link-color;
                 }
             }
+    
+            &.menu-item-has-children {
+                > a {
+                    &::after {
+                        display: inline-flex;
+                        font-family: 'icomoon';
+                        content:'\e900';
+                        font-size: 6px;
+                        line-height: 1;
+                        font-weight: normal;
+                        margin: 0 0 0 10px;
+                    }
+                }
+            }
             
             &:hover,
             &.hover {
