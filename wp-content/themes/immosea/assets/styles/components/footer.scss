@@ -10,6 +10,16 @@
         padding-top: 40px;
     }
     
+    &__logo {
+        width: 175px;
+        height: 26px;
+        margin-bottom: 32px;
+        
+        svg {
+            height: 100%;
+        }
+    }
+    
     &__copy {
         text-align: center;
         border-top: 1px solid $gray-200;

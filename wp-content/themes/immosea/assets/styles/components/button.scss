@@ -19,6 +19,12 @@
         &:hover {
             box-shadow: none;
         }
+        
+        .inverse & {
+            background: #fff;
+            color: $primary-color;
+            border-color: #fff;
+        }
     }
     
     &--outline {

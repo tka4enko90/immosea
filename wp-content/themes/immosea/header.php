@@ -36,7 +36,14 @@
 
 <div class="wrapper">
     <header class="header">
-        <div class="header__logo">Logo</div>
+        <div class="header__logo">
+            <?php
+                $logo   = get_field('logo', 'option');
+            ?>
+            <a href="<?php esc_url(home_url('/')); ?>">
+                <img src="<?php echo $logo['url'] ?>" alt="immosea">
+            </a>
+        </div>
         <button class="header__toggle" data-toggle><span>Menu</span></button>
         <div class="header__content">
             <?php

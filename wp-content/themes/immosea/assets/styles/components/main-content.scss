@@ -1,0 +1,23 @@
+.main-content {
+    background: $primary-color;
+    color: #fff;
+    display: flex;
+    padding: 80px 50px;
+    margin-bottom: 60px;
+    
+    @media (max-width: $breakpoint-small) {
+        padding: 40px 20px;
+        display: block;
+    }
+    
+    &__title {
+        @media (min-width: $breakpoint-small-max) {
+            margin: 0 7% 0 0;
+            flex: 0 0 34%;
+        }
+    }
+    
+    &__text {
+        flex: 1 1 auto;
+    }
+}

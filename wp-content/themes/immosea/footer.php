@@ -2,13 +2,18 @@
     $info   = get_field('info', 'option');
     $copy   = get_field('copy', 'option');
     $social = get_field('social_links', 'option');
+    $logo   = get_field('logo', 'option');
 ?>
 
 <footer class="footer">
     <div class="container">
         <div class="footer__holder">
             <div class="footer__info">
-                <div class="footer__logo">Logo</div>
+                <div class="footer__logo">
+                    <a href="<?php esc_url(home_url('/')); ?>">
+                        <img src="<?php echo $logo['url'] ?>" alt="immosea">
+                    </a>
+                </div>
                 <?php echo $info; ?>
 
                 <?php if($social): ?>
