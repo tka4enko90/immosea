@@ -123,15 +123,63 @@
             display: flex;
         }
         li {
-            padding-right: 60px;
+            position: relative;
+            padding: 10px 60px 10px 0;
             @media (max-width: $breakpoint-small-max) {
                 padding: 0 0 16px;
+            }
+    
+            &.current-menu-item {
+                a {
+                    color: $link-color;
+                }
+            }
+            
+            &:hover,
+            &.hover {
+                .sub-menu {
+                    @media (min-width: $breakpoint-small) {
+                        opacity: 1;
+                        visibility: visible;
+    
+                    }
+                    @media (max-width: $breakpoint-small-max) {
+                        display: block;
+                    }
+                }
             }
         }
         a {
             color: $base-color;
             &:hover {
                 color: $link-color;
+                text-decoration: none;
+            }
+        }
+        
+        .sub-menu {
+            background: #fff;
+            font-size: 16px;
+            min-width: 210px;
+            padding: 10px 0 0 20px;
+            
+            @media (min-width: $breakpoint-small) {
+                box-shadow: 0 2px 14px rgba(0,0,0,.2);
+                padding: 16px;
+                border-radius: 10px;
+                position: absolute;
+                top: 100%;
+                left: -16px;
+                opacity: 0;
+                transition: opacity .2s;
+                visibility: hidden;
+            }
+            @media (max-width: $breakpoint-small-max) {
+                display: none;
+            }
+            
+            li {
+                padding: 6px 0;
             }
         }
     }

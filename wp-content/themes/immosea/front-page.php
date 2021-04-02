@@ -10,11 +10,24 @@ get_header(); ?>
     $questions = get_field('questions');
     $faq       = get_field('faq');
     $button    = get_field('link_to_form', 'option');
+    $social = get_field('social_links', 'option');
 ?>
 
 <main class="main">
     <?php if($hero) : ?>
         <div class="hero">
+            <?php if($social): ?>
+                <ul class="social-links">
+                    <?php foreach($social as $row) { ?>
+                        <li>
+                            <a href="<?php echo $row['link']['url'] ?>" target="_blank">
+                                <img src="<?php echo $row['icon']['url'] ?>" class="style-svg">
+                            </a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            <?php endif; ?>
+
             <div class="container">
                 <div class="hero__content">
                     <?php if(!empty($hero['title'])) : ?>

@@ -38,9 +38,9 @@
     <header class="header">
         <div class="header__logo">
             <?php
-                $logo   = get_field('logo', 'option');
+                $logo = get_field('logo', 'option');
             ?>
-            <a href="<?php esc_url(home_url('/')); ?>">
+            <a href="<?= esc_url(home_url('/')); ?>">
                 <img src="<?php echo $logo['url'] ?>" alt="immosea">
             </a>
         </div>
@@ -58,17 +58,17 @@
             <?php
                 $social = get_field('social_links', 'option');
             ?>
-<!--            --><?php //if($social): ?>
-<!--                <ul class="social-links">-->
-<!--                    --><?php //foreach($social as $row) { ?>
-<!--                        <li>-->
-<!--                            <a href="--><?php //echo $row['link']['url'] ?><!--" target="_blank">-->
-<!--                                <img src="--><?php //echo $row['icon']['url'] ?><!--" class="style-svg">-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                    --><?php //} ?>
-<!--                </ul>-->
-<!--            --><?php //endif; ?>
+            <?php if($social): ?>
+                <ul class="social-links tablet-visible">
+                    <?php foreach($social as $row) { ?>
+                        <li>
+                            <a href="<?php echo $row['link']['url'] ?>" target="_blank">
+                                <img src="<?php echo $row['icon']['url'] ?>" class="style-svg">
+                            </a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            <?php endif; ?>
 
             <?php
                 $button = get_field('link_to_form', 'option');

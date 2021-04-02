@@ -28,4 +28,21 @@
             padding-bottom: 0;
         }
     }
+    
+    .hero & {
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+    
+        @media (max-width: 1300px) {
+            display: none !important;
+        }
+        
+        li {
+            a {
+                opacity: .5;
+            }
+        }
+    }
 }

@@ -10,7 +10,7 @@
         <div class="footer__holder">
             <div class="footer__info">
                 <div class="footer__logo">
-                    <a href="<?php esc_url(home_url('/')); ?>">
+                    <a href="<?= esc_url(home_url('/')); ?>">
                         <img src="<?php echo $logo['url'] ?>" alt="immosea">
                     </a>
                 </div>
