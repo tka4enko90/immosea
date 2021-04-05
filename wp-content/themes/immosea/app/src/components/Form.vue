@@ -23,8 +23,9 @@
             </div>
         </div>
         <!--{{products}}-->
-        {{cart}} <br/>
-        {{collectData}}
+        <!--{{order}}-->
+        <!--{{cart}} <br/>-->
+        <!--{{collectData}}-->
     </div>
 </template>
 
@@ -66,13 +67,14 @@
         },
         passedSteps: [],
         questions,
-        activeStep: 13
+        activeStep: 0
       }
     },
     computed: {
       collectData() { return this.$store.state.collectData },
       cart() { return this.$store.state.cart },
       products() { return this.$store.state.products },
+      order() { return this.$store.state.order },
       condition() {
         return [
           {

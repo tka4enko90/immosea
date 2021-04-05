@@ -15,6 +15,7 @@
     text-align: center;
     min-width: 180px;
     justify-content: center;
+    position: relative;
     
     @media (max-width: $breakpoint-small-max) {
         padding-left: 20px;
