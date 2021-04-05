@@ -74,5 +74,6 @@ if( function_exists('acf_add_options_page') ) {
 // Register menu
 register_nav_menus( array(
     'menu' => 'Menu',
-    'footer' => 'Footer'
+    'footer' => 'Footer',
+    'services' => 'Services'
 ) );

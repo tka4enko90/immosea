@@ -36,7 +36,14 @@ get_header(); ?>
                 <?php endif ;?>
                 <div class="intro__bar">
                     <div class="container">
-                        sdfsdf
+                        <?php
+                            $args = array(
+                                'theme_location'=>'services',
+                                'container'=>'',
+                                'menu_class'=>'intro__bar-nav',
+                            );
+                            wp_nav_menu($args);
+                        ?>
                     </div>
                 </div>
             </div>

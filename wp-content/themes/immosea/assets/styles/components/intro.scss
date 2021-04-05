@@ -55,4 +55,27 @@
             display: none;
         }
     }
+    
+    &__bar-nav {
+        display: flex;
+        margin: 12px 0;
+        
+        li {
+            display: flex;
+            align-items: center;
+            &:not(:first-child) {
+                &::before {
+                    margin: 0 24px;
+                    width: 1px;
+                    height: 16px;
+                    content:'';
+                    background: #fff;
+                    display: inline-flex;
+                }
+            }
+            a {
+                color: #fff;
+            }
+        }
+    }
 }
