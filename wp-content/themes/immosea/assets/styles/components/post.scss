@@ -102,3 +102,25 @@
         margin: 0 auto;
     }
 }
+
+.pagination {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    font-weight: 300;
+    align-items: center;
+    > a {
+        padding: 5px;
+        margin: 0 4px;
+    }
+    
+    .current {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $primary-color;
+        color: #fff;
+    }
+}
