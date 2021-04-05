@@ -18,7 +18,7 @@
         <div class="form__row">
             <label for="descriptionLocation" class="form__label">Lagebeschreibung</label>
             <textarea class="form__textarea form__textarea--small" id="descriptionLocation" cols="30" rows="10"
-                      v-model="collectData.descriptionLocation"></textarea>
+                      v-model="collectData.description_location"></textarea>
         </div>
         <div class="form__row">
             <label for="leisure" class="form__label">Freizeit</label>

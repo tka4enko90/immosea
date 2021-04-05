@@ -5,7 +5,7 @@
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
                 ...buttonNext,
-                disabled: uploadsDocs.length < 1
+                disabled: uploads_docs.length < 1
             }"
             :showPrice="showPrice"
     >
@@ -26,12 +26,12 @@
                 />
             </div>
         </div>
-        <div class="uploader__list" v-if="uploadsDocs.length > 0">
-            <div v-for="(file, key) in uploadsDocs" :key="key">
+        <div class="uploader__list" v-if="uploads_docs.length > 0">
+            <div v-for="(file, key) in uploads_docs" :key="key">
                 <UploaderPreview :file="getImageUrl(file)"
                                  :type="file.type"
                                  :name="file.name"
-                                 @click="removeFile(key, uploadsDocs, 'uploadsDocs')" />
+                                 @click="removeFile(key, uploadsDocs, 'uploads_docs')" />
             </div>
         </div>
         <div class="uploader__list" v-if="uploads.length > 0">
@@ -64,9 +64,9 @@
       photography() {
         return this.$store.state.cart.photography
       },
-      uploadsDocs: {
+      uploads_docs: {
         get() {
-          return this.$store.state.collectData.uploadsDocs
+          return this.$store.state.collectData.uploads_docs
         }
       },
       uploads: {

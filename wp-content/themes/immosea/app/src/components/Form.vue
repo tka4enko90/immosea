@@ -23,8 +23,8 @@
             </div>
         </div>
         <!--{{products}}-->
-        <!--{{cart}} <br/>-->
-        <!--{{collectData}}-->
+        {{cart}} <br/>
+        {{collectData}}
     </div>
 </template>
 
@@ -66,7 +66,7 @@
         },
         passedSteps: [],
         questions,
-        activeStep: 0
+        activeStep: 13
       }
     },
     computed: {
@@ -101,12 +101,13 @@
           },
           {
             step: 6,
-            condition: this.$store.state.cart.expose && !this.$store.state.cart.energy_certificate && !this.$store.state.collectData.monumentProtection
+            condition: this.$store.state.cart.expose && !this.$store.state.cart.energy_certificate &&
+              !this.$store.state.collectData.monument_protection
           },
           {
             step: 7,
-            condition: this.$store.state.cart.energy_certificate && (!this.$store.state.collectData.monumentProtection
-              || !this.$store.state.collectData.ensembleProtection || !this.$store.state.collectData.demolitionObject)
+            condition: this.$store.state.cart.energy_certificate && (!this.$store.state.collectData.monument_protection
+              || !this.$store.state.collectData.ensemble_protection || !this.$store.state.collectData.demolition_object)
           },
           {
             step: 8,

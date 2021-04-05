@@ -8,7 +8,7 @@
                 title: 'Create Order',
                 click: handlerClick,
                 disabled: !$v.contactData.name.required
-                        || !$v.contactData.lastName.required
+                        || !$v.contactData.last_name.required
                         || !$v.contactData.email.required
                         || !$v.contactData.phone.required
                         || !$v.contactData.email.email
@@ -24,10 +24,10 @@
             />
         </div>
         <div class="form__row">
-            <InputText v-model="contactData.lastName"
+            <InputText v-model="contactData.last_name"
                        label="Vorname" placeholder="Type" inline required
-                       @blur="$v.contactData.lastName.$touch()"
-                       :error="!$v.contactData.lastName.length"
+                       @blur="$v.contactData.last_name.$touch()"
+                       :error="!$v.contactData.last_name.length"
                        errorMessage="At least 4 characters"
             />
         </div>
@@ -82,15 +82,16 @@
     validations: {
       contactData: {
         name: { required, length: minLength(4) },
-        lastName: { required, length: minLength(4) },
+        last_name: { required, length: minLength(4) },
         email: { required, email },
         phone: { required, length: minLength(6) }
       },
     },
     methods: {
       handlerClick() {
-        this.buttonNext.click()
+        // this.buttonNext.click()
         console.log('Create order and get respons')
+          this.$store.dispatch('createOrder', this.$store.state.cart);
       }
     }
   }

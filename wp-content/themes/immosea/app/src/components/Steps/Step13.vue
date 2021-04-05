@@ -27,17 +27,17 @@
                 />
             </div>
         </div>
-        <div class="uploader__list" v-if="uploadsImages.length > 0">
-            <div v-for="(file, key) in uploadsImages" :key="key">
+        <div class="uploader__list" v-if="uploads_images.length > 0">
+            <div v-for="(file, key) in uploads_images" :key="key">
                 <UploaderPreview :file="getImageUrl(file)"
                                  :type="file.type"
                                  :name="file.name"
-                                 @click="removeFileFromArray(key, uploadsImages, 'uploadsImages')" />
+                                 @click="removeFileFromArray(key, uploadsImages, 'uploads_images')" />
             </div>
         </div>
         <div class="form__row">
             <div class="form__area form__area--expand">
-                <Checkbox v-model="graphics3d"
+                <Checkbox v-model="surcharge_3d_floor"
                           :label="labels.surcharge_3d_floor"
                 />
             </div>
@@ -69,17 +69,17 @@
           return this.$store.state.cart.image
         }
       },
-      uploadsImages: {
+      uploads_images: {
         get() {
-          return this.$store.state.cart.uploadsImages
+          return this.$store.state.cart.uploads_images
         }
       },
-      graphics3d: {
+      surcharge_3d_floor: {
         get() {
-          return this.$store.state.cart.graphics3d
+          return this.$store.state.cart.surcharge_3d_floor
         },
         set(value) {
-          this.$store.commit('SET_CART_OPTIONS', {graphics3d: value})
+          this.$store.commit('SET_CART_OPTIONS', {surcharge_3d_floor: value})
         }
       },
       labels() {

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { Product } from '../api';
+import { Product, Order } from '../api';
 import { getPriceByFieldName } from '../utils'
 
 Vue.use(Vuex);
@@ -12,30 +12,32 @@ export default new Vuex.Store({
       type: 'flat',
       year: '',
       image: '',
-      uploadsImages: [],
-      graphics3d: false,
+      uploads_images: [],
+
+      surcharge_3d_floor: true,
       advertising_copy: null,
-      floor_plan: false,
-      expose: false,
-      energy_certificate: false,
-      photography: false,
-      drone_footage: false,
+      floor_plan: true,
+      expose: true,
+      energy_certificate: true,
+      photography: true,
+      drone_footage: true,
 
       virtual_staging: false,
     },
-    name_house: '',
-    sellRent: '',
     collectData: {
-      monumentProtection: false,
-      ensembleProtection: false,
-      demolitionObject: false,
-      uploadsDocs: [],
+      name_house: '',
+      sell_rent: '',
+      monument_protection: false,
+      ensemble_protection: false,
+      demolition_object: false,
+      uploads_docs: [],
       uploads: []
     },
     contactData: {
       name: '',
-      lastName:'',
-    }
+      last_name:'',
+    },
+    order: {}
   },
 
   getters: {
@@ -56,29 +58,21 @@ export default new Vuex.Store({
                                   ? getPriceByFieldName(state.products, 'floor_plan')
                                   : 0
 
-      let graphics3d  = state.cart.graphics3d
-                                  ? getPriceByFieldName(state.products, 'surcharge_3d_floor') * (state.cart.uploadsImages.length + 1)
+      let surcharge_3d_floor  = state.cart.surcharge_3d_floor
+                                  ? getPriceByFieldName(state.products, 'surcharge_3d_floor') * (state.cart.uploads_images.length + 1)
                                   : 0
 
-      let further_floor_plan = state.cart.uploadsImages.length > 0
-                                  ? getPriceByFieldName(state.products, 'further_floor_plan') * state.cart.uploadsImages.length
+      let further_floor_plan = state.cart.uploads_images.length > 0
+                                  ? getPriceByFieldName(state.products, 'further_floor_plan') * state.cart.uploads_images.length
                                   : 0
 
-      return +advertising + +expose + +certificate + +photography + +floor_plan + +graphics3d + +further_floor_plan
+      return +advertising + +expose + +certificate + +photography + +floor_plan + +surcharge_3d_floor + +further_floor_plan
     }
   },
 
   mutations: {
     SET_PRODUCTS (state, products) {
       state.products = products
-    },
-
-    SET_NAME_HOUSE (state, payload) {
-      state.name_house = payload
-    },
-
-    SET_SELL_RENT (state, payload) {
-      state.sellRent = payload
     },
 
     SET_ADV (state, payload) {
@@ -120,6 +114,10 @@ export default new Vuex.Store({
         ...state.contactData,
         ...payload
       }
+    },
+
+    SET_ORDER (state, payload) {
+      state.order = payload
     }
   },
 
@@ -127,6 +125,11 @@ export default new Vuex.Store({
     async fetchProducts ({ commit }) {
       const res = await Product.get()
       await commit('SET_PRODUCTS', res.data)
+    },
+
+    async createOrder ({ commit }, data) {
+      const res = await Order.post(data)
+      await commit('SET_ORDER', res.data)
     }
   }
 });

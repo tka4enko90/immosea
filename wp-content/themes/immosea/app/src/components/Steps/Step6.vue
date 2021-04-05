@@ -20,10 +20,11 @@
                 <InputText v-model="collectData.object" type="number" label="Objekt in Etage" placeholder="Number" />
             </div>
             <div class="form__area form__area--expand" v-if="type === 'flat' && !isRent">
-                <InputText v-model="collectData.coOwnership" label="Miteigentumsanteil" />
+                <InputText v-model="collectData.coownership" label="Miteigentumsanteil" />
             </div>
             <div class="form__area" v-if="type !== 'property'">
-                <InputText v-model="collectData.yearUpgrade" type="number" label="Letzte Modernisierung" placeholder="YYYY" />
+                <InputText v-model="collectData.year_upgrade" type="number" label="Letzte Modernisierung"
+                           placeholder="YYYY" />
             </div>
             <div class="form__area form__area--expand" v-if="type === 'flat'">
                 <Checkbox v-model="collectData.lift" label="Lift" />
@@ -35,17 +36,17 @@
             <div class="form__area">
                 <label class="form__label">Verfügbar ab</label>
                 <div class="form__date">
-                    <datepicker v-model="collectData.availableFrom"
+                    <datepicker v-model="collectData.available_from"
                                 format="yyyy-MM-dd"
                                 placeholder="Select Date"
                                 clearButton calendarButton />
                 </div>
             </div>
             <div class="form__area" v-if="type !== 'property'">
-                <InputText v-model="collectData.livingSpace" type="number" label="Wohnfläche (m²)" placeholder="m²" />
+                <InputText v-model="collectData.living_space" type="number" label="Wohnfläche (m²)" placeholder="m²" />
             </div>
             <div class="form__area" v-if="type !== 'property'">
-                <InputText v-model="collectData.usableArea" type="number" label="Nutzfläche (m²)" placeholder="m²" />
+                <InputText v-model="collectData.usable_area" type="number" label="Nutzfläche (m²)" placeholder="m²" />
             </div>
             <div class="form__area" v-if="type !== 'flat'">
                 <InputText v-model="collectData.property" type="number" label="Grundstück (m²)" placeholder="m²" />
@@ -57,7 +58,8 @@
                 <InputText v-model="collectData.bedroom" type="number" label="Schlafzimmer" placeholder="Number" />
             </div>
             <div class="form__area" v-if="type !== 'property'">
-                <InputText v-model="collectData.livingBedroom" type="number" label="Wohn-Schlafzimmer" placeholder="Number" />
+                <InputText v-model="collectData.living_bedroom" type="number" label="Wohn-Schlafzimmer"
+                           placeholder="Number" />
             </div>
             <div class="form__area" v-if="type !== 'property'">
                 <InputText v-model="collectData.bathroom" type="number" label="Badezimmer" placeholder="Number" />
@@ -74,7 +76,7 @@
             </div>
             <div class="form__area" v-if="type !== 'property'">
                 <label class="form__label">Fensterart</label>
-                <v-select :options="options2" v-model="collectData.windowType" placeholder="Select" multiple />
+                <v-select :options="options2" v-model="collectData.window_type" placeholder="Select" multiple />
             </div>
             <div class="form__area" v-if="type !== 'property'">
                 <label class="form__label">Verglasung</label>
@@ -83,7 +85,7 @@
             <div class="form__area">
                 <label class="form__label">BJ Fenster (falls abweichend)</label>
                 <div class="form__date">
-                    <datepicker v-model="collectData.bjWindow"
+                    <datepicker v-model="collectData.bjwindow"
                                 format="yyyy-MM-dd"
                                 placeholder="Select Date"
                                 clearButton calendarButton />
@@ -101,36 +103,37 @@
                 <v-select :options="options5" v-model="collectData.parking" placeholder="Select" multiple />
             </div>
             <div class="form__area" v-if="type !== 'property'">
-                <InputText v-model="collectData.numberParking" type="number" label="Anzahl Stellplätze"
+                <InputText v-model="collectData.number_parking" type="number" label="Anzahl Stellplätze"
                            placeholder="Number" />
             </div>
             <div class="form__area" v-if="type === 'flat'">
-                <InputText v-model="collectData.numberUnits" type="number" label="Anzahl Einheiten" placeholder="Number" />
-            </div>
-            <div class="form__area" v-if="type === 'flat'">
-                <InputText v-model="collectData.residentialUnits" type="number" label="Davon Wohneinheiten"
+                <InputText v-model="collectData.number_units" type="number" label="Anzahl Einheiten"
                            placeholder="Number" />
             </div>
             <div class="form__area" v-if="type === 'flat'">
-                <InputText v-model="collectData.whichCommercial" type="number" label="Davon Gewerbe"
+                <InputText v-model="collectData.residential_units" type="number" label="Davon Wohneinheiten"
+                           placeholder="Number" />
+            </div>
+            <div class="form__area" v-if="type === 'flat'">
+                <InputText v-model="collectData.which_commercial" type="number" label="Davon Gewerbe"
                            placeholder="Number" />
             </div>
             <div class="form__area" v-if="type === 'flat' && !isRent">
                 <label class="form__label">Monatliches Hausgeld </label>
                 <div class="form-input">
-                    <currency-input v-model="collectData.monthlyAllowance" />
+                    <currency-input v-model="collectData.monthly_allowance" />
                 </div>
             </div>
             <div class="form__area" v-if="!isRent">
                 <label class="form__label">Kaufpreis </label>
                 <div class="form-input">
-                    <currency-input v-model="collectData.purchasePrice" />
+                    <currency-input v-model="collectData.purchase_price" />
                 </div>
             </div>
             <div class="form__area" v-if="!isRent && type !== 'property'">
                 <label class="form__label">Stellplatzpreis </label>
                 <div class="form-input">
-                    <currency-input v-model="collectData.pitchPrice" />
+                    <currency-input v-model="collectData.pitch_price" />
                 </div>
             </div>
             <div class="form__area" v-if="isRent">
@@ -142,26 +145,26 @@
             <div class="form__area" v-if="isRent">
                 <label class="form__label">Nebenkosten </label>
                 <div class="form-input">
-                    <currency-input v-model="collectData.additionalCosts" />
+                    <currency-input v-model="collectData.additional_costs" />
                 </div>
             </div>
             <div class="form__area" v-if="isRent">
                 <label class="form__label">Miete Stellplatz </label>
                 <div class="form-input">
-                    <currency-input v-model="collectData.rentParking" />
+                    <currency-input v-model="collectData.rent_parking" />
                 </div>
             </div>
             <div class="form__area form__area--expand" v-if="!isRent">
-                <Checkbox v-model="collectData.fullyDeveloped" label="Voll Erschlossen" />
+                <Checkbox v-model="collectData.fully_developed" label="Voll Erschlossen" />
             </div>
             <div class="form__area form__area--expand" v-if="type !== 'property'">
-                <Checkbox v-model="collectData.monumentProtection" label="Denkmalschutz" />
+                <Checkbox v-model="collectData.monument_protection" label="Denkmalschutz" />
             </div>
             <div class="form__area form__area--expand" v-if="type !== 'property'">
-                <Checkbox v-model="collectData.ensembleProtection" label="Ensembleschutz" />
+                <Checkbox v-model="collectData.ensemble_protection" label="Ensembleschutz" />
             </div>
             <div class="form__area form__area--expand" v-if="type === 'property'">
-                <Checkbox v-model="collectData.demolitionObject" label="Abrissobjekt" />
+                <Checkbox v-model="collectData.demolition_object" label="Abrissobjekt" />
             </div>
             <div class="form__area">
                 <label for="particularities" class="form__label">Besonderheiten</label>
@@ -206,7 +209,7 @@
           return this.$store.state.cart.type
         },
         isRent() {
-          return this.$store.state.sellRent === 'rent'
+          return this.$store.state.collectData.sellRent === 'rent'
         },
         collectData: {
           get() {
