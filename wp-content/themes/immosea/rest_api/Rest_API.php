@@ -52,6 +52,7 @@ class Rest_API {
         $template = "
             <tbody>";
         foreach ($order->get_meta_data() as $meta_datum) {
+            if($meta_datum->key != '_shipping_email' && $meta_datum->key != '_shipping_phone')
             $template .= '
                 <tr>
                     <td class="total">'.$meta_datum->key.'</td>

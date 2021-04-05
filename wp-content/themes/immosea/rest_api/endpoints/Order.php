@@ -7,6 +7,8 @@ class Order extends HttpError {
     private $orderID;
     private $order_metas;
     private $order_products;
+    private $cart;
+    private $contactData;
 
 
     /**
@@ -18,29 +20,28 @@ class Order extends HttpError {
     {
         $this->error = new HttpError();
         $session = new WC_Session_Handler();
-
-        if (!$request -> get_params()) {
+        if (!$request->get_params()) {
             return $this->error->setStatusCode(400)->setMessage("Params wasn't set")->report();
         }
-
-        $this->setParams($request -> get_params());
-
+        $this->setParams($request->get_params());
         $order = wc_create_order();
         $this->setOrder($order);
         $this->setOrderID($this->getOrder()->ID);
+        $this->setOrderMetas($this->prepare_order_fields($this->getParams('collectData')));
+        $this->setCart($this->getParams('cart'));
+        $this->setContactData($this->getParams('contactData'));
 
-        $this->setOrderMetas($this->prepare_order_fields($this->getParams()));
+        $products = $this->get_association_of_products($this->cart);
 
-        $products = $this->get_association_of_products($this->getParams());
         $this->setOrderProducts($products);
-
+        if ($this->contactData) {
+            $this->updated_order_contact_data($this->contactData);
+        }
         $this->update_order_products($this->getOrderProducts());
         $this->update_order_post_meta($this->getOrderMetas(), $this->getOrderID());
 
         if ( isset( $session ) )
             $session->set('order_awaiting_payment', $this->getOrderID());
-
-//        add_action( 'woocommerce_admin_order_totals_after_discount', array($this, 'render_order_custom_fields'), 10 );
         $order_items = $this->getOrder()->get_items();
         $response['order_id'] = $this->getOrderID();
         if ($order_items) {
@@ -71,6 +72,30 @@ class Order extends HttpError {
             return  $this->report();
         }
         return $response;
+    }
+
+    private function updated_order_contact_data($contactData) {
+        if (isset($contactData['name'])) {
+            $address['first_name'] = $contactData['name'];
+        }
+        if (isset($contactData['lastName'])) {
+            $address['last_name'] = $contactData['lastName'];
+        }
+        if (isset($contactData['email'])) {
+            $address['email'] = $contactData['email'];
+        }
+        if (isset($contactData['zip'])) {
+            $address['postcode'] = $contactData['zip'];
+        }
+        if (isset($contactData['phone'])) {
+            $address['phone'] = $contactData['phone'];
+        }
+        if (isset($contactData['address'])) {
+            $address['address_1'] = $contactData['address'];
+        }
+
+        $this->order->set_address( $address, 'billing' );
+        $this->order->set_address( $address, 'shipping' );
     }
 
     private function get_association_of_products($params) {
@@ -129,26 +154,152 @@ class Order extends HttpError {
 
 
     private function prepare_order_fields($fields) {
-        $fields = array(
-            '_year' => 1990
-        );
-
-        $response = [];
         if ($fields) {
-            foreach ($fields as $key => $field) {
-                if ($key === '_year') {
-                    $response[$key] = $field;
+            $response = [];
+            if ($fields) {
+                foreach ($fields as $key => $field) {
+                    $field =  strip_tags($field);
+                    if ($key === 'name_house') {
+                        $response[$field] = $field;
+                    }elseif ($key === 'address') {
+                        $response[$field] = $field;
+                    }elseif ($key === 'sell_rent') {
+                        $response[$field] = $field;
+                    }elseif ($key === 'year') {
+                        $response['Baujahr'] = $field;
+                    }elseif ($key === 'floors') {
+                        $response['Etagen'] = $field;
+                    }elseif ($key === 'object') {
+                        $response['Objekt in Etage'] = $field;
+                    }elseif ($key === 'coownership') {
+                        $response['Miteigentumsanteil'] = $field;
+                    }elseif ($key === 'year_upgrade') {
+                        $response['Letzte Modernisierung'] = $field;
+                    }elseif ($key === 'lift') {
+                        $response['Lift'] = $field;
+                    }elseif ($key === 'status') {
+                        $response['Zustand'] = $field;
+                    }elseif ($key === 'available_from') {
+                        $response['Verfügbar ab'] = $field;
+                    }elseif ($key === 'living_space') {
+                        $response['Wohnfläche'] = $field;
+                    }elseif ($key === 'usable_area') {
+                        $response['Nutzfläche'] = $field;
+                    }elseif ($key === 'property') {
+                        $response['Grundstück'] = $field;
+                    }elseif ($key === 'rooms') {
+                        $response['Zimmer gesamt'] = $field;
+                    }elseif ($key === 'bedroom') {
+                        $response['Schlafzimmer'] = $field;
+                    }elseif ($key === 'living_bedroom') {
+                        $response['Wohn-Schlafzimmer'] = $field;
+                    }elseif ($key === 'bathroom') {
+                        $response['Badezimmer'] = $field;
+                    }elseif ($key === 'toilets') {
+                        $response['Separate WCs'] = $field;
+                    }elseif ($key === 'balconies') {
+                        $response['Anzahl Balkon'] = $field;
+                    }elseif ($key === 'terrace') {
+                        $response['Anzahl Terrasse'] = $field;
+                    }elseif ($key === 'window_type') {
+                        $response['Fensterart'] = $field;
+                    }elseif ($key === 'glazing') {
+                        $response['Verglasung'] = $field;
+                    }elseif ($key === 'bjwindow') {
+                        $response['BJ Fenster (falls abweichend)'] = $field;
+                    }elseif ($key === 'keller') {
+                        $response['Keller'] = $field;
+                    }elseif ($key === 'garden') {
+                        $response['Garten'] = $field;
+                    }elseif ($key === 'parking') {
+                        $response['Stellplätze'] = $field;
+                    }elseif ($key === 'number_parking') {
+                        $response['Anzahl Stellplätze'] = $field;
+                    }elseif ($key === 'number_units') {
+                        $response['Anzahl Einheiten'] = $field;
+                    }elseif ($key === 'residential_units') {
+                        $response['Davon Wohneinheiten'] = $field;
+                    }elseif ($key === 'which_commercial') {
+                        $response['Davon Gewerbe'] = $field;
+                    }elseif ($key === 'monthly_allowance') {
+                        $response['Monatliches Hausgeld'] = $field;
+                    }elseif ($key === 'purchase_price') {
+                        $response['Kaufpreis'] = $field;
+                    }elseif ($key === 'pitch_price') {
+                        $response['Stellplatzpreis'] = $field;
+                    }elseif ($key === 'rent') {
+                        $response['Kaltmiete'] = $field;
+                    }elseif ($key === 'additional_costs') {
+                        $response['Nebenkosten'] = $field;
+                    }elseif ($key === 'rent_parking') {
+                        $response['Miete Stellplatz'] = $field;
+                    }elseif ($key === 'fully_developed') {
+                        $response['Voll Erschlossen'] = $field;
+                    }elseif ($key === 'monument_protection') {
+                        $response['Denkmalschutz'] = $field;
+                    }elseif ($key === 'ensemble_protection') {
+                        $response['Ensembleschutz'] = $field;
+                    }elseif ($key === 'demolition_object') {
+                        $response['Abrissobjekt'] = $field;
+                    }elseif ($key === 'particularities') {
+                        $response['Besonderheiten'] = $field;
+                    }elseif ($key === 'heater') {
+                        $response['Heizung'] = $field;
+                    }elseif ($key === 'energy_certificate') {
+                        $response['Energieausweis'] = $field;
+                    }elseif ($key === 'consumption_value') {
+                        $response['Verbrauchskennwert (kWh/(m²*a))'] = $field;
+                    }elseif ($key === 'valid_energy_certificate') {
+                        $response['Energieausweis gültig bis'] = $field;
+                    }elseif ($key === 'included_hotwater') {
+                        $response['Warmwasser enthalten'] = $field;
+                    }elseif ($key === 'title') {
+                        $response['Objekttitel'] = $field;
+                    }elseif ($key === 'description') {
+                        $response['Objektbeschreibung'] = $field;
+                    }elseif ($key === 'description_location') {
+                        $response['Lagebeschreibung'] = $field;
+                    }elseif ($key === 'leisure') {
+                        $response['Freizeit'] = $field;
+                    }elseif ($key === 'others') {
+                        $response['Sonstiges'] = $field;
+                    }elseif ($key === 'rehabilitation') {
+                        $response['Vorgenommene Sanierungsmaßnahmen'] = $field;
+                    }elseif ($key === 'furnishing') {
+                        foreach ($field as $item) {
+                            $response['Ausstattung'][] = $item;
+                        }
+                    }elseif ($key === 'further_equipment') {
+                        $response['Weitere Ausstattung'] = $field;
+                    }elseif ($key === 'floor_coverings') {
+                        $response['Bodenbeläge'] = $field;
+                    }elseif ($key === 'key_points') {
+                        $response['Beschreibung (Stichpunkte)'] = $field;
+                    }elseif ($key === 'address') {
+                        $response['Adresse'] = $field;
+                    }elseif ($key === 'postcode') {
+                        $response['Im Exposé bitte nur Postleitzahl und Ort angeben.'] = $field;
+                    }
                 }
+                return $response;
             }
-            return $response;
         }
+
+
         return false;
     }
     /**
      * @return mixed
      */
-    public function getParams()
+    public function getParams($param = false)
     {
+
+        if ($param) {
+            if (!$this->params[$param]) {
+                return $this->error->setStatusCode(400)->setMessage("Param `$param` wasn't set")->report();
+            }
+            return isset($this->params[$param]) ? $this->params[$param] : false;
+        }
         return $this->params;
     }
 
@@ -222,5 +373,36 @@ class Order extends HttpError {
     public function setOrderProducts($order_products)
     {
         $this->order_products = $order_products;
+    }
+    /**
+     * @return mixed
+     */
+    public function getCart()
+    {
+        return $this->cart;
+    }
+
+    /**
+     * @param mixed $cart
+     */
+    public function setCart($cart)
+    {
+        $this->cart = $cart;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContactData()
+    {
+        return $this->contactData;
+    }
+
+    /**
+     * @param mixed $contactData
+     */
+    public function setContactData($contactData)
+    {
+        $this->contactData = $contactData;
     }
 }
