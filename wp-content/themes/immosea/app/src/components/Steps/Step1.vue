@@ -127,18 +127,16 @@
     computed: {
       name_house: {
         get() {
-          return this.$store.state.name_house
+          return this.$store.state.collectData.name_house
         },
         set(value) {
           let type = kindProperty.find(i => i.items.includes(value)).type
-          this.$store.commit('SET_NAME_HOUSE', value)
+          this.$store.commit('SET_COLLECT_DATA', { name_house : value })
           this.$store.commit('SET_CART_OPTIONS', { type })
         }
       }
     },
-    methods: {
-
-    }
+    methods: {}
   }
 </script>
 <style lang="scss" scoped>

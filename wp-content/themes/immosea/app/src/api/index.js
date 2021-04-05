@@ -12,8 +12,11 @@ const API = axios.create({
 });
 
 const Product = {
-  get: () => API.get(`${BASE_URL}/get_products/`),
-  create: data => API.get(`${BASE_URL}/create_order/`, data)
+  get: () => API.get(`${BASE_URL}/get_products/`)
 };
 
-export { Product };
+const Order = {
+  post: data => API.post(`${BASE_URL}/create_order/`, data)
+}
+
+export { Product, Order };

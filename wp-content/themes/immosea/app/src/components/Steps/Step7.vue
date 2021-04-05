@@ -19,25 +19,25 @@
                     </div>
                     <div class="form__area form__area--expand">
                         <label class="form__label">Energieausweis</label>
-                        <v-select :options="options2" v-model="collectData.energyCertificate"
+                        <v-select :options="options2" v-model="collectData.energy_certificate"
                                   placeholder="Select" />
                     </div>
                     <div class="form__area form__area--expand">
-                        <InputText v-model="collectData.consumptionValue" type="number"
+                        <InputText v-model="collectData.consumption_value" type="number"
                                    label="Verbrauchskennwert (kWh/(m²*a))"
                                    placeholder="kWh/(m²*a)" />
                     </div>
                     <div class="form__area form__area--expand">
                         <label class="form__label">Energieausweis gültig bis</label>
                         <div class="form__date">
-                            <datepicker v-model="collectData.validEnergyCertificate"
+                            <datepicker v-model="collectData.valid_energy_certificate"
                                         format="yyyy-MM-dd"
                                         placeholder="Select Date"
                                         clearButton calendarButton />
                         </div>
                     </div>
                     <div class="form__area form__area--expand">
-                        <Checkbox v-model="collectData.includedHotWater" label="Warmwasser enthalten" />
+                        <Checkbox v-model="collectData.included_hotwater" label="Warmwasser enthalten" />
                     </div>
                 </div>
             </div>

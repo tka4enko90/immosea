@@ -7,13 +7,13 @@
             }"
             :buttonNext="{
                 ...buttonNext,
-                disabled: !sellRent
+                disabled: !sell_rent
             }"
     >
         <div class="choose-box__row choose-box__row--flex">
             <div>
                 <div class="choose-box">
-                    <input type="radio" v-model="sellRent" value="sell" id="sell">
+                    <input type="radio" v-model="sell_rent" value="sell" id="sell">
                     <label for="sell" class="choose-box__label choose-box__label--center">
                         <div class="choose-box__icon">
                             <svg width="54" height="60" viewBox="0 0 54 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +33,7 @@
             </div>
             <div>
                 <div class="choose-box">
-                    <input type="radio" v-model="sellRent" value="rent" id="rent">
+                    <input type="radio" v-model="sell_rent" value="rent" id="rent">
                     <label for="rent" class="choose-box__label choose-box__label--center">
                         <div class="choose-box__icon">
                             <svg width="54" height="60" viewBox="0 0 54 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,12 +66,12 @@
       return {}
     },
     computed: {
-      sellRent: {
+      sell_rent: {
         get() {
-          return this.$store.state.sellRent
+          return this.$store.state.collectData.sell_rent
         },
         set(value) {
-          this.$store.commit('SET_SELL_RENT', value)
+          this.$store.commit('SET_COLLECT_DATA', { sell_rent: value })
         }
       }
     },
