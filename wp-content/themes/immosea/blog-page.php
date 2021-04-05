@@ -2,10 +2,13 @@
     /* Template Name: Blog */
     get_header();
 
+    $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
+
     $allPosts = new WP_Query(array(
         'post_type'      => 'post',
         'post_status'    => 'publish',
-        'posts_per_page' => -1
+        'posts_per_page' => 1,
+        'paged' => $paged
     ));
 ?>
 
@@ -41,6 +44,19 @@
                 <?php endwhile; ?>
                 <?php else: ?>
             <?php endif; ?>
+            <nav class="pagination">
+                <?php
+                $big = 999999999;
+                echo paginate_links( array(
+                    'base' => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
+                    'format' => '?paged=%#%',
+                    'current' => max( 1, get_query_var('paged') ),
+                    'total' => $allPosts->max_num_pages,
+                    'prev_text' => '&laquo;',
+                    'next_text' => '&raquo;'
+                ) );
+//                ?>
+            </nav>
         </div>
 
     </div>
