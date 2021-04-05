@@ -94,7 +94,7 @@ class Rest_API {
          */
         register_rest_route("{$root}/{$version}", '/create_order/', array(
                 array(
-                    'methods'         => \WP_REST_Server::READABLE,
+                    'methods'         => \WP_REST_Server::CREATABLE,
                     'callback'        => array(new Order(), 'create_order' ),
                     'permission_callback' => array($this, 'permissions_check' )
                 ),

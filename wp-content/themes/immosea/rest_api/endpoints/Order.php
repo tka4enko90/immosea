@@ -1,6 +1,7 @@
 <?php
 
 class Order extends HttpError {
+    private $error;
     private $params;
     private $order;
     private $orderID;
@@ -15,7 +16,13 @@ class Order extends HttpError {
      */
     public function create_order($request)
     {
+        $this->error = new HttpError();
         $session = new WC_Session_Handler();
+
+        if (!$request -> get_params()) {
+            return $this->error->setStatusCode(400)->setMessage("Params wasn't set")->report();
+        }
+
         $this->setParams($request -> get_params());
 
         $order = wc_create_order();
@@ -23,22 +30,9 @@ class Order extends HttpError {
         $this->setOrderID($this->getOrder()->ID);
 
         $this->setOrderMetas($this->prepare_order_fields($this->getParams()));
-        $this->setOrderProducts(
-            array(
-                array(
-                    'product_id' => 48,
-                    'qty' => 1,
-                ),
-                array(
-                    'product_id' => 47,
-                    'qty' => 2,
-                ),
-                array(
-                    'product_id' => 43,
-                    'qty' => 1,
-                )
-            )
-        );
+
+        $products = $this->get_association_of_products($this->getParams());
+        $this->setOrderProducts($products);
 
         $this->update_order_products($this->getOrderProducts());
         $this->update_order_post_meta($this->getOrderMetas(), $this->getOrderID());
@@ -79,6 +73,38 @@ class Order extends HttpError {
         return $response;
     }
 
+    private function get_association_of_products($params) {
+        $association_of_products = get_field('association_of_products', 'options');
+        if (empty($association_of_products)) {
+            return $this->error->setStatusCode(400)->setMessage("Association of products wasn't filled")->report();
+        }
+
+        foreach ($params as $key => $param) {
+            if ($params[$key]) {
+                foreach ($association_of_products as $i => $association_of_product) {
+
+                    if ($key === 'photography' &&  $params['type'] === 'flat') {
+                        $key = 'photography_flat';
+                    }elseif($key === 'photography' &&  $params['type'] === 'property') {
+                        $key = 'photography_property';
+                    }elseif( $key === 'photography' && $params['type'] === 'house') {
+                        if ($params['year'] && strtotime($params['year'].'-01-01') < strtotime('1979-01-01')) {
+                            $key = 'energy_certificate_bg_house';
+                        }else {
+                            $key = 'photography_house';
+                        }
+                    }
+                    if ($association_of_product['association'] === $key) {
+                        $response[] = array(
+                            'product_id' => $association_of_product['product']->ID,
+                            'qty' => 1,
+                        );
+                    }
+                }
+            }
+       }
+        return $response;
+    }
 
 
     private function set_user_to_order() {
