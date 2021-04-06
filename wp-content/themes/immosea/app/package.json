@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "core-js": "^3.10.0",
     "vue": "^2.6.11",
+    "vue-cookies": "^1.7.4",
     "vue-currency-input": "^1.22.6",
     "vue-file-agent": "^1.7.3",
     "vue-google-autocomplete": "^1.1.1",
