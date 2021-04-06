@@ -30,6 +30,7 @@ class Media extends HttpError
         $this->create_attachment_id();
 
         $attach_id = $this->getAttachId();
+        $this->updated_attachment_metadata($attach_id);
 
         $response = array(
             'attachment_id' => $attach_id,
@@ -37,6 +38,19 @@ class Media extends HttpError
         );
 
         return $response;
+    }
+
+    /**
+     * Updated attachment metadata / regenerate image sizes
+     * @param $attach_id
+     */
+    private function updated_attachment_metadata($attach_id) {
+        require_once( ABSPATH . 'wp-admin/includes/image.php' );
+        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+        require_once( ABSPATH . 'wp-admin/includes/media.php' );
+        $file_path = wp_get_original_image_path($attach_id);
+        $attach_data = wp_generate_attachment_metadata( $attach_id, $file_path );
+        wp_update_attachment_metadata( $attach_id,  $attach_data );
     }
 
     /**
@@ -49,10 +63,11 @@ class Media extends HttpError
             'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $this->getHashedFilename() ) ),
             'post_content'   => '',
             'post_status'    => 'inherit',
+            'post_type'    => 'attachment',
             'guid'           => $this->getUploadDir()['url'] . '/' . basename( $this->getHashedFilename() )
         );
-
         $attach_id = wp_insert_attachment( $attachment, $this->getUploadDir()['path'] . '/' . $this->getHashedFilename() );
+
         if (!is_wp_error($attach_id)){
             $this->setAttachId($attach_id);
         } else {
@@ -67,8 +82,13 @@ class Media extends HttpError
     private function set_allow_format($mtype) {
         if($mtype == ( "application/pdf" )) {
             $this->setFormat('pdf');
-        }
-        else {
+        }elseif($mtype == ( "image/png" )){
+            $this->setFormat('png');
+        }elseif($mtype == ( "image/jpeg" )){
+            $this->setFormat('jpeg');
+        }elseif($mtype == ( "image/jpg" )){
+            $this->setFormat('jpg');
+        }else {
             $this->setFormat('doc');
         }
     }
@@ -103,7 +123,16 @@ class Media extends HttpError
             $mtype == ( "application/vnd.openxmlformats-officedocument.presentationml.presentation" )) {
             return false;
         }
-        else if($mtype == ( "application/pdf" )) {
+        elseif($mtype == ( "application/pdf" )) {
+            return false;
+        }
+        elseif($mtype == ( "image/jpeg" )) {
+            return false;
+        }
+        elseif($mtype == ( "image/jpg" )) {
+            return false;
+        }
+        elseif($mtype == ( "image/png" )) {
             return false;
         }
         return true;
