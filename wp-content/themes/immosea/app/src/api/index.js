@@ -16,7 +16,9 @@ const Product = {
 };
 
 const Order = {
-  post: data => API.post(`${BASE_URL}/create_order/`, data)
-}
+  post: data => API.post(`${BASE_URL}/create_order/`, data),
+  apply: data => API.post(`${BASE_URL}/apply_coupon/`, data)
+};
 
-export { Product, Order };
+
+export { Product, Order,  };

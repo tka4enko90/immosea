@@ -17,7 +17,8 @@
                 </div>
             </div>
             <div class="step__holder">
-                <slot></slot>
+                <div v-if="isLoading" class="loader"></div>
+                <slot v-else></slot>
             </div>
 
             <div class="step__buttons">
@@ -44,7 +45,7 @@
   export default {
     name: 'app-step-wrap',
     components: {},
-    props: ['title', 'text', 'showPrice', 'buttonPrev', 'buttonNext' ],
+    props: ['title', 'text', 'showPrice', 'buttonPrev', 'buttonNext', 'isLoading' ],
     computed: {
       ...mapGetters([
         'price'

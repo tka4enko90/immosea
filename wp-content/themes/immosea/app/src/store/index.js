@@ -37,7 +37,11 @@ export default new Vuex.Store({
       name: '',
       last_name:'',
     },
-    order: {}
+    order: {
+      amount: 0
+    },
+    isLoading: false,
+    isSending: false
   },
 
   getters: {
@@ -118,6 +122,14 @@ export default new Vuex.Store({
 
     SET_ORDER (state, payload) {
       state.order = payload
+    },
+
+    SET_LOADING (state, payload) {
+      state.isLoading = payload
+    },
+
+    SET_SENDING (state, payload) {
+      state.isSending = payload
     }
   },
 
@@ -128,8 +140,17 @@ export default new Vuex.Store({
     },
 
     async createOrder ({ commit }, data) {
+      await commit('SET_LOADING', true)
       const res = await Order.post(data)
       await commit('SET_ORDER', res.data)
+      await commit('SET_LOADING', false)
+    },
+
+    async applyCoupon ({ commit }, data) {
+      await commit('SET_SENDING', true)
+      const res = await Order.apply(data)
+      await commit('SET_ORDER', res.data)
+      await commit('SET_SENDING', false)
     }
   }
 });

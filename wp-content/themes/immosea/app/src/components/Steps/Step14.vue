@@ -89,9 +89,11 @@
     },
     methods: {
       handlerClick() {
-        // this.buttonNext.click()
-        console.log('Create order and get respons')
-          this.$store.dispatch('createOrder', this.$store.state.cart);
+        this.$store.dispatch('createOrder', {
+          cart: this.$store.state.cart,
+          contactData: this.$store.state.contactData
+        });
+        this.buttonNext.click()
       }
     }
   }
