@@ -1,9 +1,6 @@
 <?php
 /* Template Name: Home */
 get_header(); ?>
-    <form action="">
-        <input type="file" id="myInputID">
-    </form>
 
 <?php
     $hero      = get_field('hero');
