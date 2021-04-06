@@ -1,15 +1,15 @@
 <template>
     <div class="form">
         <div class="form__holder">
-            <div v-for="(item, index) in filterSteps"
+            <div v-for="(item, index) in questions"
                  :key="index"
                  v-show="activeStep === index"
             >
                 <component
-                        :is="questions[item.step].component"
-                        :title="questions[item.step].title"
-                        :text="questions[item.step].text"
-                        :showPrice="questions[item.step].showPrice"
+                        :is="item.component"
+                        :title="item.title"
+                        :text="item.text"
+                        :showPrice="item.showPrice"
                         :buttonPrev="{
                             title: buttonPrev.title,
                             click: showPrevScreen,
@@ -142,53 +142,43 @@
             condition: true
           }
         ]
-      },
-      filterSteps() {
-        console.log(this.condition.filter(i => i.condition));
-        return this.condition.filter(i => i.condition)
       }
     },
     created() {
+      this.setDataFromCookies()
       this.fetchData()
     },
     methods: {
+      setDataFromCookies() {
+        this.$store.dispatch('setDataFromCookies')
+      },
       fetchData() {
         this.$store.dispatch('fetchProducts')
       },
       showNextScreen() {
-        if (this.activeStep < this.filterSteps.length - 1) {
-          this.activeStep++
-        }
+        this.buttonPrev.show = true
 
-        // if (this.activeStep < this.questions.length - 1) {
-        //   this.passedSteps.push(this.activeStep)
-        //   this.activeStep = this.findNextScreen(this.activeStep)
-        //
-        //   // this.$cookies.set('passedSteps', this.passedSteps)
-        //   // this.$cookies.set('activeStep', this.activeStep)
-        // }
+        if (this.activeStep < this.questions.length - 1) {
+          this.passedSteps.push(this.activeStep)
+          this.activeStep = this.findNextScreen(this.activeStep)
+        }
 
         window.scrollTo(0,0);
       },
       showPrevScreen() {
-        // this.activeStep = this.passedSteps[this.passedSteps.length - 1]
+        this.activeStep = this.passedSteps[this.passedSteps.length - 1]
         this.buttonPrev.show = true
-        // this.buttonNext.title = 'Weiter'
-        // this.passedSteps.pop(this.passedSteps.length - 1)
+        this.buttonNext.title = 'Weiter'
+        this.passedSteps.pop(this.passedSteps.length - 1)
 
-        // this.$cookies.set('passedSteps', JSON.stringify(this.passedSteps))
-        // this.$cookies.set('activeStep', this.activeStep)
-
-        if (this.activeStep !== 0) {
-          this.activeStep--
-        } else {
+        if (this.activeStep === 0) {
           this.buttonPrev.show = false
         }
         window.scrollTo(0,0);
       },
-      // findNextScreen(index) {
-      //   return this.condition.find(i => i.step > index && i.condition).step
-      // }
+      findNextScreen(index) {
+        return this.condition.find(i => i.step > index && i.condition).step
+      }
     }
   }
 </script>

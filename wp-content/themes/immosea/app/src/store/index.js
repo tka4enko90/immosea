@@ -14,13 +14,13 @@ export default new Vuex.Store({
       image: '',
       uploads_images: [],
 
-      surcharge_3d_floor: true,
+      surcharge_3d_floor: false,
       advertising_copy: null,
-      floor_plan: true,
-      expose: true,
-      energy_certificate: true,
-      photography: true,
-      drone_footage: true,
+      floor_plan: false,
+      expose: false,
+      energy_certificate: false,
+      photography: false,
+      drone_footage: false,
 
       virtual_staging: false,
     },
@@ -134,6 +134,20 @@ export default new Vuex.Store({
   },
 
   actions: {
+    setDataFromCookies ({ commit }) {
+      if (window.$cookies.get('collectData')) {
+        commit('SET_COLLECT_DATA', window.$cookies.get('collectData'))
+      }
+      if (window.$cookies.get('cart')) {
+        console.log(window.$cookies.get('cart'));
+        commit('SET_CART_OPTIONS', window.$cookies.get('cart'))
+      }
+      // if (window.$cookies.get('contactData')) {
+      //   console.log(window.$cookies.get('contactData'));
+      //   commit('SET_CONTACT_DATA', window.$cookies.get('contactData'))
+      // }
+    },
+
     async fetchProducts ({ commit }) {
       const res = await Product.get()
       await commit('SET_PRODUCTS', res.data)

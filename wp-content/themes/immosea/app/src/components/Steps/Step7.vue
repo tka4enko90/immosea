@@ -98,6 +98,7 @@
         },
         set(value) {
           this.$store.commit('SET_CERTIFICATE', value)
+          this.$cookies.set('cart', this.$store.state.cart)
         }
       },
       collectData: {
@@ -106,6 +107,7 @@
         },
         set(value) {
           this.$store.commit('SET_COLLECT_DATA', { value })
+          this.$cookies.set('collectData', this.$store.state.collectData)
         }
       }
     },

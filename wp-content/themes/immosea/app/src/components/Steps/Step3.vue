@@ -78,6 +78,7 @@
         },
         set(value) {
           this.$store.commit('SET_CART_OPTIONS', { year: value })
+          this.$cookies.set('cart', this.$store.state.cart)
         }
       }
     },

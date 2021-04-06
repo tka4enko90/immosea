@@ -14,7 +14,7 @@
                 <Uploader docs=true
                           title="BILD LADEN"
                           text="JPG, GIF, PNG, BMP je bis 50 VB nicht animert"
-                          name="uploadsDocs"
+                          name="uploads_docs"
                           @change="handleFilesUpload"
                 />
             </div>
@@ -31,7 +31,7 @@
                 <UploaderPreview :file="getImageUrl(file)"
                                  :type="file.type"
                                  :name="file.name"
-                                 @click="removeFile(key, uploadsDocs, 'uploads_docs')" />
+                                 @click="removeFile(key, uploads_docs, 'uploads_docs')" />
             </div>
         </div>
         <div class="uploader__list" v-if="uploads.length > 0">

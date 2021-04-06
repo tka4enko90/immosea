@@ -6,6 +6,7 @@
                 :val="val"
                 :value="value"
                 :name="name"
+                :checked="value === checked"
                 @input="$emit('change', $event.target.value)"
         >
         <label :for="value">{{ label }}</label>
@@ -29,7 +30,8 @@
       id: String,
       name: String,
       value: {},
-      val: {}
+      val: {},
+      checked: {}
     },
     data: () => ({}),
     computed: {},

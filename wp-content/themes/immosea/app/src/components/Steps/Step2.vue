@@ -72,6 +72,7 @@
         },
         set(value) {
           this.$store.commit('SET_COLLECT_DATA', { sell_rent: value })
+          this.$cookies.set('collectData', this.$store.state.collectData)
         }
       }
     },

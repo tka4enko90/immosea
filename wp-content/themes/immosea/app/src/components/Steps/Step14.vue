@@ -75,7 +75,8 @@
           return this.$store.state.contactData
         },
         set(value) {
-          this.$store.commit('SET_COLLECT_DATA', { value })
+          this.$store.commit('SET_CONTACT_DATA', { value })
+          this.$cookies.set('contactData', {...value})
         }
       }
     },

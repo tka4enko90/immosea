@@ -22,7 +22,7 @@
                 <Uploader multiple
                           title="Grundrisse laden"
                           :text="labels.further_floor_plan"
-                          name="uploadsImages"
+                          name="uploads_images"
                           @change="handleFilesUpload"
                 />
             </div>
@@ -32,7 +32,7 @@
                 <UploaderPreview :file="getImageUrl(file)"
                                  :type="file.type"
                                  :name="file.name"
-                                 @click="removeFileFromArray(key, uploadsImages, 'uploads_images')" />
+                                 @click="removeFileFromArray(key, uploads_images, 'uploads_images')" />
             </div>
         </div>
         <div class="form__row">

@@ -23,7 +23,9 @@
                 <InputText v-model="collectData.coownership" label="Miteigentumsanteil" />
             </div>
             <div class="form__area" v-if="type !== 'property'">
-                <InputText v-model="collectData.year_upgrade" type="number" label="Letzte Modernisierung"
+                <InputText v-model="collectData.year_upgrade"
+                           type="number"
+                           label="Letzte Modernisierung"
                            placeholder="YYYY" />
             </div>
             <div class="form__area form__area--expand" v-if="type === 'flat'">
@@ -213,10 +215,17 @@
         },
         collectData: {
           get() {
+            // console.log(this.$store.state.collectData);
             return this.$store.state.collectData
           },
           set(value) {
+            // console.log(value);
             this.$store.commit('SET_COLLECT_DATA', { value })
+            // console.log(this.$store.state.collectData);
+            this.$cookies.set('collectData', {
+              ...this.$store.state.collectData,
+              value
+            })
           }
         }
     },

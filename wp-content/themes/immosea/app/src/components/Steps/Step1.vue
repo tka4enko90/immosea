@@ -131,8 +131,12 @@
         },
         set(value) {
           let type = kindProperty.find(i => i.items.includes(value)).type
+
           this.$store.commit('SET_COLLECT_DATA', { name_house : value })
           this.$store.commit('SET_CART_OPTIONS', { type })
+
+          this.$cookies.set('collectData', this.$store.state.collectData)
+          this.$cookies.set('cart', this.$store.state.cart)
         }
       }
     },

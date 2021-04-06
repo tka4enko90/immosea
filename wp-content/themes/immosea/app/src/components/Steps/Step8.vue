@@ -44,6 +44,7 @@
         },
         set(value) {
           this.$store.commit('SET_ADV', value)
+          this.$cookies.set('cart', this.$store.state.cart)
         }
       }
     },
