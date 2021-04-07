@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { Product, Order } from '../api';
+import { Product, Order, Media } from '../api';
 import { getPriceByFieldName } from '../utils'
 
 Vue.use(Vuex);
@@ -130,6 +130,11 @@ export default new Vuex.Store({
 
     SET_SENDING (state, payload) {
       state.isSending = payload
+    },
+
+    SET_IMAGE (state, payload) {
+      console.log(payload);
+      state.img = payload
     }
   },
 
@@ -165,6 +170,13 @@ export default new Vuex.Store({
       const res = await Order.apply(data)
       await commit('SET_ORDER', res.data)
       await commit('SET_SENDING', false)
+    },
+
+    async postImage ({ commit }, data) {
+      const res = await Media.post(data)
+      await commit('SET_IMAGE', res.data)
+      console.log(res);
     }
+
   }
 });

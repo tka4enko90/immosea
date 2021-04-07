@@ -69,7 +69,7 @@
         },
         passedSteps: JSON.parse(localStorage.getItem('passedSteps')) || [],
         questions,
-        activeStep: +localStorage.getItem('activeStep') || 0,
+        activeStep: +localStorage.getItem('activeStep') || 11,
       }
     },
     computed: {
@@ -111,7 +111,7 @@
           {
             step: 7,
             condition: this.$store.state.cart.energy_certificate && (!this.$store.state.collectData.monument_protection
-              || !this.$store.state.collectData.ensemble_protection || !this.$store.state.collectData.demolition_object)
+              && !this.$store.state.collectData.ensemble_protection && !this.$store.state.collectData.demolition_object)
           },
           {
             step: 8,

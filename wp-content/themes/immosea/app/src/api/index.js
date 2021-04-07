@@ -22,7 +22,6 @@ const Order = {
 
 const Media = {
   post: data => API.post(`${BASE_URL}/media/`, data),
-  // apply: data => API.post(`${BASE_URL}/apply_coupon/`, data)
 };
 
 

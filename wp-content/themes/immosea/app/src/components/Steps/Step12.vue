@@ -18,7 +18,7 @@
                           @change="handleFilesUpload"
                 />
             </div>
-            <div v-if="!photography">
+            <div v-if="!floor_plan">
                 <Uploader title="BILD LADEN"
                           text="JPG, GIF, PNG, BMP je bis 50 VB nicht animert"
                           name="uploads"
@@ -61,8 +61,8 @@
       return {}
     },
     computed: {
-      photography() {
-        return this.$store.state.cart.photography
+      floor_plan() {
+        return this.$store.state.cart.floor_plan
       },
       uploads_docs: {
         get() {

@@ -9,6 +9,21 @@
             }"
             :showPrice="showPrice"
     >
+        <!--<div>-->
+            <!--<label class="uploader"-->
+            <!--&gt;-->
+
+
+                    <!--<span class="uploader__text">test</span>-->
+                    <!--<span class="uploader__title">title</span>-->
+
+                    <!--<input type="file"-->
+                           <!--ref="file"-->
+                           <!--class="uploader__input"-->
+                           <!--accept="application/pdf, image/jpeg, image/png, image/gif, application/msword, image/bmp"-->
+                           <!--@change="dd" />-->
+            <!--</label>-->
+        <!--</div>-->
         <div class="step__row">
             <div>
                 <UploaderSingle :file="image"
@@ -95,6 +110,7 @@
         return URL.createObjectURL(file)
       },
       handleUpload(file) {
+        // this.$store.dispatch('postImage', file)
         this.$store.commit('SET_CART_OPTIONS', { image: file })
       },
       removeFile() {
@@ -106,6 +122,22 @@
       removeFileFromArray(key, array, name) {
         array.splice(key, 1);
         this.$store.commit('SET_CART_OPTIONS', { [`${name}`]: array })
+      },
+      dd() {
+        let image = this.$refs.file.files[0];
+
+        const reader = new FileReader()
+        console.log(reader);
+
+        reader.onload = (e) => {
+          // console.log(e.target.result);
+          this.$store.dispatch('postImage', {body: e.target.result})
+        }
+
+        reader.onerror = function(error) {
+          alert(error);
+        };
+        reader.readAsDataURL(image);
       }
     }
   }

@@ -8,21 +8,21 @@
             }"
             :showPrice="showPrice"
     >
-        <div class="form__row">
+        <div class="form__row" v-if="type !== 'property'">
             <label class="form__label">Ausstattung</label>
             <v-select :options="options" v-model="collectData.furnishing" placeholder="Select" multiple />
         </div>
-        <div class="form__row">
+        <div class="form__row" v-if="type !== 'property'">
             <label for="furtherEquipment" class="form__label">Weitere Ausstattung</label>
             <textarea class="form__textarea form__textarea--small" id="furtherEquipment" cols="30" rows="10"
                       v-model="collectData.further_equipment"></textarea>
         </div>
-        <div class="form__row">
+        <div class="form__row" v-if="type !== 'property'">
             <label for="rehabilitation" class="form__label">Vorgenommene Sanierungsmaßnahmen</label>
             <textarea class="form__textarea form__textarea--small" id="rehabilitation" cols="30" rows="10"
                       v-model="collectData.rehabilitation"></textarea>
         </div>
-        <div class="form__row">
+        <div class="form__row" v-if="type !== 'property'">
             <label class="form__label">Bodenbeläge</label>
             <v-select :options="options2" v-model="collectData.floor_coverings" placeholder="Select" multiple />
         </div>
@@ -52,6 +52,9 @@
       options2: Bodenbelage
     }},
     computed: {
+      type() {
+        return this.$store.state.cart.type
+      },
       collectData: {
         get() {
           return this.$store.state.collectData

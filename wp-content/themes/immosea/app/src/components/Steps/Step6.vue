@@ -84,7 +84,7 @@
                 <label class="form__label">Verglasung</label>
                 <v-select :options="options3" v-model="collectData.glazing" placeholder="Select" multiple />
             </div>
-            <div class="form__area">
+            <div class="form__area" v-if="type !== 'property'">
                 <label class="form__label">BJ Fenster (falls abweichend)</label>
                 <div class="form__date">
                     <datepicker v-model="collectData.bjwindow"
@@ -156,7 +156,7 @@
                     <currency-input v-model="collectData.rent_parking" />
                 </div>
             </div>
-            <div class="form__area form__area--expand" v-if="!isRent">
+            <div class="form__area form__area--expand" v-if="!isRent && type === 'property'">
                 <Checkbox v-model="collectData.fully_developed" label="Voll Erschlossen" />
             </div>
             <div class="form__area form__area--expand" v-if="type !== 'property'">
@@ -211,7 +211,7 @@
           return this.$store.state.cart.type
         },
         isRent() {
-          return this.$store.state.collectData.sellRent === 'rent'
+          return this.$store.state.collectData.sell_rent === 'rent'
         },
         collectData: {
           get() {
