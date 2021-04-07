@@ -65,11 +65,11 @@
         },
         buttonPrev: {
           title: 'Zurück',
-          show: false
+          show: this.activeStep === 0 && false || true
         },
-        passedSteps: [],
+        passedSteps: JSON.parse(localStorage.getItem('passedSteps')) || [],
         questions,
-        activeStep: 0
+        activeStep: +localStorage.getItem('activeStep') || 0,
       }
     },
     computed: {
@@ -156,24 +156,23 @@
         this.$store.dispatch('fetchProducts')
       },
       showNextScreen() {
-        this.buttonPrev.show = true
-
         if (this.activeStep < this.questions.length - 1) {
           this.passedSteps.push(this.activeStep)
           this.activeStep = this.findNextScreen(this.activeStep)
+
+          // localStorage.setItem('activeStep', this.activeStep)
+          // localStorage.setItem('passedSteps', JSON.stringify(this.passedSteps))
         }
 
         window.scrollTo(0,0);
       },
       showPrevScreen() {
         this.activeStep = this.passedSteps[this.passedSteps.length - 1]
-        this.buttonPrev.show = true
-        this.buttonNext.title = 'Weiter'
         this.passedSteps.pop(this.passedSteps.length - 1)
 
-        if (this.activeStep === 0) {
-          this.buttonPrev.show = false
-        }
+        // localStorage.setItem('activeStep', this.activeStep)
+        // localStorage.setItem('passedSteps', JSON.stringify(this.passedSteps))
+
         window.scrollTo(0,0);
       },
       findNextScreen(index) {
