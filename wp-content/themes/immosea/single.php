@@ -8,7 +8,7 @@
             </div>
             <div class="post-single-content">
                 <h2 class="text-primary"><?php echo get_the_title(); ?></h2>
-                <?php the_content(); ?>
+                <?php echo get_the_content(); ?>
             </div>
         </div>
     </div>
