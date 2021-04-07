@@ -20,5 +20,10 @@ const Order = {
   apply: data => API.post(`${BASE_URL}/apply_coupon/`, data)
 };
 
+const Media = {
+  post: data => API.post(`${BASE_URL}/media/`, data),
+  // apply: data => API.post(`${BASE_URL}/apply_coupon/`, data)
+};
 
-export { Product, Order,  };
+
+export { Product, Order, Media };
