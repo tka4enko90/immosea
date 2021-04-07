@@ -8,12 +8,20 @@ class Media extends HttpError
     private $upload_dir;
     private $hashed_filename;
     private $attach_id;
+    public function __construct(ErrorService $error)
+    {
+        $this->error = $error;
+    }
 
+    /**
+     * @param WP_REST_Request $request
+     * @return array
+     * Create attachment by base64
+     */
     public function create_media(\WP_REST_Request $request)
     {
-        $this->error = new HttpError();
-        $this->setUploadDir(wp_upload_dir());
 
+        $this->setUploadDir(wp_upload_dir());
         $base64 = $request->get_body();
         $pos  = strpos($base64, ';');
         $type = explode(':', substr($base64, 0, $pos))[1];
@@ -40,6 +48,24 @@ class Media extends HttpError
         return $response;
     }
 
+    /**
+     * @param $request
+     * @return array
+     * Delete media attachment by ID
+     */
+    public function delete_media($request){
+        $attachment_id = $request->get_param('id');
+        if(!$attachment_id) {
+            return $this->error->setStatusCode(400)->setMessage("Image id wasn't set")->report();
+        }
+        $image = wp_get_attachment_url($attachment_id);
+        if ($image) {
+            wp_delete_attachment($attachment_id, true);
+            return $this->error->setStatusCode(200)->setMessage('Attachment ID was removed')->report();
+        }else {
+            return $this->error->setStatusCode(400)->setMessage("Attachment ID is not exist")->report();
+        }
+    }
     /**
      * Updated attachment metadata / regenerate image sizes
      * @param $attach_id
