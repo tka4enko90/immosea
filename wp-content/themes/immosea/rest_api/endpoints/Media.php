@@ -32,14 +32,13 @@ class Media extends HttpError
         }
 
         $this->set_allow_format($this->getFileType());
-        $this->setHashedFilename(md5( microtime()).'.'.$this->getFormat()) ;
+        $this->setHashedFilename(md5(microtime()).'.'.$this->getFormat()) ;
 
         $this->create_image_file($base64);
         $this->create_attachment_id();
 
         $attach_id = $this->getAttachId();
         $this->updated_attachment_metadata($attach_id);
-
         $response = array(
             'attachment_id' => $attach_id,
             'attachment_url' => wp_get_attachment_url($attach_id)
@@ -49,33 +48,18 @@ class Media extends HttpError
     }
 
     /**
-     * @param $request
-     * @return array
-     * Delete media attachment by ID
-     */
-    public function delete_media($request){
-        $attachment_id = $request->get_param('id');
-        if(!$attachment_id) {
-            return $this->error->setStatusCode(400)->setMessage("Image id wasn't set")->report();
-        }
-        $image = wp_get_attachment_url($attachment_id);
-        if ($image) {
-            wp_delete_attachment($attachment_id, true);
-            return $this->error->setStatusCode(200)->setMessage('Attachment ID was removed')->report();
-        }else {
-            return $this->error->setStatusCode(400)->setMessage("Attachment ID is not exist")->report();
-        }
-    }
-    /**
      * Updated attachment metadata / regenerate image sizes
      * @param $attach_id
      */
     private function updated_attachment_metadata($attach_id) {
         require_once( ABSPATH . 'wp-admin/includes/image.php' );
-        require_once( ABSPATH . 'wp-admin/includes/file.php' );
-        require_once( ABSPATH . 'wp-admin/includes/media.php' );
         $file_path = wp_get_original_image_path($attach_id);
+        add_filter( 'wp_update_attachment_metadata', (function($data, $attach_id){
+            $data['order_image'] = 1;
+            return $data;
+        }), 10,2);
         $attach_data = wp_generate_attachment_metadata( $attach_id, $file_path );
+        update_post_meta($attach_id, 'order_image', false);
         wp_update_attachment_metadata( $attach_id,  $attach_data );
     }
 
@@ -89,7 +73,7 @@ class Media extends HttpError
             'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $this->getHashedFilename() ) ),
             'post_content'   => '',
             'post_status'    => 'inherit',
-            'post_type'    => 'attachment',
+            'post_type'      => 'attachment',
             'guid'           => $this->getUploadDir()['url'] . '/' . basename( $this->getHashedFilename() )
         );
         $attach_id = wp_insert_attachment( $attachment, $this->getUploadDir()['path'] . '/' . $this->getHashedFilename() );
@@ -126,7 +110,7 @@ class Media extends HttpError
      */
     private function create_image_file($base64) {
         
-        $upload_path = str_replace( '/', DIRECTORY_SEPARATOR, $this->getUploadDir()['path'] ) . DIRECTORY_SEPARATOR;
+        $upload_path     = str_replace( '/', DIRECTORY_SEPARATOR, $this->getUploadDir()['path'] ) . DIRECTORY_SEPARATOR;
         $img             = str_replace( 'data:'.$this->getFileType().';base64,', '', $base64 );
         $img             = str_replace( ' ', '+', $img );
         $decoded         = base64_decode( $img );
@@ -163,6 +147,7 @@ class Media extends HttpError
         }
         return true;
     }
+
     /**
      * @return mixed
      */

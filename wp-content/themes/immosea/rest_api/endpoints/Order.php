@@ -10,6 +10,10 @@ class Order extends HttpError {
     private $cart;
     private $contactData;
 
+    public function __construct(ErrorService $error)
+    {
+        $this->error = $error;
+    }
 
     /**
      * @param $request
@@ -18,7 +22,6 @@ class Order extends HttpError {
      */
     public function create_order($request)
     {
-        $this->error = new HttpError();
         $session = new WC_Session_Handler();
         if (!$request->get_params()) {
             return $this->error->setStatusCode(400)->setMessage("Params wasn't set")->report();
@@ -40,10 +43,21 @@ class Order extends HttpError {
         $this->update_order_products($this->getOrderProducts());
         $this->update_order_post_meta($this->getOrderMetas(), $this->getOrderID());
 
-        if ( isset( $session ) )
+        $this->bind_image_with_order($this->cart['image']);
+        if ($this->cart['uploads_images']) {
+            foreach ($this->cart['uploads_images'] as $upload_image) {
+                $this->bind_image_with_order($upload_image);
+            }
+        }
+
+        if (isset( $session )) {
             $session->set('order_awaiting_payment', $this->getOrderID());
+        }
+
+
         $order_items = $this->getOrder()->get_items();
         $response['order_id'] = $this->getOrderID();
+
         if ($order_items) {
             foreach ($order_items as $order_item) {
                 $product = wc_get_product($order_item->get_product_id());
@@ -68,12 +82,21 @@ class Order extends HttpError {
             $result = apply_filters( 'woocommerce_payment_successful_result', $result, $this->getOrderID() );
             $response['result'] = $result;
         }else {
-            $this->setStatusCode(404)->setMessage('Process payment worn');
-            return  $this->report();
+            return $this->error->setStatusCode(404)->setMessage('Process payment worn')->report();
         }
         return $response;
     }
 
+    private function bind_image_with_order($image) {
+        $image_url = wp_get_attachment_image_url($image);
+        if ($image_url && $image) {
+            wp_update_post( array(
+                'ID' => $image,
+                'post_parent' => $this->getOrderID()
+            ));
+            update_post_meta($this->cart['image'], 'order_image', true);
+        }
+    }
     private function updated_order_contact_data($contactData) {
         if (isset($contactData['name'])) {
             $address['first_name'] = $contactData['name'];

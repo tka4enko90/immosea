@@ -96,7 +96,7 @@ class Rest_API {
         register_rest_route("{$root}/{$version}", '/create_order/', array(
                 array(
                     'methods'         => \WP_REST_Server::CREATABLE,
-                    'callback'        => array(new Order(), 'create_order' ),
+                    'callback'        => array(new Order(new HttpError()), 'create_order' ),
                     'permission_callback' => array($this, 'permissions_check' )
                 ),
             )
@@ -119,17 +119,6 @@ class Rest_API {
                 array(
                     'methods'         => \WP_REST_Server::CREATABLE,
                     'callback'        => array(new Media(new HttpError()), 'create_media' ),
-                    'permission_callback' => array($this, 'permissions_check' )
-                ),
-            )
-        );
-        /**
-         * Upload media endpoints
-         */
-        register_rest_route("{$root}/{$version}", '/delete_media/(?P<id>\d+)', array(
-                array(
-                    'methods'         => \WP_REST_Server::CREATABLE,
-                    'callback'        => array(new Media(new HttpError()), 'delete_media' ),
                     'permission_callback' => array($this, 'permissions_check' )
                 ),
             )

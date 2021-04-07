@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php get_header();
+the_post();
+?>
 
 <main class="main">
     <div class="container">
@@ -13,5 +15,6 @@
         </div>
     </div>
 </main>
+
 
 <?php get_footer(); ?>

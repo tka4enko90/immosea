@@ -1,7 +1,6 @@
 <?php
 /* Template Name: Home */
 get_header(); ?>
-
 <?php
     $hero      = get_field('hero');
     $features  = get_field('features');
