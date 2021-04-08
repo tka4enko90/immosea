@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { Product, Order, Media } from '../api';
-import { getPriceByFieldName } from '../utils'
+import { Product, Order } from '../api';
+import { getPriceByFieldName } from '../utils';
 
 Vue.use(Vuex);
 
@@ -41,7 +41,7 @@ export default new Vuex.Store({
       amount: 0
     },
     isLoading: false,
-    isSending: false
+    isSending: false,
   },
 
   getters: {
@@ -131,11 +131,6 @@ export default new Vuex.Store({
     SET_SENDING (state, payload) {
       state.isSending = payload
     },
-
-    SET_IMAGE (state, payload) {
-      console.log(payload);
-      state.img = payload
-    }
   },
 
   actions: {
@@ -145,7 +140,7 @@ export default new Vuex.Store({
         commit('SET_COLLECT_DATA', window.$cookies.get('collectData'))
       }
       if (window.$cookies.get('cart')) {
-        console.log(window.$cookies.get('cart'));
+        // console.log(window.$cookies.get('cart'));
         commit('SET_CART_OPTIONS', window.$cookies.get('cart'))
       }
       // if (window.$cookies.get('contactData')) {
@@ -172,12 +167,5 @@ export default new Vuex.Store({
       await commit('SET_ORDER', res.data)
       await commit('SET_SENDING', false)
     },
-
-    async postImage ({ commit }, data) {
-      const res = await Media.post(data)
-      await commit('SET_IMAGE', res.data)
-      console.log(res);
-    }
-
   }
 });

@@ -72,7 +72,6 @@
                 </div>
             </div>
         </div>
-{{data}}
     </StepWrap>
 </template>
 

@@ -91,4 +91,10 @@
             display: none;
         }
     }
+    
+    &--loading {
+        background: rgba($base-color, .3);
+        opacity: .5;
+        pointer-events: none;
+    }
 }

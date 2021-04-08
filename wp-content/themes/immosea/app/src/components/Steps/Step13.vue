@@ -9,35 +9,20 @@
             }"
             :showPrice="showPrice"
     >
-        <!--<div>-->
-            <!--<label class="uploader"-->
-            <!--&gt;-->
-
-
-                    <!--<span class="uploader__text">test</span>-->
-                    <!--<span class="uploader__title">title</span>-->
-
-                    <!--<input type="file"-->
-                           <!--ref="file"-->
-                           <!--class="uploader__input"-->
-                           <!--accept="application/pdf, image/jpeg, image/png, image/gif, application/msword, image/bmp"-->
-                           <!--@change="dd" />-->
-            <!--</label>-->
-        <!--</div>-->
-        <!--<img :src="src" alt="">-->
         <div class="step__row">
             <div>
-                <UploaderSingle :file="image"
-                                title="Grundrisse laden"
-                                text="JPG, GIF, PNG, BMP je bis 50 VB nicht animert"
-                                @change="handleUpload"
-                                @click="removeFile"
+                <Uploader :file="image && image.attachment_url"
+                          :loading="loading"
+                          title="Grundrisse laden"
+                          text="JPG, GIF, PNG, BMP je bis 50 VB nicht animert"
+                          @change="handleUpload"
+                          @click="removeFile"
                 />
             </div>
             <div>
-                <Uploader multiple
-                          title="Grundrisse laden"
+                <Uploader title="Grundrisse laden"
                           :text="labels.further_floor_plan"
+                          :loading="loading2"
                           name="uploads_images"
                           @change="handleFilesUpload"
                 />
@@ -45,7 +30,7 @@
         </div>
         <div class="uploader__list" v-if="uploads_images.length > 0">
             <div v-for="(file, key) in uploads_images" :key="key">
-                <UploaderPreview :file="getImageUrl(file)"
+                <UploaderPreview :file="file.attachment_url"
                                  :type="file.type"
                                  :name="file.name"
                                  @click="removeFileFromArray(key, uploads_images, 'uploads_images')" />
@@ -63,9 +48,9 @@
 
 <script>
   import { getPriceByFieldName } from '../../utils';
+  import { Media } from '../../api';
   import StepWrap from '../Layout/StepWrap';
   import Uploader from '../Uploader/Uploader';
-  import UploaderSingle from '../Uploader/UploaderSingle';
   import UploaderPreview from '../Uploader/UploaderPreview';
   import Checkbox from '../Form/Checkbox'
 
@@ -74,15 +59,23 @@
     name: 'app-step13',
     components: {
       StepWrap, UploaderPreview,
-      Uploader, UploaderSingle,
+      Uploader,
       Checkbox
     },
     props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
-    data() {return {src:''}},
+    data() {
+      return {
+        loading: false,
+        loading2: false,
+      }
+    },
     computed: {
       image: {
         get() {
           return this.$store.state.cart.image
+        },
+        set(value) {
+          this.$store.commit('SET_CART_OPTIONS', { value })
         }
       },
       uploads_images: {
@@ -107,40 +100,42 @@
       }
     },
     methods: {
-      getImageUrl(file) {
-        return URL.createObjectURL(file)
-      },
       handleUpload(file) {
-        // this.$store.dispatch('postImage', file)
-        this.$store.commit('SET_CART_OPTIONS', { image: file })
+        this.loading = true
+
+        Media.post(file)
+          .then(res => {
+            this.$store.commit('SET_CART_OPTIONS', {image: res.data})
+            this.loading = false
+          })
+          .catch(err => {
+            this.loading = false
+            return new Error(err)
+          })
+      },
+      handleFilesUpload(file, name) {
+        let array     = this.$store.state.cart.uploads_images
+        this.loading2 = true
+
+        Media.post(file)
+          .then(res => {
+            array.push(res.data)
+
+            this.$store.commit('SET_CART_OPTIONS', {[`${name}`]: array})
+            this.loading2 = false
+          })
+          .catch(err => {
+            this.loading2 = false
+            return new Error(err)
+          })
       },
       removeFile() {
-        this.$store.commit('SET_CART_OPTIONS', { image: null })
-      },
-      handleFilesUpload(array, name) {
-        this.$store.commit('SET_CART_OPTIONS', { [`${name}`]: array })
+        this.$store.commit('SET_CART_OPTIONS', {image: null})
       },
       removeFileFromArray(key, array, name) {
         array.splice(key, 1);
-        this.$store.commit('SET_CART_OPTIONS', { [`${name}`]: array })
+        this.$store.commit('SET_CART_OPTIONS', {[`${name}`]: array})
       },
-      dd() {
-        let image = this.$refs.file.files[0];
-
-        const reader = new FileReader()
-        console.log(reader);
-
-        reader.onload = (e) => {
-          // console.log(e.target.result);
-          this.src = e.target.result;
-          this.$store.dispatch('postImage', e.target.result)
-        }
-
-        reader.onerror = function(error) {
-          alert(error);
-        };
-        reader.readAsDataURL(image);
-      }
     }
   }
 </script>

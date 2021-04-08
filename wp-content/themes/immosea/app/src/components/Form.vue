@@ -123,11 +123,12 @@
           },
           {
             step: 10,
-            condition: this.$store.state.cart.expose && this.$store.state.cart.photography && this.$store.state.cart.drone_footage
+            condition: this.$store.state.cart.expose || this.$store.state.cart.photography ||
+              this.$store.state.cart.drone_footage
           },
           {
             step: 11,
-            condition: this.$store.state.cart.expose
+            condition: this.$store.state.cart.expose && (!this.$store.state.cart.floor_plan || !this.$store.state.cart.photography)
           },
           {
             step: 12,
