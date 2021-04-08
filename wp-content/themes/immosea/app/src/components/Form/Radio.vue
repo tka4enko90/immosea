@@ -1,12 +1,14 @@
 <template>
-    <div class="form-radio" :class="{'form-radio--small': small}">
+    <div class="form-radio" :class="{
+        'form-radio--small': small,
+        'form-radio--checked': value === checked
+    }">
         <input
                 type="radio"
                 :disabled="disabled"
                 :val="val"
                 :value="value"
                 :name="name"
-                :checked="value === checked"
                 @input="$emit('change', $event.target.value)"
         >
         <label :for="value">{{ label }}</label>

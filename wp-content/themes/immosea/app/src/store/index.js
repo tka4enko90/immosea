@@ -141,6 +141,7 @@ export default new Vuex.Store({
   actions: {
     setDataFromCookies ({ commit }) {
       if (window.$cookies.get('collectData')) {
+        // console.log(window.$cookies.get('collectData'));
         commit('SET_COLLECT_DATA', window.$cookies.get('collectData'))
       }
       if (window.$cookies.get('cart')) {

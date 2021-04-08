@@ -1,14 +1,25 @@
 import axios from 'axios'
 
 const BASE_URL = 'http://immosea.markupus.tech/wp-json/rest_api/v1';
+
 const headers = {
   'Content-Type': 'application/json',
   Accept: 'application/json',
 };
 
+const headersUploads = {
+  'Content-Type': 'text/plain',
+  Accept: '*/*',
+};
+
 const API = axios.create({
   baseURL: BASE_URL,
   headers
+});
+
+const APIUpload = axios.create({
+  baseURL: BASE_URL,
+  headers: headersUploads
 });
 
 const Product = {
@@ -21,7 +32,7 @@ const Order = {
 };
 
 const Media = {
-  post: data => API.post(`${BASE_URL}/media/`, data),
+  post: data => APIUpload.post(`${BASE_URL}/media/`, data),
 };
 
 

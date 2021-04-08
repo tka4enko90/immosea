@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-
+{{data}}
     </StepWrap>
 </template>
 
@@ -94,7 +94,9 @@
           return this.$store.state.cart
         },
         set(value) {
+          console.log(value);
           this.$store.commit('SET_CART_OPTIONS', value)
+          this.$cookies.set('cart', this.$store.state.cart)
         }
       },
       prices() {

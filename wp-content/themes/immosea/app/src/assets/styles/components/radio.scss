@@ -49,6 +49,14 @@
         margin-left: 10px;
     }
     
+    &--checked {
+        label {
+            &::after {
+                opacity: 1;
+            }
+        }
+    }
+    
     &--small {
         font-size: 14px;
     }

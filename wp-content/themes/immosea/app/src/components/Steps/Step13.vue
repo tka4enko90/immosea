@@ -24,6 +24,7 @@
                            <!--@change="dd" />-->
             <!--</label>-->
         <!--</div>-->
+        <!--<img :src="src" alt="">-->
         <div class="step__row">
             <div>
                 <UploaderSingle :file="image"
@@ -77,7 +78,7 @@
       Checkbox
     },
     props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
-    data() {return {}},
+    data() {return {src:''}},
     computed: {
       image: {
         get() {
@@ -131,7 +132,8 @@
 
         reader.onload = (e) => {
           // console.log(e.target.result);
-          this.$store.dispatch('postImage', {body: e.target.result})
+          this.src = e.target.result;
+          this.$store.dispatch('postImage', e.target.result)
         }
 
         reader.onerror = function(error) {
