@@ -30,6 +30,11 @@
             <textarea class="form__textarea form__textarea--small" id="others" cols="30" rows="10"
                       v-model="collectData.others"></textarea>
         </div>
+        <div class="form__row" v-if="type !== 'property'">
+            <label for="rehabilitation" class="form__label">Vorgenommene Sanierungsmaßnahmen</label>
+            <textarea class="form__textarea form__textarea--small" id="rehabilitation" cols="30" rows="10"
+                      v-model="collectData.rehabilitation"></textarea>
+        </div>
         <div class="form__row--separate">
             <h3 class="text-center">Ich möchte die Werbetexte doch lieber erstellen lassen</h3>
             <div class="form-checkbox form-checkbox--custom" style="max-width: 320px; margin: 0 auto;">
@@ -59,6 +64,9 @@
     props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
     data() {return {}},
     computed: {
+      type() {
+        return this.$store.state.cart.type
+      },
       data: {
         get() {
           return this.$store.state.cart
