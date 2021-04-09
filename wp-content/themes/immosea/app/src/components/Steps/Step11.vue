@@ -12,7 +12,7 @@
         <div class="form__row">
             <InputText v-model="collectData.address" label="Adresse" placeholder="Adresse eingeben" required />
         </div>
-        <div class="form__row">
+        <div class="form__row" v-if="expose">
             <Checkbox v-model="collectData.postcode" label="Im Exposé bitte nur Postleitzahl und Ort angeben." />
         </div>
 
@@ -31,6 +31,7 @@
     props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
     data() {return {}},
     computed: {
+      expose() { return this.$store.state.cart.expose },
       collectData: {
         get() {
           return this.$store.state.collectData

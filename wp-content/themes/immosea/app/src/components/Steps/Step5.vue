@@ -24,7 +24,7 @@
             </div>
             <div>
                 <div class="form-checkbox form-checkbox--custom form-checkbox--green">
-                    <input id="expose" type='checkbox' v-model="data.expose">
+                    <input id="expose" type='checkbox' v-model="expose">
                     <label for="expose">
                         <span>{{ prices.expose }} EUR</span>
                         <strong>Exposé</strong>
@@ -88,14 +88,20 @@
     props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
     data() {return {}},
     computed: {
+      expose: {
+        get() {return this.$store.state.cart.expose},
+        set(value) {
+          this.$store.commit('SET_CART_OPTIONS', { expose: value })
+          this.$cookies.set('cart', this.$store.state.cart)
+        }
+      },
       data: {
         get() {
           return this.$store.state.cart
         },
         set(value) {
-          console.log(value);
           this.$store.commit('SET_CART_OPTIONS', value)
-          this.$cookies.set('cart', this.$store.state.cart)
+          // this.$cookies.set('cart', this.$store.state.cart)
         }
       },
       prices() {
@@ -110,9 +116,7 @@
         }
       }
     },
-    methods: {
-
-    }
+    methods: {}
   }
 </script>
 

@@ -1,12 +1,8 @@
 <template>
     <StepWrap
             :title="title"
-            :buttonPrev="{
-                ...buttonPrev
-            }"
-            :buttonNext="{
-                ...buttonNext,
-            }"
+            :buttonPrev="{...buttonPrev}"
+            :buttonNext="{...buttonNext}"
             :showPrice="showPrice"
     >
         <div class="form__row form__row--flex">
