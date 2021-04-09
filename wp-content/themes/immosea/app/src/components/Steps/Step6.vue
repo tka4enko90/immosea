@@ -211,17 +211,10 @@
         },
         collectData: {
           get() {
-            // console.log(this.$store.state.collectData);
             return this.$store.state.collectData
           },
           set(value) {
-            // console.log(value);
             this.$store.commit('SET_COLLECT_DATA', { value })
-            // console.log(this.$store.state.collectData);
-            this.$cookies.set('collectData', {
-              ...this.$store.state.collectData,
-              value
-            })
           }
         }
     },

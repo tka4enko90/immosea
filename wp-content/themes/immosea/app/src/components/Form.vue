@@ -161,6 +161,9 @@
           this.passedSteps.push(this.activeStep)
           this.activeStep = this.findNextScreen(this.activeStep)
 
+          this.$cookies.set('collectData', this.$store.state.collectData)
+          this.$cookies.set('cart', this.$store.state.cart)
+          this.$cookies.set('contactData', this.$store.state.contactData)
           // localStorage.setItem('activeStep', this.activeStep)
           // localStorage.setItem('passedSteps', JSON.stringify(this.passedSteps))
         }

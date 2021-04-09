@@ -143,10 +143,10 @@ export default new Vuex.Store({
         // console.log(window.$cookies.get('cart'));
         commit('SET_CART_OPTIONS', window.$cookies.get('cart'))
       }
-      // if (window.$cookies.get('contactData')) {
+      if (window.$cookies.get('contactData')) {
       //   console.log(window.$cookies.get('contactData'));
-      //   commit('SET_CONTACT_DATA', window.$cookies.get('contactData'))
-      // }
+        commit('SET_CONTACT_DATA', window.$cookies.get('contactData'))
+      }
     },
 
     async fetchProducts ({ commit }) {

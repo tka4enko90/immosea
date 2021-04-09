@@ -76,7 +76,6 @@
         },
         set(value) {
           this.$store.commit('SET_CONTACT_DATA', { value })
-          this.$cookies.set('contactData', {...value})
         }
       }
     },
