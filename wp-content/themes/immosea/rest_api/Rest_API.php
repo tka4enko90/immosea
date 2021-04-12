@@ -2,6 +2,7 @@
 include 'interfaces/Endpoint.php';
 include 'services/ErrorService.php';
 include 'services/HttpError.php';
+include 'services/Cron_Theme.php';
 
 include 'endpoints/Order.php';
 include 'endpoints/Products.php';
@@ -46,6 +47,7 @@ class Rest_API {
 
         add_action( 'rest_api_init', array($this, 'register_routes'));
         add_action( 'woocommerce_admin_order_totals_after_discount', array($this,'render_order_custom_fields' ), 10 );
+        Cron_Remove_Images::init();
     }
     public function render_order_custom_fields($order) {
         $order = wc_get_order($order);
@@ -77,8 +79,6 @@ class Rest_API {
 
 
     protected function site_create_endpoints($root, $version){
-
-
         /**
          * Get products endpoints
          */

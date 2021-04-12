@@ -22,68 +22,69 @@ class Order extends HttpError {
      */
     public function create_order($request)
     {
-        $session = new WC_Session_Handler();
-        if (!$request->get_params()) {
-            return $this->error->setStatusCode(400)->setMessage("Params wasn't set")->report();
-        }
-        $this->setParams($request->get_params());
-        $order = wc_create_order();
-        $this->setOrder($order);
-        $this->setOrderID($this->getOrder()->ID);
-        $this->setOrderMetas($this->prepare_order_fields($this->getParams('collectData')));
-        $this->setCart($this->getParams('cart'));
-        $this->setContactData($this->getParams('contactData'));
-
-        $products = $this->get_association_of_products($this->cart);
-
-        $this->setOrderProducts($products);
-        if ($this->contactData) {
-            $this->updated_order_contact_data($this->contactData);
-        }
-        $this->update_order_products($this->getOrderProducts());
-        $this->update_order_post_meta($this->getOrderMetas(), $this->getOrderID());
-
-        $this->bind_image_with_order($this->cart['image']);
-        if ($this->cart['uploads_images']) {
-            foreach ($this->cart['uploads_images'] as $upload_image) {
-                $this->bind_image_with_order($upload_image);
+        try {
+            $session = new WC_Session_Handler();
+            if (!$request->get_params()) {
+                return $this->error->setStatusCode(400)->setMessage("Params wasn't set")->report();
             }
-        }
+            $this->setParams($request->get_params());
+            $order = wc_create_order();
+            $this->setOrder($order);
+            $this->setOrderID($this->getOrder()->ID);
+            $this->setOrderMetas($this->prepare_order_fields($this->getParams('collectData')));
+            $this->setCart($this->getParams('cart'));
+            $this->setContactData($this->getParams('contactData'));
+            $products = $this->get_association_of_products($this->cart);
+            $this->setOrderProducts($products);
+            if ($this->contactData) {
+                $this->updated_order_contact_data($this->contactData);
+            }
+            $this->update_order_products($this->getOrderProducts());
+            $this->update_order_post_meta($this->getOrderMetas(), $this->getOrderID());
+            $this->bind_image_with_order($this->cart['image']);
 
-        if (isset( $session )) {
-            $session->set('order_awaiting_payment', $this->getOrderID());
-        }
+            if ($this->cart['uploads_images']) {
+                foreach ($this->cart['uploads_images'] as $upload_image) {
+                    $this->bind_image_with_order($upload_image);
+                }
+            }
 
+            if (isset( $session )) {
+                $session->set('order_awaiting_payment', $this->getOrderID());
+            }
+            $order_items = $this->getOrder()->get_items();
+            $response['order_id'] = $this->getOrderID();
 
-        $order_items = $this->getOrder()->get_items();
-        $response['order_id'] = $this->getOrderID();
-
-        if ($order_items) {
-            foreach ($order_items as $order_item) {
-                $product = wc_get_product($order_item->get_product_id());
-                $response['products'][] = array(
+            if ($order_items) {
+                foreach ($order_items as $order_item) {
+                    $product = wc_get_product($order_item->get_product_id());
+                    $response['products'][] = array(
                         'total' => $order_item->get_total(),
                         'product_id' => $order_item->get_product_id(),
                         'name' => $order_item->get_name(),
                         'quantity' => $order_item->get_quantity(),
                         'sku' => $product->get_sku(),
                         'price' => $product->get_price(),
-                );
+                    );
+                }
+                $response['total_price'] = $this->getOrder()->calculate_totals();
+                $response['currency'] = $this->getOrder()->get_currency();
             }
-            $response['total_price'] = $this->getOrder()->calculate_totals();
-            $response['currency'] = $this->getOrder()->get_currency();
+
+            $this->set_user_to_order();
+            $this->getOrder()->calculate_totals();
+            $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
+            $result = $available_gateways[ 'paypal' ]->process_payment($this->getOrderID());
+            if ( $result['result'] == 'success' ) {
+                $result = apply_filters( 'woocommerce_payment_successful_result', $result, $this->getOrderID() );
+                $response['result'] = $result;
+            }else {
+                return $this->error->setStatusCode(404)->setMessage('Process payment wrong')->report();
+            }
+        } catch (Exception $e) {
+            return $this->error->setStatusCode(404)->setMessage($e->getMessage())->report();
         }
 
-        $this->set_user_to_order();
-        $this->getOrder()->calculate_totals();
-        $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
-        $result = $available_gateways[ 'paypal' ]->process_payment($this->getOrderID());
-        if ( $result['result'] == 'success' ) {
-            $result = apply_filters( 'woocommerce_payment_successful_result', $result, $this->getOrderID() );
-            $response['result'] = $result;
-        }else {
-            return $this->error->setStatusCode(404)->setMessage('Process payment worn')->report();
-        }
         return $response;
     }
 

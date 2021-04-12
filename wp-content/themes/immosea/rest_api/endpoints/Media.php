@@ -8,6 +8,7 @@ class Media extends HttpError
     private $upload_dir;
     private $hashed_filename;
     private $attach_id;
+
     public function __construct(ErrorService $error)
     {
         $this->error = $error;
@@ -54,10 +55,6 @@ class Media extends HttpError
     private function updated_attachment_metadata($attach_id) {
         require_once( ABSPATH . 'wp-admin/includes/image.php' );
         $file_path = wp_get_original_image_path($attach_id);
-        add_filter( 'wp_update_attachment_metadata', (function($data, $attach_id){
-            $data['order_image'] = 1;
-            return $data;
-        }), 10,2);
         $attach_data = wp_generate_attachment_metadata( $attach_id, $file_path );
         update_post_meta($attach_id, 'order_image', false);
         wp_update_attachment_metadata( $attach_id,  $attach_data );
