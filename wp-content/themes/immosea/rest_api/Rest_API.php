@@ -57,7 +57,7 @@ class Rest_API {
             if($meta_datum->key != '_shipping_email' && $meta_datum->key != '_shipping_phone')
             $template .= '
                 <tr>
-                    <td class="total">'.$meta_datum->key.'</td>
+                    <td class="sub-label" style="width:100%">'.$meta_datum->key.'</td>
                     <td class="%1"></td>
                     <td><span class="amount">'.$meta_datum->value.'</span></td>
                 </tr>';
