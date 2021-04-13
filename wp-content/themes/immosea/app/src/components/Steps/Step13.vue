@@ -11,9 +11,8 @@
     >
         <div class="step__row">
             <div>
-                <Uploader :file="image && image.attachment_url"
+                <Uploader title="Grundrisse laden"
                           :loading="loading"
-                          title="Grundrisse laden"
                           text="JPG, GIF, PNG, BMP je bis 50 VB nicht animert"
                           @change="handleUpload"
                           @click="removeFile"
@@ -23,12 +22,19 @@
                 <Uploader title="Grundrisse laden"
                           :text="labels.further_floor_plan"
                           :loading="loading2"
+                          :disabled="!image"
                           name="uploads_images"
                           @change="handleFilesUpload"
                 />
             </div>
         </div>
-        <div class="uploader__list" v-if="uploads_images.length > 0">
+        <div class="uploader__list" v-if="uploads_images.length > 0 || image">
+            <div v-if="image">
+                <UploaderPreview :file="image.attachment_url"
+                                 :type="image.type"
+                                 :name="image.name"
+                                 @click="removeFile" />
+            </div>
             <div v-for="(file, key) in uploads_images" :key="key">
                 <UploaderPreview :file="file.attachment_url"
                                  :type="file.type"

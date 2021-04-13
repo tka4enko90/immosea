@@ -92,9 +92,10 @@
         }
     }
     
-    &--loading {
-        background: rgba($base-color, .3);
-        opacity: .5;
+    &--loading,
+    &--disabled {
+        background: rgba($base-color, .2);
+        opacity: .3;
         pointer-events: none;
     }
 }

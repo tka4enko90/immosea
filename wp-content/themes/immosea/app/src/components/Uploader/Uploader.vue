@@ -3,7 +3,8 @@
            :class="{
                 'uploader--doc': docs,
                 'uploader--no-empty': file,
-                'uploader--loading': loading
+                'uploader--loading': loading,
+                'uploader--disabled': disabled
             }"
     >
         <slot v-if="file">
@@ -21,7 +22,6 @@
                    accept="application/pdf, image/jpeg, image/png, image/gif, application/msword, image/bmp"
                    @change="handleUpload" />
         </slot>
-        {{loading}}
     </label>
 </template>
 <script>
@@ -29,7 +29,7 @@
   export default {
     name: 'app-uploader',
     components: {},
-    props: ['accept', 'title', 'text', 'docs', 'name', 'file', 'loading'],
+    props: ['accept', 'title', 'text', 'docs', 'name', 'file', 'loading', 'disabled'],
     data: () => ({}),
     computed: {},
     watch: {},
