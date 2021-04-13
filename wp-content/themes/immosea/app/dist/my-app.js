@@ -9819,9 +9819,9 @@ var axios = __webpack_require__("bc3a");
 var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 
 // CONCATENATED MODULE: ./src/api/index.js
- // const BASE_URL = 'http://immosea.markupus.tech/wp-json/rest_api/v1';
 
-var BASE_URL = 'http://localhost:8888/immosea//wp-json/rest_api/v1';
+var BASE_URL = 'http://immosea.markupus.tech/wp-json/rest_api/v1'; // const BASE_URL = 'http://localhost:8888/immosea//wp-json/rest_api/v1';
+
 var headers = {
   'Content-Type': 'application/json',
   Accept: 'application/json'
