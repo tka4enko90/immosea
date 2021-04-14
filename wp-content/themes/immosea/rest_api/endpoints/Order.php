@@ -34,8 +34,9 @@ class Order extends HttpError {
             $this->setCart($this->getParams('cart'));
             $this->setCollectData($this->getParams('collectData'));
             $this->setContactData($this->getParams('contactData'));
+            $prepared_order_fields = array_merge($this->prepare_order_fields($this->getCollectData()), $this->prepare_order_fields($this->getCart()));
 
-            $this->setOrderMetas($this->prepare_order_fields($this->getCollectData()));
+            $this->setOrderMetas($prepared_order_fields);
             $products = $this->get_association_of_products($this->cart);
             $this->setOrderProducts($products);
             if ($this->contactData) {
@@ -310,6 +311,23 @@ class Order extends HttpError {
                         $response['Adresse'] = $field;
                     }elseif ($key === 'postcode') {
                         $response['Im Exposé bitte nur Postleitzahl und Ort angeben.'] = $field;
+                    }elseif ($key === 'image') {
+                        if ($fields[$key]['attachment_mine_type'] === 'application/pdf'
+                        || $fields[$key]['attachment_mine_type'] === 'application/msword'
+                        || $fields[$key]['attachment_mine_type'] === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+                            $image = '<img src="'.get_home_url().'/wp-includes/images/media/document.png'.'">' ;
+                        } else {
+                            $image = wp_get_attachment_image($fields[$key]['attachment_id'], 'thumbnail');
+                        }
+
+                        $image ='<div><a href="'.wp_get_attachment_url($fields[$key]['attachment_id']).'" target="_blank">'.$image.'</a></div>';
+                        $response['Image'] = $image;
+                    }elseif ($key === 'uploads_images') {
+                        $images = '';
+                        foreach ($fields[$key] as $item) {
+                            $images .='<div><a href="'.wp_get_attachment_url($item['attachment_id']).'" target="_blank">'.wp_get_attachment_image($item['attachment_id'], 'thumbnail').'</a></div>';
+                        }
+                        $response['Uploads images'] = $images;
                     }elseif ($key === 'uploads_docs') {
                         $images = '';
                         foreach ($fields[$key] as $item) {
