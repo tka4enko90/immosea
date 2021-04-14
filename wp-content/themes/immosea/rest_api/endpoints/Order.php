@@ -37,12 +37,14 @@ class Order extends HttpError {
             $prepared_order_fields = array_merge($this->prepare_order_fields($this->getCollectData()), $this->prepare_order_fields($this->getCart()));
 
             $this->setOrderMetas($prepared_order_fields);
+
             $products = $this->get_association_of_products($this->cart);
             $this->setOrderProducts($products);
             if ($this->contactData) {
                 $this->updated_order_contact_data($this->contactData);
             }
             $this->update_order_products($this->getOrderProducts());
+
             $this->update_order_post_meta($this->getOrderMetas(), $this->getOrderID());
             if ($this->cart['uploads_images']) {
                 foreach ($this->cart['uploads_images'] as $upload_image) {
@@ -139,7 +141,7 @@ class Order extends HttpError {
         foreach ($params as $key => $param) {
             if ($params[$key]) {
                 foreach ($association_of_products as $i => $association_of_product) {
-
+                    $qty = 0;
                     if ($key === 'photography' &&  $params['type'] === 'flat') {
                         $key = 'photography_flat';
                     }elseif($key === 'photography' &&  $params['type'] === 'property') {
@@ -150,11 +152,14 @@ class Order extends HttpError {
                         }else {
                             $key = 'photography_house';
                         }
+                    }elseif( $key === 'further_floor_plan' && isset($this->getCart()['uploads_images'])) {
+                        $qty = count($this->getCart()['uploads_images']);
                     }
+
                     if ($association_of_product['association'] === $key) {
                         $response[] = array(
                             'product_id' => $association_of_product['product']->ID,
-                            'qty' => 1,
+                            'qty' => $qty ? $qty : 1,
                         );
                     }
                 }
@@ -325,19 +330,40 @@ class Order extends HttpError {
                     }elseif ($key === 'uploads_images') {
                         $images = '';
                         foreach ($fields[$key] as $item) {
-                            $images .='<div><a href="'.wp_get_attachment_url($item['attachment_id']).'" target="_blank">'.wp_get_attachment_image($item['attachment_id'], 'thumbnail').'</a></div>';
+                            if ($item['attachment_mine_type'] === 'application/pdf'
+                                || $item['attachment_mine_type'] === 'application/msword'
+                                || $item['attachment_mine_type'] === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+                                $image = '<img src="'.get_home_url().'/wp-includes/images/media/document.png'.'">' ;
+                            } else {
+                                $image = wp_get_attachment_image($item['attachment_id'], 'thumbnail');
+                            }
+                            $images .='<div><a href="'.wp_get_attachment_url($item['attachment_id']).'" target="_blank">'.$image.'</a></div>';
                         }
                         $response['Uploads images'] = $images;
                     }elseif ($key === 'uploads_docs') {
                         $images = '';
                         foreach ($fields[$key] as $item) {
-                            $images .='<div><a href="'.wp_get_attachment_url($item['attachment_id']).'" target="_blank">'.wp_get_attachment_image($item['attachment_id'], 'thumbnail').'</a></div>';
+                            if ($item['attachment_mine_type'] === 'application/pdf'
+                                || $item['attachment_mine_type'] === 'application/msword'
+                                || $item['attachment_mine_type'] === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+                                $image = '<img src="'.get_home_url().'/wp-includes/images/media/document.png'.'">' ;
+                            } else {
+                                $image = wp_get_attachment_image($item['attachment_id'], 'thumbnail');
+                            }
+                            $images .='<div><a href="'.wp_get_attachment_url($item['attachment_id']).'" target="_blank">'.$image.'</a></div>';
                         }
                         $response['Documents'] = $images;
                     }elseif ($key === 'uploads') {
                         $images = '';
                         foreach ($fields[$key] as $item) {
-                            $images .='<div><a href="'.wp_get_attachment_url($item['attachment_id']).'" target="_blank">'.wp_get_attachment_image($item['attachment_id'], 'thumbnail').'</a></div>';
+                            if ($item['attachment_mine_type'] === 'application/pdf'
+                                || $item['attachment_mine_type'] === 'application/msword'
+                                || $item['attachment_mine_type'] === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+                                $image = '<img src="'.get_home_url().'/wp-includes/images/media/document.png'.'">' ;
+                            } else {
+                                $image = wp_get_attachment_image($item['attachment_id'], 'thumbnail');
+                            }
+                            $images .='<div><a href="'.wp_get_attachment_url($item['attachment_id']).'" target="_blank">'.$image.'</a></div>';
                         }
                         $response['Images'] = $images;
                     }
