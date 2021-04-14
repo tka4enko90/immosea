@@ -137,7 +137,6 @@ class Order extends HttpError {
         if (empty($association_of_products)) {
             return $this->error->setStatusCode(400)->setMessage("Association of products wasn't filled")->report();
         }
-
         foreach ($params as $key => $param) {
             if ($params[$key]) {
                 foreach ($association_of_products as $i => $association_of_product) {
@@ -147,15 +146,12 @@ class Order extends HttpError {
                     }elseif($key === 'photography' &&  $params['type'] === 'property') {
                         $key = 'photography_property';
                     }elseif( $key === 'photography' && $params['type'] === 'house') {
-                        if ($params['year'] && strtotime($params['year'].'-01-01') < strtotime('1979-01-01')) {
-                            $key = 'energy_certificate_bg_house';
-                        }else {
-                            $key = 'photography_house';
-                        }
+                        $key = 'photography_house';
                     }elseif( $key === 'further_floor_plan' && isset($this->getCart()['uploads_images'])) {
                         $qty = count($this->getCart()['uploads_images']);
+                    }elseif( $key === 'energy_certificate' && strtotime($params['year'].'-01-01') < strtotime('1979-01-01')) {
+                        $key = 'energy_certificate_bg_house';
                     }
-
                     if ($association_of_product['association'] === $key) {
                         $response[] = array(
                             'product_id' => $association_of_product['product']->ID,

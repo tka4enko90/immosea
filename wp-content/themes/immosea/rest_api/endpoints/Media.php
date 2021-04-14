@@ -97,9 +97,9 @@ class Media extends HttpError
         }elseif($mtype == ( "image/jpg" )){
             $this->setFormat('jpg');
         }elseif($mtype == ( "application/msword" )){
-            $this->setFormat('.doc');
+            $this->setFormat('doc');
         }elseif($mtype == ( "application/vnd.openxmlformats-officedocument.wordprocessingml.document")){
-            $this->setFormat('.docxs');
+            $this->setFormat('docx');
         }else {
             $this->setFormat('doc');
         }
