@@ -127,7 +127,7 @@
           .then(res => {
             array.push(res.data)
 
-            this.$store.commit('SET_CART_OPTIONS', {[`${name}`]: array})
+            this.$store.commit('SET_CART_OPTIONS', {[`${name}`]: array, further_floor_plan: array.length > 0})
             this.loading2 = false
           })
           .catch(err => {
@@ -140,7 +140,7 @@
       },
       removeFileFromArray(key, array, name) {
         array.splice(key, 1);
-        this.$store.commit('SET_CART_OPTIONS', {[`${name}`]: array})
+        this.$store.commit('SET_CART_OPTIONS', {[`${name}`]: array, further_floor_plan: array.length > 0})
       },
     }
   }

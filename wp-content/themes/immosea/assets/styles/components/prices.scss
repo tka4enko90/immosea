@@ -5,6 +5,9 @@
         display: flex;
         border-radius: 8px;
         padding: 18px;
+        @media (max-width: $breakpoint-xsmall-max) {
+            padding: 12px 10px;
+        }
         
         > div {
             flex: 1 1 auto;
@@ -14,11 +17,19 @@
                 text-align: left;
                 font-weight: 700;
                 flex: 0 0 25%;
+                max-width: 25%;
+                @media (max-width: $breakpoint-xsmall-max) {
+                    word-break: break-all;
+                }
+            }
+            @media (max-width: $breakpoint-xsmall-max) {
+                text-align: left;
             }
             
             &:last-child {
                 font-weight: 700;
                 flex: 0 0 18%;
+                text-align: center;
             }
         }
         

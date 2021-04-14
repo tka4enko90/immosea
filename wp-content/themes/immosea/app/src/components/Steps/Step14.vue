@@ -91,6 +91,7 @@
       handlerClick() {
         this.$store.dispatch('createOrder', {
           cart: this.$store.state.cart,
+          collectData: this.$store.state.collectData,
           contactData: this.$store.state.contactData
         });
         this.buttonNext.click()

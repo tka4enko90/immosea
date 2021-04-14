@@ -97,24 +97,24 @@ class Coupon extends HttpError {
             update_post_meta( $order_ID, $key, $value);
         }
     }
-    private function render_order_custom_fields() {
-        $order = $this->getOrder();
-
-        $template = "
-            <tbody>";
-        foreach ($order->get_meta_data() as $meta_datum) {
-            $template .= '
-                <tr>
-                    <td class="total"><span class="amount">'.$meta_datum->key.'</span></td>
-                    <td class="%1"></td>
-                    <td>'.$meta_datum->value.'</td>
-                    
-                </tr>';
-
-        }
-        $template .= '</tbody>';
-        echo $template;
-    }
+//    private function render_order_custom_fields() {
+//        $order = $this->getOrder();
+//
+//        $template = "
+//            <tbody>";
+//        foreach ($order->get_meta_data() as $meta_datum) {
+//            $template .= '
+//                <tr>
+//                    <td class="total"><span class="amount">'.$meta_datum->key.'</span></td>
+//                    <td class="%1"></td>
+//                    <td>'.$meta_datum->value.'</td>
+//
+//                </tr>';
+//
+//        }
+//        $template .= '</tbody>';
+//        echo $template;
+//    }
 
     private function prepare_order_fields($fields) {
         $fields = array(

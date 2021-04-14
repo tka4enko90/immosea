@@ -1,0 +1,36 @@
+#woocommerce-order-items .wc-order-totals {
+    width: 100% !important;
+}
+#woocommerce-order-items .wc-order-data-row {
+    background: #fff;
+}
+#woocommerce-order-items .wc-order-totals {
+    border-collapse: collapse;
+}
+#woocommerce-order-items .wc-order-totals .label,
+#woocommerce-order-items .wc-order-totals .total {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+#woocommerce-order-items .wc-order-totals .total {
+    text-align: right;
+}
+#woocommerce-order-items .wc-order-totals .total .amount{
+    font-size: 1.2rem;
+}
+#woocommerce-order-items .wc-order-totals .sub-label{
+    text-align: left;
+    font-weight: bold;
+}
+.wc-order-totals tr {
+    border-bottom: 1px solid #f8f8f8;
+}
+.wc-order-totals tr td {
+    border-bottom: 1px solid #f8f8f8;
+    padding: 10px 20px 10px;
+    padding-left: 2rem;
+}
+#woocommerce-order-items .wc-order-data-row {
+    padding: 0;
+}

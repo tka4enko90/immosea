@@ -12,6 +12,10 @@ function inclusion_enqueue() {
 }
 add_action('wp_enqueue_scripts','inclusion_enqueue');
 
+add_action( 'admin_enqueue_scripts', function(){
+    wp_enqueue_style( 'admin-style', get_template_directory_uri() .'/dist/admin-style.css' );
+}, 99 );
+
 $include_folders =  array(
     'rest_api/',
     'functions/'

@@ -21,6 +21,7 @@ export default new Vuex.Store({
       energy_certificate: false,
       photography: false,
       drone_footage: false,
+      further_floor_plan: false,
 
       virtual_staging: false,
     },

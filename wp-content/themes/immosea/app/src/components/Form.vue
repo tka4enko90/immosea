@@ -69,7 +69,7 @@
         },
         passedSteps: JSON.parse(localStorage.getItem('passedSteps')) || [],
         questions,
-        activeStep: +localStorage.getItem('activeStep') || 0,
+        activeStep: +localStorage.getItem('activeStep') || 12,
       }
     },
     computed: {
