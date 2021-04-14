@@ -9,11 +9,9 @@ class Order extends HttpError {
     private $order_products;
     private $cart;
     private $contactData;
+    private $collectData;
 
-    public function __construct(ErrorService $error)
-    {
-        $this->error = $error;
-    }
+
 
     /**
      * @param $request
@@ -24,6 +22,7 @@ class Order extends HttpError {
     {
         try {
             $session = new WC_Session_Handler();
+
             if (!$request->get_params()) {
                 return $this->error->setStatusCode(400)->setMessage("Params wasn't set")->report();
             }
@@ -31,9 +30,12 @@ class Order extends HttpError {
             $order = wc_create_order();
             $this->setOrder($order);
             $this->setOrderID($this->getOrder()->ID);
+
             $this->setCart($this->getParams('cart'));
+            $this->setCollectData($this->getParams('collectData'));
             $this->setContactData($this->getParams('contactData'));
-            $this->setOrderMetas($this->prepare_order_fields($this->getParams('collectData')));
+
+            $this->setOrderMetas($this->prepare_order_fields($this->getCollectData()));
             $products = $this->get_association_of_products($this->cart);
             $this->setOrderProducts($products);
             if ($this->contactData) {
@@ -41,12 +43,18 @@ class Order extends HttpError {
             }
             $this->update_order_products($this->getOrderProducts());
             $this->update_order_post_meta($this->getOrderMetas(), $this->getOrderID());
-            $this->bind_image_with_order($this->cart['image']);
-
             if ($this->cart['uploads_images']) {
                 foreach ($this->cart['uploads_images'] as $upload_image) {
                     $this->bind_image_with_order($upload_image);
                 }
+            }
+            if ($this->collectData['uploads_docs']) {
+                foreach ($this->cart['uploads_docs'] as $upload_image) {
+                    $this->bind_image_with_order($upload_image);
+                }
+            }
+            if ($this->cart['image']) {
+                $this->bind_image_with_order($this->cart['image']);
             }
 
             if (isset( $session )) {
@@ -89,13 +97,14 @@ class Order extends HttpError {
     }
 
     private function bind_image_with_order($image) {
-        $image_url = wp_get_attachment_image_url($image);
+
+        $image_url = wp_get_attachment_image_url($image['attachment_id']);
         if ($image_url && $image) {
             wp_update_post( array(
-                'ID' => $image,
+                'ID' => $image['attachment_id'],
                 'post_parent' => $this->getOrderID()
             ));
-            update_post_meta($this->cart['image'], 'order_image', true);
+            update_post_meta($image['attachment_id'], 'order_image', 1);
         }
     }
     private function updated_order_contact_data($contactData) {
@@ -440,5 +449,25 @@ class Order extends HttpError {
     public function setContactData($contactData)
     {
         $this->contactData = $contactData;
+    }
+    /**
+     * @return mixed
+     */
+    public function getCollectData()
+    {
+        return $this->collectData;
+    }
+
+    /**
+     * @param mixed $collectData
+     */
+    public function setCollectData($collectData)
+    {
+        $this->collectData = $collectData;
+    }
+
+    public function __construct(ErrorService $error)
+    {
+        $this->error = $error;
     }
 }
