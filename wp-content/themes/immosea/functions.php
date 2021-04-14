@@ -26,33 +26,7 @@ foreach ($include_folders as $inc_folder) {
         require_once $file;
     }
 }
-//
-//add_action('wpo_wcpdf_after_order_details', (function($item, $order){
-//
-//        $items = $order->get_meta_data();
-//        $templates = '<table class="order-details">';
-//        if( sizeof( $items ) > 0 ) :
-//        foreach( $items as $item_id => $item ) :
-//            $meta = $item->get_data();
-//           $templates .= '
-//            <tr>
-//                <td class="product">
-//                    <dl class="meta">
-//                        <dt class="sku"><dd class="sku">'.$meta['key'].'</dd>
-//                    </dl>
-//                </td>
-//                <td class="product">
-//                    <dl class="meta">
-//                        <dt class="sku"><dd class="sku">'.$meta['value'].'</dd>
-//                    </dl>
-//                </td>
-//            </tr>
-//        ';
-//		 endforeach;
-//		endif;
-//		$templates .= '</table>';
-//    print_r($templates);
-//}), 10, 2);
+
 
 function my_load_scripts($hook) {
     //TODO add hash to url for uncached

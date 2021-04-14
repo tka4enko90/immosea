@@ -42,6 +42,7 @@ class Media extends HttpError
         $this->updated_attachment_metadata($attach_id);
         $response = array(
             'attachment_id' => $attach_id,
+            'attachment_mine_type' => $this->getFileType(),
             'attachment_url' => wp_get_attachment_url($attach_id)
         );
 
@@ -95,6 +96,10 @@ class Media extends HttpError
             $this->setFormat('jpeg');
         }elseif($mtype == ( "image/jpg" )){
             $this->setFormat('jpg');
+        }elseif($mtype == ( "application/msword" )){
+            $this->setFormat('.doc');
+        }elseif($mtype == ( "application/vnd.openxmlformats-officedocument.wordprocessingml.document" )){
+            $this->setFormat('.docxs');
         }else {
             $this->setFormat('doc');
         }
