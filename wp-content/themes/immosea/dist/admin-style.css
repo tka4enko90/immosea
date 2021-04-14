@@ -3,6 +3,7 @@
 }
 #woocommerce-order-items .wc-order-data-row {
     background: #fff;
+    overflow: hidden;
 }
 #woocommerce-order-items .wc-order-totals {
     border-collapse: collapse;
@@ -33,4 +34,9 @@
 }
 #woocommerce-order-items .wc-order-data-row {
     padding: 0;
+}
+.wc-used-coupons {
+    padding: 10px 20px 20px 2rem;
+    border-bottom: 1px solid #f8f8f8;
+    width: 100% !important;
 }
