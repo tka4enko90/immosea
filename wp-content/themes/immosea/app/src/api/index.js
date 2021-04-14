@@ -1,7 +1,5 @@
 import axios from 'axios'
 const BASE_URL = process.env.VUE_APP_API_URL
-console.log(BASE_URL);
-// const BASE_URL = 'http://localhost:8888/immosea//wp-json/rest_api/v1';
 
 const headers = {
   'Content-Type': 'application/json',
