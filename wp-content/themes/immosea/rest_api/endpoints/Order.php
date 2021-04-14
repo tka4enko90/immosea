@@ -97,9 +97,7 @@ class Order extends HttpError {
     }
 
     private function bind_image_with_order($image) {
-
-        $image_url = wp_get_attachment_image_url($image['attachment_id']);
-        if ($image_url && $image) {
+        if (isset($image['attachment_id']) && isset($image['attachment_url'])) {
             wp_update_post( array(
                 'ID' => $image['attachment_id'],
                 'post_parent' => $this->getOrderID()
