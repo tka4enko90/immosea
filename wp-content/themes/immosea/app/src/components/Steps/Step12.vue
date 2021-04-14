@@ -31,7 +31,7 @@
         <div class="uploader__list" v-if="uploads_docs.length > 0">
             <div v-for="(file, key) in uploads_docs" :key="key">
                 <UploaderPreview :file="file.attachment_url"
-                                 :type="file.type"
+                                 :type="file.attachment_mine_type"
                                  :name="file.name"
                                  @click="removeFile(key, uploads_docs, 'uploads_docs')" />
             </div>
@@ -39,7 +39,7 @@
         <div class="uploader__list" v-if="uploads.length > 0">
             <div v-for="(file, key) in uploads" :key="key">
                 <UploaderPreview :file="file.attachment_url"
-                                 :type="file.type"
+                                 :type="file.attachment_mine_type"
                                  :name="file.name"
                                  @click="removeFile(key, uploads, 'uploads')" />
             </div>
