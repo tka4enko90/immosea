@@ -81,8 +81,8 @@
     },
     validations: {
       contactData: {
-        name: { required, length: minLength(4) },
-        last_name: { required, length: minLength(4) },
+        name: { required, length: minLength(1) },
+        last_name: { required, length: minLength(1) },
         email: { required, email },
         phone: { required, length: minLength(6) }
       },

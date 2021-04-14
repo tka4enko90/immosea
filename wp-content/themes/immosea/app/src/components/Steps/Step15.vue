@@ -45,7 +45,7 @@
             </div>
             <div class="table__row table__row--sale" v-if="order.amount > 0">
                 <div>Sale</div>
-                <div>{{ order.amount }} %</div>
+                <div>{{ order.amount }} {{ order.amount_type === 'percent' ? ' %' : ' €'}}</div>
             </div>
         </div>
     </StepWrap>
@@ -74,6 +74,7 @@
           sub_total: this.$store.state.order.sub_total,
           amount: this.$store.state.order.amount,
           products: this.$store.state.order.products,
+          amount_type:  this.$store.state.order.amount_type,
         }
       },
       isLoading() { return this.$store.state.isLoading },

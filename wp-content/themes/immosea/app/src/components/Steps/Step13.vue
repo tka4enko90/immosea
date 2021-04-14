@@ -6,6 +6,7 @@
             :buttonNext="{
                 ...buttonNext,
                 disabled: !image,
+                click: handlerClick
             }"
             :showPrice="showPrice"
     >
@@ -13,7 +14,7 @@
             <div>
                 <Uploader title="Grundrisse laden"
                           :loading="loading"
-                          text="JPG, GIF, PNG, BMP je bis 50 VB nicht animert"
+                          text="JPG, PNG je bis 50 VB nicht animert"
                           @change="handleUpload"
                           @click="removeFile"
                 />
@@ -106,6 +107,10 @@
       }
     },
     methods: {
+      handlerClick() {
+        this.$store.commit('SET_COLLECT_DATA', {uploads_docs: [], uploads: []})
+        this.buttonNext.click()
+      },
       handleUpload(file) {
         this.loading = true
 

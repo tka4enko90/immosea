@@ -5,7 +5,8 @@
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
                 ...buttonNext,
-                disabled: uploads_docs.length < 1
+                disabled: !floor_plan ? uploads_docs.length < 1 : uploads.length < 1,
+                click: handlerClick
             }"
             :showPrice="showPrice"
     >
@@ -13,7 +14,7 @@
             <div v-if="!floor_plan">
                 <Uploader docs=true
                           title="BILD LADEN"
-                          text="JPG, GIF, PNG, BMP je bis 50 VB nicht animert"
+                          text="JPG, PNG je bis 50 VB nicht animert"
                           name="uploads_docs"
                           :loading="loading_uploads_docs"
                           @change="handleUploadDocs"
@@ -21,7 +22,7 @@
             </div>
             <div v-if="!photography">
                 <Uploader title="BILD LADEN"
-                          text="JPG, GIF, PNG, BMP je bis 50 VB nicht animert"
+                          text="JPG, PNG je bis 50 VB nicht animert"
                           name="uploads"
                           :loading="loading_uploads"
                           @change="handleUpload"
@@ -85,6 +86,10 @@
       }
     },
     methods: {
+      handlerClick() {
+        this.$store.commit('SET_CART_OPTIONS', {image: null, uploads_images: [], surcharge_3d_floor: false})
+        this.buttonNext.click()
+      },
       handleUpload(file, name) {
         let array = this.$store.state.collectData.uploads
         this.loading_uploads = true

@@ -4872,8 +4872,8 @@ var staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=22bab1fd&shadow
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Form.vue?vue&type=template&id=5d630c17&scoped=true&
-var Formvue_type_template_id_5d630c17_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form"},[_c('div',{staticClass:"form__holder"},_vm._l((_vm.questions),function(item,index){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.activeStep === index),expression:"activeStep === index"}],key:index},[_c(item.component,{tag:"component",attrs:{"title":item.title,"text":item.text,"showPrice":item.showPrice,"buttonPrev":{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Form.vue?vue&type=template&id=33753e38&scoped=true&
+var Formvue_type_template_id_33753e38_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form"},[_c('div',{staticClass:"form__holder"},_vm._l((_vm.questions),function(item,index){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.activeStep === index),expression:"activeStep === index"}],key:index},[_c(item.component,{tag:"component",attrs:{"title":item.title,"text":item.text,"showPrice":item.showPrice,"buttonPrev":{
                         title: _vm.buttonPrev.title,
                         click: _vm.showPrevScreen,
                         show: _vm.buttonPrev.show
@@ -4881,10 +4881,10 @@ var Formvue_type_template_id_5d630c17_scoped_true_render = function () {var _vm=
                         title: _vm.buttonNext.title,
                         click: _vm.showNextScreen
                     }}})],1)}),0)])}
-var Formvue_type_template_id_5d630c17_scoped_true_staticRenderFns = []
+var Formvue_type_template_id_33753e38_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Form.vue?vue&type=template&id=5d630c17&scoped=true&
+// CONCATENATED MODULE: ./src/components/Form.vue?vue&type=template&id=33753e38&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find.js
 var es_array_find = __webpack_require__("7db0");
@@ -9803,13 +9803,14 @@ var Step11_component = normalizeComponent(
 )
 
 /* harmony default export */ var Step11 = (Step11_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step12.vue?vue&type=template&id=ea828c82&
-var Step12vue_type_template_id_ea828c82_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
-            {disabled: _vm.uploads_docs.length < 1}),"showPrice":_vm.showPrice}},[_c('div',{staticClass:"step__row"},[(!_vm.floor_plan)?_c('div',[_c('Uploader',{attrs:{"docs":"true","title":"BILD LADEN","text":"JPG, GIF, PNG, BMP je bis 50 VB nicht animert","name":"uploads_docs","loading":_vm.loading_uploads_docs},on:{"change":_vm.handleUploadDocs}})],1):_vm._e(),(!_vm.photography)?_c('div',[_c('Uploader',{attrs:{"title":"BILD LADEN","text":"JPG, GIF, PNG, BMP je bis 50 VB nicht animert","name":"uploads","loading":_vm.loading_uploads},on:{"change":_vm.handleUpload}})],1):_vm._e()]),(_vm.uploads_docs.length > 0)?_c('div',{staticClass:"uploader__list"},_vm._l((_vm.uploads_docs),function(file,key){return _c('div',{key:key},[_c('UploaderPreview',{attrs:{"file":file.attachment_url,"type":file.attachment_mine_type,"name":file.name},on:{"click":function($event){return _vm.removeFile(key, _vm.uploads_docs, 'uploads_docs')}}})],1)}),0):_vm._e(),(_vm.uploads.length > 0)?_c('div',{staticClass:"uploader__list"},_vm._l((_vm.uploads),function(file,key){return _c('div',{key:key},[_c('UploaderPreview',{attrs:{"file":file.attachment_url,"type":file.attachment_mine_type,"name":file.name},on:{"click":function($event){return _vm.removeFile(key, _vm.uploads, 'uploads')}}})],1)}),0):_vm._e()])}
-var Step12vue_type_template_id_ea828c82_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step12.vue?vue&type=template&id=e207f1a2&
+var Step12vue_type_template_id_e207f1a2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
+            {disabled: !_vm.floor_plan ? _vm.uploads_docs.length < 1 : _vm.uploads.length < 1,
+            click: _vm.handlerClick}),"showPrice":_vm.showPrice}},[_c('div',{staticClass:"step__row"},[(!_vm.floor_plan)?_c('div',[_c('Uploader',{attrs:{"docs":"true","title":"BILD LADEN","text":"JPG, PNG je bis 50 VB nicht animert","name":"uploads_docs","loading":_vm.loading_uploads_docs},on:{"change":_vm.handleUploadDocs}})],1):_vm._e(),(!_vm.photography)?_c('div',[_c('Uploader',{attrs:{"title":"BILD LADEN","text":"JPG, PNG je bis 50 VB nicht animert","name":"uploads","loading":_vm.loading_uploads},on:{"change":_vm.handleUpload}})],1):_vm._e()]),(_vm.uploads_docs.length > 0)?_c('div',{staticClass:"uploader__list"},_vm._l((_vm.uploads_docs),function(file,key){return _c('div',{key:key},[_c('UploaderPreview',{attrs:{"file":file.attachment_url,"type":file.attachment_mine_type,"name":file.name},on:{"click":function($event){return _vm.removeFile(key, _vm.uploads_docs, 'uploads_docs')}}})],1)}),0):_vm._e(),(_vm.uploads.length > 0)?_c('div',{staticClass:"uploader__list"},_vm._l((_vm.uploads),function(file,key){return _c('div',{key:key},[_c('UploaderPreview',{attrs:{"file":file.attachment_url,"type":file.attachment_mine_type,"name":file.name},on:{"click":function($event){return _vm.removeFile(key, _vm.uploads, 'uploads')}}})],1)}),0):_vm._e()])}
+var Step12vue_type_template_id_e207f1a2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Steps/Step12.vue?vue&type=template&id=ea828c82&
+// CONCATENATED MODULE: ./src/components/Steps/Step12.vue?vue&type=template&id=e207f1a2&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
 var es_array_splice = __webpack_require__("a434");
@@ -9857,17 +9858,17 @@ var Media = {
   }
 };
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Uploader/Uploader.vue?vue&type=template&id=c0185860&scoped=true&
-var Uploadervue_type_template_id_c0185860_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"uploader",class:{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Uploader/Uploader.vue?vue&type=template&id=fce41af0&scoped=true&
+var Uploadervue_type_template_id_fce41af0_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"uploader",class:{
             'uploader--doc': _vm.docs,
             'uploader--no-empty': _vm.file,
             'uploader--loading': _vm.loading,
             'uploader--disabled': _vm.disabled
-        }},[(_vm.file)?_vm._t("default",[_c('img',{attrs:{"src":_vm.file}}),_c('span',{staticClass:"uploader__preview-remove",on:{"click":function($event){return _vm.$emit('click')}}},[_vm._v("x")])]):_vm._t("default",[_c('span',{staticClass:"uploader__text"},[_vm._v(_vm._s(_vm.text))]),_c('span',{staticClass:"uploader__title"},[_vm._v(_vm._s(_vm.title))]),(_vm.loading)?_c('span',{staticClass:"loader loader--small loader--position"}):_vm._e(),_c('input',{ref:"file",staticClass:"uploader__input",attrs:{"type":"file","accept":"application/pdf, image/jpeg, image/png, image/gif, application/msword, image/bmp, application/vnd.openxmlformats-officedocument.wordprocessingml.document"},on:{"change":_vm.handleUpload}})])],2)}
-var Uploadervue_type_template_id_c0185860_scoped_true_staticRenderFns = []
+        }},[(_vm.file)?_vm._t("default",[_c('img',{attrs:{"src":_vm.file}}),_c('span',{staticClass:"uploader__preview-remove",on:{"click":function($event){return _vm.$emit('click')}}},[_vm._v("x")])]):_vm._t("default",[_c('span',{staticClass:"uploader__text"},[_vm._v(_vm._s(_vm.text))]),_c('span',{staticClass:"uploader__title"},[_vm._v(_vm._s(_vm.title))]),(_vm.loading)?_c('span',{staticClass:"loader loader--small loader--position"}):_vm._e(),_c('input',{ref:"file",staticClass:"uploader__input",attrs:{"type":"file","accept":"application/pdf, image/jpeg, image/png, application/msword, image/bmp, application/vnd.openxmlformats-officedocument.wordprocessingml.document"},on:{"change":_vm.handleUpload}})])],2)}
+var Uploadervue_type_template_id_fce41af0_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Uploader/Uploader.vue?vue&type=template&id=c0185860&scoped=true&
+// CONCATENATED MODULE: ./src/components/Uploader/Uploader.vue?vue&type=template&id=fce41af0&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
@@ -9954,11 +9955,11 @@ function Uploader_injectStyles (context) {
 
 var Uploader_component = normalizeComponent(
   Uploader_Uploadervue_type_script_lang_js_,
-  Uploadervue_type_template_id_c0185860_scoped_true_render,
-  Uploadervue_type_template_id_c0185860_scoped_true_staticRenderFns,
+  Uploadervue_type_template_id_fce41af0_scoped_true_render,
+  Uploadervue_type_template_id_fce41af0_scoped_true_staticRenderFns,
   false,
   Uploader_injectStyles,
-  "c0185860",
+  "fce41af0",
   null
   ,true
 )
@@ -10091,6 +10092,7 @@ var UploaderPreview_component = normalizeComponent(
 //
 //
 //
+//
 
 
 
@@ -10128,6 +10130,14 @@ var UploaderPreview_component = normalizeComponent(
     }
   },
   methods: {
+    handlerClick: function handlerClick() {
+      this.$store.commit('SET_CART_OPTIONS', {
+        image: null,
+        uploads_images: [],
+        surcharge_3d_floor: false
+      });
+      this.buttonNext.click();
+    },
     handleUpload: function handleUpload(file, name) {
       var _this = this;
 
@@ -10178,8 +10188,8 @@ var UploaderPreview_component = normalizeComponent(
 
 var Step12_component = normalizeComponent(
   Steps_Step12vue_type_script_lang_js_,
-  Step12vue_type_template_id_ea828c82_render,
-  Step12vue_type_template_id_ea828c82_staticRenderFns,
+  Step12vue_type_template_id_e207f1a2_render,
+  Step12vue_type_template_id_e207f1a2_staticRenderFns,
   false,
   null,
   null,
@@ -10188,17 +10198,19 @@ var Step12_component = normalizeComponent(
 )
 
 /* harmony default export */ var Step12 = (Step12_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step13.vue?vue&type=template&id=a3a76bde&
-var Step13vue_type_template_id_a3a76bde_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
-            {disabled: !_vm.image}),"showPrice":_vm.showPrice}},[_c('div',{staticClass:"step__row"},[_c('div',[_c('Uploader',{attrs:{"title":"Grundrisse laden","loading":_vm.loading,"text":"JPG, GIF, PNG, BMP je bis 50 VB nicht animert"},on:{"change":_vm.handleUpload,"click":_vm.removeFile}})],1),_c('div',[_c('Uploader',{attrs:{"title":"Grundrisse laden","text":_vm.labels.further_floor_plan,"loading":_vm.loading2,"disabled":!_vm.image,"name":"uploads_images"},on:{"change":_vm.handleFilesUpload}})],1)]),(_vm.uploads_images.length > 0 || _vm.image)?_c('div',{staticClass:"uploader__list"},[(_vm.image)?_c('div',[_c('UploaderPreview',{attrs:{"file":_vm.image.attachment_url,"type":_vm.image.attachment_mine_type,"name":_vm.image.name},on:{"click":_vm.removeFile}})],1):_vm._e(),_vm._l((_vm.uploads_images),function(file,key){return _c('div',{key:key},[_c('UploaderPreview',{attrs:{"file":file.attachment_url,"type":file.attachment_mine_type,"name":file.name},on:{"click":function($event){return _vm.removeFileFromArray(key, _vm.uploads_images, 'uploads_images')}}})],1)})],2):_vm._e(),_c('div',{staticClass:"form__row"},[_c('div',{staticClass:"form__area form__area--expand"},[_c('Checkbox',{attrs:{"label":_vm.labels.surcharge_3d_floor},model:{value:(_vm.surcharge_3d_floor),callback:function ($$v) {_vm.surcharge_3d_floor=$$v},expression:"surcharge_3d_floor"}})],1)])])}
-var Step13vue_type_template_id_a3a76bde_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step13.vue?vue&type=template&id=47c83460&
+var Step13vue_type_template_id_47c83460_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
+            {disabled: !_vm.image,
+            click: _vm.handlerClick}),"showPrice":_vm.showPrice}},[_c('div',{staticClass:"step__row"},[_c('div',[_c('Uploader',{attrs:{"title":"Grundrisse laden","loading":_vm.loading,"text":"JPG, PNG je bis 50 VB nicht animert"},on:{"change":_vm.handleUpload,"click":_vm.removeFile}})],1),_c('div',[_c('Uploader',{attrs:{"title":"Grundrisse laden","text":_vm.labels.further_floor_plan,"loading":_vm.loading2,"disabled":!_vm.image,"name":"uploads_images"},on:{"change":_vm.handleFilesUpload}})],1)]),(_vm.uploads_images.length > 0 || _vm.image)?_c('div',{staticClass:"uploader__list"},[(_vm.image)?_c('div',[_c('UploaderPreview',{attrs:{"file":_vm.image.attachment_url,"type":_vm.image.attachment_mine_type,"name":_vm.image.name},on:{"click":_vm.removeFile}})],1):_vm._e(),_vm._l((_vm.uploads_images),function(file,key){return _c('div',{key:key},[_c('UploaderPreview',{attrs:{"file":file.attachment_url,"type":file.attachment_mine_type,"name":file.name},on:{"click":function($event){return _vm.removeFileFromArray(key, _vm.uploads_images, 'uploads_images')}}})],1)})],2):_vm._e(),_c('div',{staticClass:"form__row"},[_c('div',{staticClass:"form__area form__area--expand"},[_c('Checkbox',{attrs:{"label":_vm.labels.surcharge_3d_floor},model:{value:(_vm.surcharge_3d_floor),callback:function ($$v) {_vm.surcharge_3d_floor=$$v},expression:"surcharge_3d_floor"}})],1)])])}
+var Step13vue_type_template_id_47c83460_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Steps/Step13.vue?vue&type=template&id=a3a76bde&
+// CONCATENATED MODULE: ./src/components/Steps/Step13.vue?vue&type=template&id=47c83460&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step13.vue?vue&type=script&lang=js&
 
 
+//
 //
 //
 //
@@ -10308,6 +10320,13 @@ var Step13vue_type_template_id_a3a76bde_staticRenderFns = []
     }
   },
   methods: {
+    handlerClick: function handlerClick() {
+      this.$store.commit('SET_COLLECT_DATA', {
+        uploads_docs: [],
+        uploads: []
+      });
+      this.buttonNext.click();
+    },
     handleUpload: function handleUpload(file) {
       var _this = this;
 
@@ -10366,8 +10385,8 @@ var Step13vue_type_template_id_a3a76bde_staticRenderFns = []
 
 var Step13_component = normalizeComponent(
   Steps_Step13vue_type_script_lang_js_,
-  Step13vue_type_template_id_a3a76bde_render,
-  Step13vue_type_template_id_a3a76bde_staticRenderFns,
+  Step13vue_type_template_id_47c83460_render,
+  Step13vue_type_template_id_47c83460_staticRenderFns,
   false,
   null,
   null,
@@ -10376,8 +10395,8 @@ var Step13_component = normalizeComponent(
 )
 
 /* harmony default export */ var Step13 = (Step13_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step14.vue?vue&type=template&id=66b65d60&
-var Step14vue_type_template_id_66b65d60_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step14.vue?vue&type=template&id=a2dc8c00&
+var Step14vue_type_template_id_a2dc8c00_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
             {title: 'Create Order',
             click: _vm.handlerClick,
             disabled: !_vm.$v.contactData.name.required
@@ -10385,10 +10404,10 @@ var Step14vue_type_template_id_66b65d60_render = function () {var _vm=this;var _
                     || !_vm.$v.contactData.email.required
                     || !_vm.$v.contactData.phone.required
                     || !_vm.$v.contactData.email.email}),"showPrice":_vm.showPrice}},[_c('div',{staticClass:"form__row"},[_c('InputText',{attrs:{"label":"Name","placeholder":"Type","inline":"","required":"","error":!_vm.$v.contactData.name.length,"errorMessage":"At least 4 characters"},on:{"blur":function($event){return _vm.$v.contactData.name.$touch()}},model:{value:(_vm.contactData.name),callback:function ($$v) {_vm.$set(_vm.contactData, "name", $$v)},expression:"contactData.name"}})],1),_c('div',{staticClass:"form__row"},[_c('InputText',{attrs:{"label":"Vorname","placeholder":"Type","inline":"","required":"","error":!_vm.$v.contactData.last_name.length,"errorMessage":"At least 4 characters"},on:{"blur":function($event){return _vm.$v.contactData.last_name.$touch()}},model:{value:(_vm.contactData.last_name),callback:function ($$v) {_vm.$set(_vm.contactData, "last_name", $$v)},expression:"contactData.last_name"}})],1),_c('div',{staticClass:"form__row"},[_c('InputText',{attrs:{"label":"Anschrift","placeholder":"Type","inline":""},model:{value:(_vm.contactData.address),callback:function ($$v) {_vm.$set(_vm.contactData, "address", $$v)},expression:"contactData.address"}})],1),_c('div',{staticClass:"form__row"},[_c('InputText',{attrs:{"label":"PLZ, Ort","placeholder":"Type","inline":""},model:{value:(_vm.contactData.zip),callback:function ($$v) {_vm.$set(_vm.contactData, "zip", $$v)},expression:"contactData.zip"}})],1),_c('div',{staticClass:"form__row"},[_c('InputText',{attrs:{"label":"E-Mail-Adresse","placeholder":"Type","inline":"","type":"email","required":"","error":!_vm.$v.contactData.email.email,"errorMessage":"Must be an email"},on:{"blur":function($event){return _vm.$v.contactData.email.$touch()}},model:{value:(_vm.contactData.email),callback:function ($$v) {_vm.$set(_vm.contactData, "email", $$v)},expression:"contactData.email"}})],1),_c('div',{staticClass:"form__row"},[_c('InputText',{attrs:{"label":"Telefonnummer","placeholder":"Type","inline":"","required":"","error":!_vm.$v.contactData.phone.length,"errorMessage":"Required"},on:{"blur":function($event){return _vm.$v.contactData.phone.$touch()}},model:{value:(_vm.contactData.phone),callback:function ($$v) {_vm.$set(_vm.contactData, "phone", $$v)},expression:"contactData.phone"}})],1)])}
-var Step14vue_type_template_id_66b65d60_staticRenderFns = []
+var Step14vue_type_template_id_a2dc8c00_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Steps/Step14.vue?vue&type=template&id=66b65d60&
+// CONCATENATED MODULE: ./src/components/Steps/Step14.vue?vue&type=template&id=a2dc8c00&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step14.vue?vue&type=script&lang=js&
 //
@@ -10478,11 +10497,11 @@ var Step14vue_type_template_id_66b65d60_staticRenderFns = []
     contactData: {
       name: {
         required: validators["required"],
-        length: Object(validators["minLength"])(4)
+        length: Object(validators["minLength"])(1)
       },
       last_name: {
         required: validators["required"],
-        length: Object(validators["minLength"])(4)
+        length: Object(validators["minLength"])(1)
       },
       email: {
         required: validators["required"],
@@ -10517,8 +10536,8 @@ var Step14vue_type_template_id_66b65d60_staticRenderFns = []
 
 var Step14_component = normalizeComponent(
   Steps_Step14vue_type_script_lang_js_,
-  Step14vue_type_template_id_66b65d60_render,
-  Step14vue_type_template_id_66b65d60_staticRenderFns,
+  Step14vue_type_template_id_a2dc8c00_render,
+  Step14vue_type_template_id_a2dc8c00_staticRenderFns,
   false,
   null,
   null,
@@ -10527,12 +10546,12 @@ var Step14_component = normalizeComponent(
 )
 
 /* harmony default export */ var Step14 = (Step14_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step15.vue?vue&type=template&id=3d79b808&
-var Step15vue_type_template_id_3d79b808_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext),"showPrice":_vm.showPrice,"isLoading":_vm.isLoading}},[_c('div',{staticClass:"table"},[_c('div',{staticClass:"table__row table__row--head"},[_c('div',[_vm._v("Artikelname")]),_c('div',[_vm._v("Einzelpreis")]),_c('div',[_vm._v("Menge")]),_c('div',[_vm._v("Gesamt")])]),_vm._l((_vm.order.products),function(item,index){return _c('div',{key:index,staticClass:"table__row"},[_c('div',[_c('strong',[_vm._v(_vm._s(item.name))]),_vm._v(" Nr. xxx ")]),_c('div',[_vm._v(_vm._s(item.price)+" EUR")]),_c('div',[_vm._v(_vm._s(item.quantity))]),_c('div',[_vm._v(_vm._s(item.price * item.quantity)+" EUR")])])})],2),_c('div',{staticClass:"table__coupon"},[_c('InputText',{attrs:{"label":"Objekttitel","placeholder":"Gustcheincode"},model:{value:(_vm.coupon),callback:function ($$v) {_vm.coupon=$$v},expression:"coupon"}}),_c('button',{staticClass:"button button--small button--primary",class:{'button--disabled': _vm.isSending},on:{"click":_vm.apply}},[_vm._v(" Apply "),(_vm.isSending)?_c('div',{staticClass:"loader loader--small loader--position"}):_vm._e()])],1),_c('div',{staticClass:"table table--total"},[_c('div',{staticClass:"table__row"},[_c('div',[_vm._v("Gesamt")]),_c('div',{staticClass:"table__price"},[_vm._v(" "+_vm._s(_vm.order.total_price)+" € "),(_vm.order.sub_total && _vm.order.amount > 0)?_c('span',{staticClass:"table__old-price"},[_vm._v(_vm._s(_vm.order.sub_total)+" €")]):_vm._e()])]),(_vm.order.amount > 0)?_c('div',{staticClass:"table__row table__row--sale"},[_c('div',[_vm._v("Sale")]),_c('div',[_vm._v(_vm._s(_vm.order.amount)+" %")])]):_vm._e()])])}
-var Step15vue_type_template_id_3d79b808_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step15.vue?vue&type=template&id=13564794&
+var Step15vue_type_template_id_13564794_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext),"showPrice":_vm.showPrice,"isLoading":_vm.isLoading}},[_c('div',{staticClass:"table"},[_c('div',{staticClass:"table__row table__row--head"},[_c('div',[_vm._v("Artikelname")]),_c('div',[_vm._v("Einzelpreis")]),_c('div',[_vm._v("Menge")]),_c('div',[_vm._v("Gesamt")])]),_vm._l((_vm.order.products),function(item,index){return _c('div',{key:index,staticClass:"table__row"},[_c('div',[_c('strong',[_vm._v(_vm._s(item.name))]),_vm._v(" Nr. xxx ")]),_c('div',[_vm._v(_vm._s(item.price)+" EUR")]),_c('div',[_vm._v(_vm._s(item.quantity))]),_c('div',[_vm._v(_vm._s(item.price * item.quantity)+" EUR")])])})],2),_c('div',{staticClass:"table__coupon"},[_c('InputText',{attrs:{"label":"Objekttitel","placeholder":"Gustcheincode"},model:{value:(_vm.coupon),callback:function ($$v) {_vm.coupon=$$v},expression:"coupon"}}),_c('button',{staticClass:"button button--small button--primary",class:{'button--disabled': _vm.isSending},on:{"click":_vm.apply}},[_vm._v(" Apply "),(_vm.isSending)?_c('div',{staticClass:"loader loader--small loader--position"}):_vm._e()])],1),_c('div',{staticClass:"table table--total"},[_c('div',{staticClass:"table__row"},[_c('div',[_vm._v("Gesamt")]),_c('div',{staticClass:"table__price"},[_vm._v(" "+_vm._s(_vm.order.total_price)+" € "),(_vm.order.sub_total && _vm.order.amount > 0)?_c('span',{staticClass:"table__old-price"},[_vm._v(_vm._s(_vm.order.sub_total)+" €")]):_vm._e()])]),(_vm.order.amount > 0)?_c('div',{staticClass:"table__row table__row--sale"},[_c('div',[_vm._v("Sale")]),_c('div',[_vm._v(_vm._s(_vm.order.amount)+" "+_vm._s(_vm.order.amount_type === 'percent' ? ' %' : ' €'))])]):_vm._e()])])}
+var Step15vue_type_template_id_13564794_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Steps/Step15.vue?vue&type=template&id=3d79b808&
+// CONCATENATED MODULE: ./src/components/Steps/Step15.vue?vue&type=template&id=13564794&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step15.vue?vue&type=script&lang=js&
 //
@@ -10609,7 +10628,8 @@ var Step15vue_type_template_id_3d79b808_staticRenderFns = []
         total_price: this.$store.state.order.total_price,
         sub_total: this.$store.state.order.sub_total,
         amount: this.$store.state.order.amount,
-        products: this.$store.state.order.products
+        products: this.$store.state.order.products,
+        amount_type: this.$store.state.order.amount_type
       };
     },
     isLoading: function isLoading() {
@@ -10640,8 +10660,8 @@ var Step15vue_type_template_id_3d79b808_staticRenderFns = []
 
 var Step15_component = normalizeComponent(
   Steps_Step15vue_type_script_lang_js_,
-  Step15vue_type_template_id_3d79b808_render,
-  Step15vue_type_template_id_3d79b808_staticRenderFns,
+  Step15vue_type_template_id_13564794_render,
+  Step15vue_type_template_id_13564794_staticRenderFns,
   false,
   null,
   null,
@@ -10830,7 +10850,7 @@ var questions = [{
         condition: this.$store.state.cart.expose && !this.$store.state.cart.energy_certificate && !this.$store.state.collectData.monument_protection
       }, {
         step: 7,
-        condition: this.$store.state.cart.energy_certificate && !this.$store.state.collectData.monument_protection && !this.$store.state.collectData.ensemble_protection && !this.$store.state.collectData.demolition_object
+        condition: this.$store.state.cart.energy_certificate && (!this.$store.state.collectData.monument_protection || !this.$store.state.collectData.ensemble_protection || !this.$store.state.collectData.demolition_object)
       }, {
         step: 8,
         condition: this.$store.state.cart.expose && !this.$store.state.cart.advertising_copy
@@ -10845,7 +10865,7 @@ var questions = [{
         condition: this.$store.state.cart.expose && (!this.$store.state.cart.floor_plan || !this.$store.state.cart.photography)
       }, {
         step: 12,
-        condition: this.$store.state.cart.floor_plan
+        condition: !this.$store.state.cart.expose && this.$store.state.cart.floor_plan
       }, {
         step: 13,
         condition: true
@@ -10907,11 +10927,11 @@ function Form_injectStyles (context) {
 
 var Form_component = normalizeComponent(
   components_Formvue_type_script_lang_js_,
-  Formvue_type_template_id_5d630c17_scoped_true_render,
-  Formvue_type_template_id_5d630c17_scoped_true_staticRenderFns,
+  Formvue_type_template_id_33753e38_scoped_true_render,
+  Formvue_type_template_id_33753e38_scoped_true_staticRenderFns,
   false,
   Form_injectStyles,
-  "5d630c17",
+  "33753e38",
   null
   ,true
 )
