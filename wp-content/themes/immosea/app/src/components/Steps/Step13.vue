@@ -31,13 +31,13 @@
         <div class="uploader__list" v-if="uploads_images.length > 0 || image">
             <div v-if="image">
                 <UploaderPreview :file="image.attachment_url"
-                                 :type="image.type"
+                                 :type="image.attachment_mine_type"
                                  :name="image.name"
                                  @click="removeFile" />
             </div>
             <div v-for="(file, key) in uploads_images" :key="key">
                 <UploaderPreview :file="file.attachment_url"
-                                 :type="file.type"
+                                 :type="file.attachment_mine_type"
                                  :name="file.name"
                                  @click="removeFileFromArray(key, uploads_images, 'uploads_images')" />
             </div>
@@ -127,7 +127,7 @@
           .then(res => {
             array.push(res.data)
 
-            this.$store.commit('SET_CART_OPTIONS', {[`${name}`]: array})
+            this.$store.commit('SET_CART_OPTIONS', {[`${name}`]: array, further_floor_plan: array.length > 0})
             this.loading2 = false
           })
           .catch(err => {
@@ -140,7 +140,7 @@
       },
       removeFileFromArray(key, array, name) {
         array.splice(key, 1);
-        this.$store.commit('SET_CART_OPTIONS', {[`${name}`]: array})
+        this.$store.commit('SET_CART_OPTIONS', {[`${name}`]: array, further_floor_plan: array.length > 0})
       },
     }
   }

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://immosea.lvh.me/wp-json/rest_api/v1';
+const BASE_URL = 'http://immosea.markupus.tech/wp-json/rest_api/v1';
 // const BASE_URL = 'http://localhost:8888/immosea//wp-json/rest_api/v1';
 
 const headers = {

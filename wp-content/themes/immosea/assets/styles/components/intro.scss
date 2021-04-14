@@ -76,6 +76,12 @@
             a {
                 color: #fff;
             }
+            &.current-menu-item {
+                a {
+                    color: $primary-color;
+                    opacity: .6;
+                }
+            }
         }
     }
 }
