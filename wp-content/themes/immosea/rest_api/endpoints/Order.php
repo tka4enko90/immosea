@@ -149,6 +149,11 @@ class Order extends HttpError {
                         $key = 'photography_house';
                     }elseif( $key === 'further_floor_plan' && isset($this->getCart()['uploads_images'])) {
                         $qty = count($this->getCart()['uploads_images']);
+                    }elseif( $key === 'surcharge_3d_floor' && (isset($this->getCart()['uploads_images']) || isset($this->getCart()['image']))) {
+                        $uploads = [];
+                        $uploads[] = $this->getCart()['image'];
+                        $uploads = array_merge($uploads, $this->getCart()['uploads_images']);
+                        $qty = count($uploads);
                     }elseif( $key === 'energy_certificate' && strtotime($params['year'].'-01-01') < strtotime('1979-01-01')) {
                         $key = 'energy_certificate_bg_house';
                     }
