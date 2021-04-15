@@ -82,7 +82,7 @@
                         <a href="<?php echo $button['url'] ?>"
                            class="button button--outline button--small header__button"
                         >
-                            Start Now
+                            <?php echo $button['title'] ?>
                         </a>
                     <?php endif; ?>
                 <?php }
