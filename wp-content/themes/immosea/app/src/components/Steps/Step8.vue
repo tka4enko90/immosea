@@ -16,7 +16,7 @@
             <li>
                 <Radio
                         label="Nein, dann benötige ich keinen Energieausweis für meine Immobilie. "
-                        value=false id="np" name="radio" v-model="energy_certificate"
+                        value=false id="no" name="radio" v-model="energy_certificate"
                 />
             </li>
         </ul>

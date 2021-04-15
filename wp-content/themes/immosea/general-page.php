@@ -34,18 +34,21 @@ get_header(); ?>
                         <img src="<?php echo $hero['image']['url'] ?>">
                     </div>
                 <?php endif ;?>
-                <div class="intro__bar">
-                    <div class="container">
-                        <?php
-                            $args = array(
-                                'theme_location'=>'services',
-                                'container'=>'',
-                                'menu_class'=>'intro__bar-nav',
-                            );
-                            wp_nav_menu($args);
-                        ?>
+
+                <?php if($hero['show_menu']) : ?>
+                    <div class="intro__bar">
+                        <div class="container">
+                            <?php
+                                $args = array(
+                                    'theme_location'=>'services',
+                                    'container'=>'',
+                                    'menu_class'=>'intro__bar-nav',
+                                );
+                                wp_nav_menu($args);
+                            ?>
+                        </div>
                     </div>
-                </div>
+                <?php endif ;?>
             </div>
         <?php endif ;?>
 

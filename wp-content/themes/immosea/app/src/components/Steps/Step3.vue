@@ -13,14 +13,16 @@
             :showPrice="showPrice"
     >
         <div class="form__row">
-            <InputText label="Baujahr"
-                       v-model="year"
-                       type="number"
-                       placeholder="Gebe hier das Baujahr der Immobilie an."
-                       @blur="$v.year.$touch()"
-                       :error="!$v.year.between"
-                       errorMessage="Please enter valid year"
-            />
+            <div class="form__label">Baujahr</div>
+            <div v-show="!addOption">
+                <InputText v-model="year"
+                           type="number"
+                           placeholder="Gebe hier das Baujahr der Immobilie an."
+                           @blur="$v.year.$touch()"
+                           :error="!$v.year.between"
+                           errorMessage="Please enter valid year"
+                />
+            </div>
         </div>
 
         <div class="form__row">

@@ -4467,7 +4467,7 @@ __webpack_require__.r(__webpack_exports__);
 
 if (typeof window !== 'undefined') {
   var currentScript = window.document.currentScript
-  if (Object({"NODE_ENV":"production","VUE_APP_API_URL":"http://immosea.markupus.tech/wp-json/rest_api/v1","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
+  if (Object({"NODE_ENV":"production","VUE_APP_API_URL":"http://localhost:8888/immosea//wp-json/rest_api/v1","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
     var getCurrentScript = __webpack_require__("8875")
     currentScript = getCurrentScript()
 
@@ -4872,8 +4872,8 @@ var staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=22bab1fd&shadow
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Form.vue?vue&type=template&id=33753e38&scoped=true&
-var Formvue_type_template_id_33753e38_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form"},[_c('div',{staticClass:"form__holder"},_vm._l((_vm.questions),function(item,index){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.activeStep === index),expression:"activeStep === index"}],key:index},[_c(item.component,{tag:"component",attrs:{"title":item.title,"text":item.text,"showPrice":item.showPrice,"buttonPrev":{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Form.vue?vue&type=template&id=043c5d11&scoped=true&
+var Formvue_type_template_id_043c5d11_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form"},[_c('div',{staticClass:"form__holder"},_vm._l((_vm.questions),function(item,index){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.activeStep === index),expression:"activeStep === index"}],key:index},[_c(item.component,{tag:"component",attrs:{"title":item.title,"text":item.text,"showPrice":item.showPrice,"buttonPrev":{
                         title: _vm.buttonPrev.title,
                         click: _vm.showPrevScreen,
                         show: _vm.buttonPrev.show
@@ -4881,10 +4881,10 @@ var Formvue_type_template_id_33753e38_scoped_true_render = function () {var _vm=
                         title: _vm.buttonNext.title,
                         click: _vm.showNextScreen
                     }}})],1)}),0)])}
-var Formvue_type_template_id_33753e38_scoped_true_staticRenderFns = []
+var Formvue_type_template_id_043c5d11_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Form.vue?vue&type=template&id=33753e38&scoped=true&
+// CONCATENATED MODULE: ./src/components/Form.vue?vue&type=template&id=043c5d11&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find.js
 var es_array_find = __webpack_require__("7db0");
@@ -5463,13 +5463,13 @@ var Step2_component = normalizeComponent(
 )
 
 /* harmony default export */ var Step2 = (Step2_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step3.vue?vue&type=template&id=1e5cab62&
-var Step3vue_type_template_id_1e5cab62_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
-            {disabled: !_vm.year}),"showPrice":_vm.showPrice}},[_c('div',{staticClass:"form__row"},[_c('InputText',{attrs:{"label":"Baujahr","type":"number","placeholder":"Gebe hier das Baujahr der Immobilie an.","error":!_vm.$v.year.between,"errorMessage":"Please enter valid year"},on:{"blur":function($event){return _vm.$v.year.$touch()}},model:{value:(_vm.year),callback:function ($$v) {_vm.year=$$v},expression:"year"}})],1),_c('div',{staticClass:"form__row"},[_c('Checkbox',{attrs:{"label":"Ich weiß das genaue Baujahr nicht"},model:{value:(_vm.addOption),callback:function ($$v) {_vm.addOption=$$v},expression:"addOption"}})],1),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.addOption),expression:"addOption"}]},[_c('div',{staticClass:"form__row"},[_c('Radio',{attrs:{"label":"bis 1978","value":"1978","name":"radio"},model:{value:(_vm.year),callback:function ($$v) {_vm.year=$$v},expression:"year"}})],1),_c('div',{staticClass:"form__row"},[_c('Radio',{attrs:{"label":"ab 1979","value":"1979","name":"radio"},model:{value:(_vm.year),callback:function ($$v) {_vm.year=$$v},expression:"year"}})],1)])])}
-var Step3vue_type_template_id_1e5cab62_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step3.vue?vue&type=template&id=51f215b4&
+var Step3vue_type_template_id_51f215b4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
+            {disabled: !_vm.year}),"showPrice":_vm.showPrice}},[_c('div',{staticClass:"form__row"},[_c('div',{staticClass:"form__label"},[_vm._v("Baujahr")]),_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.addOption),expression:"!addOption"}]},[_c('InputText',{attrs:{"type":"number","placeholder":"Gebe hier das Baujahr der Immobilie an.","error":!_vm.$v.year.between,"errorMessage":"Please enter valid year"},on:{"blur":function($event){return _vm.$v.year.$touch()}},model:{value:(_vm.year),callback:function ($$v) {_vm.year=$$v},expression:"year"}})],1)]),_c('div',{staticClass:"form__row"},[_c('Checkbox',{attrs:{"label":"Ich weiß das genaue Baujahr nicht"},model:{value:(_vm.addOption),callback:function ($$v) {_vm.addOption=$$v},expression:"addOption"}})],1),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.addOption),expression:"addOption"}]},[_c('div',{staticClass:"form__row"},[_c('Radio',{attrs:{"label":"bis 1978","value":"1978","name":"radio"},model:{value:(_vm.year),callback:function ($$v) {_vm.year=$$v},expression:"year"}})],1),_c('div',{staticClass:"form__row"},[_c('Radio',{attrs:{"label":"ab 1979","value":"1979","name":"radio"},model:{value:(_vm.year),callback:function ($$v) {_vm.year=$$v},expression:"year"}})],1)])])}
+var Step3vue_type_template_id_51f215b4_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Steps/Step3.vue?vue&type=template&id=1e5cab62&
+// CONCATENATED MODULE: ./src/components/Steps/Step3.vue?vue&type=template&id=51f215b4&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Form/Checkbox.vue?vue&type=template&id=4b3ff014&scoped=true&
 var Checkboxvue_type_template_id_4b3ff014_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form-checkbox"},[_c('input',{attrs:{"type":"checkbox","name":_vm.name,"disabled":_vm.disabled,"id":_vm.id},domProps:{"value":_vm.value},on:{"input":function($event){return _vm.$emit('change', $event.target.checked)}}}),(_vm.label)?_c('label',[_vm._v(_vm._s(_vm.label))]):_vm._e()])}
@@ -5706,6 +5706,8 @@ var validators = __webpack_require__("b5ae");
 //
 //
 //
+//
+//
 
 
 
@@ -5759,8 +5761,8 @@ var validators = __webpack_require__("b5ae");
 
 var Step3_component = normalizeComponent(
   Steps_Step3vue_type_script_lang_js_,
-  Step3vue_type_template_id_1e5cab62_render,
-  Step3vue_type_template_id_1e5cab62_staticRenderFns,
+  Step3vue_type_template_id_51f215b4_render,
+  Step3vue_type_template_id_51f215b4_staticRenderFns,
   false,
   null,
   null,
@@ -9418,12 +9420,12 @@ var Step7_component = normalizeComponent(
 )
 
 /* harmony default export */ var Step7 = (Step7_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step8.vue?vue&type=template&id=31d82450&
-var Step8vue_type_template_id_31d82450_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext),"showPrice":_vm.showPrice}},[_c('ul',{staticClass:"form__list"},[_c('li',[_c('Radio',{attrs:{"label":"Ja, ich möchte dennoch einen Energieausweis für meine Immobilie.","value":"true","id":"yes","name":"radio"},model:{value:(_vm.energy_certificate),callback:function ($$v) {_vm.energy_certificate=$$v},expression:"energy_certificate"}})],1),_c('li',[_c('Radio',{attrs:{"label":"Nein, dann benötige ich keinen Energieausweis für meine Immobilie. ","value":"false","id":"np","name":"radio"},model:{value:(_vm.energy_certificate),callback:function ($$v) {_vm.energy_certificate=$$v},expression:"energy_certificate"}})],1)])])}
-var Step8vue_type_template_id_31d82450_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step8.vue?vue&type=template&id=156eeb8f&
+var Step8vue_type_template_id_156eeb8f_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext),"showPrice":_vm.showPrice}},[_c('ul',{staticClass:"form__list"},[_c('li',[_c('Radio',{attrs:{"label":"Ja, ich möchte dennoch einen Energieausweis für meine Immobilie.","value":"true","id":"yes","name":"radio"},model:{value:(_vm.energy_certificate),callback:function ($$v) {_vm.energy_certificate=$$v},expression:"energy_certificate"}})],1),_c('li',[_c('Radio',{attrs:{"label":"Nein, dann benötige ich keinen Energieausweis für meine Immobilie. ","value":"false","id":"no","name":"radio"},model:{value:(_vm.energy_certificate),callback:function ($$v) {_vm.energy_certificate=$$v},expression:"energy_certificate"}})],1)])])}
+var Step8vue_type_template_id_156eeb8f_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Steps/Step8.vue?vue&type=template&id=31d82450&
+// CONCATENATED MODULE: ./src/components/Steps/Step8.vue?vue&type=template&id=156eeb8f&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step8.vue?vue&type=script&lang=js&
 //
@@ -9489,8 +9491,8 @@ var Step8vue_type_template_id_31d82450_staticRenderFns = []
 
 var Step8_component = normalizeComponent(
   Steps_Step8vue_type_script_lang_js_,
-  Step8vue_type_template_id_31d82450_render,
-  Step8vue_type_template_id_31d82450_staticRenderFns,
+  Step8vue_type_template_id_156eeb8f_render,
+  Step8vue_type_template_id_156eeb8f_staticRenderFns,
   false,
   null,
   null,
@@ -9821,9 +9823,7 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 
 // CONCATENATED MODULE: ./src/api/index.js
 
-var BASE_URL = "http://immosea.markupus.tech/wp-json/rest_api/v1";
-console.log(BASE_URL); // const BASE_URL = 'http://localhost:8888/immosea//wp-json/rest_api/v1';
-
+var BASE_URL = "http://localhost:8888/immosea//wp-json/rest_api/v1";
 var headers = {
   'Content-Type': 'application/json',
   Accept: 'application/json'
@@ -10851,7 +10851,7 @@ var questions = [{
         condition: this.$store.state.cart.expose && !this.$store.state.cart.energy_certificate && !this.$store.state.collectData.monument_protection
       }, {
         step: 7,
-        condition: this.$store.state.cart.energy_certificate && (!this.$store.state.collectData.monument_protection || !this.$store.state.collectData.ensemble_protection || !this.$store.state.collectData.demolition_object)
+        condition: this.$store.state.cart.energy_certificate && (this.$store.state.collectData.monument_protection || this.$store.state.collectData.ensemble_protection || this.$store.state.collectData.demolition_object)
       }, {
         step: 8,
         condition: this.$store.state.cart.expose && !this.$store.state.cart.advertising_copy
@@ -10928,11 +10928,11 @@ function Form_injectStyles (context) {
 
 var Form_component = normalizeComponent(
   components_Formvue_type_script_lang_js_,
-  Formvue_type_template_id_33753e38_scoped_true_render,
-  Formvue_type_template_id_33753e38_scoped_true_staticRenderFns,
+  Formvue_type_template_id_043c5d11_scoped_true_render,
+  Formvue_type_template_id_043c5d11_scoped_true_staticRenderFns,
   false,
   Form_injectStyles,
-  "33753e38",
+  "043c5d11",
   null
   ,true
 )
@@ -12042,7 +12042,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var withParams = Object({"NODE_ENV":"production","VUE_APP_API_URL":"http://immosea.markupus.tech/wp-json/rest_api/v1","BASE_URL":"/"}).BUILD === 'web' ? __webpack_require__("cb69").withParams : __webpack_require__("0234").withParams;
+var withParams = Object({"NODE_ENV":"production","VUE_APP_API_URL":"http://localhost:8888/immosea//wp-json/rest_api/v1","BASE_URL":"/"}).BUILD === 'web' ? __webpack_require__("cb69").withParams : __webpack_require__("0234").withParams;
 var _default = withParams;
 exports.default = _default;
 

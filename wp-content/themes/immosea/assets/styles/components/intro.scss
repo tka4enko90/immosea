@@ -75,11 +75,16 @@
             }
             a {
                 color: #fff;
+                opacity: 0.5;
+                &:hover {
+                    text-decoration: none;
+                    opacity: 1;
+                }
             }
             &.current-menu-item {
                 a {
-                    color: $primary-color;
-                    opacity: .6;
+                    text-decoration: none;
+                    opacity: 1;
                 }
             }
         }
