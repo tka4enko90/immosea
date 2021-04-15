@@ -4872,8 +4872,8 @@ var staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=22bab1fd&shadow
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Form.vue?vue&type=template&id=33753e38&scoped=true&
-var Formvue_type_template_id_33753e38_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form"},[_c('div',{staticClass:"form__holder"},_vm._l((_vm.questions),function(item,index){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.activeStep === index),expression:"activeStep === index"}],key:index},[_c(item.component,{tag:"component",attrs:{"title":item.title,"text":item.text,"showPrice":item.showPrice,"buttonPrev":{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Form.vue?vue&type=template&id=043c5d11&scoped=true&
+var Formvue_type_template_id_043c5d11_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form"},[_c('div',{staticClass:"form__holder"},_vm._l((_vm.questions),function(item,index){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.activeStep === index),expression:"activeStep === index"}],key:index},[_c(item.component,{tag:"component",attrs:{"title":item.title,"text":item.text,"showPrice":item.showPrice,"buttonPrev":{
                         title: _vm.buttonPrev.title,
                         click: _vm.showPrevScreen,
                         show: _vm.buttonPrev.show
@@ -4881,10 +4881,10 @@ var Formvue_type_template_id_33753e38_scoped_true_render = function () {var _vm=
                         title: _vm.buttonNext.title,
                         click: _vm.showNextScreen
                     }}})],1)}),0)])}
-var Formvue_type_template_id_33753e38_scoped_true_staticRenderFns = []
+var Formvue_type_template_id_043c5d11_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Form.vue?vue&type=template&id=33753e38&scoped=true&
+// CONCATENATED MODULE: ./src/components/Form.vue?vue&type=template&id=043c5d11&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find.js
 var es_array_find = __webpack_require__("7db0");
@@ -9420,12 +9420,12 @@ var Step7_component = normalizeComponent(
 )
 
 /* harmony default export */ var Step7 = (Step7_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step8.vue?vue&type=template&id=31d82450&
-var Step8vue_type_template_id_31d82450_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext),"showPrice":_vm.showPrice}},[_c('ul',{staticClass:"form__list"},[_c('li',[_c('Radio',{attrs:{"label":"Ja, ich möchte dennoch einen Energieausweis für meine Immobilie.","value":"true","id":"yes","name":"radio"},model:{value:(_vm.energy_certificate),callback:function ($$v) {_vm.energy_certificate=$$v},expression:"energy_certificate"}})],1),_c('li',[_c('Radio',{attrs:{"label":"Nein, dann benötige ich keinen Energieausweis für meine Immobilie. ","value":"false","id":"np","name":"radio"},model:{value:(_vm.energy_certificate),callback:function ($$v) {_vm.energy_certificate=$$v},expression:"energy_certificate"}})],1)])])}
-var Step8vue_type_template_id_31d82450_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step8.vue?vue&type=template&id=156eeb8f&
+var Step8vue_type_template_id_156eeb8f_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext),"showPrice":_vm.showPrice}},[_c('ul',{staticClass:"form__list"},[_c('li',[_c('Radio',{attrs:{"label":"Ja, ich möchte dennoch einen Energieausweis für meine Immobilie.","value":"true","id":"yes","name":"radio"},model:{value:(_vm.energy_certificate),callback:function ($$v) {_vm.energy_certificate=$$v},expression:"energy_certificate"}})],1),_c('li',[_c('Radio',{attrs:{"label":"Nein, dann benötige ich keinen Energieausweis für meine Immobilie. ","value":"false","id":"no","name":"radio"},model:{value:(_vm.energy_certificate),callback:function ($$v) {_vm.energy_certificate=$$v},expression:"energy_certificate"}})],1)])])}
+var Step8vue_type_template_id_156eeb8f_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Steps/Step8.vue?vue&type=template&id=31d82450&
+// CONCATENATED MODULE: ./src/components/Steps/Step8.vue?vue&type=template&id=156eeb8f&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step8.vue?vue&type=script&lang=js&
 //
@@ -9491,8 +9491,8 @@ var Step8vue_type_template_id_31d82450_staticRenderFns = []
 
 var Step8_component = normalizeComponent(
   Steps_Step8vue_type_script_lang_js_,
-  Step8vue_type_template_id_31d82450_render,
-  Step8vue_type_template_id_31d82450_staticRenderFns,
+  Step8vue_type_template_id_156eeb8f_render,
+  Step8vue_type_template_id_156eeb8f_staticRenderFns,
   false,
   null,
   null,
@@ -10851,7 +10851,7 @@ var questions = [{
         condition: this.$store.state.cart.expose && !this.$store.state.cart.energy_certificate && !this.$store.state.collectData.monument_protection
       }, {
         step: 7,
-        condition: this.$store.state.cart.energy_certificate && (!this.$store.state.collectData.monument_protection || !this.$store.state.collectData.ensemble_protection || !this.$store.state.collectData.demolition_object)
+        condition: this.$store.state.cart.energy_certificate && (this.$store.state.collectData.monument_protection || this.$store.state.collectData.ensemble_protection || this.$store.state.collectData.demolition_object)
       }, {
         step: 8,
         condition: this.$store.state.cart.expose && !this.$store.state.cart.advertising_copy
@@ -10928,11 +10928,11 @@ function Form_injectStyles (context) {
 
 var Form_component = normalizeComponent(
   components_Formvue_type_script_lang_js_,
-  Formvue_type_template_id_33753e38_scoped_true_render,
-  Formvue_type_template_id_33753e38_scoped_true_staticRenderFns,
+  Formvue_type_template_id_043c5d11_scoped_true_render,
+  Formvue_type_template_id_043c5d11_scoped_true_staticRenderFns,
   false,
   Form_injectStyles,
-  "33753e38",
+  "043c5d11",
   null
   ,true
 )
