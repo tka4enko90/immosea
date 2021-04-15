@@ -21,16 +21,26 @@ class Order extends HttpError {
     public function create_order($request)
     {
         try {
-            $session = new WC_Session_Handler();
-
             if (!$request->get_params()) {
                 return $this->error->setStatusCode(400)->setMessage("Params wasn't set")->report();
             }
             $this->setParams($request->get_params());
-            $order = wc_create_order();
+
+            WC()->initialize_session();
+            if (isset(WC()->session)) {
+                if (!WC()->session->has_session()) {
+                    WC()->session->set_customer_session_cookie(true);
+                }
+            }
+            if (!WC()->session->get('order_awaiting_payment')) {
+                $order =  wc_create_order();
+                WC()->session->set('order_awaiting_payment', $order->get_id());
+            } else {
+                $order = wc_get_order( WC()->session->get('order_awaiting_payment'));
+            }
+
             $this->setOrder($order);
             $this->setOrderID($this->getOrder()->ID);
-
             $this->setCart($this->getParams('cart'));
             $this->setCollectData($this->getParams('collectData'));
             $this->setContactData($this->getParams('contactData'));
@@ -46,6 +56,7 @@ class Order extends HttpError {
             $this->update_order_products($this->getOrderProducts());
 
             $this->update_order_post_meta($this->getOrderMetas(), $this->getOrderID());
+
             if ($this->cart['uploads_images']) {
                 foreach ($this->cart['uploads_images'] as $upload_image) {
                     $this->bind_image_with_order($upload_image);
@@ -128,8 +139,8 @@ class Order extends HttpError {
             $address['address_1'] = $contactData['address'];
         }
 
-        $this->order->set_address( $address, 'billing' );
-        $this->order->set_address( $address, 'shipping' );
+        $this->getOrder()->set_address( $address, 'billing' );
+        $this->getOrder()->set_address( $address, 'shipping' );
     }
 
     private function get_association_of_products($params) {
@@ -143,18 +154,18 @@ class Order extends HttpError {
                     $qty = 0;
                     if ($key === 'photography' &&  $params['type'] === 'flat') {
                         $key = 'photography_flat';
-                    }elseif($key === 'photography' &&  $params['type'] === 'property') {
+                    } elseif($key === 'photography' &&  $params['type'] === 'property') {
                         $key = 'photography_property';
-                    }elseif( $key === 'photography' && $params['type'] === 'house') {
+                    } elseif( $key === 'photography' && $params['type'] === 'house') {
                         $key = 'photography_house';
-                    }elseif( $key === 'further_floor_plan' && isset($this->getCart()['uploads_images'])) {
+                    } elseif( $key === 'further_floor_plan' && isset($this->getCart()['uploads_images'])) {
                         $qty = count($this->getCart()['uploads_images']);
-                    }elseif( $key === 'surcharge_3d_floor' && (isset($this->getCart()['uploads_images']) || isset($this->getCart()['image']))) {
+                    } elseif( $key === 'surcharge_3d_floor' && (isset($this->getCart()['uploads_images']) || isset($this->getCart()['image']))) {
                         $uploads = [];
                         $uploads[] = $this->getCart()['image'];
                         $uploads = array_merge($uploads, $this->getCart()['uploads_images']);
                         $qty = count($uploads);
-                    }elseif( $key === 'energy_certificate' && strtotime($params['year'].'-01-01') < strtotime('1979-01-01')) {
+                    } elseif( $key === 'energy_certificate' && strtotime($params['year'].'-01-01') < strtotime('1979-01-01')) {
                         $key = 'energy_certificate_bg_house';
                     }
                     if ($association_of_product['association'] === $key) {
@@ -177,6 +188,7 @@ class Order extends HttpError {
         }
     }
     private function update_order_products($products) {
+        $this->getOrder()->remove_order_items();
         foreach ($products as $item) {
             if (isset($item['product_id']) && $item['product_id']) {
                 $this->getOrder()->add_product( wc_get_product($item['product_id']  ), isset($item['qty']) ? $item['qty'] : 1 );
@@ -186,7 +198,11 @@ class Order extends HttpError {
 
     private function update_order_post_meta($order_metas, $order_ID) {
         foreach ($order_metas as $key => $value) {
-            update_post_meta( $order_ID, $key, $value);
+            if ($value) {
+                update_post_meta( $order_ID, $key, $value);
+            }else {
+                delete_post_meta( $order_ID, $key);
+            }
         }
     }
 
@@ -194,10 +210,8 @@ class Order extends HttpError {
     private function prepare_order_fields($fields) {
         if ($fields) {
             $response = [];
-
             if ($fields) {
                 foreach ($fields as $key => $field) {
-                    if (!$fields[$key]) continue;
                     $field =  strip_tags($field);
                     if ($key === 'name_house') {
                         $response[$field] = $field;
