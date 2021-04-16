@@ -4,7 +4,9 @@
             :text="text"
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
-                ...buttonNext,}"
+                ...buttonNext,
+                click: onClick
+            }"
             :showPrice="showPrice"
             :isLoading="isLoading"
     >
@@ -28,7 +30,7 @@
         <div class="table__coupon">
             <InputText label="Objekttitel" placeholder="Gustcheincode" v-model="coupon" />
             <button class="button button--small button--primary"
-                    :class="{'button--disabled': isSending}"
+                    :class="{'button--disabled': isSending || !coupon}"
                     @click="apply"
             >
                 Apply
@@ -75,6 +77,7 @@
           amount: this.$store.state.order.amount,
           products: this.$store.state.order.products,
           amount_type:  this.$store.state.order.amount_type,
+          path: this.$store.state.order.result && this.$store.state.order.result.redirect || "/"
         }
       },
       isLoading() { return this.$store.state.isLoading },
@@ -86,6 +89,9 @@
           coupon: this.coupon,
           order_id: this.order.order_id
         });
+      },
+      onClick() {
+        window.location.href = this.order.path
       }
     }
   }

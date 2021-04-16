@@ -137,29 +137,37 @@ export default new Vuex.Store({
   actions: {
     setDataFromCookies ({ commit }) {
       if (window.$cookies.get('collectData')) {
-        // console.log(window.$cookies.get('collectData'));
         commit('SET_COLLECT_DATA', window.$cookies.get('collectData'))
       }
       if (window.$cookies.get('cart')) {
-        // console.log(window.$cookies.get('cart'));
         commit('SET_CART_OPTIONS', window.$cookies.get('cart'))
       }
       if (window.$cookies.get('contactData')) {
-      //   console.log(window.$cookies.get('contactData'));
         commit('SET_CONTACT_DATA', window.$cookies.get('contactData'))
       }
     },
 
     async fetchProducts ({ commit }) {
-      const res = await Product.get()
-      await commit('SET_PRODUCTS', res.data)
+      try {
+        const res = await Product.get()
+        await commit('SET_PRODUCTS', res.data)
+      }
+      catch (e) {
+        console.error(e);
+      }
     },
 
     async createOrder ({ commit }, data) {
-      await commit('SET_LOADING', true)
-      const res = await Order.post(data)
-      await commit('SET_ORDER', res.data)
-      await commit('SET_LOADING', false)
+      try {
+        await commit('SET_LOADING', true)
+        const res = await Order.post(data)
+        await commit('SET_ORDER', res.data)
+        await commit('SET_LOADING', false)
+      }
+      catch (e) {
+        console.error(e);
+        await commit('SET_LOADING', false)
+      }
     },
 
     async applyCoupon ({ commit }, data) {
