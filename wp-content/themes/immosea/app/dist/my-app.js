@@ -9823,9 +9823,9 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 
 // CONCATENATED MODULE: ./src/api/index.js
  // const BASE_URL = process.env.VUE_APP_API_URL
+// const hostName = window.location.origin
 
-var hostName = window.location.origin; // const hostName = 'http://localhost:8888/immosea/'
-
+var hostName = 'http://localhost:8888/immosea/';
 var BASE_URL = "".concat(hostName, "/wp-json/rest_api/v1");
 var headers = {
   'Content-Type': 'application/json',
@@ -10550,14 +10550,17 @@ var Step14_component = normalizeComponent(
 )
 
 /* harmony default export */ var Step14 = (Step14_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step15.vue?vue&type=template&id=13564794&
-var Step15vue_type_template_id_13564794_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext),"showPrice":_vm.showPrice,"isLoading":_vm.isLoading}},[_c('div',{staticClass:"table"},[_c('div',{staticClass:"table__row table__row--head"},[_c('div',[_vm._v("Artikelname")]),_c('div',[_vm._v("Einzelpreis")]),_c('div',[_vm._v("Menge")]),_c('div',[_vm._v("Gesamt")])]),_vm._l((_vm.order.products),function(item,index){return _c('div',{key:index,staticClass:"table__row"},[_c('div',[_c('strong',[_vm._v(_vm._s(item.name))]),_vm._v(" Nr. xxx ")]),_c('div',[_vm._v(_vm._s(item.price)+" EUR")]),_c('div',[_vm._v(_vm._s(item.quantity))]),_c('div',[_vm._v(_vm._s(item.price * item.quantity)+" EUR")])])})],2),_c('div',{staticClass:"table__coupon"},[_c('InputText',{attrs:{"label":"Objekttitel","placeholder":"Gustcheincode"},model:{value:(_vm.coupon),callback:function ($$v) {_vm.coupon=$$v},expression:"coupon"}}),_c('button',{staticClass:"button button--small button--primary",class:{'button--disabled': _vm.isSending},on:{"click":_vm.apply}},[_vm._v(" Apply "),(_vm.isSending)?_c('div',{staticClass:"loader loader--small loader--position"}):_vm._e()])],1),_c('div',{staticClass:"table table--total"},[_c('div',{staticClass:"table__row"},[_c('div',[_vm._v("Gesamt")]),_c('div',{staticClass:"table__price"},[_vm._v(" "+_vm._s(_vm.order.total_price)+" € "),(_vm.order.sub_total && _vm.order.amount > 0)?_c('span',{staticClass:"table__old-price"},[_vm._v(_vm._s(_vm.order.sub_total)+" €")]):_vm._e()])]),(_vm.order.amount > 0)?_c('div',{staticClass:"table__row table__row--sale"},[_c('div',[_vm._v("Sale")]),_c('div',[_vm._v(_vm._s(_vm.order.amount)+" "+_vm._s(_vm.order.amount_type === 'percent' ? ' %' : ' €'))])]):_vm._e()])])}
-var Step15vue_type_template_id_13564794_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step15.vue?vue&type=template&id=5721a90a&
+var Step15vue_type_template_id_5721a90a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
+            {click: _vm.onClick}),"showPrice":_vm.showPrice,"isLoading":_vm.isLoading}},[_c('div',{staticClass:"table"},[_c('div',{staticClass:"table__row table__row--head"},[_c('div',[_vm._v("Artikelname")]),_c('div',[_vm._v("Einzelpreis")]),_c('div',[_vm._v("Menge")]),_c('div',[_vm._v("Gesamt")])]),_vm._l((_vm.order.products),function(item,index){return _c('div',{key:index,staticClass:"table__row"},[_c('div',[_c('strong',[_vm._v(_vm._s(item.name))]),_vm._v(" Nr. xxx ")]),_c('div',[_vm._v(_vm._s(item.price)+" EUR")]),_c('div',[_vm._v(_vm._s(item.quantity))]),_c('div',[_vm._v(_vm._s(item.price * item.quantity)+" EUR")])])})],2),_c('div',{staticClass:"table__coupon"},[_c('InputText',{attrs:{"label":"Objekttitel","placeholder":"Gustcheincode"},model:{value:(_vm.coupon),callback:function ($$v) {_vm.coupon=$$v},expression:"coupon"}}),_c('button',{staticClass:"button button--small button--primary",class:{'button--disabled': _vm.isSending || !_vm.coupon},on:{"click":_vm.apply}},[_vm._v(" Apply "),(_vm.isSending)?_c('div',{staticClass:"loader loader--small loader--position"}):_vm._e()])],1),_c('div',{staticClass:"table table--total"},[_c('div',{staticClass:"table__row"},[_c('div',[_vm._v("Gesamt")]),_c('div',{staticClass:"table__price"},[_vm._v(" "+_vm._s(_vm.order.total_price)+" € "),(_vm.order.sub_total && _vm.order.amount > 0)?_c('span',{staticClass:"table__old-price"},[_vm._v(_vm._s(_vm.order.sub_total)+" €")]):_vm._e()])]),(_vm.order.amount > 0)?_c('div',{staticClass:"table__row table__row--sale"},[_c('div',[_vm._v("Sale")]),_c('div',[_vm._v(_vm._s(_vm.order.amount)+" "+_vm._s(_vm.order.amount_type === 'percent' ? ' %' : ' €'))])]):_vm._e()])])}
+var Step15vue_type_template_id_5721a90a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Steps/Step15.vue?vue&type=template&id=13564794&
+// CONCATENATED MODULE: ./src/components/Steps/Step15.vue?vue&type=template&id=5721a90a&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step15.vue?vue&type=script&lang=js&
+//
+//
 //
 //
 //
@@ -10633,7 +10636,8 @@ var Step15vue_type_template_id_13564794_staticRenderFns = []
         sub_total: this.$store.state.order.sub_total,
         amount: this.$store.state.order.amount,
         products: this.$store.state.order.products,
-        amount_type: this.$store.state.order.amount_type
+        amount_type: this.$store.state.order.amount_type,
+        path: this.$store.state.order.result && this.$store.state.order.result.redirect || "/"
       };
     },
     isLoading: function isLoading() {
@@ -10649,6 +10653,9 @@ var Step15vue_type_template_id_13564794_staticRenderFns = []
         coupon: this.coupon,
         order_id: this.order.order_id
       });
+    },
+    onClick: function onClick() {
+      window.location.href = this.order.path;
     }
   }
 });
@@ -10664,8 +10671,8 @@ var Step15vue_type_template_id_13564794_staticRenderFns = []
 
 var Step15_component = normalizeComponent(
   Steps_Step15vue_type_script_lang_js_,
-  Step15vue_type_template_id_13564794_render,
-  Step15vue_type_template_id_13564794_staticRenderFns,
+  Step15vue_type_template_id_5721a90a_render,
+  Step15vue_type_template_id_5721a90a_staticRenderFns,
   false,
   null,
   null,
@@ -11089,17 +11096,14 @@ external_Vue_default.a.use(vuex_esm["a" /* default */]);
       var commit = _ref.commit;
 
       if (window.$cookies.get('collectData')) {
-        // console.log(window.$cookies.get('collectData'));
         commit('SET_COLLECT_DATA', window.$cookies.get('collectData'));
       }
 
       if (window.$cookies.get('cart')) {
-        // console.log(window.$cookies.get('cart'));
         commit('SET_CART_OPTIONS', window.$cookies.get('cart'));
       }
 
       if (window.$cookies.get('contactData')) {
-        //   console.log(window.$cookies.get('contactData'));
         commit('SET_CONTACT_DATA', window.$cookies.get('contactData'));
       }
     },
@@ -11111,20 +11115,30 @@ external_Vue_default.a.use(vuex_esm["a" /* default */]);
             switch (_context.prev = _context.next) {
               case 0:
                 commit = _ref2.commit;
-                _context.next = 3;
+                _context.prev = 1;
+                _context.next = 4;
                 return Product.get();
 
-              case 3:
+              case 4:
                 res = _context.sent;
-                _context.next = 6;
+                _context.next = 7;
                 return commit('SET_PRODUCTS', res.data);
 
-              case 6:
+              case 7:
+                _context.next = 12;
+                break;
+
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](1);
+                console.error(_context.t0);
+
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, null, [[1, 9]]);
       }))();
     },
     createOrder: function createOrder(_ref3, data) {
@@ -11135,28 +11149,40 @@ external_Vue_default.a.use(vuex_esm["a" /* default */]);
             switch (_context2.prev = _context2.next) {
               case 0:
                 commit = _ref3.commit;
-                _context2.next = 3;
+                _context2.prev = 1;
+                _context2.next = 4;
                 return commit('SET_LOADING', true);
 
-              case 3:
-                _context2.next = 5;
+              case 4:
+                _context2.next = 6;
                 return Order.post(data);
 
-              case 5:
+              case 6:
                 res = _context2.sent;
-                _context2.next = 8;
+                _context2.next = 9;
                 return commit('SET_ORDER', res.data);
 
-              case 8:
-                _context2.next = 10;
+              case 9:
+                _context2.next = 11;
                 return commit('SET_LOADING', false);
 
-              case 10:
+              case 11:
+                _context2.next = 18;
+                break;
+
+              case 13:
+                _context2.prev = 13;
+                _context2.t0 = _context2["catch"](1);
+                console.error(_context2.t0);
+                _context2.next = 18;
+                return commit('SET_LOADING', false);
+
+              case 18:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 13]]);
       }))();
     },
     applyCoupon: function applyCoupon(_ref4, data) {
