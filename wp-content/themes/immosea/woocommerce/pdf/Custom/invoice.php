@@ -123,9 +123,9 @@
 <table class="order-details">
     <thead>
     <tr>
-        <th class="product"><?php _e('Key', 'woocommerce-pdf-invoices-packing-slips' ); ?></th>
+        <th class="product"><?php _e('Key', 'immosea' ); ?></th>
         <th></th>
-        <th class="price"><?php _e('Value', 'woocommerce-pdf-invoices-packing-slips' ); ?></th>
+        <th class="price"><?php _e('Value', 'immosea' ); ?></th>
     </tr>
     </thead>
 
@@ -138,6 +138,7 @@
                 $meta_datum->key != '_shipping_phone'
                 && $meta_datum->key != '_new_order_email_sent'
                 && $meta_datum->key != '_paypal_status'
+                && $meta_datum->key != 'Payment type'
                 && strpos($meta_datum->key, '_wcpdf') !== 0
         )
             $template .= '

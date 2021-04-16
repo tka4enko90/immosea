@@ -58,6 +58,7 @@ class Rest_API {
                 && $meta_datum->key != '_shipping_phone'
                 && $meta_datum->key != '_new_order_email_sent'
                 && $meta_datum->key != '_paypal_status'
+                && $meta_datum->key != 'Payment type'
                 && strpos($meta_datum->key, '_wcpdf') !== 0)
             $template .= '
                 <tr>

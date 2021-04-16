@@ -123,7 +123,7 @@ class Order extends HttpError {
         if (isset($contactData['name'])) {
             $address['first_name'] = $contactData['name'];
         }
-        if (isset($contactData['lastName'])) {
+        if (isset($contactData['last_name'])) {
             $address['last_name'] = $contactData['last_name'];
         }
         if (isset($contactData['email'])) {
@@ -138,9 +138,9 @@ class Order extends HttpError {
         if (isset($contactData['address'])) {
             $address['address_1'] = $contactData['address'];
         }
-
         $this->getOrder()->set_address( $address, 'billing' );
         $this->getOrder()->set_address( $address, 'shipping' );
+
     }
 
     private function get_association_of_products($params) {
