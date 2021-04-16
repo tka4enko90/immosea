@@ -54,7 +54,8 @@ class Rest_API {
         $template = "
             <tbody>";
         foreach ($order->get_meta_data() as $meta_datum) {
-            if($meta_datum->key != '_shipping_email' && $meta_datum->key != '_shipping_phone')
+            if($meta_datum->key != '_shipping_email' && $meta_datum->key != '_shipping_phone'&&
+                strpos($meta_datum->key, '_wcpdf') !== 0)
             $template .= '
                 <tr>
                     <td class="sub-label" style="width:100%">'.$meta_datum->key.'</td>
