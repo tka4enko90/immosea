@@ -32,7 +32,7 @@ class Order extends HttpError {
                     WC()->session->set_customer_session_cookie(true);
                 }
             }
-            if (!WC()->session->get('order_awaiting_payment')) {
+            if (!WC()->session->get('order_awaiting_payment') || !wc_get_order(WC()->session->get('order_awaiting_payment'))) {
                 $order =  wc_create_order();
                 WC()->session->set('order_awaiting_payment', $order->get_id());
             } else {
@@ -124,7 +124,7 @@ class Order extends HttpError {
             $address['first_name'] = $contactData['name'];
         }
         if (isset($contactData['lastName'])) {
-            $address['last_name'] = $contactData['lastName'];
+            $address['last_name'] = $contactData['last_name'];
         }
         if (isset($contactData['email'])) {
             $address['email'] = $contactData['email'];
