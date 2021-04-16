@@ -10,7 +10,7 @@
     >
         <div class="form__row" v-if="type !== 'property'">
             <label class="form__label">Ausstattung</label>
-            <v-select :options="options" v-model="collectData.furnishing" placeholder="Select" multiple />
+            <v-select :options="options" v-model="collectData.furnishing" placeholder="Auswählen" multiple />
         </div>
         <div class="form__row" v-if="type !== 'property'">
             <label for="furtherEquipment" class="form__label">Weitere Ausstattung</label>
@@ -24,7 +24,7 @@
         </div>
         <div class="form__row" v-if="type !== 'property'">
             <label class="form__label">Bodenbeläge</label>
-            <v-select :options="options2" v-model="collectData.floor_coverings" placeholder="Select" multiple />
+            <v-select :options="options2" v-model="collectData.floor_coverings" placeholder="Auswählen" multiple />
         </div>
         <div class="form__row">
             <label for="keyPoints" class="form__label">Beschreibung (Stichpunkte)</label>

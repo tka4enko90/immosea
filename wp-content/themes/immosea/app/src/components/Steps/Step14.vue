@@ -17,7 +17,7 @@
     >
         <div class="form__row">
             <InputText v-model="contactData.name"
-                       label="Name" placeholder="Type" inline required
+                       label="Name" placeholder="Hier eintragen" inline required
                        @blur="$v.contactData.name.$touch()"
                        :error="!$v.contactData.name.length"
                        errorMessage="At least 4 characters"
@@ -25,21 +25,21 @@
         </div>
         <div class="form__row">
             <InputText v-model="contactData.last_name"
-                       label="Vorname" placeholder="Type" inline required
+                       label="Vorname" placeholder="Hier eintragen" inline required
                        @blur="$v.contactData.last_name.$touch()"
                        :error="!$v.contactData.last_name.length"
                        errorMessage="At least 4 characters"
             />
         </div>
         <div class="form__row">
-            <InputText v-model="contactData.address" label="Anschrift" placeholder="Type" inline />
+            <InputText v-model="contactData.address" label="Anschrift" placeholder="Hier eintragen" inline />
         </div>
         <div class="form__row">
-            <InputText v-model="contactData.zip" label="PLZ, Ort" placeholder="Type" inline />
+            <InputText v-model="contactData.zip" label="PLZ, Ort" placeholder="Hier eintragen" inline />
         </div>
         <div class="form__row">
             <InputText v-model="contactData.email"
-                       label="E-Mail-Adresse" placeholder="Type" inline type="email" required
+                       label="E-Mail-Adresse" placeholder="Hier eintragen" inline type="email" required
                        @blur="$v.contactData.email.$touch()"
                        :error="!$v.contactData.email.email"
                        errorMessage="Must be an email"
@@ -47,7 +47,7 @@
         </div>
         <div class="form__row">
             <InputText v-model="contactData.phone"
-                       label="Telefonnummer" placeholder="Type" inline required
+                       label="Telefonnummer" placeholder="Hier eintragen" inline required
                        @blur="$v.contactData.phone.$touch()"
                        :error="!$v.contactData.phone.length"
                        errorMessage="Required"

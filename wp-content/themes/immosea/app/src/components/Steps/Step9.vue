@@ -8,7 +8,7 @@
     >
         <div class="form__row">
             <InputText v-model="collectData.title"
-                       label="Objekttitel" placeholder="Type" />
+                       label="Objekttitel" placeholder="Hier eintragen" />
         </div>
         <div class="form__row">
             <label for="description" class="form__label">Objektbeschreibung</label>
