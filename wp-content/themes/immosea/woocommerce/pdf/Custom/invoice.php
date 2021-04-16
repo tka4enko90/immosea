@@ -135,8 +135,10 @@
     foreach ($order->get_meta_data() as $meta_datum) {
         if(
         $meta_datum->key != '_shipping_email' &&
-                $meta_datum->key != '_shipping_phone' &&
-                strpos($meta_datum->key, '_wcpdf') !== 0
+                $meta_datum->key != '_shipping_phone'
+                && $meta_datum->key != '_new_order_email_sent'
+                && $meta_datum->key != '_paypal_status'
+                && strpos($meta_datum->key, '_wcpdf') !== 0
         )
             $template .= '
                 <tr>
