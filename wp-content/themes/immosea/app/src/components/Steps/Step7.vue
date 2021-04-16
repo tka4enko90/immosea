@@ -15,12 +15,12 @@
                 <div class="form__row form__row--flex">
                     <div class="form__area form__area--expand">
                         <label class="form__label">Heizung</label>
-                        <v-select :options="options" v-model="collectData.heater" placeholder="Select" />
+                        <v-select :options="options" v-model="collectData.heater" placeholder="Auswählen" />
                     </div>
                     <div class="form__area form__area--expand">
                         <label class="form__label">Energieausweis</label>
                         <v-select :options="options2" v-model="collectData.energy_certificate"
-                                  placeholder="Select" />
+                                  placeholder="Auswählen" />
                     </div>
                     <div class="form__area form__area--expand">
                         <InputText v-model="collectData.consumption_value" type="number"
@@ -32,7 +32,7 @@
                         <div class="form__date">
                             <datepicker v-model="collectData.valid_energy_certificate"
                                         format="yyyy-MM-dd"
-                                        placeholder="Select Date"
+                                        placeholder="Datum auswählen"
                                         clearButton calendarButton />
                         </div>
                     </div>
