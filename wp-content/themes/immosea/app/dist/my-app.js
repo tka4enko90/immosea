@@ -9822,8 +9822,11 @@ var axios = __webpack_require__("bc3a");
 var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 
 // CONCATENATED MODULE: ./src/api/index.js
+ // const BASE_URL = process.env.VUE_APP_API_URL
 
-var BASE_URL = "http://localhost:8888/immosea//wp-json/rest_api/v1";
+var hostName = window.location.origin; // const hostName = 'http://localhost:8888/immosea/'
+
+var BASE_URL = "".concat(hostName, "/wp-json/rest_api/v1");
 var headers = {
   'Content-Type': 'application/json',
   Accept: 'application/json'
