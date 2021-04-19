@@ -68,6 +68,7 @@
                     <label for="drone_footage">
                         <span></span>
                         <strong>Drohnenaufnahmen</strong>
+                        Das I-Tüpfelchen für deinen Werbeauftritt
                     </label>
                 </div>
             </div>

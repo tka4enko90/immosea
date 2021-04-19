@@ -135,7 +135,7 @@ get_header(); ?>
                             <div class="banner__line">
                                 <div>auf dich und<br/>deine Immobillie</div>
                                 <strong>A</strong>
-                                <div>angepasst</div>
+                                <div>ngepasst</div>
                             </div>
                         </div>
                     </div>

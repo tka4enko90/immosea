@@ -20,4 +20,22 @@
     &__text {
         flex: 1 1 auto;
     }
+    
+    ul {
+        &:not([class]) {
+            > li {
+                &::before {
+                    background: #fff;
+                }
+            }
+        }
+    }
+    
+    a {
+        color: #fff;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }

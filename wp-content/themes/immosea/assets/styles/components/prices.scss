@@ -5,21 +5,24 @@
         display: flex;
         border-radius: 8px;
         padding: 18px;
-        @media (max-width: $breakpoint-xsmall-max) {
+        @media (max-width: $breakpoint-small-max) {
+            font-size: 13px;
             padding: 12px 10px;
+            flex-wrap: wrap;
         }
         
         > div {
             flex: 1 1 auto;
             padding: 0 5px;
-            text-align: center;
             &:first-child {
                 text-align: left;
                 font-weight: 700;
                 flex: 0 0 25%;
                 max-width: 25%;
                 @media (max-width: $breakpoint-xsmall-max) {
-                    word-break: break-all;
+                    width: 100%;
+                    max-width: 100%;
+                    flex: 0 0 100%;
                 }
             }
             @media (max-width: $breakpoint-xsmall-max) {
@@ -28,8 +31,7 @@
             
             &:last-child {
                 font-weight: 700;
-                flex: 0 0 18%;
-                text-align: center;
+                flex: 0 0 19%;
             }
         }
         

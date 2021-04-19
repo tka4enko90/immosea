@@ -5,6 +5,7 @@
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
                 ...buttonNext,
+                title: 'Weiter zu PayPal',
                 click: onClick,
                 sending: sending
             }"
@@ -29,14 +30,17 @@
             </div>
         </div>
         <div class="table__coupon">
-            <InputText label="Objekttitel" placeholder="Gustcheincode" v-model="coupon" />
-            <button class="button button--small button--primary"
-                    :class="{'button--disabled': isSending || !coupon}"
-                    @click="apply"
-            >
-                Apply
-                <div v-if="isSending" class="loader loader--small loader--position" />
-            </button>
+            <div>
+                <InputText label="Dein Rabattcode" placeholder="Gustcheincode" v-model="coupon" />
+                <button class="button button--small button--primary"
+                        :class="{'button--disabled': isSending || !coupon}"
+                        @click="apply"
+                >
+                    Anwenden
+                    <div v-if="isSending" class="loader loader--small loader--position" />
+                </button>
+            </div>
+            <div v-if="error" class="form__error">{{error}}</div>
         </div>
         <div class="table table--total">
             <div class="table__row">
@@ -47,7 +51,7 @@
                 </div>
             </div>
             <div class="table__row table__row--sale" v-if="order.amount > 0">
-                <div>Sale</div>
+                <div>Rabatt</div>
                 <div>{{ order.amount }} {{ order.amount_type === 'percent' ? ' %' : ' €'}}</div>
             </div>
         </div>
@@ -82,6 +86,7 @@
           path: this.$store.state.order.result && this.$store.state.order.result.redirect || "/"
         }
       },
+      error() { return this.$store.state.error },
       isLoading() { return this.$store.state.isLoading },
       isSending() { return this.$store.state.isSending },
     },
