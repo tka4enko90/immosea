@@ -37,7 +37,6 @@
                 Apply
                 <div v-if="isSending" class="loader loader--small loader--position" />
             </button>
-            {{sending}}
         </div>
         <div class="table table--total">
             <div class="table__row">

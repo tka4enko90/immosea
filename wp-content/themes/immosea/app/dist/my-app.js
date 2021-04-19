@@ -10550,17 +10550,16 @@ var Step14_component = normalizeComponent(
 )
 
 /* harmony default export */ var Step14 = (Step14_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step15.vue?vue&type=template&id=3fdef038&
-var Step15vue_type_template_id_3fdef038_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step15.vue?vue&type=template&id=68347cb4&
+var Step15vue_type_template_id_68347cb4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
             {click: _vm.onClick,
-            sending: _vm.sending}),"showPrice":_vm.showPrice,"isLoading":_vm.isLoading}},[_c('div',{staticClass:"table"},[_c('div',{staticClass:"table__row table__row--head"},[_c('div',[_vm._v("Artikelname")]),_c('div',[_vm._v("Einzelpreis")]),_c('div',[_vm._v("Menge")]),_c('div',[_vm._v("Gesamt")])]),_vm._l((_vm.order.products),function(item,index){return _c('div',{key:index,staticClass:"table__row"},[_c('div',[_c('strong',[_vm._v(_vm._s(item.name))]),_vm._v(" Nr. xxx ")]),_c('div',[_vm._v(_vm._s(item.price)+" EUR")]),_c('div',[_vm._v(_vm._s(item.quantity))]),_c('div',[_vm._v(_vm._s(item.price * item.quantity)+" EUR")])])})],2),_c('div',{staticClass:"table__coupon"},[_c('InputText',{attrs:{"label":"Objekttitel","placeholder":"Gustcheincode"},model:{value:(_vm.coupon),callback:function ($$v) {_vm.coupon=$$v},expression:"coupon"}}),_c('button',{staticClass:"button button--small button--primary",class:{'button--disabled': _vm.isSending || !_vm.coupon},on:{"click":_vm.apply}},[_vm._v(" Apply "),(_vm.isSending)?_c('div',{staticClass:"loader loader--small loader--position"}):_vm._e()]),_vm._v(" "+_vm._s(_vm.sending)+" ")],1),_c('div',{staticClass:"table table--total"},[_c('div',{staticClass:"table__row"},[_c('div',[_vm._v("Gesamt")]),_c('div',{staticClass:"table__price"},[_vm._v(" "+_vm._s(_vm.order.total_price)+" € "),(_vm.order.sub_total && _vm.order.amount > 0)?_c('span',{staticClass:"table__old-price"},[_vm._v(_vm._s(_vm.order.sub_total)+" €")]):_vm._e()])]),(_vm.order.amount > 0)?_c('div',{staticClass:"table__row table__row--sale"},[_c('div',[_vm._v("Sale")]),_c('div',[_vm._v(_vm._s(_vm.order.amount)+" "+_vm._s(_vm.order.amount_type === 'percent' ? ' %' : ' €'))])]):_vm._e()])])}
-var Step15vue_type_template_id_3fdef038_staticRenderFns = []
+            sending: _vm.sending}),"showPrice":_vm.showPrice,"isLoading":_vm.isLoading}},[_c('div',{staticClass:"table"},[_c('div',{staticClass:"table__row table__row--head"},[_c('div',[_vm._v("Artikelname")]),_c('div',[_vm._v("Einzelpreis")]),_c('div',[_vm._v("Menge")]),_c('div',[_vm._v("Gesamt")])]),_vm._l((_vm.order.products),function(item,index){return _c('div',{key:index,staticClass:"table__row"},[_c('div',[_c('strong',[_vm._v(_vm._s(item.name))]),_vm._v(" Nr. xxx ")]),_c('div',[_vm._v(_vm._s(item.price)+" EUR")]),_c('div',[_vm._v(_vm._s(item.quantity))]),_c('div',[_vm._v(_vm._s(item.price * item.quantity)+" EUR")])])})],2),_c('div',{staticClass:"table__coupon"},[_c('InputText',{attrs:{"label":"Objekttitel","placeholder":"Gustcheincode"},model:{value:(_vm.coupon),callback:function ($$v) {_vm.coupon=$$v},expression:"coupon"}}),_c('button',{staticClass:"button button--small button--primary",class:{'button--disabled': _vm.isSending || !_vm.coupon},on:{"click":_vm.apply}},[_vm._v(" Apply "),(_vm.isSending)?_c('div',{staticClass:"loader loader--small loader--position"}):_vm._e()])],1),_c('div',{staticClass:"table table--total"},[_c('div',{staticClass:"table__row"},[_c('div',[_vm._v("Gesamt")]),_c('div',{staticClass:"table__price"},[_vm._v(" "+_vm._s(_vm.order.total_price)+" € "),(_vm.order.sub_total && _vm.order.amount > 0)?_c('span',{staticClass:"table__old-price"},[_vm._v(_vm._s(_vm.order.sub_total)+" €")]):_vm._e()])]),(_vm.order.amount > 0)?_c('div',{staticClass:"table__row table__row--sale"},[_c('div',[_vm._v("Sale")]),_c('div',[_vm._v(_vm._s(_vm.order.amount)+" "+_vm._s(_vm.order.amount_type === 'percent' ? ' %' : ' €'))])]):_vm._e()])])}
+var Step15vue_type_template_id_68347cb4_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Steps/Step15.vue?vue&type=template&id=3fdef038&
+// CONCATENATED MODULE: ./src/components/Steps/Step15.vue?vue&type=template&id=68347cb4&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step15.vue?vue&type=script&lang=js&
-//
 //
 //
 //
@@ -10676,8 +10675,8 @@ var Step15vue_type_template_id_3fdef038_staticRenderFns = []
 
 var Step15_component = normalizeComponent(
   Steps_Step15vue_type_script_lang_js_,
-  Step15vue_type_template_id_3fdef038_render,
-  Step15vue_type_template_id_3fdef038_staticRenderFns,
+  Step15vue_type_template_id_68347cb4_render,
+  Step15vue_type_template_id_68347cb4_staticRenderFns,
   false,
   null,
   null,
@@ -11198,28 +11197,40 @@ external_Vue_default.a.use(vuex_esm["a" /* default */]);
             switch (_context3.prev = _context3.next) {
               case 0:
                 commit = _ref4.commit;
-                _context3.next = 3;
+                _context3.prev = 1;
+                _context3.next = 4;
                 return commit('SET_SENDING', true);
 
-              case 3:
-                _context3.next = 5;
+              case 4:
+                _context3.next = 6;
                 return Order.apply(data);
 
-              case 5:
+              case 6:
                 res = _context3.sent;
-                _context3.next = 8;
+                _context3.next = 9;
                 return commit('SET_ORDER', res.data);
 
-              case 8:
-                _context3.next = 10;
+              case 9:
+                _context3.next = 11;
                 return commit('SET_SENDING', false);
 
-              case 10:
+              case 11:
+                _context3.next = 18;
+                break;
+
+              case 13:
+                _context3.prev = 13;
+                _context3.t0 = _context3["catch"](1);
+                console.error(_context3.t0);
+                _context3.next = 18;
+                return commit('SET_SENDING', false);
+
+              case 18:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3);
+        }, _callee3, null, [[1, 13]]);
       }))();
     }
   }

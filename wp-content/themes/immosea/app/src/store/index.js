@@ -171,10 +171,16 @@ export default new Vuex.Store({
     },
 
     async applyCoupon ({ commit }, data) {
-      await commit('SET_SENDING', true)
-      const res = await Order.apply(data)
-      await commit('SET_ORDER', res.data)
-      await commit('SET_SENDING', false)
+      try {
+        await commit('SET_SENDING', true)
+        const res = await Order.apply(data)
+        await commit('SET_ORDER', res.data)
+        await commit('SET_SENDING', false)
+      }
+      catch (e) {
+        console.error(e);
+        await commit('SET_SENDING', false)
+      }
     },
   }
 });
