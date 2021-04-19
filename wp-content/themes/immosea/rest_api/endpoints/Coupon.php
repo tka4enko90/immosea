@@ -21,13 +21,13 @@ class Coupon extends HttpError {
     {
 
         $this->setParams($request->get_params());
+        WC()->initialize_session();
 
-        if (empty($this->params['order_id'])) { $this->setStatusCode(404)->setMessage('order_id wasn\'t add to endpoint'); return $this->report();}
+        if (empty(WC()->session->get('order_awaiting_payment'))) { $this->setStatusCode(404)->setMessage('order_id wasn\'t add to endpoint'); return $this->report();}
         if (empty($this->params['coupon'])){ $this->setStatusCode(404)->setMessage('coupon wasn\'t add to endpoint'); return $this->report();}
 
+        $order = wc_get_order(WC()->session->get('order_awaiting_payment'));
 
-
-        $order = wc_get_order($this->params['order_id']);
         if (!$order) {
             $this->setStatusCode(404)->setMessage('order dosen\'t exist'); return $this->report();
         }
