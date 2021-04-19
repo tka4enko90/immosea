@@ -27,8 +27,6 @@ class Coupon extends HttpError {
         if (empty($this->params['coupon'])){ $this->setStatusCode(404)->setMessage('coupon wasn\'t add to endpoint'); return $this->report();}
 
         $order = wc_get_order(WC()->session->get('order_awaiting_payment'));
-        $coupon = new WC_Coupon( $this->params['coupon'] );
-
         if (!$order) {
             $this->setStatusCode(404)->setMessage('order dosen\'t exist'); return $this->report();
         }
