@@ -30,9 +30,10 @@
                 </button>
                 <button @click="buttonNext.click"
                         class="button button--primary"
-                        :class="{'button--disabled': buttonNext.disabled}"
+                        :class="{'button--disabled': buttonNext.disabled || buttonNext.sending}"
                 >
                     {{ buttonNext.title }}
+                    <div v-if="buttonNext.sending" class="loader loader--small loader--position" />
                 </button>
             </div>
         </div>

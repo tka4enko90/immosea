@@ -5,7 +5,8 @@
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
                 ...buttonNext,
-                click: onClick
+                click: onClick,
+                sending: sending
             }"
             :showPrice="showPrice"
             :isLoading="isLoading"
@@ -36,6 +37,7 @@
                 Apply
                 <div v-if="isSending" class="loader loader--small loader--position" />
             </button>
+            {{sending}}
         </div>
         <div class="table table--total">
             <div class="table__row">
@@ -66,7 +68,8 @@
     props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
     data() {
       return {
-        coupon: ''
+        coupon: '',
+        sending: false
     }},
     computed: {
       order() {
@@ -91,6 +94,7 @@
         });
       },
       onClick() {
+        this.sending = true
         window.location.href = this.order.path
       }
     }
