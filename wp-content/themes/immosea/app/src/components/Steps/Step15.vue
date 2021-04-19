@@ -5,7 +5,8 @@
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
                 ...buttonNext,
-                click: onClick
+                click: onClick,
+                sending: sending
             }"
             :showPrice="showPrice"
             :isLoading="isLoading"
@@ -66,7 +67,8 @@
     props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
     data() {
       return {
-        coupon: ''
+        coupon: '',
+        sending: false
     }},
     computed: {
       order() {
@@ -91,6 +93,7 @@
         });
       },
       onClick() {
+        this.sending = true
         window.location.href = this.order.path
       }
     }

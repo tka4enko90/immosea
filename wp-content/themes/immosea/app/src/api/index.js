@@ -1,8 +1,6 @@
 import axios from 'axios'
-// const BASE_URL = process.env.VUE_APP_API_URL
 
 const hostName = window.location.origin
-console.log(hostName);
 // const hostName = 'http://localhost:8888/immosea/'
 const BASE_URL = `${hostName}/wp-json/rest_api/v1`
 
