@@ -91,8 +91,8 @@ class Order extends HttpError {
                 }
                 $response['total_price'] = $this->getOrder()->calculate_totals();
                 $response['currency'] = $this->getOrder()->get_currency();
+                $response['total_tax'] = $this->getOrder()->get_taxes();
             }
-
             $this->set_user_to_order();
             $this->getOrder()->calculate_totals();
             $available_gateways = WC()->payment_gateways->get_available_payment_gateways();

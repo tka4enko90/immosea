@@ -5,6 +5,7 @@ class Coupon extends HttpError {
     private $order;
     private $orderID;
     private $coupon;
+    private $error;
 
 
 
@@ -22,11 +23,11 @@ class Coupon extends HttpError {
 
         $this->setParams($request->get_params());
         WC()->initialize_session();
-
         if (empty(WC()->session->get('order_awaiting_payment'))) { $this->setStatusCode(404)->setMessage('order_id wasn\'t add to endpoint'); return $this->report();}
         if (empty($this->params['coupon'])){ $this->setStatusCode(404)->setMessage('coupon wasn\'t add to endpoint'); return $this->report();}
 
         $order = wc_get_order(WC()->session->get('order_awaiting_payment'));
+        $coupon = new WC_Coupon( $this->params['coupon'] );
 
         if (!$order) {
             $this->setStatusCode(404)->setMessage('order dosen\'t exist'); return $this->report();
@@ -39,7 +40,14 @@ class Coupon extends HttpError {
 
         $order_items = $this->getOrder()->get_items();
 
-        $this->getOrder()->apply_coupon($this->getCoupon());
+       if ($this->getOrder()->get_coupons()) {
+           return $this->error->setStatusCode(404)->setMessage('Coupon already added to these products')->report();
+       }
+
+        $applied_coupon = $this->getOrder()->apply_coupon($this->getCoupon());
+        if (is_wp_error($applied_coupon)) {
+            return $this->error->setStatusCode(404)->setMessage($applied_coupon->get_error_message())->report();
+        }
 
         $response['order_id'] = $this->getOrderID();
         if ($order_items) {
@@ -74,7 +82,6 @@ class Coupon extends HttpError {
         }
         return $response;
     }
-
 
 
     private function set_user_to_order() {
@@ -225,5 +232,9 @@ class Coupon extends HttpError {
     public function setCoupon($coupon)
     {
         $this->coupon = $coupon;
+    }
+    public function __construct(ErrorService $error)
+    {
+        $this->error = $error;
     }
 }

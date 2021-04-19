@@ -112,7 +112,7 @@ class Rest_API {
         register_rest_route("{$root}/{$version}", '/apply_coupon/', array(
                 array(
                     'methods'         => \WP_REST_Server::CREATABLE,
-                    'callback'        => array(new Coupon(), 'apply_coupon' ),
+                    'callback'        => array(new Coupon(new HttpError()), 'apply_coupon' ),
                     'permission_callback' => array($this, 'permissions_check' )
                 ),
             )
