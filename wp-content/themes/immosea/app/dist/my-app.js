@@ -4872,8 +4872,8 @@ var staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=22bab1fd&shadow
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Form.vue?vue&type=template&id=6f16d6dd&scoped=true&
-var Formvue_type_template_id_6f16d6dd_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form"},[_c('div',{staticClass:"form__holder"},_vm._l((_vm.questions),function(item,index){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.activeStep === index),expression:"activeStep === index"}],key:index},[_c(item.component,{tag:"component",attrs:{"title":item.title,"text":item.text,"showPrice":item.showPrice,"buttonPrev":{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2d1c238e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Form.vue?vue&type=template&id=043c5d11&scoped=true&
+var Formvue_type_template_id_043c5d11_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"form"},[_c('div',{staticClass:"form__holder"},_vm._l((_vm.questions),function(item,index){return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.activeStep === index),expression:"activeStep === index"}],key:index},[_c(item.component,{tag:"component",attrs:{"title":item.title,"text":item.text,"showPrice":item.showPrice,"buttonPrev":{
                         title: _vm.buttonPrev.title,
                         click: _vm.showPrevScreen,
                         show: _vm.buttonPrev.show
@@ -4881,10 +4881,10 @@ var Formvue_type_template_id_6f16d6dd_scoped_true_render = function () {var _vm=
                         title: _vm.buttonNext.title,
                         click: _vm.showNextScreen
                     }}})],1)}),0)])}
-var Formvue_type_template_id_6f16d6dd_scoped_true_staticRenderFns = []
+var Formvue_type_template_id_043c5d11_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Form.vue?vue&type=template&id=6f16d6dd&scoped=true&
+// CONCATENATED MODULE: ./src/components/Form.vue?vue&type=template&id=043c5d11&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find.js
 var es_array_find = __webpack_require__("7db0");
@@ -10834,7 +10834,7 @@ var questions = [{
       },
       passedSteps: JSON.parse(localStorage.getItem('passedSteps')) || [],
       questions: questions,
-      activeStep: +localStorage.getItem('activeStep') || 13
+      activeStep: +localStorage.getItem('activeStep') || 0
     };
   },
   computed: {
@@ -10951,11 +10951,11 @@ function Form_injectStyles (context) {
 
 var Form_component = normalizeComponent(
   components_Formvue_type_script_lang_js_,
-  Formvue_type_template_id_6f16d6dd_scoped_true_render,
-  Formvue_type_template_id_6f16d6dd_scoped_true_staticRenderFns,
+  Formvue_type_template_id_043c5d11_scoped_true_render,
+  Formvue_type_template_id_043c5d11_scoped_true_staticRenderFns,
   false,
   Form_injectStyles,
-  "6f16d6dd",
+  "043c5d11",
   null
   ,true
 )
