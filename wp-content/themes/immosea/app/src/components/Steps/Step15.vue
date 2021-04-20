@@ -33,7 +33,7 @@
             <div>
                 <InputText label="Dein Rabattcode" placeholder="Gustcheincode" v-model="coupon" />
                 <button class="button button--small button--primary"
-                        :class="{'button--disabled': isSending || !coupon}"
+                        :class="{'button--disabled': isSending || !coupon || isCoupon}"
                         @click="apply"
                 >
                     Anwenden
@@ -89,6 +89,7 @@
       error() { return this.$store.state.error },
       isLoading() { return this.$store.state.isLoading },
       isSending() { return this.$store.state.isSending },
+      isCoupon() { return this.$store.state.isCoupon }
     },
     methods: {
       apply() {

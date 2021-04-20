@@ -43,7 +43,8 @@ export default new Vuex.Store({
     },
     isLoading: false,
     isSending: false,
-    error: ''
+    error: '',
+    isCoupon: false,
   },
 
   getters: {
@@ -137,6 +138,10 @@ export default new Vuex.Store({
     SET_ERROR (state, payload) {
       state.error = payload
     },
+
+    SET_IS_COUPON (state, payload) {
+      state.isCoupon = payload
+    },
   },
 
   actions: {
@@ -185,6 +190,7 @@ export default new Vuex.Store({
         } else {
           await commit('SET_ERROR', '')
           await commit('SET_ORDER', res.data)
+          await commit('SET_IS_COUPON', true)
         }
 
         await commit('SET_SENDING', false)
