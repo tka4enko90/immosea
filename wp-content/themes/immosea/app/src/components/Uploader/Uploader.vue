@@ -47,7 +47,6 @@
       handleUpload() {
         const image   = this.$refs.file.files[0]
         const reader  = new FileReader()
-        console.log(image);
         reader.onload = () => {
           this.$emit('change', reader.result, this.name)
         }

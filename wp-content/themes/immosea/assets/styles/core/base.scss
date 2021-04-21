@@ -42,6 +42,24 @@ ul {
     padding: 0;
     margin: 0;
     list-style: none;
+    
+    &:not([class]) {
+        margin-bottom: 24px;
+        > li {
+            position: relative;
+            padding-left: 15px;
+            &::before {
+                position: absolute;
+                left: 0;
+                top: 0.6em;
+                width: 4px;
+                height: 4px;
+                content: '';
+                border-radius: 4px;
+                background: $base-color;
+            }
+        }
+    }
 }
 
 p {

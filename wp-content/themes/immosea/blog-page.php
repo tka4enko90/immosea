@@ -37,7 +37,7 @@
                                     <?php echo apply_filters( 'the_content', wp_trim_words( get_the_content(), 10, '&hellip;' ) ); ?>
                                 </div>
                                 <a href="<?php echo get_the_permalink(); ?>" class="button button--small
-                                button--outline">Read More</a>
+                                button--outline">Weiterlesen...</a>
                             </div>
                         </div>
                     </div>

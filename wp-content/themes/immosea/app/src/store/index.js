@@ -43,6 +43,8 @@ export default new Vuex.Store({
     },
     isLoading: false,
     isSending: false,
+    error: '',
+    isCoupon: false,
   },
 
   getters: {
@@ -132,6 +134,14 @@ export default new Vuex.Store({
     SET_SENDING (state, payload) {
       state.isSending = payload
     },
+
+    SET_ERROR (state, payload) {
+      state.error = payload
+    },
+
+    SET_IS_COUPON (state, payload) {
+      state.isCoupon = payload
+    },
   },
 
   actions: {
@@ -174,7 +184,15 @@ export default new Vuex.Store({
       try {
         await commit('SET_SENDING', true)
         const res = await Order.apply(data)
-        await commit('SET_ORDER', res.data)
+
+        if (res.data && res.data.status === 404) {
+          await commit('SET_ERROR', 'Der eingegebene Gutscheincode ist nicht gültig.')
+        } else {
+          await commit('SET_ERROR', '')
+          await commit('SET_ORDER', res.data)
+          await commit('SET_IS_COUPON', true)
+        }
+
         await commit('SET_SENDING', false)
       }
       catch (e) {
