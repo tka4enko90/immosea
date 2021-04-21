@@ -198,7 +198,7 @@ class Order extends HttpError {
 
     private function update_order_post_meta($order_metas, $order_ID) {
         foreach ($order_metas as $key => $value) {
-            if ($value) {
+            if (!empty($value)) {
                 update_post_meta( $order_ID, $key, $value);
             }else {
                 delete_post_meta( $order_ID, $key);
@@ -261,7 +261,7 @@ class Order extends HttpError {
                     }elseif ($key === 'bjwindow') {
                         $date = new DateTime($field);
                         $response['BJ Fenster (falls abweichend)'] = $date->format('Y-m-d');
-                    }elseif ($key === 'keller') {
+                    }elseif ($key === 'keller' && $field) {
                         $response['Keller'] = $field;
                     }elseif ($key === 'garden') {
                         $response['Garten'] = $field;
@@ -287,7 +287,7 @@ class Order extends HttpError {
                         $response['Nebenkosten'] = $field;
                     }elseif ($key === 'rent_parking') {
                         $response['Miete Stellplatz'] = $field;
-                    }elseif ($key === 'fully_developed') {
+                    }elseif ($key === 'fully_developed' && $field) {
                         $response['Voll Erschlossen'] = $field;
                     }elseif ($key === 'monument_protection') {
                         $response['Denkmalschutz'] = $field;
@@ -331,10 +331,10 @@ class Order extends HttpError {
                         $response['Adresse'] = $field;
                     }elseif ($key === 'postcode') {
                         $response['Im Exposé bitte nur Postleitzahl und Ort angeben.'] = $field;
-                    }elseif ($key === 'image') {
+                    }elseif ($key === 'image' && !empty($fields[$key])) {
                         if ($fields[$key]['attachment_mine_type'] === 'application/pdf'
-                        || $fields[$key]['attachment_mine_type'] === 'application/msword'
-                        || $fields[$key]['attachment_mine_type'] === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+                            || $fields[$key]['attachment_mine_type'] === 'application/msword'
+                            || $fields[$key]['attachment_mine_type'] === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
                             $image = '<img src="'.get_home_url().'/wp-includes/images/media/document.png'.'">' ;
                         } else {
                             $image = wp_get_attachment_image($fields[$key]['attachment_id'], 'thumbnail');
@@ -368,7 +368,7 @@ class Order extends HttpError {
                             $images .='<div><a href="'.wp_get_attachment_url($item['attachment_id']).'" target="_blank">'.$image.'</a></div>';
                         }
                         $response['Documents'] = $images;
-                    }elseif ($key === 'uploads') {
+                    }elseif ($key === 'uploads' && $fields[$key]) {
                         $images = '';
                         foreach ($fields[$key] as $item) {
                             if ($item['attachment_mine_type'] === 'application/pdf'

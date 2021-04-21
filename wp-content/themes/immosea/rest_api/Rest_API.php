@@ -48,7 +48,14 @@ class Rest_API {
         add_action( 'rest_api_init', array($this, 'register_routes'));
         add_action( 'woocommerce_admin_order_totals_after_discount', array($this,'render_order_custom_fields' ), 10 );
         Cron_Remove_Images::init();
+        add_action( 'woocommerce_thankyou', array($this, 'remove_cookie'));
+
+
     }
+
+    /**
+     * @param $order
+     */
     public function render_order_custom_fields($order) {
         $order = wc_get_order($order);
         $template = "
@@ -145,6 +152,26 @@ class Rest_API {
      */
     public function permissions_check() {
         return true;
+    }
+
+    /**
+     * @param $order_id
+     * Remove cookie after success purchase
+     */
+    public  function remove_cookie( $order_id ) {
+        echo '<script type="text/javascript">
+        (function () {
+           function setCookie(name, value, days) {
+                var d = new Date;
+                d.setTime(d.getTime() + 24*60*60*1000*days);
+                document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
+            }
+            function deleteCookie(name) { setCookie(name, "", -1); }
+            deleteCookie("cart");
+            deleteCookie("collectData");
+            deleteCookie("contactData");
+        })();
+        </script>';
     }
 }
 
