@@ -79,3 +79,6 @@ wp-content/mysql.sql
 .user.ini
 malcare-waf.php
 wp-salt.php
+
+./.htaccess
+

@@ -4,15 +4,14 @@ export const kindProperty = [
     type: 'flat',
     icon: '../assets/images/icon03.svg',
     items: [
-      'Apartment',
       'Dachgeschosswohnung',
       'Erdgeschosswohnung',
       'Etagenwohnung',
       'Hochparterrewohnung',
-      'Mehrfamilienhaus',
       'Loft',
       'Maisonettewohnung',
       'Penthousewohnung',
+      'Souterrainwohnung'
     ]
   },
   {

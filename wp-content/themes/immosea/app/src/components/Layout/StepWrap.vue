@@ -3,7 +3,7 @@
         <div class="step__title">
             <h1>{{ title }}</h1>
             <div class="step__info" v-if="text">
-                {{ text }}
+                <span v-html="text"></span>
             </div>
         </div>
         <div class="step__content">

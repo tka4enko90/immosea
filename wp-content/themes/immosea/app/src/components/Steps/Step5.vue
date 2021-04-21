@@ -7,6 +7,7 @@
             }"
             :buttonNext="{
                 ...buttonNext,
+                click: handlerClick
             }"
             :showPrice="showPrice"
     >
@@ -18,7 +19,7 @@
                     <label for="advertising_copy">
                         <span>{{ prices.advertising_copy }} EUR</span>
                         <strong>Werbetexte</strong>
-                        Angepasst auf die gängigen Immobilien portale
+                        Angepasst auf die gängigen Immobilienportale
                     </label>
                 </div>
             </div>
@@ -42,7 +43,7 @@
                     </label>
                 </div>
             </div>
-            <div>
+            <div v-if="data.type !== 'property'">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--orange">
                     <input id="energy_certificate" type='checkbox' v-model="data.energy_certificate">
                     <label for="energy_certificate">
@@ -66,7 +67,7 @@
                 <div class="form-checkbox form-checkbox--custom form-checkbox--red">
                     <input id="drone_footage" type='checkbox' v-model="data.drone_footage">
                     <label for="drone_footage">
-                        <span></span>
+                        <span>{{ prices.drone_footage }} EUR</span>
                         <strong>Drohnenaufnahmen</strong>
                         Das I-Tüpfelchen für deinen Werbeauftritt
                     </label>
@@ -105,11 +106,20 @@
           energy_certificate: this.$store.state.cart.type === 'house' && this.$store.state.cart.year < 1979
                                 ? getPriceByFieldName(this.$store.state.products, 'energy_certificate_bg_house')
                                 : getPriceByFieldName(this.$store.state.products, 'energy_certificate'),
-          photography: getPriceByFieldName(this.$store.state.products, `photography_${this.$store.state.cart.type}`)
+          photography: getPriceByFieldName(this.$store.state.products, `photography_${this.$store.state.cart.type}`),
+          drone_footage: getPriceByFieldName(this.$store.state.products, 'drone_footage'),
         }
       }
     },
-    methods: {}
+    methods: {
+      handlerClick() {
+        if (!this.data.floor_plan) {
+          this.$store.commit('SET_CART_OPTIONS', {image: null, uploads_images: [], surcharge_3d_floor: false})
+        }
+
+        this.buttonNext.click()
+      },
+    }
   }
 </script>
 

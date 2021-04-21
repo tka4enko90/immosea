@@ -35,7 +35,7 @@
                 <label class="form__label">Verfügbar ab</label>
                 <div class="form__date">
                     <datepicker v-model="collectData.available_from"
-                                format="yyyy-MM-dd"
+                                format="dd-MM-yyyy"
                                 placeholder="Datum auswählen"
                                 clearButton calendarButton />
                 </div>
@@ -57,7 +57,7 @@
             </div>
             <div class="form__area" v-if="type !== 'property'">
                 <InputText v-model="collectData.living_bedroom" type="number" label="Wohn-Schlafzimmer"
-                           placeholder="Number" />
+                           placeholder="Anzahl" />
             </div>
             <div class="form__area" v-if="type !== 'property'">
                 <InputText v-model="collectData.bathroom" type="number" label="Badezimmer" placeholder="Anzahl" />
@@ -74,17 +74,22 @@
             </div>
             <div class="form__area" v-if="type !== 'property'">
                 <label class="form__label">Fensterart</label>
-                <v-select :options="options2" v-model="collectData.window_type" placeholder="Auswählen" multiple />
+                <v-select :options="options2" v-model="collectData.window_type"
+                          placeholder="Auswählen" multiple
+                          :close-on-select="false" />
             </div>
             <div class="form__area" v-if="type !== 'property'">
                 <label class="form__label">Verglasung</label>
-                <v-select :options="options3" v-model="collectData.glazing" placeholder="Auswählen" multiple />
+                <v-select :options="options3" v-model="collectData.glazing"
+                          placeholder="Auswählen" multiple
+                          :close-on-select="false"
+                />
             </div>
             <div class="form__area" v-if="type !== 'property'">
                 <label class="form__label">BJ Fenster (falls abweichend)</label>
                 <div class="form__date">
                     <datepicker v-model="collectData.bjwindow"
-                                format="yyyy-MM-dd"
+                                format="dd-MM-yyyy"
                                 placeholder="Datum auswählen"
                                 clearButton calendarButton />
                 </div>
@@ -98,7 +103,8 @@
             </div>
             <div class="form__area" v-if="type !== 'property'">
                 <label class="form__label">Stellplätze</label>
-                <v-select :options="options5" v-model="collectData.parking" placeholder="Auswählen" multiple />
+                <v-select :options="options5" v-model="collectData.parking" placeholder="Auswählen" multiple
+                          :close-on-select="false" />
             </div>
             <div class="form__area" v-if="type !== 'property'">
                 <InputText v-model="collectData.number_parking" type="number" label="Anzahl Stellplätze"
@@ -119,37 +125,37 @@
             <div class="form__area" v-if="type === 'flat' && !isRent">
                 <label class="form__label">Monatliches Hausgeld </label>
                 <div class="form-input">
-                    <currency-input v-model="collectData.monthly_allowance" />
+                    <currency-input v-model="collectData.monthly_allowance" placeholder="€00.00" />
                 </div>
             </div>
             <div class="form__area" v-if="!isRent">
                 <label class="form__label">Kaufpreis </label>
                 <div class="form-input">
-                    <currency-input v-model="collectData.purchase_price" />
+                    <currency-input v-model="collectData.purchase_price" placeholder="€00.00" />
                 </div>
             </div>
             <div class="form__area" v-if="!isRent && type !== 'property'">
                 <label class="form__label">Stellplatzpreis </label>
                 <div class="form-input">
-                    <currency-input v-model="collectData.pitch_price" />
+                    <currency-input v-model="collectData.pitch_price" placeholder="€00.00" />
                 </div>
             </div>
             <div class="form__area" v-if="isRent">
                 <label class="form__label">Kaltmiete </label>
                 <div class="form-input">
-                    <currency-input v-model="collectData.rent" />
+                    <currency-input v-model="collectData.rent" placeholder="€00.00" />
                 </div>
             </div>
             <div class="form__area" v-if="isRent">
                 <label class="form__label">Nebenkosten </label>
                 <div class="form-input">
-                    <currency-input v-model="collectData.additional_costs" />
+                    <currency-input v-model="collectData.additional_costs" placeholder="€00.00" />
                 </div>
             </div>
             <div class="form__area" v-if="isRent">
                 <label class="form__label">Miete Stellplatz </label>
                 <div class="form-input">
-                    <currency-input v-model="collectData.rent_parking" />
+                    <currency-input v-model="collectData.rent_parking" placeholder="€00.00" />
                 </div>
             </div>
             <div class="form__area form__area--expand" v-if="!isRent && type === 'property'">

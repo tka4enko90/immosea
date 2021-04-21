@@ -73,7 +73,11 @@ export default new Vuex.Store({
                                   ? getPriceByFieldName(state.products, 'further_floor_plan') * state.cart.uploads_images.length
                                   : 0
 
-      return +advertising + +expose + +certificate + +photography + +floor_plan + +surcharge_3d_floor + +further_floor_plan
+      let drone_footage  = state.cart.drone_footage
+                              ? getPriceByFieldName(state.products, 'drone_footage')
+                              : 0
+
+      return +advertising + +expose + +certificate + +photography + +floor_plan + +surcharge_3d_floor + +further_floor_plan + +drone_footage
     }
   },
 

@@ -22,7 +22,7 @@
             <div class="table__row" v-for="(item, index) in order.products" :key="index">
                 <div>
                     <strong>{{ item.name }}</strong>
-                    Nr. xxx
+                    <span class="table__number">Nr. {{ item.sku }}</span>
                 </div>
                 <div>{{ item.price }} EUR</div>
                 <div>{{ item.quantity }}</div>

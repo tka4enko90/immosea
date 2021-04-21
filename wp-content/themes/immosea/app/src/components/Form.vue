@@ -106,12 +106,13 @@
           {
             step: 6,
             condition: this.$store.state.cart.expose && !this.$store.state.cart.energy_certificate &&
-              !this.$store.state.collectData.monument_protection
+              !this.$store.state.collectData.monument_protection && this.$store.state.cart.type !== 'property'
           },
           {
             step: 7,
             condition: this.$store.state.cart.energy_certificate && (this.$store.state.collectData.monument_protection
               || this.$store.state.collectData.ensemble_protection || this.$store.state.collectData.demolition_object)
+              && this.$store.state.cart.type !== 'property'
           },
           {
             step: 8,

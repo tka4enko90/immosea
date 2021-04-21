@@ -31,7 +31,7 @@
                         <label class="form__label">Energieausweis gültig bis</label>
                         <div class="form__date">
                             <datepicker v-model="collectData.valid_energy_certificate"
-                                        format="yyyy-MM-dd"
+                                        format="dd-MM-yyyy"
                                         placeholder="Datum auswählen"
                                         clearButton calendarButton />
                         </div>

@@ -51,6 +51,7 @@
                        @blur="$v.contactData.phone.$touch()"
                        :error="!$v.contactData.phone.length"
                        errorMessage="Required"
+                       type="number"
             />
         </div>
     </StepWrap>

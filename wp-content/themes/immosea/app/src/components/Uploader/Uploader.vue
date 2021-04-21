@@ -19,7 +19,7 @@
             <input type="file"
                    ref="file"
                    class="uploader__input"
-                   accept="application/pdf, image/jpeg, image/png, application/msword, image/bmp, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                   accept="image/jpeg, image/png"
                    @change="handleUpload" />
         </slot>
     </label>

@@ -13,16 +13,16 @@
         <div class="step__row">
             <div v-if="!floor_plan">
                 <Uploader docs=true
-                          title="BILD LADEN"
-                          text="JPG, PNG je bis 50 VB nicht animert"
+                          title="Grundriss"
+                          text="JPG, PNG, je bis 50 MB, nicht animiert"
                           name="uploads_docs"
                           :loading="loading_uploads_docs"
                           @change="handleUploadDocs"
                 />
             </div>
             <div v-if="!photography">
-                <Uploader title="BILD LADEN"
-                          text="JPG, PNG je bis 50 VB nicht animert"
+                <Uploader title="Objektfotos"
+                          text="JPG, PNG, je bis 50 MB, nicht animiert"
                           name="uploads"
                           :loading="loading_uploads"
                           @change="handleUpload"
