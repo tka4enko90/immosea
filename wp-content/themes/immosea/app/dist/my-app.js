@@ -9842,14 +9842,14 @@ var Step11_component = normalizeComponent(
 )
 
 /* harmony default export */ var Step11 = (Step11_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ef56da78-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step12.vue?vue&type=template&id=26af51ee&
-var Step12vue_type_template_id_26af51ee_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ef56da78-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step12.vue?vue&type=template&id=74833a8c&
+var Step12vue_type_template_id_74833a8c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev),"buttonNext":Object.assign({}, _vm.buttonNext,
             {disabled: !_vm.floor_plan ? _vm.uploads_docs.length < 1 : _vm.uploads.length < 1,
-            click: _vm.handlerClick}),"showPrice":_vm.showPrice}},[_c('div',{staticClass:"step__row"},[(!_vm.floor_plan)?_c('div',[_c('Uploader',{attrs:{"docs":"true","title":"Grundriss","text":"JPG, PNG, je bis 50 MB, nicht animiert","name":"uploads_docs","loading":_vm.loading_uploads_docs},on:{"change":_vm.handleUploadDocs}})],1):_vm._e(),(!_vm.photography)?_c('div',[_c('Uploader',{attrs:{"title":"Objektfotos","text":"JPG, PNG, je bis 50 MB, nicht animiert","name":"uploads","loading":_vm.loading_uploads},on:{"change":_vm.handleUpload}})],1):_vm._e()]),(_vm.uploads_docs.length > 0)?_c('div',{staticClass:"uploader__list"},_vm._l((_vm.uploads_docs),function(file,key){return _c('div',{key:key},[_c('UploaderPreview',{attrs:{"file":file.attachment_url,"type":file.attachment_mine_type,"name":file.name},on:{"click":function($event){return _vm.removeFile(key, _vm.uploads_docs, 'uploads_docs')}}})],1)}),0):_vm._e(),(_vm.uploads.length > 0)?_c('div',{staticClass:"uploader__list"},_vm._l((_vm.uploads),function(file,key){return _c('div',{key:key},[_c('UploaderPreview',{attrs:{"file":file.attachment_url,"type":file.attachment_mine_type,"name":file.name},on:{"click":function($event){return _vm.removeFile(key, _vm.uploads, 'uploads')}}})],1)}),0):_vm._e()])}
-var Step12vue_type_template_id_26af51ee_staticRenderFns = []
+            click: _vm.handlerClick}),"showPrice":_vm.showPrice}},[_c('div',{staticClass:"step__row"},[(!_vm.floor_plan)?_c('div',[_c('Uploader',{attrs:{"docs":"true","title":"Grundriss","text":"JPG, PNG, PDF, DOC je bis 50 MB, nicht animiert","name":"uploads_docs","loading":_vm.loading_uploads_docs,"accept":"application/pdf, image/jpeg, image/png, application/msword, image/bmp, application/vnd.openxmlformats-officedocument.wordprocessingml.document"},on:{"change":_vm.handleUploadDocs}})],1):_vm._e(),(!_vm.photography)?_c('div',[_c('Uploader',{attrs:{"title":"Objektfotos","text":"JPG, PNG, je bis 50 MB, nicht animiert","name":"uploads","loading":_vm.loading_uploads},on:{"change":_vm.handleUpload}})],1):_vm._e()]),(_vm.uploads_docs.length > 0)?_c('div',{staticClass:"uploader__list"},_vm._l((_vm.uploads_docs),function(file,key){return _c('div',{key:key},[_c('UploaderPreview',{attrs:{"file":file.attachment_url,"type":file.attachment_mine_type,"name":file.name},on:{"click":function($event){return _vm.removeFile(key, _vm.uploads_docs, 'uploads_docs')}}})],1)}),0):_vm._e(),(_vm.uploads.length > 0)?_c('div',{staticClass:"uploader__list"},_vm._l((_vm.uploads),function(file,key){return _c('div',{key:key},[_c('UploaderPreview',{attrs:{"file":file.attachment_url,"type":file.attachment_mine_type,"name":file.name},on:{"click":function($event){return _vm.removeFile(key, _vm.uploads, 'uploads')}}})],1)}),0):_vm._e()])}
+var Step12vue_type_template_id_74833a8c_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Steps/Step12.vue?vue&type=template&id=26af51ee&
+// CONCATENATED MODULE: ./src/components/Steps/Step12.vue?vue&type=template&id=74833a8c&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
 var es_array_splice = __webpack_require__("a434");
@@ -9899,17 +9899,17 @@ var Media = {
   }
 };
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ef56da78-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Uploader/Uploader.vue?vue&type=template&id=3b436f4a&scoped=true&
-var Uploadervue_type_template_id_3b436f4a_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"uploader",class:{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ef56da78-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Uploader/Uploader.vue?vue&type=template&id=ce0e2b7c&scoped=true&
+var Uploadervue_type_template_id_ce0e2b7c_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('label',{staticClass:"uploader",class:{
             'uploader--doc': _vm.docs,
             'uploader--no-empty': _vm.file,
             'uploader--loading': _vm.loading,
             'uploader--disabled': _vm.disabled
-        }},[(_vm.file)?_vm._t("default",[_c('img',{attrs:{"src":_vm.file}}),_c('span',{staticClass:"uploader__preview-remove",on:{"click":function($event){return _vm.$emit('click')}}},[_vm._v("x")])]):_vm._t("default",[_c('span',{staticClass:"uploader__text"},[_vm._v(_vm._s(_vm.text))]),_c('span',{staticClass:"uploader__title"},[_vm._v(_vm._s(_vm.title))]),(_vm.loading)?_c('span',{staticClass:"loader loader--small loader--position"}):_vm._e(),_c('input',{ref:"file",staticClass:"uploader__input",attrs:{"type":"file","accept":"image/jpeg, image/png"},on:{"change":_vm.handleUpload}})])],2)}
-var Uploadervue_type_template_id_3b436f4a_scoped_true_staticRenderFns = []
+        }},[(_vm.file)?_vm._t("default",[_c('img',{attrs:{"src":_vm.file}}),_c('span',{staticClass:"uploader__preview-remove",on:{"click":function($event){return _vm.$emit('click')}}},[_vm._v("x")])]):_vm._t("default",[_c('span',{staticClass:"uploader__text"},[_vm._v(_vm._s(_vm.text))]),_c('span',{staticClass:"uploader__title"},[_vm._v(_vm._s(_vm.title))]),(_vm.loading)?_c('span',{staticClass:"loader loader--small loader--position"}):_vm._e(),_c('input',{ref:"file",staticClass:"uploader__input",attrs:{"type":"file","accept":_vm.accept || 'image/jpeg, image/png'},on:{"change":_vm.handleUpload}})])],2)}
+var Uploadervue_type_template_id_ce0e2b7c_scoped_true_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Uploader/Uploader.vue?vue&type=template&id=3b436f4a&scoped=true&
+// CONCATENATED MODULE: ./src/components/Uploader/Uploader.vue?vue&type=template&id=ce0e2b7c&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
@@ -9966,6 +9966,7 @@ var es_function_name = __webpack_require__("b0c0");
       var _this = this;
 
       var image = this.$refs.file.files[0];
+      console.log(image);
       var reader = new FileReader();
 
       reader.onload = function () {
@@ -9995,11 +9996,11 @@ function Uploader_injectStyles (context) {
 
 var Uploader_component = normalizeComponent(
   Uploader_Uploadervue_type_script_lang_js_,
-  Uploadervue_type_template_id_3b436f4a_scoped_true_render,
-  Uploadervue_type_template_id_3b436f4a_scoped_true_staticRenderFns,
+  Uploadervue_type_template_id_ce0e2b7c_scoped_true_render,
+  Uploadervue_type_template_id_ce0e2b7c_scoped_true_staticRenderFns,
   false,
   Uploader_injectStyles,
-  "3b436f4a",
+  "ce0e2b7c",
   null
   ,true
 )
@@ -10082,6 +10083,7 @@ var UploaderPreview_component = normalizeComponent(
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step12.vue?vue&type=script&lang=js&
 
 
+//
 //
 //
 //
@@ -10228,8 +10230,8 @@ var UploaderPreview_component = normalizeComponent(
 
 var Step12_component = normalizeComponent(
   Steps_Step12vue_type_script_lang_js_,
-  Step12vue_type_template_id_26af51ee_render,
-  Step12vue_type_template_id_26af51ee_staticRenderFns,
+  Step12vue_type_template_id_74833a8c_render,
+  Step12vue_type_template_id_74833a8c_staticRenderFns,
   false,
   null,
   null,

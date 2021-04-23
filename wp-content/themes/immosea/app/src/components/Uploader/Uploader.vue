@@ -19,7 +19,7 @@
             <input type="file"
                    ref="file"
                    class="uploader__input"
-                   accept="image/jpeg, image/png"
+                   :accept="accept || 'image/jpeg, image/png'"
                    @change="handleUpload" />
         </slot>
     </label>
@@ -46,6 +46,7 @@
     methods: {
       handleUpload() {
         const image   = this.$refs.file.files[0]
+        console.log(image);
         const reader  = new FileReader()
         reader.onload = () => {
           this.$emit('change', reader.result, this.name)

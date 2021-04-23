@@ -14,9 +14,10 @@
             <div v-if="!floor_plan">
                 <Uploader docs=true
                           title="Grundriss"
-                          text="JPG, PNG, je bis 50 MB, nicht animiert"
+                          text="JPG, PNG, PDF, DOC je bis 50 MB, nicht animiert"
                           name="uploads_docs"
                           :loading="loading_uploads_docs"
+                          accept="application/pdf, image/jpeg, image/png, application/msword, image/bmp, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                           @change="handleUploadDocs"
                 />
             </div>
