@@ -11,7 +11,6 @@ class Order extends HttpError {
     private $cart;
     private $contactData;
     private $collectData;
-    private $paymentMethod;
 
 
 
@@ -43,7 +42,6 @@ class Order extends HttpError {
 
             $this->setOrder($order);
             $this->setOrderID($this->getOrder()->get_id());
-            $this->setPaymentMethod('sofort');
             $this->setCart($this->getParams('cart'));
             $this->setCollectData($this->getParams('collectData'));
             $this->setContactData($this->getParams('contactData'));
@@ -99,44 +97,37 @@ class Order extends HttpError {
 
             $this->set_user_to_order();
             $this->getOrder()->calculate_totals();
-            $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
 
-            include_once WC_ABSPATH . 'includes/wc-cart-functions.php';
-            include_once WC_ABSPATH . 'includes/wc-notice-functions.php';
+            $response['payment_method'] = $this->get_payments_method_response();
 
-            switch ($this->getPaymentMethod())  {
-                case 'paypal':
-                    if(isset($available_gateways[ 'paypal' ])) {
-                        $result = $available_gateways[ 'paypal' ]->process_payment($this->getOrderID());
-                    }else {
-                        return $this->error->setStatusCode(404)->setMessage('Paypal was\'t set in admin panel')->report();
-                    }
-                    break;
-                case 'sofort':
-                    if(isset($available_gateways[ 'stripe_sofort' ])) {
-                        $result = $available_gateways[ 'stripe_sofort' ]->process_payment($this->getOrderID());
-                    }else {
-                        return $this->error->setStatusCode(404)->setMessage('Sofort was\'t set in admin panel')->report();
-                    }
-                    break;
-                default:
-                    return $this->error->setStatusCode(404)->setMessage('Payment method wasn\'t set')->report();
-                    break;
-            }
-
-            if ( $result['result'] == 'success' ) {
-                $result = apply_filters( 'woocommerce_payment_successful_result', $result, $this->getOrderID() );
-                $response['result'] = $result;
-            }else {
-                return $this->error->setStatusCode(404)->setMessage('Process payment wrong')->report();
-            }
         } catch (Exception $e) {
             return $this->error->setStatusCode(404)->setMessage($e->getMessage())->report();
         }
 
         return $response;
     }
-
+    private function get_payments_method_response() {
+        include_once WC_ABSPATH . 'includes/wc-cart-functions.php';
+        include_once WC_ABSPATH . 'includes/wc-notice-functions.php';
+        $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
+        foreach ($available_gateways as $key =>  $payment_method) {
+            if (in_array($payment_method->id, $this->get_payments_method())) {
+                $response[$payment_method->id] = $payment_method->process_payment($this->getOrderID());
+                $response[$payment_method->id]['data']= array(
+                    'title' => $payment_method->title,
+                    'icon' => $payment_method->icon,
+                );
+            }
+        }
+        return $response;
+    }
+    public function get_payments_method () {
+        $response = array(
+            'paypal',
+            'stripe_sofort'
+        );
+        return $response;
+    }
     private function bind_image_with_order($image) {
         if (isset($image['attachment_id']) && isset($image['attachment_url'])) {
             wp_update_post( array(
@@ -569,12 +560,6 @@ class Order extends HttpError {
         return $this->paymentMethod;
     }
 
-    /**
-     * @param mixed $paymentMethod
-     */
-    public function setPaymentMethod($paymentMethod)
-    {
-        $this->paymentMethod = $paymentMethod;
-    }
+
 
 }
