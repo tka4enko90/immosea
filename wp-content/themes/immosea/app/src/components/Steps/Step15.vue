@@ -5,7 +5,7 @@
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
                 ...buttonNext,
-                title: 'Weiter zu PayPal',
+                title: `Weiter zu ${method}`,
                 click: onClick,
                 sending: sending
             }"
@@ -50,9 +50,35 @@
                     <span class="table__old-price" v-if="order.sub_total && order.amount > 0">{{ order.sub_total }} €</span>
                 </div>
             </div>
+            <div class="table__row" v-if="order.total_tax">
+                <div>Tax</div>
+                <div class="table__price">
+                    {{ order.total_tax }} €
+                </div>
+            </div>
             <div class="table__row table__row--sale" v-if="order.amount > 0">
                 <div>Rabatt</div>
                 <div>{{ order.amount }} {{ order.amount_type === 'percent' ? ' %' : ' €'}}</div>
+            </div>
+        </div>
+        <div class="table__method">
+            <div v-if="order.payment_method && order.payment_method.paypal"  class="form-radio">
+                <input type="radio" 
+                       :id="order.payment_method.paypal.data.title"
+                       :value="order.payment_method.paypal.data.title"
+                       v-model="method">
+                <label :for="order.payment_method.paypal.data.title">
+                    <img :src="order.payment_method.paypal.data.icon" :alt="order.payment_method.paypal.data.title">
+                </label>
+            </div>
+            <div v-if="order.payment_method && order.payment_method.stripe_sofort"  class="form-radio">
+                <input type="radio"
+                       :id="order.payment_method.stripe_sofort.data.title"
+                       :value="order.payment_method.stripe_sofort.data.title"
+                       v-model="method">
+                <label :for="order.payment_method.stripe_sofort.data.title">
+                    <img :src="order.payment_method.stripe_sofort.data.icon" :alt="order.payment_method.stripe_sofort.data.title">
+                </label>
             </div>
         </div>
     </StepWrap>
@@ -72,7 +98,8 @@
     data() {
       return {
         coupon: '',
-        sending: false
+        sending: false,
+        method: 'PayPal'
     }},
     computed: {
       order() {
@@ -83,13 +110,15 @@
           amount: this.$store.state.order.amount,
           products: this.$store.state.order.products,
           amount_type:  this.$store.state.order.amount_type,
-          path: this.$store.state.order.result && this.$store.state.order.result.redirect || "/"
+          path: this.$store.state.order.result && this.$store.state.order.result.redirect || "/",
+          total_tax: this.$store.state.order.total_tax,
+          payment_method: this.$store.state.order.payment_method
         }
       },
       error() { return this.$store.state.error },
       isLoading() { return this.$store.state.isLoading },
       isSending() { return this.$store.state.isSending },
-      isCoupon() { return this.$store.state.isCoupon }
+      isCoupon() { return this.$store.state.isCoupon },
     },
     methods: {
       apply() {
@@ -98,9 +127,13 @@
           order_id: this.order.order_id
         });
       },
+      getPath(val) {
+        return Object.keys(this.$store.state.order.payment_method).find(key =>
+          this.$store.state.order.payment_method[key].data.title === val)
+      },
       onClick() {
         this.sending = true
-        window.location.href = this.order.path
+        window.location.href = this.$store.state.order.payment_method[this.getPath(this.method)].redirect
       }
     }
   }
