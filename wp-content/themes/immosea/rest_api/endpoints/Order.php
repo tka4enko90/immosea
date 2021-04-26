@@ -40,9 +40,10 @@ class Order extends HttpError {
             } else {
                 $order = wc_get_order( WC()->session->get('order_awaiting_payment'));
             }
+
             $this->setOrder($order);
-            $this->setOrderID($this->getOrder()->ID);
-            $this->setPaymentMethod('paypal');
+            $this->setOrderID($this->getOrder()->get_id());
+            $this->setPaymentMethod('sofort');
             $this->setCart($this->getParams('cart'));
             $this->setCollectData($this->getParams('collectData'));
             $this->setContactData($this->getParams('contactData'));
@@ -59,13 +60,13 @@ class Order extends HttpError {
 
             $this->update_order_post_meta($this->getOrderMetas(), $this->getOrderID());
 
-            if ($this->cart['uploads_images']) {
+            if (isset($this->cart['uploads_images'])) {
                 foreach ($this->cart['uploads_images'] as $upload_image) {
                     $this->bind_image_with_order($upload_image);
                 }
             }
-            if ($this->collectData['uploads_docs']) {
-                foreach ($this->cart['uploads_docs'] as $upload_image) {
+            if (!empty($this->collectData['uploads_docs'])) {
+                foreach ($this->collectData['uploads_docs'] as $upload_image) {
                     $this->bind_image_with_order($upload_image);
                 }
             }
@@ -93,11 +94,13 @@ class Order extends HttpError {
                 }
                 $response['total_price'] = $this->getOrder()->calculate_totals();
                 $response['currency'] = $this->getOrder()->get_currency();
-                $response['total_tax'] = $this->getOrder()->get_taxes();
+                $response['total_tax'] = $this->getOrder()->get_total_tax('view');
             }
+
             $this->set_user_to_order();
             $this->getOrder()->calculate_totals();
             $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
+
             include_once WC_ABSPATH . 'includes/wc-cart-functions.php';
             include_once WC_ABSPATH . 'includes/wc-notice-functions.php';
 
@@ -119,7 +122,6 @@ class Order extends HttpError {
                 default:
                     return $this->error->setStatusCode(404)->setMessage('Payment method wasn\'t set')->report();
                     break;
-
             }
 
             if ( $result['result'] == 'success' ) {
@@ -151,18 +153,22 @@ class Order extends HttpError {
         if (isset($contactData['last_name'])) {
             $address['last_name'] = $contactData['last_name'];
         }
-        if (isset($contactData['email'])) {
-            $address['email'] = $contactData['email'];
-        }
+
         if (isset($contactData['zip'])) {
             $address['postcode'] = $contactData['zip'];
+        }
+
+        if (isset($contactData['address'])) {
+            $address['address_1'] = $contactData['address'];
+        }
+        if (isset($contactData['email'])) {
+            $address['email'] = $contactData['email'];
         }
         if (isset($contactData['phone'])) {
             $address['phone'] = $contactData['phone'];
         }
-        if (isset($contactData['address'])) {
-            $address['address_1'] = $contactData['address'];
-        }
+        $address['country'] = 'DE';
+
         $this->getOrder()->set_address( $address, 'billing' );
         $this->getOrder()->set_address( $address, 'shipping' );
 
@@ -237,7 +243,9 @@ class Order extends HttpError {
             $response = [];
             if ($fields) {
                 foreach ($fields as $key => $field) {
-                    $field =  strip_tags($field);
+                    if (is_string($field)) {
+                        $field =  strip_tags($field);
+                    }
                     if ($key === 'name_house') {
                         $response[$field] = $field;
                     }elseif ($key === 'sell_rent') {
