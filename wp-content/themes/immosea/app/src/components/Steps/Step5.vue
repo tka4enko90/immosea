@@ -73,6 +73,26 @@
                     </label>
                 </div>
             </div>
+            <div>
+                <div class="form-checkbox form-checkbox--custom form-checkbox--purple">
+                    <input id="mailaddress" type='checkbox' v-model="data.mailaddress">
+                    <label for="mailaddress">
+                        <span>{{ prices.mailaddress }} EUR</span>
+                        <strong>Mailadresse</strong>
+                        mit der Endung @beyourownmakler.com zur Anzeige im Online-Inserat, Mails werden an deine Mailadresse weitergeleitet
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div class="form-checkbox form-checkbox--custom form-checkbox--light-green">
+                    <input id="online_inserat" type='checkbox' v-model="data.online_inserat">
+                    <label for="online_inserat">
+                        <span>{{ prices.online_inserat }} EUR</span>
+                        <strong>Online-Inserat</strong>
+                        14 Tage bei Immoscout24 und Immowelt, nach 10 Tagen erhältst du die Möglichkeit, um weitere 14 Tage zu verlängern
+                    </label>
+                </div>
+            </div>
         </div>
     </StepWrap>
 </template>
@@ -108,6 +128,8 @@
                                 : getPriceByFieldName(this.$store.state.products, 'energy_certificate'),
           photography: getPriceByFieldName(this.$store.state.products, `photography_${this.$store.state.cart.type}`),
           drone_footage: getPriceByFieldName(this.$store.state.products, 'drone_footage'),
+          mailaddress: getPriceByFieldName(this.$store.state.products, 'mailaddress'),
+          online_inserat: getPriceByFieldName(this.$store.state.products, 'online_inserat'),
         }
       }
     },

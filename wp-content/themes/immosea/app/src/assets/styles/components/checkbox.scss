@@ -132,6 +132,18 @@
                 background: #FF9999;
             }
         }
+    
+        &.form-checkbox--purple {
+            label span {
+                background: #C5C4F0;
+            }
+        }
+    
+        &.form-checkbox--light-green {
+            label span {
+                background: #BCEFDA;
+            }
+        }
     }
     
     .form__area & {

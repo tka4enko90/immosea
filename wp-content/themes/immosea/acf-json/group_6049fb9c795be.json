@@ -138,30 +138,6 @@
                     "mime_types": ""
                 }
             ]
-        },
-        {
-            "key": "field_6066c06190380",
-            "label": "Banner Image",
-            "name": "banner_image",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": 0,
-            "min_height": 0,
-            "min_size": 0,
-            "max_width": 0,
-            "max_height": 0,
-            "max_size": 0,
-            "mime_types": ""
         }
     ],
     "location": [
@@ -181,5 +157,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1617346687
+    "modified": 1619189673
 }

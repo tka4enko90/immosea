@@ -22,6 +22,8 @@ export default new Vuex.Store({
       photography: false,
       drone_footage: false,
       further_floor_plan: false,
+      mailaddress: false,
+      online_inserat: false,
 
       virtual_staging: false,
     },
@@ -77,7 +79,17 @@ export default new Vuex.Store({
                               ? getPriceByFieldName(state.products, 'drone_footage')
                               : 0
 
-      return +advertising + +expose + +certificate + +photography + +floor_plan + +surcharge_3d_floor + +further_floor_plan + +drone_footage
+      let mailaddress  = state.cart.drone_footage
+                          ? getPriceByFieldName(state.products, 'mailaddress')
+                          : 0
+
+      let online_inserat = state.cart.drone_footage
+                              ? getPriceByFieldName(state.products, 'online_inserat')
+                              : 0
+
+      return +advertising + +expose + +certificate + +photography
+             + +floor_plan + +surcharge_3d_floor + +further_floor_plan
+             + +drone_footage + +online_inserat + +mailaddress
     }
   },
 
