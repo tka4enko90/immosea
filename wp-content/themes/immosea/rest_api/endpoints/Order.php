@@ -1,5 +1,6 @@
 <?php
 
+
 class Order extends HttpError {
     private $error;
     private $params;
@@ -96,7 +97,67 @@ class Order extends HttpError {
             $this->set_user_to_order();
             $this->getOrder()->calculate_totals();
             $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
-            $result = $available_gateways[ 'paypal' ]->process_payment($this->getOrderID());
+
+
+            include_once WC_ABSPATH . 'includes/wc-cart-functions.php';
+            include_once WC_ABSPATH . 'includes/wc-notice-functions.php';
+//            $result = $available_gateways[ 'paypal' ]->process_payment($this->getOrderID());
+            $result = $available_gateways[ 'spyr_sepanet' ]->process_payment($this->getOrderID());
+
+//            $WC_Payment_Gateway_Stripe_Sepa = new WC_Payment_Gateway_Stripe_Sepa();
+//            $WC_Payment_Gateway_Stripe_Sepa->init_form_fields();
+//            apply_filters( 'wc_stripe_get_source_args', $args )
+
+//            $result = $available_gateways['stripe_sepa']->process_payment($this->getOrderID());
+            $stripe = \Stripe\Stripe::setApiKey('sk_test_51Ij45zErMGSsBiAUOt69FNfUnDr1ZJi3ElNN15ywzPmcaqqzrV5nIcm6agtaQYwz8267ZwxUCYsKzO8B0xh6dLze00mNcZF1bn');
+
+            $source = \Stripe\Source::create([
+                "type" => "sepa_debit",
+                'mandate[notification_method]' => 'email',
+                "sepa_debit" => ["iban" => "DE89370400440532013000"],
+                "currency" => "eur",
+                "owner" => [
+                    "name" => "Alexander Tkachenko",
+                    'email' => 'sanya902011@gmail.com'
+                ],
+            ]);
+//            $endpoint = \Stripe\WebhookEndpoint::create([
+//                'url' => 'http://immosea.lvh.me/checkout/thank-you',
+//                'enabled_events' => [
+//                    'charge.failed',
+//                    'charge.succeeded',
+//                ],
+//            ]);
+
+            $customer = \Stripe\Customer::create([
+                'email' => 'sanya902011@gmail.com',
+                'source' => $source->id,
+            ]);
+
+            $charge = \Stripe\Charge::create([
+                'amount' => 302000,
+                'currency' => 'eur',
+                'customer' => $customer->id,
+                'source' => $source->id,
+            ]);
+            ?>
+            <pre>
+            <?php print_r($charge->status);?>
+            </pre>
+            <?php
+     ?>
+     <pre>
+     <?php print_r($charge);?>
+     </pre>
+     <?php
+            die();
+//?>
+<!--<pre>-->
+<?php //print_r($available_gateways);?>
+<?php //print_r($result);?>
+<!--</pre>-->
+<?php
+            die();
             if ( $result['result'] == 'success' ) {
                 $result = apply_filters( 'woocommerce_payment_successful_result', $result, $this->getOrderID() );
                 $response['result'] = $result;

@@ -60,6 +60,7 @@ if ( wc_tax_enabled() ) {
 				do_action( 'woocommerce_before_order_item_' . $item->get_type() . '_html', $item_id, $item, $order );
 
 				include __DIR__ . '/html-order-item.php';
+
 				do_action( 'woocommerce_order_item_' . $item->get_type() . '_html', $item_id, $item, $order );
 			}
 			do_action( 'woocommerce_admin_order_items_after_line_items', $order->get_id() );
@@ -80,7 +81,6 @@ if ( wc_tax_enabled() ) {
 				include __DIR__ . '/html-order-shipping.php';
 			}
 			do_action( 'woocommerce_admin_order_items_after_shipping', $order->get_id() );
-
 			?>
 		</tbody>
 		<tbody id="order_refunds">
@@ -92,7 +92,6 @@ if ( wc_tax_enabled() ) {
 					include __DIR__ . '/html-order-refund.php';
 				}
 				do_action( 'woocommerce_admin_order_items_after_refunds', $order->get_id() );
-
 			}
 			?>
 		</tbody>
@@ -169,6 +168,7 @@ if ( wc_tax_enabled() ) {
 				</td>
 			</tr>
 		<?php endif; ?>
+
 		<?php do_action( 'woocommerce_admin_order_totals_after_discount', $order->get_id() ); ?>
 
 		<?php if ( $order->get_shipping_methods() ) : ?>

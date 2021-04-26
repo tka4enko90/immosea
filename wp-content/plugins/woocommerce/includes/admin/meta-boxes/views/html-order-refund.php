@@ -45,7 +45,6 @@ $who_refunded = new WP_User( $refund->get_refunded_by() );
 		<input type="hidden" class="order_refund_id" name="order_refund_id[]" value="<?php echo esc_attr( $refund->get_id() ); ?>" />
 
 		<?php do_action( 'woocommerce_after_order_refund_item_name', $refund ); ?>
-        <?php echo 11111;?>
 	</td>
 
 	<?php do_action( 'woocommerce_admin_order_item_values', null, $refund, $refund->get_id() ); ?>
