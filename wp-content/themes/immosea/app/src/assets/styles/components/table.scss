@@ -67,6 +67,9 @@
     }
     
     &__method {
+        align-items: flex-start;
+        display: flex;
+        flex-wrap: wrap;
         > div {
             margin: 0 16px 16px 0;
         }
