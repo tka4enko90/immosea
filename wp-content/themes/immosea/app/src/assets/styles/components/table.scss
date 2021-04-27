@@ -66,6 +66,12 @@
         color: #ddd;
     }
     
+    &__method {
+        > div {
+            margin: 0 16px 16px 0;
+        }
+    }
+    
     &--total {
         font-size: 14px;
         
