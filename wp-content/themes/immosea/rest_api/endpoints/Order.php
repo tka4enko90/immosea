@@ -114,9 +114,11 @@ class Order extends HttpError {
         foreach ($available_gateways as $key =>  $payment_method) {
             if (in_array($payment_method->id, $this->get_payments_method())) {
                 $response[$payment_method->id] = $payment_method->process_payment($this->getOrderID());
+                $paypal_image = WC()->plugin_url() . "/includes/gateways/paypal/assets/images/paypal.png";
+                $icon = $payment_method->id === 'paypal' ? '<img src='.'"'.$paypal_image.'"'.'>' : $payment_method->get_icon();
                 $response[$payment_method->id]['data']= array(
                     'title' => $payment_method->title,
-                    'image' => $available_gateways['paypal']->get_icon(),
+                    'image' => $icon,
                 );
             }
         }
