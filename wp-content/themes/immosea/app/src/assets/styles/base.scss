@@ -137,6 +137,11 @@ p {
     }
 }
 
+.heading {
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
 @-webkit-keyframes rotate {
     0% {
         transform: rotate(0deg);

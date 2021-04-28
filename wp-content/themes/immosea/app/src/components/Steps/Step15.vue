@@ -12,6 +12,7 @@
             :showPrice="showPrice"
             :isLoading="isLoading"
     >
+        <div class="heading">Deine ausgewählten Leistungen:</div>
         <div class="table">
             <div class="table__row table__row--head">
                 <div>Artikelname</div>
@@ -61,6 +62,7 @@
                 <div>{{ order.amount }} {{ order.amount_type === 'percent' ? ' %' : ' €'}}</div>
             </div>
         </div>
+        <div class="heading">Zahlungsmöglichkeiten</div>
         <div class="table__method">
             <div v-if="order.payment_method && order.payment_method.paypal"  class="form-radio">
                 <input type="radio" 
