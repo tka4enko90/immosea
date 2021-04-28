@@ -49,8 +49,12 @@ class Rest_API {
         add_action( 'woocommerce_admin_order_totals_after_discount', array($this,'render_order_custom_fields' ), 10 );
         Cron_Remove_Images::init();
         add_action( 'woocommerce_thankyou', array($this, 'remove_cookie'));
-
-
+        add_filter('wc_stripe_payment_icons', (function($icon_arr){
+            if(isset($icon_arr['sofort'])) {
+                $icon_arr['stripe_sofort'] = $icon_arr['sofort'];
+            }
+            return $icon_arr;
+        }));
     }
 
     /**

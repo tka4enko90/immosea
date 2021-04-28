@@ -110,13 +110,13 @@ class Order extends HttpError {
         include_once WC_ABSPATH . 'includes/wc-cart-functions.php';
         include_once WC_ABSPATH . 'includes/wc-notice-functions.php';
         $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
+
         foreach ($available_gateways as $key =>  $payment_method) {
             if (in_array($payment_method->id, $this->get_payments_method())) {
                 $response[$payment_method->id] = $payment_method->process_payment($this->getOrderID());
-                $icon = $payment_method->id === 'paypal' ? $available_gateways['paypal']->settings['image_url'] : $payment_method->icon;
                 $response[$payment_method->id]['data']= array(
                     'title' => $payment_method->title,
-                    'icon' => $icon,
+                    'image' => $available_gateways['paypal']->get_icon(),
                 );
             }
         }
