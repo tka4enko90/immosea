@@ -70,9 +70,9 @@
                        :value="order.payment_method.paypal.data.title"
                        v-model="method">
                 <label :for="order.payment_method.paypal.data.title">
-                    <img :src="order.payment_method.paypal.data.icon"
-                         :alt="order.payment_method.paypal.data.title" v-if="order.payment_method.paypal.data.icon">
-                    <span v-else>{{order.payment_method.paypal.data.title}}</span>
+                    <span v-if="order.payment_method.paypal.data.image"
+                          v-html="order.payment_method.paypal.data.image"></span>
+                    <span v-else>{{ order.payment_method.paypal.data.title }}</span>
                 </label>
             </div>
             <div v-if="order.payment_method && order.payment_method.stripe_sofort"  class="form-radio">
@@ -81,9 +81,10 @@
                        :value="order.payment_method.stripe_sofort.data.title"
                        v-model="method">
                 <label :for="order.payment_method.stripe_sofort.data.title">
-                    <img :src="order.payment_method.stripe_sofort.data.icon"
-                         :alt="order.payment_method.stripe_sofort.data.title" v-if="order.payment_method.stripe_sofort.data.icon">
-                    <span v-else>{{order.payment_method.stripe_sofort.data.title}}</span>
+                    <span v-if="order.payment_method.stripe_sofort.data.image"
+                          v-html="order.payment_method.stripe_sofort.data.image"></span>
+                    <span v-else>{{ order.payment_method.stripe_sofort.data.title }}</span>
+
                 </label>
             </div>
         </div>

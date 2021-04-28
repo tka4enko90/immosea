@@ -44,6 +44,16 @@
             left: 6px;
             top: 6px
         }
+        
+        img {
+            display: block;
+            height: 32px;
+            
+           + a {
+                font-size: 12px;
+                color: $primary-color;
+            }
+        }
     }
     + .form-radio {
         margin-left: 10px;
