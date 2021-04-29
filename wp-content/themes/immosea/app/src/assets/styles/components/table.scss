@@ -82,7 +82,10 @@
             justify-content: flex-end;
             
             > div {
-                flex: 0 0 120px;
+                flex: 0 0 200px;
+                &.table__price {
+                    flex: 0 0 100px;
+                }
             }
             
             &--sale {

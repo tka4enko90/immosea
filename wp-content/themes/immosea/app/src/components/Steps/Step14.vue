@@ -5,7 +5,7 @@
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
                 ...buttonNext,
-                title: 'Create Order',
+                title: 'Bestellung überprüfen',
                 click: handlerClick,
                 disabled: !$v.contactData.name.required
                         || !$v.contactData.last_name.required

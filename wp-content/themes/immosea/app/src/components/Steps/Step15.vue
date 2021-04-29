@@ -5,7 +5,7 @@
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
                 ...buttonNext,
-                title: `Weiter zu ${method}`,
+                title: `Zahlungspflichtig bestellen ${method}`,
                 click: onClick,
                 sending: sending
             }"
@@ -45,14 +45,14 @@
         </div>
         <div class="table table--total">
             <div class="table__row">
-                <div>Gesamt</div>
+                <div>Gesamtsumme inkl. MwSt.</div>
                 <div class="table__price">
                     {{ order.total_price }} €
                     <span class="table__old-price" v-if="order.sub_total && order.amount > 0">{{ order.sub_total }} €</span>
                 </div>
             </div>
             <div class="table__row" v-if="order.total_tax">
-                <div>Tax</div>
+                <div>Darin enthaltene MwSt.</div>
                 <div class="table__price">
                     {{ order.total_tax }} €
                 </div>
