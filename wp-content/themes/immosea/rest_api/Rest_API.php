@@ -65,7 +65,8 @@ class Rest_API {
                 && $meta_datum->key != '_new_order_email_sent'
                 && $meta_datum->key != '_paypal_status'
                 && $meta_datum->key != 'Payment type'
-                && strpos($meta_datum->key, '_wcpdf') !== 0)
+                && strpos($meta_datum->key, '_wcpdf') !== 0
+                && strpos($meta_datum->key, '_stripe') !== 0 )
             $template .= '
                 <tr>
                     <td class="sub-label" style="width:100%">'.$meta_datum->key.'</td>

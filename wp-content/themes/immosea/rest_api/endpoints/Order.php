@@ -115,12 +115,12 @@ class Order extends HttpError {
             if (in_array($payment_method->id, $this->get_payments_method())) {
                 $response[$payment_method->id] = $payment_method->process_payment($this->getOrderID());
                 $paypal_image = WC()->plugin_url() . "/includes/gateways/paypal/assets/images/paypal.png";
-                $icon = $payment_method->id === 'paypal' ? '<img src='.'"'.$paypal_image.'"'.'>' : $payment_method->get_icon();
+                $icon = $payment_method->id === 'paypal' ? "<img src=\"$paypal_image\">" : $payment_method->get_icon();
                 $response[$payment_method->id]['data']= array(
-                    'title' => $payment_method->title,
-                    'image' => $icon,
-                );
-            }
+                'title' => $payment_method->title,
+                'image' => $icon,
+            );
+        }
         }
         return $response;
     }
@@ -147,11 +147,9 @@ class Order extends HttpError {
         if (isset($contactData['last_name'])) {
             $address['last_name'] = $contactData['last_name'];
         }
-
         if (isset($contactData['zip'])) {
             $address['postcode'] = $contactData['zip'];
         }
-
         if (isset($contactData['address'])) {
             $address['address_1'] = $contactData['address'];
         }
@@ -354,8 +352,14 @@ class Order extends HttpError {
                         $response['Bodenbeläge'] = implode(' | ', $fields[$key]);
                     }elseif ($key === 'key_points') {
                         $response['Beschreibung (Stichpunkte)'] = $field;
-                    }elseif ($key === 'address') {
-                        $response['Adresse'] = $field;
+                    }elseif ($key === 'street') {
+                        $response['Street'] = $field;
+                    }elseif ($key === 'street_number') {
+                        $response['Street number'] = $field;
+                    }elseif ($key === 'post_code') {
+                        $response['Post code'] = $field;
+                    }elseif ($key === 'town') {
+                        $response['Town'] = $field;
                     }elseif ($key === 'postcode') {
                         $response['Im Exposé bitte nur Postleitzahl und Ort angeben.'] = $field;
                     }elseif ($key === 'image' && !empty($fields[$key])) {
