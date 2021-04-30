@@ -140,6 +140,7 @@
                 && $meta_datum->key != '_paypal_status'
                 && $meta_datum->key != 'Payment type'
                 && strpos($meta_datum->key, '_wcpdf') !== 0
+                && strpos($meta_datum->key, '_stripe') !== 0
         )
             $template .= '
                 <tr>

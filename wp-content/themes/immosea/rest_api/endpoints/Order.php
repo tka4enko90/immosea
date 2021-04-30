@@ -93,8 +93,12 @@ class Order extends HttpError {
                 $response['total_price'] = $this->getOrder()->calculate_totals();
                 $response['currency'] = $this->getOrder()->get_currency();
                 $response['total_tax'] = $this->getOrder()->get_total_tax('view');
+
                 $response_coupon = $this->apply_coupon->apply_coupon($this->getOrder(), $this->coupon);
-                $response = array_merge($response, $response_coupon);
+                  if ($response_coupon) {
+                      $response = array_merge($response, $response_coupon);
+                  }
+
 
             }
 
@@ -391,6 +395,10 @@ class Order extends HttpError {
                             $images .='<div><a href="'.wp_get_attachment_url($item['attachment_id']).'" target="_blank">'.$image.'</a></div>';
                         }
                         $response['Images'] = $images;
+                    }elseif ($key === 'zustimmung_agb_datenschutz') {
+                        $response['Zustimmung AGB & Datenschutz'] = $field;
+                    }elseif ($key === 'zustimmung_ablauf_widerruf') {
+                        $response['Zustimmung Ablauf Widerruf'] = $field;
                     }
                 }
                 return $response;
