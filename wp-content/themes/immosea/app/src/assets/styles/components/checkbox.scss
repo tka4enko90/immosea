@@ -19,7 +19,7 @@
     label {
         padding-left: 34px;
         position: relative;
-        display: inline-flex;
+        //display: inline-flex;
         @media (max-width: $breakpoint-small-max) {
             padding-top: 3px;
         }
@@ -144,6 +144,10 @@
                 background: #BCEFDA;
             }
         }
+    }
+    
+    &--small {
+        font-size: 14px;
     }
     
     .form__area & {

@@ -23,8 +23,7 @@
             </div>
         </div>
         <!--{{products}}-->
-        <!--{{order}}-->
-        <!--{{cart}} <br/>-->
+        <!--{{cart}}-->
         <!--{{collectData}}-->
     </div>
 </template>

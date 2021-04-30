@@ -1,9 +1,12 @@
 <template>
-    <div class="form-checkbox">
+    <div class="form-checkbox" :class="{
+        'form-checkbox--small': small,
+        'form-checkbox--checked': checked
+    }">
         <input
                 type='checkbox'
-                :name='name'
                 :disabled="disabled"
+                :name='name'
                 :id="id"
                 :value="value"
                 @input="$emit('change', $event.target.checked)"
@@ -28,7 +31,8 @@
       id: String,
       name: String,
       value: {},
-      checked: Boolean
+      checked: Boolean,
+      small: Boolean
     },
     data: () => ({}),
     computed: {},

@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const hostName = window.location.origin
+// const hostName = window.location.origin
 // const hostName = 'http://localhost:8888/immosea'
-// const hostName = 'http://immosea.markupus.tech'
+const hostName = 'http://immosea.markupus.tech'
 const BASE_URL = `${hostName}/wp-json/rest_api/v1`
 
 const headers = {
