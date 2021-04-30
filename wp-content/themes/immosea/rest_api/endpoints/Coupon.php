@@ -43,9 +43,6 @@ class Coupon extends HttpError {
        if ($this->getOrder()->get_coupons()) {
            return $this->error->setStatusCode(404)->setMessage('Coupon already added to these products')->report();
        }
-        $response = $this->apply_coupon->apply_coupon($this->getOrder(), $this->getCoupon());
-
-
         if ($order_items) {
             foreach ($order_items as $order_item) {
                 $product = wc_get_product($order_item->get_product_id());
@@ -58,14 +55,10 @@ class Coupon extends HttpError {
                         'price' => $product->get_price(),
                 );
             }
-//            $coupon = new WC_Coupon($this->getCoupon());
-//
-//            $response['sub_total'] = $price_before_coupon;
-//            $response['total_price'] = $this->getOrder()->get_total();
-//            $response['amount'] = $coupon->get_amount();
-//            $response['amount_type'] = $coupon->get_discount_type();
         }
+        $response_coupon = $this->apply_coupon->apply_coupon($this->getOrder(), $this->getCoupon());
 
+        $response = array_merge($response, $response_coupon);
         $this->set_user_to_order();
 
         $response['payment_method'] = $this->payment->get_payments_method_response($this->getOrderID());
