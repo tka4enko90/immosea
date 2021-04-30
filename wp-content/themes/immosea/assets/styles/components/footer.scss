@@ -61,6 +61,10 @@
                 font-weight: bold;
                 color: $base-color;
             }
+            
+            img {
+                max-width: 100px;
+            }
         }
         
         .sub-menu {

@@ -55,3 +55,18 @@ register_nav_menus( array(
     'footer' => 'Footer',
     'services' => 'Services'
 ) );
+
+
+add_filter('wp_nav_menu_objects', 'my_wp_nav_menu_objects', 10, 2);
+
+function my_wp_nav_menu_objects( $items, $args ) {
+    foreach( $items as &$item ) {
+        $icon = get_field('icon', $item);
+
+        if( $icon ) {
+            $item->title = '<img src="'. $icon['url'] .'">';
+        }
+    }
+
+    return $items;
+}
