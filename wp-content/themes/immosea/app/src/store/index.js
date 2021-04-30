@@ -13,7 +13,6 @@ export default new Vuex.Store({
       year: '',
       image: '',
       uploads_images: [],
-
       surcharge_3d_floor: false,
       advertising_copy: null,
       floor_plan: false,
@@ -26,6 +25,9 @@ export default new Vuex.Store({
       online_inserat: false,
 
       virtual_staging: false,
+
+      zustimmung_agb_datenschutz: false,
+      zustimmung_ablauf_widerruf: false
     },
     collectData: {
       name_house: '',
@@ -40,7 +42,8 @@ export default new Vuex.Store({
       name: '',
       last_name:'',
     },
-    order: {
+    order: {},
+    coupon: {
       amount: 0
     },
     isLoading: false,
@@ -143,6 +146,11 @@ export default new Vuex.Store({
       state.order = payload
     },
 
+    SET_COUPON (state, payload) {
+      state.coupon = payload
+    },
+
+
     SET_LOADING (state, payload) {
       state.isLoading = payload
     },
@@ -205,7 +213,7 @@ export default new Vuex.Store({
           await commit('SET_ERROR', 'Der eingegebene Gutscheincode ist nicht gültig.')
         } else {
           await commit('SET_ERROR', '')
-          await commit('SET_ORDER', res.data)
+          await commit('SET_COUPON', res.data)
           await commit('SET_IS_COUPON', true)
         }
 

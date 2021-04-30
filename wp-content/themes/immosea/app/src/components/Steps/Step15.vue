@@ -2,12 +2,16 @@
     <StepWrap
             :title="title"
             :text="text"
-            :buttonPrev="{...buttonPrev}"
+            :buttonPrev="{
+                ...buttonPrev,
+                click: onClickBack,
+            }"
             :buttonNext="{
                 ...buttonNext,
                 title: `Zahlungspflichtig bestellen ${method}`,
                 click: onClick,
-                sending: sending
+                sending: sending,
+                disabled: !cart.zustimmung_agb_datenschutz && !cart.zustimmung_ablauf_widerruf
             }"
             :showPrice="showPrice"
             :isLoading="isLoading"
@@ -32,9 +36,9 @@
         </div>
         <div class="table__coupon">
             <div>
-                <InputText label="Dein Rabattcode" placeholder="Gustcheincode" v-model="coupon" />
+                <InputText label="Dein Rabattcode" placeholder="Gustcheincode" v-model="couponInput" />
                 <button class="button button--small button--primary"
-                        :class="{'button--disabled': isSending || !coupon || isCoupon}"
+                        :class="{'button--disabled': isSending || !couponInput || isCoupon}"
                         @click="apply"
                 >
                     Anwenden
@@ -44,11 +48,18 @@
             <div v-if="error" class="form__error">{{error}}</div>
         </div>
         <div class="table table--total">
-            <div class="table__row">
+
+            <div class="table__row" v-if="coupon.sub_total && coupon.amount > 0">
+                <div>Gesamtsumme inkl. MwSt.</div>
+                <div class="table__price">
+                    {{ coupon.total_price }} €
+                    <span class="table__old-price">{{ coupon.sub_total }} €</span>
+                </div>
+            </div>
+            <div class="table__row" v-else>
                 <div>Gesamtsumme inkl. MwSt.</div>
                 <div class="table__price">
                     {{ order.total_price }} €
-                    <span class="table__old-price" v-if="order.sub_total && order.amount > 0">{{ order.sub_total }} €</span>
                 </div>
             </div>
             <div class="table__row" v-if="order.total_tax">
@@ -57,9 +68,9 @@
                     {{ order.total_tax }} €
                 </div>
             </div>
-            <div class="table__row table__row--sale" v-if="order.amount > 0">
+            <div class="table__row table__row--sale" v-if="coupon.amount > 0">
                 <div>Rabatt</div>
-                <div>{{ order.amount }} {{ order.amount_type === 'percent' ? ' %' : ' €'}}</div>
+                <div class="table__price">{{ coupon.amount }} {{ coupon.amount_type === 'percent' ? ' %' : ' €'}}</div>
             </div>
         </div>
         <div class="heading">Zahlungsmöglichkeiten</div>
@@ -88,13 +99,30 @@
                 </label>
             </div>
         </div>
+
+        <div class="form__row">
+            <div class="form-checkbox form-checkbox--small">
+                <input id="zustimmung_agb_datenschutz" type='checkbox' v-model="cart.zustimmung_agb_datenschutz">
+                <label for="zustimmung_agb_datenschutz">
+                    Ich akzeptiere die <a href="#">AGB</a>. Ich habe die <a href="#">Datenschutzerklärung</a> zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meines Auftrags elektronisch erhoben und gespeichert werden.
+                </label>
+            </div>
+        </div>
+        <div class="form__row">
+            <div class="form-checkbox form-checkbox--small">
+                <input id="zustimmung_ablauf_widerruf" type='checkbox' v-model="cart.zustimmung_ablauf_widerruf">
+                <label for="zustimmung_ablauf_widerruf">
+                    Ich verlange ausdrücklich und stimme gleichzeitig zu, dass Sie mit der in Auftrag gegebenen Dienstleistung vor Ablauf der Widerrufsfrist beginnen. Ich weiß, dass mein Widerrufsrecht bei vollständiger Erfüllung des Vertrages erlischt.
+                </label>
+            </div>
+        </div>
     </StepWrap>
 </template>
 
 <script>
   import StepWrap from '../Layout/StepWrap';
   import InputText from '../Form/InputText';
-
+  import { Order } from '../../api';
 
   export default {
     name: 'app-step15',
@@ -104,7 +132,7 @@
     props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
     data() {
       return {
-        coupon: '',
+        couponInput: '',
         sending: false,
         method: 'PayPal'
     }},
@@ -113,24 +141,35 @@
         return {
           order_id: this.$store.state.order.order_id,
           total_price: this.$store.state.order.total_price,
-          sub_total: this.$store.state.order.sub_total,
-          amount: this.$store.state.order.amount,
           products: this.$store.state.order.products,
-          amount_type:  this.$store.state.order.amount_type,
           path: this.$store.state.order.result && this.$store.state.order.result.redirect || "/",
           total_tax: this.$store.state.order.total_tax,
           payment_method: this.$store.state.order.payment_method
+        }
+      },
+      coupon() {
+        return {
+          amount: this.$store.state.coupon.amount,
+          sub_total: this.$store.state.coupon.sub_total,
+          total_price: this.$store.state.coupon.total_price,
+          amount_type:  this.$store.state.coupon.amount_type,
         }
       },
       error() { return this.$store.state.error },
       isLoading() { return this.$store.state.isLoading },
       isSending() { return this.$store.state.isSending },
       isCoupon() { return this.$store.state.isCoupon },
+      cart: {
+        get() { return this.$store.state.cart },
+        set(value) {
+          this.$store.commit('SET_CART_OPTIONS', { value })
+        }
+      }
     },
     methods: {
       apply() {
         this.$store.dispatch('applyCoupon', {
-          coupon: this.coupon,
+          coupon: this.couponInput,
           order_id: this.order.order_id
         });
       },
@@ -138,9 +177,20 @@
         return Object.keys(this.$store.state.order.payment_method).find(key =>
           this.$store.state.order.payment_method[key].data.title === val)
       },
-      onClick() {
+      onClickBack() {
+        this.couponInput = ''
+        this.$store.commit('SET_IS_COUPON', false)
+        this.$store.commit('SET_COUPON', {})
+        this.buttonPrev.click()
+      },
+      async onClick() {
         this.sending = true
-        window.location.href = this.$store.state.order.payment_method[this.getPath(this.method)].redirect
+        await Order.post({
+          cart: this.$store.state.cart,
+          collectData: this.$store.state.collectData,
+          contactData: this.$store.state.contactData
+        })
+        window.location.href = await this.$store.state.order.payment_method[this.getPath(this.method)].redirect
       }
     }
   }
