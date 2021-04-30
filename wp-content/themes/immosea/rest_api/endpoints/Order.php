@@ -12,12 +12,15 @@ class Order extends HttpError {
     private $contactData;
     private $collectData;
     private $payment;
+    private $coupon;
+    private $apply_coupon;
 
 
-    public function __construct(ErrorService $error, Payment $payment)
+    public function __construct(ErrorService $error, Payment $payment, Apply_Coupon $apply_coupon)
     {
         $this->error = $error;
         $this->payment = $payment;
+        $this->apply_coupon = $apply_coupon;
     }
 
     /**
@@ -27,6 +30,7 @@ class Order extends HttpError {
      */
     public function create_order($request)
     {
+
         try {
             if (!$request->get_params()) {
                 return $this->error->setStatusCode(400)->setMessage("Params wasn't set")->report();
@@ -34,6 +38,7 @@ class Order extends HttpError {
             $this->setParams($request->get_params());
 
             $this->setOrder($this->payment->get_order());
+            $this->coupon = $this->getOrder()->get_coupon_codes() ? $this->getOrder()->get_coupon_codes()[0] : '';
 
             $this->setOrderID($this->getOrder()->get_id());
 
@@ -72,6 +77,7 @@ class Order extends HttpError {
             }
             $order_items = $this->getOrder()->get_items();
 
+
             if ($order_items) {
                 foreach ($order_items as $order_item) {
                     $product = wc_get_product($order_item->get_product_id());
@@ -87,6 +93,9 @@ class Order extends HttpError {
                 $response['total_price'] = $this->getOrder()->calculate_totals();
                 $response['currency'] = $this->getOrder()->get_currency();
                 $response['total_tax'] = $this->getOrder()->get_total_tax('view');
+                $response_coupon = $this->apply_coupon->apply_coupon($this->getOrder(), $this->coupon);
+                $response = array_merge($response, $response_coupon);
+
             }
 
             $this->set_user_to_order();
@@ -100,7 +109,6 @@ class Order extends HttpError {
 
         return $response;
     }
-
 
     private function bind_image_with_order($image) {
         if (isset($image['attachment_id']) && isset($image['attachment_url'])) {

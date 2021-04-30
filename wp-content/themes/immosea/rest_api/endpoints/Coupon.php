@@ -6,6 +6,7 @@ class Coupon extends HttpError {
     private $orderID;
     private $coupon;
     private $error;
+    private $apply_coupon;
 
 
 
@@ -13,10 +14,11 @@ class Coupon extends HttpError {
     private $order_products;
     private $payment;
 
-    public function __construct(ErrorService $error, Payment $payment)
+    public function __construct(ErrorService $error, Payment $payment, Apply_Coupon $apply_coupon)
     {
         $this->error = $error;
         $this->payment = $payment;
+        $this->apply_coupon = $apply_coupon;
     }
 
     /**
@@ -41,13 +43,9 @@ class Coupon extends HttpError {
        if ($this->getOrder()->get_coupons()) {
            return $this->error->setStatusCode(404)->setMessage('Coupon already added to these products')->report();
        }
+        $response = $this->apply_coupon->apply_coupon($this->getOrder(), $this->getCoupon());
 
-        $applied_coupon = $this->getOrder()->apply_coupon($this->getCoupon());
-        if (is_wp_error($applied_coupon)) {
-            return $this->error->setStatusCode(404)->setMessage($applied_coupon->get_error_message())->report();
-        }
 
-        $response['order_id'] = $this->getOrderID();
         if ($order_items) {
             foreach ($order_items as $order_item) {
                 $product = wc_get_product($order_item->get_product_id());
@@ -60,15 +58,16 @@ class Coupon extends HttpError {
                         'price' => $product->get_price(),
                 );
             }
-            $coupon = new WC_Coupon($this->getCoupon());
-            $response['sub_total'] = $this->getOrder()->get_subtotal();
-            $response['total_price'] = $this->getOrder()->get_total();
-            $response['amount'] = $coupon->get_amount();
-            $response['amount_type'] = $coupon->get_discount_type();
+//            $coupon = new WC_Coupon($this->getCoupon());
+//
+//            $response['sub_total'] = $price_before_coupon;
+//            $response['total_price'] = $this->getOrder()->get_total();
+//            $response['amount'] = $coupon->get_amount();
+//            $response['amount_type'] = $coupon->get_discount_type();
         }
 
         $this->set_user_to_order();
-        $this->getOrder()->calculate_totals();
+
         $response['payment_method'] = $this->payment->get_payments_method_response($this->getOrderID());
         return $response;
     }
@@ -80,55 +79,9 @@ class Coupon extends HttpError {
             $this->getOrder()->save();
         }
     }
-    private function update_order_products($products) {
-        foreach ($products as $item) {
-            if (isset($item['product_id']) && $item['product_id']) {
-                $this->getOrder()->add_product( wc_get_product($item['product_id']  ), isset($item['qty']) ? $item['qty'] : 1 );
-            }
-        }
-    }
 
-    private function update_order_post_meta($order_metas, $order_ID) {
 
-        foreach ($order_metas as $key => $value) {
-            update_post_meta( $order_ID, $key, $value);
-        }
-    }
-//    private function render_order_custom_fields() {
-//        $order = $this->getOrder();
-//
-//        $template = "
-//            <tbody>";
-//        foreach ($order->get_meta_data() as $meta_datum) {
-//            $template .= '
-//                <tr>
-//                    <td class="total"><span class="amount">'.$meta_datum->key.'</span></td>
-//                    <td class="%1"></td>
-//                    <td>'.$meta_datum->value.'</td>
-//
-//                </tr>';
-//
-//        }
-//        $template .= '</tbody>';
-//        echo $template;
-//    }
 
-    private function prepare_order_fields($fields) {
-        $fields = array(
-            '_year' => 1990
-        );
-
-        $response = [];
-        if ($fields) {
-            foreach ($fields as $key => $field) {
-                if ($key === '_year') {
-                    $response['Year'] = $field;
-                }
-            }
-            return $response;
-        }
-        return false;
-    }
     /**
      * @return mixed
      */

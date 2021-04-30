@@ -4,6 +4,7 @@ include 'services/ErrorService.php';
 include 'services/HttpError.php';
 include 'services/Cron_Theme.php';
 include 'services/Payment.php';
+include 'services/Apply_Coupon.php';
 
 include 'endpoints/Order.php';
 include 'endpoints/Products.php';
@@ -13,6 +14,7 @@ include 'endpoints/Media.php';
 
 class Rest_API {
     private $payment;
+    private $apply_coupon;
     private static
         $instance = null;
     public static function init($api_namespace, $version) {
@@ -42,6 +44,7 @@ class Rest_API {
         Cron_Remove_Images::init();
         add_action( 'woocommerce_thankyou', array($this, 'remove_cookie'));
         $this->payment = new Payment();
+        $this->apply_coupon = new Apply_Coupon(new HttpError());
     }
 
     /**
@@ -100,7 +103,7 @@ class Rest_API {
         register_rest_route("{$root}/{$version}", '/create_order/', array(
                 array(
                     'methods'         => \WP_REST_Server::CREATABLE,
-                    'callback'        => array(new Order(new HttpError(), $this->payment), 'create_order' ),
+                    'callback'        => array(new Order(new HttpError(), $this->payment,$this->apply_coupon), 'create_order' ),
                     'permission_callback' => array($this, 'permissions_check' )
                 ),
             )
@@ -111,7 +114,7 @@ class Rest_API {
         register_rest_route("{$root}/{$version}", '/apply_coupon/', array(
                 array(
                     'methods'         => \WP_REST_Server::CREATABLE,
-                    'callback'        => array(new Coupon(new HttpError(), $this->payment), 'apply_coupon' ),
+                    'callback'        => array(new Coupon(new HttpError(), $this->payment, $this->apply_coupon), 'apply_coupon' ),
                     'permission_callback' => array($this, 'permissions_check' )
                 ),
             )
