@@ -11,7 +11,13 @@ class Coupon extends HttpError {
 
     private $order_metas;
     private $order_products;
+    private $payment;
 
+    public function __construct(ErrorService $error, Payment $payment)
+    {
+        $this->error = $error;
+        $this->payment = $payment;
+    }
 
     /**
      * @param $request
@@ -22,19 +28,13 @@ class Coupon extends HttpError {
     {
 
         $this->setParams($request->get_params());
-        WC()->initialize_session();
-        if (empty(WC()->session->get('order_awaiting_payment'))) { $this->setStatusCode(404)->setMessage('order_id wasn\'t add to endpoint'); return $this->report();}
+
         if (empty($this->params['coupon'])){ $this->setStatusCode(404)->setMessage('coupon wasn\'t add to endpoint'); return $this->report();}
 
-        $order = wc_get_order(WC()->session->get('order_awaiting_payment'));
-        if (!$order) {
-            $this->setStatusCode(404)->setMessage('order dosen\'t exist'); return $this->report();
-        }
+        $this->setOrder($this->payment->get_order());
+        $this->setOrderID($this->getOrder()->get_id());
 
-        $this->setOrder($order);
         $this->setCoupon($this->params['coupon']);
-
-        $this->setOrderID($this->getOrder()->ID);
 
         $order_items = $this->getOrder()->get_items();
 
@@ -69,15 +69,7 @@ class Coupon extends HttpError {
 
         $this->set_user_to_order();
         $this->getOrder()->calculate_totals();
-        $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
-        $result = $available_gateways[ 'paypal' ]->process_payment($this->getOrderID());
-        if ( $result['result'] == 'success' ) {
-            $result = apply_filters( 'woocommerce_payment_successful_result', $result, $this->getOrderID() );
-            $response['result'] = $result;
-        }else {
-            $this->setStatusCode(404)->setMessage('Process payment worn');
-            return  $this->report();
-        }
+        $response['payment_method'] = $this->payment->get_payments_method_response($this->getOrderID());
         return $response;
     }
 
@@ -231,8 +223,5 @@ class Coupon extends HttpError {
     {
         $this->coupon = $coupon;
     }
-    public function __construct(ErrorService $error)
-    {
-        $this->error = $error;
-    }
+
 }

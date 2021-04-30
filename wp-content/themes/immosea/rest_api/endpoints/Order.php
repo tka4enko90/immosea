@@ -11,8 +11,14 @@ class Order extends HttpError {
     private $cart;
     private $contactData;
     private $collectData;
+    private $payment;
 
 
+    public function __construct(ErrorService $error, Payment $payment)
+    {
+        $this->error = $error;
+        $this->payment = $payment;
+    }
 
     /**
      * @param $request
@@ -27,21 +33,10 @@ class Order extends HttpError {
             }
             $this->setParams($request->get_params());
 
-            WC()->initialize_session();
-            if (isset(WC()->session)) {
-                if (!WC()->session->has_session()) {
-                    WC()->session->set_customer_session_cookie(true);
-                }
-            }
-            if (!WC()->session->get('order_awaiting_payment') || !wc_get_order(WC()->session->get('order_awaiting_payment'))) {
-                $order =  wc_create_order();
-                WC()->session->set('order_awaiting_payment', $order->get_id());
-            } else {
-                $order = wc_get_order( WC()->session->get('order_awaiting_payment'));
-            }
+            $this->setOrder($this->payment->get_order());
 
-            $this->setOrder($order);
             $this->setOrderID($this->getOrder()->get_id());
+
             $this->setCart($this->getParams('cart'));
             $this->setCollectData($this->getParams('collectData'));
             $this->setContactData($this->getParams('contactData'));
@@ -76,7 +71,6 @@ class Order extends HttpError {
                 $session->set('order_awaiting_payment', $this->getOrderID());
             }
             $order_items = $this->getOrder()->get_items();
-            $response['order_id'] = $this->getOrderID();
 
             if ($order_items) {
                 foreach ($order_items as $order_item) {
@@ -98,7 +92,7 @@ class Order extends HttpError {
             $this->set_user_to_order();
             $this->getOrder()->calculate_totals();
 
-            $response['payment_method'] = $this->get_payments_method_response();
+            $response['payment_method'] = $this->payment->get_payments_method_response($this->getOrderID());
 
         } catch (Exception $e) {
             return $this->error->setStatusCode(404)->setMessage($e->getMessage())->report();
@@ -106,31 +100,8 @@ class Order extends HttpError {
 
         return $response;
     }
-    private function get_payments_method_response() {
-        include_once WC_ABSPATH . 'includes/wc-cart-functions.php';
-        include_once WC_ABSPATH . 'includes/wc-notice-functions.php';
-        $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
 
-        foreach ($available_gateways as $key =>  $payment_method) {
-            if (in_array($payment_method->id, $this->get_payments_method())) {
-                $response[$payment_method->id] = $payment_method->process_payment($this->getOrderID());
-                $paypal_image = WC()->plugin_url() . "/includes/gateways/paypal/assets/images/paypal.png";
-                $icon = $payment_method->id === 'paypal' ? "<img src=\"$paypal_image\">" : $payment_method->get_icon();
-                $response[$payment_method->id]['data']= array(
-                'title' => $payment_method->title,
-                'image' => $icon,
-            );
-        }
-        }
-        return $response;
-    }
-    public function get_payments_method () {
-        $response = array(
-            'paypal',
-            'stripe_sofort'
-        );
-        return $response;
-    }
+
     private function bind_image_with_order($image) {
         if (isset($image['attachment_id']) && isset($image['attachment_url'])) {
             wp_update_post( array(
@@ -553,20 +524,6 @@ class Order extends HttpError {
     {
         $this->collectData = $collectData;
     }
-
-    public function __construct(ErrorService $error)
-    {
-        $this->error = $error;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPaymentMethod()
-    {
-        return $this->paymentMethod;
-    }
-
 
 
 }
