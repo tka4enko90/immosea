@@ -38,15 +38,20 @@ class Rest_API {
     {
         $this->api_namespace = $api_namespace;
         $this->version = $version;
-
         add_action( 'rest_api_init', array($this, 'register_routes'));
         add_action( 'woocommerce_admin_order_totals_after_discount', array($this,'render_order_custom_fields' ), 10 );
         Cron_Remove_Images::init();
         add_action( 'woocommerce_thankyou', array($this, 'remove_cookie'));
+        add_filter('woocommerce_return_to_shop_redirect', function ($url){
+            return get_home_url();
+        });
+        add_filter('woocommerce_return_to_shop_text', function(){
+           return __('Zurück zur Seite', 'immosea');
+        });
+
         $this->payment = new Payment();
         $this->apply_coupon = new Apply_Coupon(new HttpError());
     }
-
     /**
      * @param $order
      */
