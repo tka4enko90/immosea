@@ -11,7 +11,7 @@
                 title: `Zahlungspflichtig bestellen ${method}`,
                 click: onClick,
                 sending: sending,
-                disabled: !cart.zustimmung_agb_datenschutz && !cart.zustimmung_ablauf_widerruf
+                disabled: !cart.zustimmung_agb_datenschutz || !cart.zustimmung_ablauf_widerruf
             }"
             :showPrice="showPrice"
             :isLoading="isLoading"
@@ -49,17 +49,11 @@
         </div>
         <div class="table table--total">
 
-            <div class="table__row" v-if="coupon.sub_total && coupon.amount > 0">
-                <div>Gesamtsumme inkl. MwSt.</div>
-                <div class="table__price">
-                    {{ coupon.total_price }} €
-                    <span class="table__old-price">{{ coupon.sub_total }} €</span>
-                </div>
-            </div>
-            <div class="table__row" v-else>
+            <div class="table__row">
                 <div>Gesamtsumme inkl. MwSt.</div>
                 <div class="table__price">
                     {{ order.total_price }} €
+                    <span class="table__old-price" v-if="order.sub_total && order.amount > 0">{{ order.sub_total }} €</span>
                 </div>
             </div>
             <div class="table__row" v-if="order.total_tax">
@@ -68,9 +62,9 @@
                     {{ order.total_tax }} €
                 </div>
             </div>
-            <div class="table__row table__row--sale" v-if="coupon.amount > 0">
+            <div class="table__row table__row--sale" v-if="order.amount > 0">
                 <div>Rabatt</div>
-                <div class="table__price">{{ coupon.amount }} {{ coupon.amount_type === 'percent' ? ' %' : ' €'}}</div>
+                <div class="table__price">{{ order.amount }} {{ order.amount_type === 'percent' ? ' %' : ' €'}}</div>
             </div>
         </div>
         <div class="heading">Zahlungsmöglichkeiten</div>
@@ -144,15 +138,10 @@
           products: this.$store.state.order.products,
           path: this.$store.state.order.result && this.$store.state.order.result.redirect || "/",
           total_tax: this.$store.state.order.total_tax,
-          payment_method: this.$store.state.order.payment_method
-        }
-      },
-      coupon() {
-        return {
-          amount: this.$store.state.coupon.amount,
-          sub_total: this.$store.state.coupon.sub_total,
-          total_price: this.$store.state.coupon.total_price,
-          amount_type:  this.$store.state.coupon.amount_type,
+          payment_method: this.$store.state.order.payment_method,
+          amount: this.$store.state.order.amount,
+          sub_total: this.$store.state.order.sub_total,
+          amount_type:  this.$store.state.order.amount_type,
         }
       },
       error() { return this.$store.state.error },

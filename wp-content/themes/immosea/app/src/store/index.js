@@ -42,7 +42,9 @@ export default new Vuex.Store({
       name: '',
       last_name:'',
     },
-    order: {},
+    order: {
+      amount: 0
+    },
     coupon: {
       amount: 0
     },
@@ -213,7 +215,7 @@ export default new Vuex.Store({
           await commit('SET_ERROR', 'Der eingegebene Gutscheincode ist nicht gültig.')
         } else {
           await commit('SET_ERROR', '')
-          await commit('SET_COUPON', res.data)
+          await commit('SET_ORDER', res.data)
           await commit('SET_IS_COUPON', true)
         }
 

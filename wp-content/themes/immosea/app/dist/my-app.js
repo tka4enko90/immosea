@@ -10618,17 +10618,17 @@ var Step14_component = normalizeComponent(
 )
 
 /* harmony default export */ var Step14 = (Step14_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ef56da78-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step15.vue?vue&type=template&id=01d7e8be&
-var Step15vue_type_template_id_01d7e8be_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev,
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"ef56da78-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Steps/Step15.vue?vue&type=template&id=3ca910cc&
+var Step15vue_type_template_id_3ca910cc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('StepWrap',{attrs:{"title":_vm.title,"text":_vm.text,"buttonPrev":Object.assign({}, _vm.buttonPrev,
             {click: _vm.onClickBack}),"buttonNext":Object.assign({}, _vm.buttonNext,
             {title: ("Zahlungspflichtig bestellen " + _vm.method),
             click: _vm.onClick,
             sending: _vm.sending,
-            disabled: !_vm.cart.zustimmung_agb_datenschutz && !_vm.cart.zustimmung_ablauf_widerruf}),"showPrice":_vm.showPrice,"isLoading":_vm.isLoading}},[_c('div',{staticClass:"heading"},[_vm._v("Deine ausgewählten Leistungen:")]),_c('div',{staticClass:"table"},[_c('div',{staticClass:"table__row table__row--head"},[_c('div',[_vm._v("Artikelname")]),_c('div',[_vm._v("Einzelpreis")]),_c('div',[_vm._v("Menge")]),_c('div',[_vm._v("Gesamt")])]),_vm._l((_vm.order.products),function(item,index){return _c('div',{key:index,staticClass:"table__row"},[_c('div',[_c('strong',[_vm._v(_vm._s(item.name))]),_c('span',{staticClass:"table__number"},[_vm._v("Nr. "+_vm._s(item.sku))])]),_c('div',[_vm._v(_vm._s(item.price)+" EUR")]),_c('div',[_vm._v(_vm._s(item.quantity))]),_c('div',[_vm._v(_vm._s(item.price * item.quantity)+" EUR")])])})],2),_c('div',{staticClass:"table__coupon"},[_c('div',[_c('InputText',{attrs:{"label":"Dein Rabattcode","placeholder":"Gustcheincode"},model:{value:(_vm.couponInput),callback:function ($$v) {_vm.couponInput=$$v},expression:"couponInput"}}),_c('button',{staticClass:"button button--small button--primary",class:{'button--disabled': _vm.isSending || !_vm.couponInput || _vm.isCoupon},on:{"click":_vm.apply}},[_vm._v(" Anwenden "),(_vm.isSending)?_c('div',{staticClass:"loader loader--small loader--position"}):_vm._e()])],1),(_vm.error)?_c('div',{staticClass:"form__error"},[_vm._v(_vm._s(_vm.error))]):_vm._e()]),_c('div',{staticClass:"table table--total"},[(_vm.coupon.sub_total && _vm.coupon.amount > 0)?_c('div',{staticClass:"table__row"},[_c('div',[_vm._v("Gesamtsumme inkl. MwSt.")]),_c('div',{staticClass:"table__price"},[_vm._v(" "+_vm._s(_vm.coupon.total_price)+" € "),_c('span',{staticClass:"table__old-price"},[_vm._v(_vm._s(_vm.coupon.sub_total)+" €")])])]):_c('div',{staticClass:"table__row"},[_c('div',[_vm._v("Gesamtsumme inkl. MwSt.")]),_c('div',{staticClass:"table__price"},[_vm._v(" "+_vm._s(_vm.order.total_price)+" € ")])]),(_vm.order.total_tax)?_c('div',{staticClass:"table__row"},[_c('div',[_vm._v("Darin enthaltene MwSt.")]),_c('div',{staticClass:"table__price"},[_vm._v(" "+_vm._s(_vm.order.total_tax)+" € ")])]):_vm._e(),(_vm.coupon.amount > 0)?_c('div',{staticClass:"table__row table__row--sale"},[_c('div',[_vm._v("Rabatt")]),_c('div',{staticClass:"table__price"},[_vm._v(_vm._s(_vm.coupon.amount)+" "+_vm._s(_vm.coupon.amount_type === 'percent' ? ' %' : ' €'))])]):_vm._e()]),_c('div',{staticClass:"heading"},[_vm._v("Zahlungsmöglichkeiten")]),_c('div',{staticClass:"table__method"},[(_vm.order.payment_method && _vm.order.payment_method.paypal)?_c('div',{staticClass:"form-radio"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.method),expression:"method"}],attrs:{"type":"radio","id":_vm.order.payment_method.paypal.data.title},domProps:{"value":_vm.order.payment_method.paypal.data.title,"checked":_vm._q(_vm.method,_vm.order.payment_method.paypal.data.title)},on:{"change":function($event){_vm.method=_vm.order.payment_method.paypal.data.title}}}),_c('label',{attrs:{"for":_vm.order.payment_method.paypal.data.title}},[(_vm.order.payment_method.paypal.data.image)?_c('span',{domProps:{"innerHTML":_vm._s(_vm.order.payment_method.paypal.data.image)}}):_c('span',[_vm._v(_vm._s(_vm.order.payment_method.paypal.data.title))])])]):_vm._e(),(_vm.order.payment_method && _vm.order.payment_method.stripe_sofort)?_c('div',{staticClass:"form-radio"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.method),expression:"method"}],attrs:{"type":"radio","id":_vm.order.payment_method.stripe_sofort.data.title},domProps:{"value":_vm.order.payment_method.stripe_sofort.data.title,"checked":_vm._q(_vm.method,_vm.order.payment_method.stripe_sofort.data.title)},on:{"change":function($event){_vm.method=_vm.order.payment_method.stripe_sofort.data.title}}}),_c('label',{attrs:{"for":_vm.order.payment_method.stripe_sofort.data.title}},[(_vm.order.payment_method.stripe_sofort.data.image)?_c('span',{domProps:{"innerHTML":_vm._s(_vm.order.payment_method.stripe_sofort.data.image)}}):_c('span',[_vm._v(_vm._s(_vm.order.payment_method.stripe_sofort.data.title))])])]):_vm._e()]),_c('div',{staticClass:"form__row"},[_c('div',{staticClass:"form-checkbox form-checkbox--small"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.cart.zustimmung_agb_datenschutz),expression:"cart.zustimmung_agb_datenschutz"}],attrs:{"id":"zustimmung_agb_datenschutz","type":"checkbox"},domProps:{"checked":Array.isArray(_vm.cart.zustimmung_agb_datenschutz)?_vm._i(_vm.cart.zustimmung_agb_datenschutz,null)>-1:(_vm.cart.zustimmung_agb_datenschutz)},on:{"change":function($event){var $$a=_vm.cart.zustimmung_agb_datenschutz,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.cart, "zustimmung_agb_datenschutz", $$a.concat([$$v])))}else{$$i>-1&&(_vm.$set(_vm.cart, "zustimmung_agb_datenschutz", $$a.slice(0,$$i).concat($$a.slice($$i+1))))}}else{_vm.$set(_vm.cart, "zustimmung_agb_datenschutz", $$c)}}}}),_c('label',{attrs:{"for":"zustimmung_agb_datenschutz"}},[_vm._v(" Ich akzeptiere die "),_c('a',{attrs:{"href":"#"}},[_vm._v("AGB")]),_vm._v(". Ich habe die "),_c('a',{attrs:{"href":"#"}},[_vm._v("Datenschutzerklärung")]),_vm._v(" zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meines Auftrags elektronisch erhoben und gespeichert werden. ")])])]),_c('div',{staticClass:"form__row"},[_c('div',{staticClass:"form-checkbox form-checkbox--small"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.cart.zustimmung_ablauf_widerruf),expression:"cart.zustimmung_ablauf_widerruf"}],attrs:{"id":"zustimmung_ablauf_widerruf","type":"checkbox"},domProps:{"checked":Array.isArray(_vm.cart.zustimmung_ablauf_widerruf)?_vm._i(_vm.cart.zustimmung_ablauf_widerruf,null)>-1:(_vm.cart.zustimmung_ablauf_widerruf)},on:{"change":function($event){var $$a=_vm.cart.zustimmung_ablauf_widerruf,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.cart, "zustimmung_ablauf_widerruf", $$a.concat([$$v])))}else{$$i>-1&&(_vm.$set(_vm.cart, "zustimmung_ablauf_widerruf", $$a.slice(0,$$i).concat($$a.slice($$i+1))))}}else{_vm.$set(_vm.cart, "zustimmung_ablauf_widerruf", $$c)}}}}),_c('label',{attrs:{"for":"zustimmung_ablauf_widerruf"}},[_vm._v(" Ich verlange ausdrücklich und stimme gleichzeitig zu, dass Sie mit der in Auftrag gegebenen Dienstleistung vor Ablauf der Widerrufsfrist beginnen. Ich weiß, dass mein Widerrufsrecht bei vollständiger Erfüllung des Vertrages erlischt. ")])])])])}
-var Step15vue_type_template_id_01d7e8be_staticRenderFns = []
+            disabled: !_vm.cart.zustimmung_agb_datenschutz || !_vm.cart.zustimmung_ablauf_widerruf}),"showPrice":_vm.showPrice,"isLoading":_vm.isLoading}},[_c('div',{staticClass:"heading"},[_vm._v("Deine ausgewählten Leistungen:")]),_c('div',{staticClass:"table"},[_c('div',{staticClass:"table__row table__row--head"},[_c('div',[_vm._v("Artikelname")]),_c('div',[_vm._v("Einzelpreis")]),_c('div',[_vm._v("Menge")]),_c('div',[_vm._v("Gesamt")])]),_vm._l((_vm.order.products),function(item,index){return _c('div',{key:index,staticClass:"table__row"},[_c('div',[_c('strong',[_vm._v(_vm._s(item.name))]),_c('span',{staticClass:"table__number"},[_vm._v("Nr. "+_vm._s(item.sku))])]),_c('div',[_vm._v(_vm._s(item.price)+" EUR")]),_c('div',[_vm._v(_vm._s(item.quantity))]),_c('div',[_vm._v(_vm._s(item.price * item.quantity)+" EUR")])])})],2),_c('div',{staticClass:"table__coupon"},[_c('div',[_c('InputText',{attrs:{"label":"Dein Rabattcode","placeholder":"Gustcheincode"},model:{value:(_vm.couponInput),callback:function ($$v) {_vm.couponInput=$$v},expression:"couponInput"}}),_c('button',{staticClass:"button button--small button--primary",class:{'button--disabled': _vm.isSending || !_vm.couponInput || _vm.isCoupon},on:{"click":_vm.apply}},[_vm._v(" Anwenden "),(_vm.isSending)?_c('div',{staticClass:"loader loader--small loader--position"}):_vm._e()])],1),(_vm.error)?_c('div',{staticClass:"form__error"},[_vm._v(_vm._s(_vm.error))]):_vm._e()]),_c('div',{staticClass:"table table--total"},[_c('div',{staticClass:"table__row"},[_c('div',[_vm._v("Gesamtsumme inkl. MwSt.")]),_c('div',{staticClass:"table__price"},[_vm._v(" "+_vm._s(_vm.order.total_price)+" € "),(_vm.order.sub_total && _vm.order.amount > 0)?_c('span',{staticClass:"table__old-price"},[_vm._v(_vm._s(_vm.order.sub_total)+" €")]):_vm._e()])]),(_vm.order.total_tax)?_c('div',{staticClass:"table__row"},[_c('div',[_vm._v("Darin enthaltene MwSt.")]),_c('div',{staticClass:"table__price"},[_vm._v(" "+_vm._s(_vm.order.total_tax)+" € ")])]):_vm._e(),(_vm.order.amount > 0)?_c('div',{staticClass:"table__row table__row--sale"},[_c('div',[_vm._v("Rabatt")]),_c('div',{staticClass:"table__price"},[_vm._v(_vm._s(_vm.order.amount)+" "+_vm._s(_vm.order.amount_type === 'percent' ? ' %' : ' €'))])]):_vm._e()]),_c('div',{staticClass:"heading"},[_vm._v("Zahlungsmöglichkeiten")]),_c('div',{staticClass:"table__method"},[(_vm.order.payment_method && _vm.order.payment_method.paypal)?_c('div',{staticClass:"form-radio"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.method),expression:"method"}],attrs:{"type":"radio","id":_vm.order.payment_method.paypal.data.title},domProps:{"value":_vm.order.payment_method.paypal.data.title,"checked":_vm._q(_vm.method,_vm.order.payment_method.paypal.data.title)},on:{"change":function($event){_vm.method=_vm.order.payment_method.paypal.data.title}}}),_c('label',{attrs:{"for":_vm.order.payment_method.paypal.data.title}},[(_vm.order.payment_method.paypal.data.image)?_c('span',{domProps:{"innerHTML":_vm._s(_vm.order.payment_method.paypal.data.image)}}):_c('span',[_vm._v(_vm._s(_vm.order.payment_method.paypal.data.title))])])]):_vm._e(),(_vm.order.payment_method && _vm.order.payment_method.stripe_sofort)?_c('div',{staticClass:"form-radio"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.method),expression:"method"}],attrs:{"type":"radio","id":_vm.order.payment_method.stripe_sofort.data.title},domProps:{"value":_vm.order.payment_method.stripe_sofort.data.title,"checked":_vm._q(_vm.method,_vm.order.payment_method.stripe_sofort.data.title)},on:{"change":function($event){_vm.method=_vm.order.payment_method.stripe_sofort.data.title}}}),_c('label',{attrs:{"for":_vm.order.payment_method.stripe_sofort.data.title}},[(_vm.order.payment_method.stripe_sofort.data.image)?_c('span',{domProps:{"innerHTML":_vm._s(_vm.order.payment_method.stripe_sofort.data.image)}}):_c('span',[_vm._v(_vm._s(_vm.order.payment_method.stripe_sofort.data.title))])])]):_vm._e()]),_c('div',{staticClass:"form__row"},[_c('div',{staticClass:"form-checkbox form-checkbox--small"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.cart.zustimmung_agb_datenschutz),expression:"cart.zustimmung_agb_datenschutz"}],attrs:{"id":"zustimmung_agb_datenschutz","type":"checkbox"},domProps:{"checked":Array.isArray(_vm.cart.zustimmung_agb_datenschutz)?_vm._i(_vm.cart.zustimmung_agb_datenschutz,null)>-1:(_vm.cart.zustimmung_agb_datenschutz)},on:{"change":function($event){var $$a=_vm.cart.zustimmung_agb_datenschutz,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.cart, "zustimmung_agb_datenschutz", $$a.concat([$$v])))}else{$$i>-1&&(_vm.$set(_vm.cart, "zustimmung_agb_datenschutz", $$a.slice(0,$$i).concat($$a.slice($$i+1))))}}else{_vm.$set(_vm.cart, "zustimmung_agb_datenschutz", $$c)}}}}),_c('label',{attrs:{"for":"zustimmung_agb_datenschutz"}},[_vm._v(" Ich akzeptiere die "),_c('a',{attrs:{"href":"#"}},[_vm._v("AGB")]),_vm._v(". Ich habe die "),_c('a',{attrs:{"href":"#"}},[_vm._v("Datenschutzerklärung")]),_vm._v(" zur Kenntnis genommen. Ich stimme zu, dass meine Angaben und Daten zur Beantwortung meines Auftrags elektronisch erhoben und gespeichert werden. ")])])]),_c('div',{staticClass:"form__row"},[_c('div',{staticClass:"form-checkbox form-checkbox--small"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.cart.zustimmung_ablauf_widerruf),expression:"cart.zustimmung_ablauf_widerruf"}],attrs:{"id":"zustimmung_ablauf_widerruf","type":"checkbox"},domProps:{"checked":Array.isArray(_vm.cart.zustimmung_ablauf_widerruf)?_vm._i(_vm.cart.zustimmung_ablauf_widerruf,null)>-1:(_vm.cart.zustimmung_ablauf_widerruf)},on:{"change":function($event){var $$a=_vm.cart.zustimmung_ablauf_widerruf,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.cart, "zustimmung_ablauf_widerruf", $$a.concat([$$v])))}else{$$i>-1&&(_vm.$set(_vm.cart, "zustimmung_ablauf_widerruf", $$a.slice(0,$$i).concat($$a.slice($$i+1))))}}else{_vm.$set(_vm.cart, "zustimmung_ablauf_widerruf", $$c)}}}}),_c('label',{attrs:{"for":"zustimmung_ablauf_widerruf"}},[_vm._v(" Ich verlange ausdrücklich und stimme gleichzeitig zu, dass Sie mit der in Auftrag gegebenen Dienstleistung vor Ablauf der Widerrufsfrist beginnen. Ich weiß, dass mein Widerrufsrecht bei vollständiger Erfüllung des Vertrages erlischt. ")])])])])}
+var Step15vue_type_template_id_3ca910cc_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Steps/Step15.vue?vue&type=template&id=01d7e8be&
+// CONCATENATED MODULE: ./src/components/Steps/Step15.vue?vue&type=template&id=3ca910cc&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
 var es_promise = __webpack_require__("e6cf");
@@ -10798,12 +10798,6 @@ var runtime = __webpack_require__("96cf");
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -10829,15 +10823,10 @@ var runtime = __webpack_require__("96cf");
         products: this.$store.state.order.products,
         path: this.$store.state.order.result && this.$store.state.order.result.redirect || "/",
         total_tax: this.$store.state.order.total_tax,
-        payment_method: this.$store.state.order.payment_method
-      };
-    },
-    coupon: function coupon() {
-      return {
-        amount: this.$store.state.coupon.amount,
-        sub_total: this.$store.state.coupon.sub_total,
-        total_price: this.$store.state.coupon.total_price,
-        amount_type: this.$store.state.coupon.amount_type
+        payment_method: this.$store.state.order.payment_method,
+        amount: this.$store.state.order.amount,
+        sub_total: this.$store.state.order.sub_total,
+        amount_type: this.$store.state.order.amount_type
       };
     },
     error: function error() {
@@ -10928,8 +10917,8 @@ var runtime = __webpack_require__("96cf");
 
 var Step15_component = normalizeComponent(
   Steps_Step15vue_type_script_lang_js_,
-  Step15vue_type_template_id_01d7e8be_render,
-  Step15vue_type_template_id_01d7e8be_staticRenderFns,
+  Step15vue_type_template_id_3ca910cc_render,
+  Step15vue_type_template_id_3ca910cc_staticRenderFns,
   false,
   null,
   null,
@@ -11249,7 +11238,9 @@ external_Vue_default.a.use(vuex_esm["a" /* default */]);
       name: '',
       last_name: ''
     },
-    order: {},
+    order: {
+      amount: 0
+    },
     coupon: {
       amount: 0
     },
@@ -11450,7 +11441,7 @@ external_Vue_default.a.use(vuex_esm["a" /* default */]);
 
               case 14:
                 _context3.next = 16;
-                return commit('SET_COUPON', res.data);
+                return commit('SET_ORDER', res.data);
 
               case 16:
                 _context3.next = 18;
