@@ -51,8 +51,33 @@ class Rest_API {
         });
         $this->payment = new Payment();
         $this->apply_coupon = new Apply_Coupon(new HttpError());
+        add_action('wp_loaded', function(){
+            if ( defined( 'WC_ABSPATH' ) ) {
+                // WC 3.6+ - Cart and other frontend functions are not included for REST requests.
+                include_once WC_ABSPATH . 'includes/wc-cart-functions.php';
+                include_once WC_ABSPATH . 'includes/wc-notice-functions.php';
+                include_once WC_ABSPATH . 'includes/wc-template-hooks.php';
+            }
+            WC()->initialize_session();
+            if (isset(WC()->session)) {
 
+                if (!WC()->session->has_session()) {
+                    WC()->session->set_customer_session_cookie(true);
+                }
+            }
+            if ( null === WC()->session ) {
+                $session_class = apply_filters( 'woocommerce_session_handler', 'WC_Session_Handler' );
 
+                WC()->session = new $session_class();
+                WC()->session->init();
+            }
+            if ( null === WC()->cart ) {
+                WC()->cart = new WC_Cart();
+
+                // We need to force a refresh of the cart contents from session here (cart contents are normally refreshed on wp_loaded, which has already happened by this point).
+                WC()->cart->get_cart();
+            }
+        });
     }
     /**
      * We have to tell WC that this should not be handled as a REST request.
