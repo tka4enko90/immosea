@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="table__coupon">
-            <div v-if="!order.coupon">
+            <div v-if="!!order.coupon">
                 <div class="table__coupon-form">
                     <InputText label="Dein Rabattcode" placeholder="Gustcheincode" v-model="couponInput" />
                     <button class="button button--small button--primary"
