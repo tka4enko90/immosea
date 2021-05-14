@@ -52,23 +52,7 @@ class Rest_API {
         $this->payment = new Payment();
         $this->apply_coupon = new Apply_Coupon(new HttpError());
 
-        if ( defined( 'WC_ABSPATH' ) ) {
-            // WC 3.6+ - Cart and other frontend functions are not included for REST requests.
-            include_once WC_ABSPATH . 'includes/wc-cart-functions.php';
-            include_once WC_ABSPATH . 'includes/wc-notice-functions.php';
-            include_once WC_ABSPATH . 'includes/wc-template-hooks.php';
-        }
-        if ( null === WC()->session ) {
-            $session_class = apply_filters( 'woocommerce_session_handler', 'WC_Session_Handler' );
-            if (isset(WC()->session)) {
 
-                if (!WC()->session->has_session()) {
-                    WC()->session->set_customer_session_cookie(true);
-                }
-            }
-            WC()->session = new $session_class();
-            WC()->session->init();
-        }
     }
     /**
      * We have to tell WC that this should not be handled as a REST request.

@@ -2,8 +2,25 @@
 class Payment {
     function __construct()
     {
+        if ( defined( 'WC_ABSPATH' ) ) {
+            // WC 3.6+ - Cart and other frontend functions are not included for REST requests.
+            include_once WC_ABSPATH . 'includes/wc-cart-functions.php';
+            include_once WC_ABSPATH . 'includes/wc-notice-functions.php';
+            include_once WC_ABSPATH . 'includes/wc-template-hooks.php';
+        }
+        WC()->initialize_session();
+        if (isset(WC()->session)) {
 
+            if (!WC()->session->has_session()) {
+                WC()->session->set_customer_session_cookie(true);
+            }
+        }
+        if ( null === WC()->session ) {
+            $session_class = apply_filters( 'woocommerce_session_handler', 'WC_Session_Handler' );
 
+            WC()->session = new $session_class();
+            WC()->session->init();
+        }
     }
 
     public function get_order() {
@@ -14,7 +31,6 @@ class Payment {
         } else {
             $order = wc_get_order( WC()->session->get('order_awaiting_payment'));
         }
-
         return $order;
     }
 
@@ -25,7 +41,7 @@ class Payment {
     public function get_payments_response($payment_method) {
         $available_gateways = $this->get_payments_methods();
 
-        return $available_gateways['paypal']->process_payment($this->get_order());
+        return $available_gateways[$payment_method]->process_payment($this->get_order());
     }
 
     public function get_payments_data() {
