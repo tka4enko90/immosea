@@ -186,14 +186,17 @@
       },
       async onClick() {
         this.sending = true
-        await Order.post({
+        const res = await Order.post({
           cart: this.$store.state.cart,
           collectData: this.$store.state.collectData,
           contactData: this.$store.state.contactData,
           action: 'redirect',
           payment_method: this.getPath(this.method)
         })
-        // window.location.href = await this.$store.state.order.payment_method[this.getPath(this.method)].redirect
+
+        if (res.data && res.data.result === 'success') {
+          window.location.href = res.data.redirect
+        }
       }
     }
   }
