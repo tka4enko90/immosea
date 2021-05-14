@@ -41,6 +41,7 @@ class Rest_API {
         add_action( 'rest_api_init', array($this, 'register_routes'));
         add_action( 'woocommerce_admin_order_totals_after_discount', array($this,'render_order_custom_fields' ), 10 );
         Cron_Remove_Images::init();
+
         add_action( 'woocommerce_thankyou', array($this, 'remove_cookie'));
         add_filter('woocommerce_return_to_shop_redirect', function ($url){
             return get_home_url();
@@ -48,9 +49,46 @@ class Rest_API {
         add_filter('woocommerce_return_to_shop_text', function(){
            return __('Zurück zur Seite', 'immosea');
         });
-
         $this->payment = new Payment();
         $this->apply_coupon = new Apply_Coupon(new HttpError());
+
+        if ( defined( 'WC_ABSPATH' ) ) {
+            // WC 3.6+ - Cart and other frontend functions are not included for REST requests.
+            include_once WC_ABSPATH . 'includes/wc-cart-functions.php';
+            include_once WC_ABSPATH . 'includes/wc-notice-functions.php';
+            include_once WC_ABSPATH . 'includes/wc-template-hooks.php';
+        }
+        if ( null === WC()->session ) {
+            $session_class = apply_filters( 'woocommerce_session_handler', 'WC_Session_Handler' );
+            if (isset(WC()->session)) {
+
+                if (!WC()->session->has_session()) {
+                    WC()->session->set_customer_session_cookie(true);
+                }
+            }
+            WC()->session = new $session_class();
+            WC()->session->init();
+        }
+    }
+    /**
+     * We have to tell WC that this should not be handled as a REST request.
+     * Otherwise we can't use the product loop template contents properly.
+     * Since WooCommerce 3.6
+     *
+     * @param bool $is_rest_api_request
+     * @return bool
+     */
+    public function simulate_as_not_rest( $is_rest_api_request ) {
+        if ( empty( $_SERVER['REQUEST_URI'] ) ) {
+            return $is_rest_api_request;
+        }
+
+        // Bail early if this is not our request.
+        if ( false === strpos( $_SERVER['REQUEST_URI'], $this->api_namespace ) ) {
+            return $is_rest_api_request;
+        }
+
+        return false;
     }
     /**
      * @param $order
@@ -108,7 +146,7 @@ class Rest_API {
         register_rest_route("{$root}/{$version}", '/create_order/', array(
                 array(
                     'methods'         => \WP_REST_Server::CREATABLE,
-                    'callback'        => array(new Order(new HttpError(), $this->payment,$this->apply_coupon), 'create_order' ),
+                    'callback'        => array(new Order(new HttpError(), $this->payment, $this->apply_coupon), 'create_order' ),
                     'permission_callback' => array($this, 'permissions_check' )
                 ),
             )
@@ -176,3 +214,8 @@ class Rest_API {
 }
 
 Rest_API::init('rest_api', 'v1');
+
+add_action('wp_loaded', function() {
+
+
+},1, 10);

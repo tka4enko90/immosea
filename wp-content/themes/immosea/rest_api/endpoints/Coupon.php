@@ -34,8 +34,8 @@ class Coupon extends HttpError {
         if (empty($this->params['coupon'])){ $this->setStatusCode(404)->setMessage('coupon wasn\'t add to endpoint'); return $this->report();}
 
         $this->setOrder($this->payment->get_order());
-        $this->setOrderID($this->getOrder()->get_id());
 
+        $this->setOrderID($this->getOrder()->get_id());
         $this->setCoupon($this->params['coupon']);
 
         $order_items = $this->getOrder()->get_items();
@@ -56,12 +56,17 @@ class Coupon extends HttpError {
                 );
             }
         }
+        if (!$this->is_referral_coupon_valid($this->getCoupon())) {
+            return  $this->error->setStatusCode(404)->setMessage("Coupon `".$this->getCoupon()."` is invalid")->report();
+        }
         $response_coupon = $this->apply_coupon->apply_coupon($this->getOrder(), $this->getCoupon());
 
         $response = array_merge($response, $response_coupon);
+
+
         $this->set_user_to_order();
 
-        $response['payment_method'] = $this->payment->get_payments_method_response($this->getOrderID());
+        $response['payment_method'] = $this->payment->get_payments_data();
         return $response;
     }
 
@@ -73,7 +78,16 @@ class Coupon extends HttpError {
         }
     }
 
-
+    private function is_referral_coupon_valid( $coupon_code ) {
+        $coupon = new \WC_Coupon( $coupon_code );
+        $discounts = new \WC_Discounts( WC()->cart );
+        $valid_response = $discounts->is_coupon_valid( $coupon );
+        if ( is_wp_error( $valid_response ) ) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     /**
      * @return mixed

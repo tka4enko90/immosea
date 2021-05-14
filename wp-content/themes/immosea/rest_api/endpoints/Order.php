@@ -72,9 +72,6 @@ class Order extends HttpError {
                 $this->bind_image_with_order($this->cart['image']);
             }
 
-            if (isset( $session )) {
-                $session->set('order_awaiting_payment', $this->getOrderID());
-            }
             $order_items = $this->getOrder()->get_items();
 
 
@@ -105,7 +102,7 @@ class Order extends HttpError {
             $this->set_user_to_order();
             $this->getOrder()->calculate_totals();
 
-            $response['payment_method'] = $this->payment->get_payments_method_response($this->getOrderID());
+            $response['payment_method'] = $this->payment->get_payments_data();
 
         } catch (Exception $e) {
             return $this->error->setStatusCode(404)->setMessage($e->getMessage())->report();
