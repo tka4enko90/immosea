@@ -35,17 +35,23 @@
             </div>
         </div>
         <div class="table__coupon">
-            <div>
-                <InputText label="Dein Rabattcode" placeholder="Gustcheincode" v-model="couponInput" />
-                <button class="button button--small button--primary"
-                        :class="{'button--disabled': isSending || !couponInput || isCoupon}"
-                        @click="apply"
-                >
-                    Anwenden
-                    <div v-if="isSending" class="loader loader--small loader--position" />
-                </button>
+            <div v-if="!coupon">
+                <div class="table__coupon-form">
+                    <InputText label="Dein Rabattcode" placeholder="Gustcheincode" v-model="couponInput" />
+                    <button class="button button--small button--primary"
+                            :class="{'button--disabled': isSending || !couponInput || isCoupon}"
+                            @click="apply"
+                    >
+                        Anwenden
+                        <div v-if="isSending" class="loader loader--small loader--position" />
+                    </button>
+                </div>
+                <div v-if="error" class="form__error">{{error}}</div>
             </div>
-            <div v-if="error" class="form__error">{{error}}</div>
+            <div v-else>
+                <div class="form__label">Dein Rabattcode</div>
+                <div class="table__coupon--apply">{{ coupon }}</div>
+            </div>
         </div>
         <div class="table table--total">
 
@@ -154,6 +160,7 @@
           amount: this.$store.state.order.amount,
           sub_total: this.$store.state.order.sub_total,
           amount_type:  this.$store.state.order.amount_type,
+          coupon: this.$store.state.order.coupon
         }
       },
       error() { return this.$store.state.error },

@@ -37,7 +37,7 @@
     &__coupon {
         //max-width: 350px;
         margin: 0 0 36px;
-        > div {
+        .table__coupon-form {
             display: flex;
             align-items: flex-end;
             
@@ -48,6 +48,12 @@
         
         .form-input {
             width: 220px;
+        }
+        
+        &--apply {
+            color: #BCBCBC;
+            font-size: 14px;
+            padding-left: 16px;
         }
     }
     
