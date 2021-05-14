@@ -1,0 +1,8 @@
+.button.online-buchhaltung-1und1-woocomerce-default{ display: block; position: relative; padding: 0!important; height: 2em!important; width: 2em; text-indent: -9999px; }
+.button.online-buchhaltung-1und1-woocomerce-x, .button.online-buchhaltung-1und1-woocomerce-x:hover{ background: url("../images/1und1_logo.png" ); background-size: 15px 15px; background-repeat: no-repeat; background-position: center center; }
+.online-buchhaltung-1und1-not-completed{ -webkit-filter: grayscale(100%); -moz-filter: grayscale(100%); -ms-filter: grayscale(100%); -o-filter: grayscale(100%); filter: grayscale(100%); }
+.button.online-buchhaltung-1und1-woocomerce-loader, .button.online-buchhaltung-1und1-woocomerce-loader:hover{ background: url("../images/ajax-loader.gif" ); background-size: 15px 15px; background-repeat: no-repeat; background-position: center center; }
+.button.online-buchhaltung-1und1-woocomerce-yes, .button.online-buchhaltung-1und1-woocomerce-yes:hover{ background: url("../images/1und1_success.png" ); background-size: 15px 15px; background-repeat: no-repeat; background-position: center center; }
+.button.online-buchhaltung-1und1-woocomerce-error, .button.online-buchhaltung-1und1-woocomerce-error:hover{ color: #ff0000; text-indent: 0; }
+.button.online-buchhaltung-1und1-woocomerce-error:after{  font-family: dashicons; content: "\f158"; }
+.button.online-buchhaltung-1und1-refund.online-buchhaltung-1und1-woocomerce-error{ text-indent: 0; }
