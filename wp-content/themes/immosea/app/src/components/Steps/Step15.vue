@@ -92,6 +92,18 @@
 
                 </label>
             </div>
+            <div v-if="order.payment_method && order.payment_method.german_market_purchase_on_account"  class="form-radio">
+                <input type="radio"
+                       :id="order.payment_method.german_market_purchase_on_account.data.title"
+                       :value="order.payment_method.german_market_purchase_on_account.data.title"
+                       v-model="method">
+                <label :for="order.payment_method.german_market_purchase_on_account.data.title">
+                    <span v-if="order.payment_method.german_market_purchase_on_account.data.image"
+                          v-html="order.payment_method.german_market_purchase_on_account.data.image"></span>
+                    <span v-else>{{ order.payment_method.german_market_purchase_on_account.data.title }}</span>
+
+                </label>
+            </div>
         </div>
 
         <div class="form__row">
@@ -177,9 +189,11 @@
         await Order.post({
           cart: this.$store.state.cart,
           collectData: this.$store.state.collectData,
-          contactData: this.$store.state.contactData
+          contactData: this.$store.state.contactData,
+          action: 'redirect',
+          payment_method: this.getPath(this.method)
         })
-        window.location.href = await this.$store.state.order.payment_method[this.getPath(this.method)].redirect
+        // window.location.href = await this.$store.state.order.payment_method[this.getPath(this.method)].redirect
       }
     }
   }
