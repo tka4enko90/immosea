@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="table__coupon">
-            <div v-if="!coupon">
+            <div v-if="!order.coupon">
                 <div class="table__coupon-form">
                     <InputText label="Dein Rabattcode" placeholder="Gustcheincode" v-model="couponInput" />
                     <button class="button button--small button--primary"
@@ -50,7 +50,7 @@
             </div>
             <div v-else>
                 <div class="form__label">Dein Rabattcode</div>
-                <div class="table__coupon--apply">{{ coupon }}</div>
+                <div class="table__coupon--apply">{{ order.coupon }}</div>
             </div>
         </div>
         <div class="table table--total">
