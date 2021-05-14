@@ -53,9 +53,6 @@
                 <div v-if="error" class="form__error">{{error}}</div>
 
             </div>
-
-
-            {{order.coupon}}
         </div>
         <div class="table table--total">
 
