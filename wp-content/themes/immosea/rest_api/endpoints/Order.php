@@ -57,12 +57,15 @@ class Order extends HttpError {
             $this->update_order_products($this->getOrderProducts());
 
             $this->update_order_post_meta($this->getOrderMetas(), $this->getOrderID());
-
+            if ($this->getParams('payment_method') && $this->getParams('action') === 'redirect') {
+                return $this->payment->get_payments_response($this->getParams('payment_method'));
+            }
             if (isset($this->cart['uploads_images'])) {
                 foreach ($this->cart['uploads_images'] as $upload_image) {
                     $this->bind_image_with_order($upload_image);
                 }
             }
+
             if (!empty($this->collectData['uploads_docs'])) {
                 foreach ($this->collectData['uploads_docs'] as $upload_image) {
                     $this->bind_image_with_order($upload_image);
