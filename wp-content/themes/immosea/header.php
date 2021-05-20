@@ -17,8 +17,6 @@
         as="style"
         onload="this.onload=null;this.rel='stylesheet'"
     />
-
-
     <noscript>
         <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;700;900&family=Open+Sans:wght@300;400;600;700;800&family=Yeseva+One&display=swap"
@@ -73,7 +71,6 @@
             <?php
                 $button = get_field('link_to_form', 'option');
             ?>
-
             <?php
                 $body_classes = get_body_class();
                 if(in_array('page-template-page-wizard', $body_classes)) {}

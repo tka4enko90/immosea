@@ -12,6 +12,8 @@
                         || !$v.contactData.email.required
                         || !$v.contactData.phone.required
                         || !$v.contactData.email.email
+                        || !$v.contactData.zip.required
+                        || !$v.contactData.address.required
                     }"
             :showPrice="showPrice"
     >
@@ -32,17 +34,26 @@
             />
         </div>
         <div class="form__row">
-            <InputText v-model="contactData.address" label="Anschrift" placeholder="Hier eintragen" inline />
+            <InputText v-model="contactData.address"
+                       label="Anschrift"
+                       @blur="$v.contactData.address.$touch()"
+                       :error="!$v.contactData.address.length"
+                       placeholder="Hier eintragen" inline required/>
         </div>
         <div class="form__row">
-            <InputText v-model="contactData.zip" label="PLZ, Ort" placeholder="Hier eintragen" inline />
+            <InputText v-model="contactData.zip"
+                       label="PLZ, Ort"
+                       @blur="$v.contactData.zip.$touch()"
+                       :error="!$v.contactData.zip.length"
+                       placeholder="Hier eintragen"
+                       inline required />
         </div>
         <div class="form__row">
             <InputText v-model="contactData.email"
                        label="E-Mail-Adresse" placeholder="Hier eintragen" inline type="email" required
                        @blur="$v.contactData.email.$touch()"
                        :error="!$v.contactData.email.email"
-                       errorMessage="Must be an email"
+                       errorMessage="Bitte gültige E-Mail-Adresse eingeben"
             />
         </div>
         <div class="form__row">
@@ -50,7 +61,7 @@
                        label="Telefonnummer" placeholder="Hier eintragen" inline required
                        @blur="$v.contactData.phone.$touch()"
                        :error="!$v.contactData.phone.length"
-                       errorMessage="Required"
+                       errorMessage="Bitte gültige Telefonnummer für Rückfragen eingeben"
                        type="number"
             />
         </div>
@@ -85,7 +96,9 @@
         name: { required, length: minLength(1) },
         last_name: { required, length: minLength(1) },
         email: { required, email },
-        phone: { required, length: minLength(6) }
+        phone: { required, length: minLength(6) },
+        zip: { required, length: minLength(2) },
+        address: { required, length: minLength(5) }
       },
     },
     methods: {

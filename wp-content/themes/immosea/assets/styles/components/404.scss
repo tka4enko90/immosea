@@ -1,0 +1,15 @@
+.section-404 {
+  display: flex;
+  flex: 1;
+  height: 25vh;
+  align-items: center;
+  color: $primary-color;
+  h1 {
+    font-size: 120px;
+    margin: 0;
+    line-height: 1;
+    @media (max-width: $breakpoint-small-max) {
+      font-size: 80px;
+    }
+  }
+}

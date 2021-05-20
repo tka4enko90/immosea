@@ -70,3 +70,10 @@ function my_wp_nav_menu_objects( $items, $args ) {
 
     return $items;
 }
+add_action('wp', function(){
+    if(is_cart()) {
+        $button = get_field('link_to_form', 'option');
+        $url = isset($button['url']) ? $button['url'] : get_home_url();
+        wp_redirect( $url );
+    }
+});
