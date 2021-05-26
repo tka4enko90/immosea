@@ -49,6 +49,23 @@ class Rest_API {
         add_filter('woocommerce_return_to_shop_text', function(){
            return __('Zurück zur Seite', 'immosea');
         });
+        add_filter('woocommerce_thankyou_order_received_text', function(){
+            return __('Wir haben deine Bestellung erhalten und werden diese schnellstmöglich für dich bearbeiten. Wenn du die Objektfotografie bei uns in Auftrag gegeben hast, setzen wir uns zeitnah telefonisch mit dir zur Terminvereinbarung in Verbindung.', 'immosea');
+        });
+        add_filter( 'woocommerce_endpoint_order-received_title', function(){
+            return __('Vielen Dank für deine Bestellung!', 'immosea');
+        } );
+
+        add_filter('woocommerce_order_item_name', function($item, $product){
+            return sprintf( '<a href="%s">%s</a>', get_permalink( $product ), $product->get_name() );
+        },10,2);
+
+        add_filter('woocommerce_get_order_item_totals', function($totals){
+            $totals['cart_subtotal']['label'] = 'Bestellwert netto:';
+            $totals['order_total']['label'] = 'Gesamt inkl. MwSt.:';
+            return $totals;
+        },10,2);
+
         $this->payment = new Payment();
         $this->apply_coupon = new Apply_Coupon(new HttpError());
         add_action('wp_loaded', function(){
@@ -224,7 +241,3 @@ class Rest_API {
 
 Rest_API::init('rest_api', 'v1');
 
-add_action('wp_loaded', function() {
-
-
-},1, 10);

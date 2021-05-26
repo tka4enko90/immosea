@@ -283,7 +283,8 @@ h4 {
   line-height: 1.2;
   transition: background-color .2s, color .2s, box-shadow .2s;
   display: inline-flex;
-  align-items: center; }
+  align-items: center;
+  cursor: pointer; }
   .button:hover {
     text-decoration: none; }
   .button--primary {
@@ -1314,4 +1315,251 @@ h4 {
     @media (max-width: 759px) {
       .section-404 h1 {
         font-size: 80px; } }
+
+.wpcf7-response-output {
+  border: none !important;
+  background-color: rgba(230, 106, 106, 0.6); }
+
+.form {
+  background: #fff;
+  box-shadow: 0 22px 40px rgba(17, 96, 96, 0.12);
+  border-radius: 8px;
+  padding: 30px 20px 50px;
+  margin: 20px 0 40px;
+  width: 100%;
+  display: block; }
+  .form .button {
+    font-size: 14px; }
+  .form-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid #D9E2EC;
+    width: 40px; }
+    .form-icon [class*=icon-] {
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      width: 30px;
+      height: 30px; }
+  @media (max-width: 999px) {
+    .form {
+      padding: 30px 16px; } }
+  .form__holder {
+    max-width: 1170px;
+    margin: 0 auto; }
+  .form__buttons {
+    display: flex;
+    justify-content: flex-end; }
+    .form__buttons > * {
+      margin: 0 0 0 24px; }
+  .form__row {
+    margin-bottom: 24px; }
+    .form__row--flex {
+      flex-wrap: wrap;
+      display: flex;
+      margin-right: -8px;
+      margin-left: -8px; }
+    .form__row--inline {
+      display: flex;
+      align-items: flex-start; }
+    .form__row--separate {
+      border-top: 1px solid #D9E2EC;
+      padding: 20px; }
+  .form__area {
+    padding: 0 8px 24px;
+    flex: 1 1 50%; }
+    @media (max-width: 479px) {
+      .form__area {
+        flex: 1 1 100%; } }
+    .form__area--expand {
+      flex: 1 1 100%;
+      width: 100%; }
+  .form__label {
+    margin: 0 0 10px 16px;
+    display: block; }
+    .form__row--inline .form__label {
+      margin-left: 0;
+      margin-right: 16px;
+      flex: 0 0 34%; }
+  .form__date {
+    position: relative; }
+    .form__date .vdp-datepicker {
+      width: 100%;
+      display: block; }
+  .form__textarea {
+    display: block;
+    width: 100%;
+    background: #F0F4F8;
+    border-radius: 8px;
+    border: 2px solid #D9E2EC;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px 16px;
+    font-weight: 500;
+    box-sizing: border-box;
+    outline: none; }
+    .form__textarea:focus {
+      background: #fff;
+      border-color: #595959; }
+    .form__textarea--small {
+      height: 100px; }
+  .form__list {
+    padding: 0;
+    margin: 0;
+    list-style: none; }
+    .form__list li {
+      margin-bottom: 16px; }
+  .form__error, .form .wpcf7-not-valid-tip {
+    font-size: 13px;
+    color: #E66A6A;
+    display: block;
+    margin-top: 4px; }
+
+.form-input {
+  position: relative; }
+  .form-input input {
+    display: block;
+    width: 100%;
+    height: 44px;
+    background: #F0F4F8;
+    border-radius: 8px;
+    border: 2px solid #D9E2EC;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 10px 16px;
+    font-weight: 500;
+    box-sizing: border-box;
+    outline: none; }
+    .form-input input:focus {
+      background: #fff;
+      border-color: #595959; }
+  .form-input label {
+    display: block;
+    margin: 0 0 10px 16px; }
+  .form-input--error input {
+    border-color: #E66A6A;
+    background: #fff; }
+  .form-input--inline {
+    display: flex; }
+    .form-input--inline label {
+      margin: 10px 16px 10px 0;
+      flex: 0 0 34%; }
+    .form-input--inline div {
+      flex: 1 1 auto; }
+  .form-input--required label::after {
+    display: inline-block;
+    color: #E66A6A;
+    content: '*'; }
+
+.form-checkbox {
+  position: relative;
+  display: inline-flex; }
+  .form-checkbox input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    margin: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%; }
+    .form-checkbox input[type='checkbox']:checked ~ .wpcf7-list-item-label::before {
+      background: #256469; }
+  .form-checkbox span {
+    margin: 0; }
+  .form-checkbox .wpcf7-list-item-label {
+    padding-left: 34px;
+    position: relative; }
+    @media (max-width: 759px) {
+      .form-checkbox .wpcf7-list-item-label {
+        padding-top: 3px; } }
+    .form-checkbox .wpcf7-list-item-label::before {
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: '';
+      width: 20px;
+      height: 20px;
+      border: 2px solid #256469;
+      border-radius: 2px;
+      background: #fff;
+      transition: background-color .2s; }
+    .form-checkbox .wpcf7-list-item-label::after {
+      z-index: 1;
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      content: '';
+      width: 12px;
+      height: 7px;
+      border: solid #fff;
+      border-width: 0 0 2px 2px;
+      transform: rotate(-45deg); }
+  .form-checkbox + .form-checkbox {
+    margin-left: 10px; }
+  .form-checkbox--custom {
+    display: flex;
+    width: 100%; }
+    .form-checkbox--custom label {
+      flex: 1 1 auto;
+      width: 100%;
+      text-align: center;
+      display: block;
+      background: #fff;
+      box-shadow: 0 22px 40px rgba(17, 96, 96, 0.12);
+      border-radius: 8px;
+      padding: 91px 15px 40px; }
+      .form-checkbox--custom label::before {
+        left: 15px;
+        top: 26px; }
+      .form-checkbox--custom label::after {
+        left: 20px;
+        top: 30px; }
+      .form-checkbox--custom label strong {
+        display: block;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 20px;
+        word-break: break-all; }
+        @media (max-width: 759px) {
+          .form-checkbox--custom label strong {
+            font-size: 18px; } }
+      .form-checkbox--custom label span {
+        position: absolute;
+        top: 18px;
+        left: 5px;
+        right: 5px;
+        height: 40px;
+        background: #BDD7EE;
+        text-align: right;
+        border-radius: 8px;
+        font-size: 14px;
+        padding: 5px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end; }
+    .form-checkbox--custom.form-checkbox--green label span {
+      background: #A9D18E; }
+    .form-checkbox--custom.form-checkbox--gray label span {
+      background: #E3E3E3; }
+    .form-checkbox--custom.form-checkbox--yellow label span {
+      background: #FFE699; }
+    .form-checkbox--custom.form-checkbox--orange label span {
+      background: #F4B183; }
+    .form-checkbox--custom.form-checkbox--red label span {
+      background: #FF9999; }
+    .form-checkbox--custom.form-checkbox--purple label span {
+      background: #C5C4F0; }
+    .form-checkbox--custom.form-checkbox--light-green label span {
+      background: #BCEFDA; }
+  .form-checkbox--small {
+    font-size: 14px; }
+  .form__area .form-checkbox {
+    padding-left: 16px; }
 
