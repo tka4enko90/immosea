@@ -112,28 +112,30 @@ if ( WGM_Helper::method_exists( $order, 'get_currency' ) ) {
 // billing address
 //////////////////////////////////////////////////
 $additoinal_notation = get_option( 'wp_wc_invoice_pdf_billing_address_additional_notation', get_bloginfo( 'name' ) );
+
 ?>
-<div class="helper-billing-address">
-	<table class="billing-address" cellspacing="0" border="0">
-	   <?php if ( trim( $additoinal_notation ) != '{{blank}}' ) { ?>
-		<tr>
-			<?php $additoinal_notation = strip_tags( $additoinal_notation, '<i><strong><u><b>' ); ?>
-            <td class="additional-notation"><?php echo nl2br( $additoinal_notation ); ?></td>                    
-		</tr>
-		<?php } ?>
-		<tr>    
-			<td class="address">
-				<?php
-				if ( apply_filters( 'wp_wc_invoice_pdf_use_shipping_adress_as_billing_adress', false, $order ) ) {
-					echo $shipping_address;
-				} else {
-					echo apply_filters( 'wp_wc_invoice_pdf_output_billing_adress', $billing_address, $order );
-				}
-				?>
-			</td>
-		</tr>
-	</table>
-</div>
+
+<!--<div class="helper-billing-address">-->
+<!--	<table class="billing-address" cellspacing="0" border="0">-->
+<!--	   --><?php //if ( trim( $additoinal_notation ) != '{{blank}}' ) { ?>
+<!--		<tr>-->
+<!--			--><?php //$additoinal_notation = strip_tags( $additoinal_notation, '<i><strong><u><b>' ); ?>
+<!--            <td class="additional-notation">--><?php //echo nl2br( $additoinal_notation ); ?><!--</td>                    -->
+<!--		</tr>-->
+<!--		--><?php //} ?>
+<!--		<tr>    -->
+<!--			<td class="address">-->
+<!--				--><?php
+//				if ( apply_filters( 'wp_wc_invoice_pdf_use_shipping_adress_as_billing_adress', false, $order ) ) {
+//					echo $shipping_address;
+//				} else {
+//					echo apply_filters( 'wp_wc_invoice_pdf_output_billing_adress', $billing_address, $order );
+//				}
+//				?>
+<!--			</td>-->
+<!--		</tr>-->
+<!--	</table>-->
+<!--</div>-->
 <?php
 
 //////////////////////////////////////////////////
@@ -154,16 +156,17 @@ foreach( $subject_placeholders as $placeholder_key => $placeholder_value ) {
 	}
 }
 $subject = str_replace( $search, $replace , $subject );
+$logo = get_field('logo', 'option');
 ?>
+
 <table class="subject" cellspacing="0" cellpadding="0" border="0">
 	<tr>
         <?php
 			$invoice_date = apply_filters( 'wp_wc_invoice_pdf_invoice_date', '', $order );
 
 			if ( $invoice_date == '' ) {	?>
-   				<td><?php echo apply_filters( 'wp_wc_invoice_pdf_subject', $subject, $order ); ?></td>    
+   				<td><?php echo apply_filters( 'wp_wc_invoice_pdf_subject', $subject, $order ); ?></td>
             <?php } else { ?>
-	            <td class="subject"><?php echo apply_filters( 'wp_wc_invoice_pdf_subject', $subject, $order ); ?></td>
 		        <td class="invoice-date"><?php echo nl2br( $invoice_date ); ?></td>
 			<?php } ?>
 	</tr>
@@ -174,6 +177,9 @@ $subject = str_replace( $search, $replace , $subject );
 // welcome text
 //////////////////////////////////////////////////
 $welcome_text	= get_option( 'wp_wc_invoice_pdf_invoice_start_welcome_text', '' );
+?>
+
+<?php
 if ( trim ( $welcome_text != '' ) ) {
 
 	if ( $can_use_order ) {
@@ -182,7 +188,7 @@ if ( trim ( $welcome_text != '' ) ) {
 		$welcome_text_order_total = strip_tags( wc_price( rand( 1, 200 ) ) );
 	}
 
-	$welcome_text 	= apply_filters( 'wp_wc_invoice_pdf_welcome_text', str_replace( array( '{{first-name}}', '{{last-name}}', '{{order-number}}', '{{order-date}}', '{{order-total}}' ), array( $first_name, $last_name, $order_number, $order_date_formated, $welcome_text_order_total ) , $welcome_text ), $order );
+	$welcome_text 	= apply_filters( 'wp_wc_invoice_pdf_welcome_text', str_replace( array( '{{first-name}}', '{{last-name}}', '{{order-number}}', '{{order-date}}', '{{order-total}}', '{{billing-address}}' ), array( $first_name, $last_name, $order_number, $order_date_formated, $welcome_text_order_total, $billing_address ) , $welcome_text ), $order );
 	?>
 	<table class="welcome-text" cellspacing="0" cellpadding="0" border="0">
 		<tr>
@@ -296,7 +302,7 @@ if ( ! has_action( 'wp_wc_invoice_pdf_item_sku' ) ) {
 			$sku = apply_filters( 'wp_wc_invoice_inoice_no_sku', '-', $item, $order );	
 		}
 		
-		?><td class="sku"><?php echo ( $can_use_order ) ? $sku : $item[ 'sku' ]; ?></td><?php 
+		?><td class="sku"><?php echo ( $can_use_order ) ? $sku : $item[ 'sku' ]; ?></td><?php
 
 	}, 10, 7 );
 }
@@ -311,7 +317,7 @@ if ( ! has_action( 'wp_wc_invoice_pdf_item_product_name' ) ) {
 		$show_short_desc	= get_option( 'wp_wc_invoice_pdf_show_short_description_in_invoice', false );
 
 		$td_product_name_style = apply_filters( 'wp_wc_invvoice_pdf_td_product_name_style', '', $item );
-		?><td class="product-name" style="<?php echo $td_product_name_style; ?>"><?php echo nl2br( ( $can_use_order ) ? apply_filters( 'woocommerce_order_item_name', $item->get_name(), $item, false ) : $item[ 'name' ] ); 
+		?><td class="product-name" style="<?php echo $td_product_name_style; ?>"><?php echo nl2br( ( $can_use_order ) ? apply_filters( 'woocommerce_order_item_name', $item->get_name(), $item, false ) : $item[ 'name' ] );
 		
 		// item meta
 		if ( $can_use_order ) {
@@ -330,7 +336,10 @@ if ( ! has_action( 'wp_wc_invoice_pdf_item_product_name' ) ) {
 
 				$meta_data = strip_tags( wc_display_item_meta( $item, $wc_display_item_meta_args ), '<strong><br>' );
 
-				?><span class="smaller"><?php echo nl2br( $meta_data ); ?></span><?php
+				?>
+                <span class="smaller"><?php echo nl2br( $meta_data ); ?></span>
+                <span>Art.-Nr. <?php echo $_product->get_sku();?></span>
+                <?php
 
 				ob_start();
 				do_action( 'woocommerce_order_item_meta_end', $item_id, $item, $order );
@@ -738,44 +747,39 @@ if ( ! has_action( 'wp_wc_invoice_pdf_item_item_tax' ) ) {
 $item_rows = apply_filters( 'wp_wc_invoice_pdf_item_rows', array(
 
 	'position' => array(
-		'active'	=> $show_pos,
+		'active'	=> 1,
 		'th'		=> '<th class="header_suk header_pos" scope="col">' . apply_filters( 'wp_wc_invoice_pos_label', __( 'Pos.', 'woocommerce-german-market' ) ) . '</th>',
 		'td'		=> 'position',
 	),
 
-	'product_image'	=> array(
-		'active'	=> $show_product_image,
-		'th'		=> '<th class="header_suk header_image" scope="col"></th>',
-		'td'		=> 'image',
-	),
 
 	'sku'	=> array(
-		'active'	=> $show_sku,
+		'active'	=> false,
 		'th'		=> '<th class="header_suk header_sku" scope="col">' . __( 'SKU', 'woocommerce-german-market' ) . '</th>',
 		'td'		=> 'sku',
 	),
 
 	'product_name' => array(
 		'active'	=> true,
-		'th'		=> '<th class="header_product" scope="col">' . __( 'Product', 'woocommerce-german-market' ) .'</th>',
+		'th'		=> '<th class="header_product" scope="col">' . __( 'Leistungsbeschreibung', 'woocommerce-german-market' ) .'</th>',
 		'td'		=> 'product_name',
 	),
 
 	'weight'	=> array(
-		'active'	=> $show_weight,
+		'active'	=> false,
 		'th'		=> '<th class="header_suk header_weight" scope="col">' . __( 'Weight', 'woocommerce-german-market' ) . '</th>',
 		'td'		=> 'weight',
 	),
 
 	'dimensions' => array(
-		'active'	=> $show_dimensions,
+		'active'	=> false,
 		'th'		=> '<th class="header_suk header_dimensions" scope="col">' . __( 'Dimensions', 'woocommerce-german-market' ) . '</th>',
 		'td'		=> 'dimensions',
 	),
 
 	'single_price_net' => array(
-		'active'	=> false,
-		'th'		=> '<th class="header_price net_single_price" scope="col">' . __( 'Single Price Net', 'woocommerce-german-market' ) . '</th>',
+		'active'	=> true,
+		'th'		=> '<th class="header_price net_single_price" scope="col">' . __( 'Einzelpreis netto', 'woocommerce-german-market' ) . '</th>',
 		'td'		=> 'single_price_net',
 	),
 
@@ -793,7 +797,7 @@ $item_rows = apply_filters( 'wp_wc_invoice_pdf_item_rows', array(
 
 	'quantity'	=> array(
 		'active'	=> true,
-		'th'		=> '<th class="header_quantity" scope="col">' . __( 'Quantity', 'woocommerce-german-market' ) . '</th>',
+		'th'		=> '<th class="header_quantity" scope="col">' . __( 'Menge', 'woocommerce-german-market' ) . '</th>',
 		'td'		=> 'quantity',
 	),
 
@@ -823,31 +827,54 @@ $item_rows = apply_filters( 'wp_wc_invoice_pdf_item_rows', array(
 
 	'gm_price' => array(
 		'active'	=> true,
-		'th'		=> '<th class="header_price ' . ( get_option( 'wp_wc_invoice_pdf_net_prices_product' ) == 'on' ? 'header_net_prices' : '' ) . '" scope="col">' . __( 'Price', 'woocommerce-german-market' ) . '</th>',
+		'th'		=> '<th class="header_price ' . ( get_option( 'wp_wc_invoice_pdf_net_prices_product' ) == 'on' ? 'header_net_prices' : '' ) . '" scope="col">' . __( 'Summe', 'woocommerce-german-market' ) . '</th>',
 		'td'		=> 'gm_price',
 	),
 
 ), $order );
+?>
+    <style>
+        .invoice-table {
+            border: none!important;
+        }
+        .invoice-table tr {
+            border: none!important;
+        }
+        .invoice-table th {
+            border: none!important;
+            border-top: 1px solid #256469!important;
+            border-bottom: 1px solid #256469!important;
+            color: #256469;
+        }
+        .invoice-table tbody td {
+            border:none!important;
+            border-bottom:1px solid #ccc!important;
+        }
+        .invoice-table tbody tr{
+            color: #000;
 
+        }
+    </style>
+<?php
 //////////////////////////////////////////////////
 // items table
 //////////////////////////////////////////////////
 ?>
-<table cellspacing="0" cellpadding="<?php echo $cell_padding;?>" class="invoice-table items-table">
+<table cellspacing="0" cellpadding="<?php echo $cell_padding;?>" class="invoice-table">
     <thead>
-		<tr>
-			<?php 
-			foreach ( $item_rows as $key => $row ) {
+        <tr>
+            <?php
+            foreach ( $item_rows as $key => $row ) {
 
-				if ( isset( $row[ 'active' ] ) && $row[ 'active' ] ) {
-					if ( isset( $row[ 'th' ] ) ) {
-						echo $row[ 'th' ];
-					}
-				}
+                if ( isset( $row[ 'active' ] ) && $row[ 'active' ] ) {
+                    if ( isset( $row[ 'th' ] ) ) {
+                        echo $row[ 'th' ];
+                    }
+                }
 
-			}
-			?>
-		</tr>
+            }
+            ?>
+        </tr>
     </thead>
 	<tbody>
 		<?php
@@ -867,17 +894,17 @@ $item_rows = apply_filters( 'wp_wc_invoice_pdf_item_rows', array(
 			if ( $test && $item_i > 2 ) {
 				break;
 			}
-			
+
 			$tr_class = '';
 
 			if ( $can_use_order ) {
-				
+
 				if ( WGM_Helper::method_exists( $item, 'get_product' ) ) {
 					$_product = apply_filters( 'woocommerce_order_item_product', $item->get_product(), $item );
 				} else {
 					$_product = apply_filters( 'woocommerce_order_item_product', $order->get_product_from_item( $item ), $item );
 				}
-				
+
 				$tr_class     = WGM_Helper::method_exists( $_product, 'get_type' ) ? $_product->get_type() : '';
 			} else {
 
@@ -896,10 +923,10 @@ $item_rows = apply_filters( 'wp_wc_invoice_pdf_item_rows', array(
 						}
 					}
 				}
-                
+
    				// action after item
 				if ( $can_use_order ) {
-					do_action( 'wp_wc_invoice_pdf_after_item', $item, $_product ); 
+					do_action( 'wp_wc_invoice_pdf_after_item', $item, $_product );
 				}
 				?>
 			</tr>
@@ -914,6 +941,9 @@ $item_rows = apply_filters( 'wp_wc_invoice_pdf_item_rows', array(
 // rendering is not working correctly using <tfoot> (border-bottom of last row is missing when page breaking)
 if ( $can_use_order ) {
 	$totals = $order->get_order_item_totals( get_option( 'woocommerce_tax_display_cart' ) );
+    $totals['cart_subtotal']['label'] = __('Betrag netto:','immosea');
+    $totals['order_total']['label'] = __('Summe:','immosea');
+    unset($totals['payment_method']);
 } else {
 	$totals = array(
 				array(	'label' => __( 'Cart Subtotal', 'woocommerce-german-market' ),		'value'	=> __( 'Ex price', 'woocommerce-german-market' ) ),
@@ -923,7 +953,28 @@ if ( $can_use_order ) {
 }
 
 ?>
-<table cellspacing="0" cellpadding="<?php echo $cell_padding;?>" class="invoice-table totals-table">
+    <style>
+        .invoice-total-custom {
+            /*width: 50% !important;*/
+            margin-top: 20px!important;
+            /*margin-left: auto;*/
+            text-align: right;
+            align-items: center;
+        }
+        .invoice-table th {
+            border: none!important;
+            border-top: 1px solid #256469!important;
+            border-bottom: 1px solid #256469!important;
+            color: #256469;
+        }
+        .invoice-total-custom tbody td {
+            border-top: 1px solid #256469!important;
+            border-bottom: 1px solid #256469!important;
+            text-align: right!important;
+        }
+    </style>
+
+<table cellspacing="0" cellpadding="10" class="invoice-table invoice-total-custom">
 	<tbody>
 		<?php
 		if ( $totals ) {
@@ -932,7 +983,7 @@ if ( $can_use_order ) {
 
 				if ( strpos( $total_key, 'refund' ) !== false ) {
 					continue;
-				} 
+				}
 
 				$i++;
 				$border_class = ( $i == 1 ) ? ' extra-border' : '';
@@ -957,24 +1008,22 @@ if ( $can_use_order ) {
 				if ( get_option( 'wp_wc_invoice_pdf_net_prices_total' ) == 'on' ) {
 
 					if ( $total_key == 'order_total' ) {
-						
+
 						?>
 						<tr class="<?php echo $total_key; ?>">
-							<th scope="row" colspan="<?php echo $colspan; ?>" class="totals<?php echo $border_class; ?>"><?php echo apply_filters( 'wp_wc_invoice_pdf_total_net_label', __( 'Total Net:', 'woocommerce-german-market' ) ); ?></th>
+                            <?php $rate_percent = WC_Tax::get_rate_percent( true );;?>
+							<th scope="row" colspan="<?php echo $colspan; ?>" class="totals<?php echo $border_class; ?>"><?php echo apply_filters( 'wp_wc_invoice_pdf_total_net_label', __( 'Umsatzsteuer '.$rate_percent.' :', 'immosea' ) );;?></th>
 							<td class="totals<?php echo $border_class; ?>">
-							<?php 
+							<?php
 	                    		if ( $can_use_order ) {
-		                    		
-		                    		$complete_taxes = $order->get_total_tax();
-		                    		$total_exl_tax = $order->get_total() - $complete_taxes;
-		                    		echo wc_price( $total_exl_tax, $wc_price_args );
+		                    		echo wc_price( $order->cart_tax, $wc_price_args );
 
 		                    	} else {
 
 		                    		echo __( 'Ex price', 'woocommerce-german-market' );
 
 		                    	}
-		                    ?>   	
+		                    ?>
 	                    	</td>
 						</tr>
 
@@ -1008,14 +1057,14 @@ if ( $can_use_order ) {
 				}
 
 				if ( $total_key == 'order_total' ) {
-					
+
 					if ( $can_use_order ) {
 
 						$tax_display = get_option( 'woocommerce_tax_display_cart' );
 						$order_total = $order->get_formatted_order_total( 'excl', false );
 
 						if ( wc_tax_enabled() && 'incl' == $tax_display ) {
-							
+
 							if ( ( $order->get_total() > 0.0 ) || ( apply_filters( 'german_market_get_order_item_totals_show_taxes_order_total_zero', true ) ) ) {
 								$tax_total_string = WGM_Template::get_totals_tax_string( $order->get_tax_totals(), $tax_display, $order, null, false );
 								$order_total .= sprintf( ' %s', $tax_total_string );
@@ -1029,18 +1078,18 @@ if ( $can_use_order ) {
 
 					}
 
-					?>
-					<tr class="<?php echo $total_key; ?>">
-	                    <th scope="row" colspan="<?php echo $colspan; ?>" class="totals<?php echo $border_class; ?>"><?php echo nl2br( $total['label'] ); ?></th>
-	                    <td class="totals<?php echo $border_class; ?>"><?php echo $order_total; ?></td>
-	                </tr>
-	                <?php
+                    ?>
+                    <tr class="<?php echo $total_key; ?>">
+                        <th scope="row" colspan="<?php echo $colspan; ?>" class="totals<?php echo $border_class; ?>"><?php echo nl2br( $total['label'] ); ?></th>
+                        <td class="totals<?php echo $border_class; ?>"><?php echo $order_total; ?></td>
+                    </tr>
+                    <?php
 
 				} else {
 
 					?>
 	                <tr class="<?php echo $total_key; ?>">
-	                    <th scope="row" colspan="<?php echo $colspan; ?>" class="totals<?php echo $border_class; ?>"><?php echo nl2br( $total['label'] ); ?></th>
+                        <th scope="row" colspan="<?php echo $colspan; ?>" class="totals<?php echo $border_class; ?>"><?php echo nl2br( $total['label'] ); ?></th>
 	                    <td class="totals<?php echo $border_class; ?>"><?php echo nl2br( $total['value'] ); ?></td>
 	                </tr>
 					<?php
@@ -1063,9 +1112,10 @@ if ( get_option( WGM_Helper::get_wgm_option( 'woocommerce_de_kleinunternehmerreg
 			<td>
 				<?php echo WGM_Template::get_ste_string_invoice( false, $order ); ?>
 			</td>
-				
+
 		</tr>
 	</table>
+
 	<?php
 }
 
@@ -1077,7 +1127,7 @@ if ( apply_filters( 'wp_wc_invoice_pdf_show_shipping_address', true ) ) {
 	if ( WGM_Helper::method_exists( $order, 'get_formatted_billing_address' ) ) {
 
 		if ( ( $can_use_order && ! wc_ship_to_billing_address_only() && $order->needs_shipping_address() && $shipping_address ) || ( ! $can_use_order && $shipping_address ) ) {
-			
+
 			$show_shipping_address_option = get_option( 'wp_wc_invoice_pdf_show_shipping_address', 'show' );
 
 			$show_shipping_address = true;
@@ -1088,7 +1138,7 @@ if ( apply_filters( 'wp_wc_invoice_pdf_show_shipping_address', true ) ) {
 			} else if ( $show = 'hide' ) {
 				$show_shipping_address = false;
 			}
-			
+
 			if ( $show_shipping_address ) {
 
 				?>
@@ -1136,7 +1186,7 @@ if ( $can_use_order ) {
 	do_action( 'woocommerce_email_order_meta', $order, false, false, false );
 	$order_meta = ob_get_clean();
 } else {
-	$order_meta = '';	
+	$order_meta = '';
 }
 if ( trim( $order_meta ) != '' ) {
 	?>
@@ -1175,7 +1225,7 @@ if ( $can_use_order ) {
 	$show_order_notes = get_option( 'wp_wc_invoice_pdf_show_order_notes' );
 	$customer_notes = $order->get_customer_order_notes();
 	if ( $show_order_notes == 'on' && $can_use_order && ! empty( $customer_notes ) ) {
-		
+
 		?>
 		<table class="after-content-text note customer-note" cellspacing="0" cellpadding="0" border="0">
 			<tr>
@@ -1185,11 +1235,11 @@ if ( $can_use_order ) {
 			</tr>
 
 			<?php foreach ( $order->get_customer_order_notes() as $note ) { ?>
-				
+
 				<tr>
 					<td>
-						<?php 
-							echo nl2br( strip_tags( $note->comment_content ) ); 
+						<?php
+							echo nl2br( strip_tags( $note->comment_content ) );
 							$comment_date =  date_i18n( get_option( 'date_format' ), strtotime( $note->comment_date ) ) . ' ' . date_i18n( get_option( 'time_format' ), strtotime( $note->comment_date ) );
 							$comment_date = ' (' . $comment_date . ')';
 							$comment_date = apply_filters( 'wp_wc_invoice_pdf_comment_date', $comment_date, $note->comment_date );
@@ -1199,29 +1249,40 @@ if ( $can_use_order ) {
 				</tr>
 
 			<?php } ?>
-			
+
 		</table>
 		<?php
 	}
 }
-
+?>
+    <style>
+        .after-content-text {
+            display: table;
+            width: 100% !important;
+            position: static;
+            margin-top: 200px!important;
+            margin-left: auto!important;
+            margin-right: auto!important;
+        }
+    </style>
+<?php
 //////////////////////////////////////////////////
 // after content text
 //////////////////////////////////////////////////
 $after_content_text = get_option( 'wp_wc_invoice_pdf_text_after_content' );
 if ( $after_content_text != '' ) {
 	?>
-	<table class="after-content-text" cellspacing="0" cellpadding="0" border="0">
+	<table style="font-size: 14px;margin-top: 20px;">
 		<tr>
-            <?php 
-            	$after_content_text = strip_tags ( $after_content_text, '<br><br/><p><h1><h2><h3><h4><h5><h6><em><ul><li><strong><u><i><ol><span>' ); 
+            <?php
+            	$after_content_text = strip_tags ( $after_content_text, '<br><br/><p><h1><h2><h3><h4><h5><h6><em><ul><li><strong><u><i><ol><span>' );
             	if ( $can_use_order ) {
 					$welcome_text_order_total = strip_tags( wc_price( $order->get_total(), $wc_price_args ) );
 				} else {
 					$welcome_text_order_total = strip_tags( wc_price( rand( 1, 200 ) ) );
 				}
 
-				$after_content_text 	= str_replace( array( '{{first-name}}', '{{last-name}}', '{{order-number}}', '{{order-date}}', '{{order-total}}', '{{payment_method}}' ), array( $first_name, $last_name, $order_number, $order_date_formated, $welcome_text_order_total, $payment_title ) , $after_content_text );
+				$after_content_text 	= str_replace( array( '{{first-name}}', '{{last-name}}', '{{order-number}}', '{{order-date}}', '{{order-total}}', '{{payment_method}}','{{billing-address}}' ), array( $first_name, $last_name, $order_number, $order_date_formated, $welcome_text_order_total, $payment_title, $billing_address ) , $after_content_text );
             ?>
 			<td><?php echo nl2br( apply_filters( 'wp_wc_invoice_pdf_text_after_content', $after_content_text, $order ) ); ?></td>
 		</tr>

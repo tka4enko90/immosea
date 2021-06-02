@@ -1459,6 +1459,8 @@ h4 {
 .form-checkbox {
   position: relative;
   display: inline-flex; }
+  .form-checkbox > a {
+    margin-left: 5px; }
   .form-checkbox input[type='checkbox'] {
     position: absolute;
     opacity: 0;

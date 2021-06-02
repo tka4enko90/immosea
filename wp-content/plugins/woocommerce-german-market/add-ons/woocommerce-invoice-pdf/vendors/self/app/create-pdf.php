@@ -306,7 +306,7 @@ if ( ! class_exists( 'WP_WC_Invoice_Pdf_Create_Pdf' ) ) {
 					if ( apply_filters( 'wp_wc_invoice_pdf_no_debug_in_pdf', true ) ) {
 						@$invoice->pdf->stream( $filename );	
 					} else {
-						$invoice->pdf->stream( $filename );	
+						$invoice->pdf->stream( $filename );
 					}
 
 					exit();

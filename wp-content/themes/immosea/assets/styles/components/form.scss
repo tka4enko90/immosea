@@ -219,7 +219,9 @@
 .form-checkbox {
   position: relative;
   display: inline-flex;
-
+  > a {
+    margin-left: 5px;
+  }
   input[type='checkbox'] {
     position: absolute;
     opacity: 0;
