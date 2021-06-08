@@ -7,6 +7,8 @@ node_modules
 *.bak
 *.swp
 Thumbs.db
+mysql_data/
+docker-compose.yml
 
 # wordpress specific
 wp-config.php
