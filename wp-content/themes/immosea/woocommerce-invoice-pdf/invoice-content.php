@@ -160,11 +160,6 @@ $logo = get_field('logo', 'option');
 ?>
 
 <table class="subject" cellspacing="0" cellpadding="0" border="0">
-	<?php if($logo) { ?>
-		<tr>
-			<img width="200" src="<?php echo $logo['sizes']['medium'] ?>">
-		</tr>
-	<?php } ?>
 	<tr>
         <?php
 			$invoice_date = apply_filters( 'wp_wc_invoice_pdf_invoice_date', '', $order );
@@ -177,7 +172,6 @@ $logo = get_field('logo', 'option');
 	</tr>
 
 </table>
-<div style="height: 50px;"></div>
 <?php
 
 //////////////////////////////////////////////////
