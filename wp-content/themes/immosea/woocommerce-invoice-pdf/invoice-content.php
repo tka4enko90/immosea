@@ -157,13 +157,14 @@ foreach( $subject_placeholders as $placeholder_key => $placeholder_value ) {
 }
 $subject = str_replace( $search, $replace , $subject );
 $logo = get_field('logo', 'option');
-
 ?>
 
 <table class="subject" cellspacing="0" cellpadding="0" border="0">
-	<tr>
-		<img width="200" src="<?php echo $logo['sizes']['medium'] ?>">
-	</tr>
+	<?php if($logo) { ?>
+		<tr>
+			<img width="200" src="<?php echo $logo['sizes']['medium'] ?>">
+		</tr>
+	<?php } ?>
 	<tr>
         <?php
 			$invoice_date = apply_filters( 'wp_wc_invoice_pdf_invoice_date', '', $order );
