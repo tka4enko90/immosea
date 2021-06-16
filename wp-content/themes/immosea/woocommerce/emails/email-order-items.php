@@ -22,6 +22,8 @@ $margin_side = is_rtl() ? 'left' : 'right';
 
 $current_position = 1;
 
+$total_without_tax = '';
+
 foreach ( $items as $item_id => $item ) :
 	$product       = $item->get_product();
 	$sku           = '';
@@ -81,8 +83,8 @@ foreach ( $items as $item_id => $item ) :
 
 		<td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?>; vertical-align:middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;">
 			<?php 	
-				if($price_excl_tax) { 
-					echo round($price_incl_tax, 0).' '.get_woocommerce_currency_symbol(); 
+				if($price_incl_tax) { 
+					echo round($price_incl_tax, 0).get_woocommerce_currency_symbol(); 
 				}
 			?>
 		</td>
@@ -102,7 +104,7 @@ foreach ( $items as $item_id => $item ) :
 		<td class="td" style="text-align: right; vertical-align:middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;">
 			<?php 	
 				if($price_excl_tax) { 
-					echo round($price_excl_tax, 0).' '.get_woocommerce_currency_symbol(); 
+					echo round($price_excl_tax, 0).get_woocommerce_currency_symbol(); 
 				}
 			?>
 		</td>

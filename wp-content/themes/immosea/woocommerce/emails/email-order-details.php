@@ -54,23 +54,75 @@ $text_align = is_rtl() ? 'right' : 'left';
 			?>
 			<tr style="height: 30px;"></tr>
 
-			<tr class="subtotal">
-				<td class="border-none"></td>
-				<td class="border-none"></td>
-				<td class="border-top" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php echo _e('Betrag netto', 'woocommerce'); ?></td>
-				<td class="border-top" style="text-align:right;">
-					<?php echo $price_no_tax.' '.get_woocommerce_currency_symbol(); ?>
-				</td>
-			</tr>
+			<?php 
+				$order_item = $order->get_items(); 
 
-			<tr class="total-tax">
-				<td class="border-none"></td>
-				<td class="border-none"></td>
-				<td class="border-none" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php echo _e('Umsatzsteuer 19 %', 'woocommerce'); ?></td>
-				<td class="border-none" style="text-align:right;">
-					<?php echo $total_tax.' '.get_woocommerce_currency_symbol();  ?>
-				</td>
-			</tr>
+				foreach( $order_item as $item_id => $item) {
+					$product  = $item->get_product();
+					$price_excl_tax = wc_get_price_excluding_tax( $product );
+		            $total_without_tax += $price_excl_tax;
+		        }
+
+		        $total_without_tax = round($total_without_tax,0);
+
+			?>
+
+			<?php $item_totals = $order->get_order_item_totals();
+
+			if ( $item_totals ) {
+				foreach ( $item_totals as $key => $total ) {
+					if($key == 'cart_subtotal') {
+
+						if(empty($item_totals['discount'])) {
+							$total['label'] = 'Betrag netto';
+							$total['value'] = $total_without_tax.get_woocommerce_currency_symbol();
+						}
+						?>
+						<tr class="subtotal">
+							<td class="border-none"></td>
+							<td class="border-none"></td>
+							<td class="border-top" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php echo wp_kses_post( $total['label'] ); ?></td>
+							<td class="border-top" style="text-align:right;"><?php echo wp_kses_post( $total['value'] ); ?></td>
+						</tr>
+						<?php
+					} elseif($key == 'discount') {
+						$total['label'] = 'Rabatt';
+						?>
+						<tr class="discount">
+							<td class="border-none"></td>
+							<td class="border-none"></td>
+							<td class="border-none" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php echo wp_kses_post( $total['label'] ); ?></td>
+							<td class="border-none" style="text-align:right;"><?php echo wp_kses_post( $total['value'] ); ?></td>
+						</tr>
+						<!-- <tr class="subtotal">
+							<td class="border-none"></td>
+							<td class="border-none"></td>
+							<td class="border-none" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php echo wp_kses_post('Betrag netto'); ?></td>
+							<td class="border-none" style="text-align:right;"><?php echo $price_no_tax.get_woocommerce_currency_symbol(); ?></td>
+						</tr> -->
+						<?php
+					} elseif($key == 'order_total') {
+						$total['label'] = 'Summe';
+						?>
+						<tr class="total-tax">
+							<td class="border-none"></td>
+							<td class="border-none"></td>
+							<td class="border-none" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php echo _e('Umsatzsteuer 19 %', 'woocommerce'); ?></td>
+							<td class="border-none" style="text-align:right;">
+								<?php echo $total_tax.get_woocommerce_currency_symbol();  ?>
+							</td>
+						</tr>
+						<tr class="total">
+							<td class="border-none"></td>
+							<td class="border-none"></td>
+							<td class="border-top" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php echo wp_kses_post( $total['label'] ); ?></td>
+							<td class="border-top" style="text-align:right;"><?php echo wp_kses_post( $total['value'] ); ?></td>
+						</tr>
+						<?php
+					}
+					
+				}
+			} ?>
 
 			<?php if ( $order->get_customer_note() ) { ?>
 				<tr>
@@ -79,17 +131,7 @@ $text_align = is_rtl() ? 'right' : 'left';
 					<td class="td" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php esc_html_e( 'Note:', 'woocommerce' ); ?></td>
 					<td class="td" style="text-align:right;"><?php echo wp_kses_post( nl2br( wptexturize( $order->get_customer_note() ) ) ); ?></td>
 				</tr>
-			<?php } ?>
-
-			<tr class="total">
-				<td class="border-none"></td>
-				<td class="border-none"></td>
-				<td class="border-top" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php echo _e('Summe', 'woocommerce'); ?></td>
-				<td class="border-top" style="text-align:right;">
-					<?php echo $order->get_total().' '.get_woocommerce_currency_symbol(); ?>
-				</td>
-			</tr>
-			
+			<?php } ?> 
 		</tfoot>
 	</table>
 </div>
