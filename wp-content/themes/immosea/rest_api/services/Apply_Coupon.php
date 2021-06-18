@@ -18,6 +18,7 @@ class Apply_Coupon {
             $response['amount'] = $coupon->get_amount();
             $response['amount_type'] = $coupon->get_discount_type();
             $response['coupon'] = $coupon->code;
+            $response['total_tax'] = $order->get_total_tax();
             return $response;
         }
     }
