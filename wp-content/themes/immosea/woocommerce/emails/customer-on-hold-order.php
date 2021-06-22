@@ -26,7 +26,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); ?>
 
 
 <?php /* translators: %s: Customer first name */ ?>
-<p><?php printf( esc_html__( 'Hallo  %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); ?></p>
+<p><?php printf( esc_html__( 'Hallo  %s,', 'woocommerce' ), esc_html( $order->get_billing_last_name() ) ); ?></p>
 
 <p><?php echo esc_html__( 'vielen Dank für deine Bestellung. Dein Auftrag wird ausgeführt.', 'woocommerce' ); ?></p>
 <p><?php echo sprintf( __( 'Deine Bestellung Nr. %s vom %s nochmals auf einen Blick:', 'woocommerce' ), esc_html( $order->get_order_number() ), wc_format_datetime( $order->get_date_created(), 'd/m/Y') ); ?></p>
