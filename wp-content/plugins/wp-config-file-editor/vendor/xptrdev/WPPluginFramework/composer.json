@@ -1,0 +1,14 @@
+{
+	"name" : "xptrdev/WPPluginFramework",
+  "type": "library",
+  "description": "Wordpress Plugin Framework",
+  "homepage": "https://github.com/xptrdev/WPPluginFramework",
+  "license": "LGPL",
+  "authors": [
+      {
+          "name": "Ahmed Said",
+          "email": "asaid@xptrdev.com"
+      }
+  ],
+  "autoload" : {"classmap" : ["Include/"]}
+}

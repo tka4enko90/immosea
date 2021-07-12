@@ -1,0 +1,11 @@
++ Allow calling controller actions those are not defined in the controller. The call just could be passed to the View. In another word, some action has nothing to process and all what is needed is to display the view. Use XML configuration file for defining those actions, may be as following:
+
+		<!-- Controllers configuration NOT YET IMPLEMENTED -->
+		<controllers>
+			<controller id="ARV\Modules\Installer\Controoller\Installer\InstallerController">
+				<passthruActions> <!-- Actions are not defined in the controller however it still can be passed to the view -->
+					<action>success</action>
+				</passthruActions>
+			</controller>
+		</controllers>
+		<!-- Controllers configuration <!-- Controllers configuration -->		

@@ -1,0 +1,13 @@
+{
+	"name" : "xptrdev/wp-config-file-editor",
+	"autoload" : {
+		"classmap" : ["Compatibility", "Config/", "Includes/", "Modules/", "Services/", "Factory/", "Libraries/", "Pluggable/", "SysPlugins/", "Installer/" ]
+	},
+  "repositories": [{
+    "type": "vcs",
+    "url": "https://github.com/xptrdev/WPPluginFramework.git"
+  }],
+  "require" : {
+  	"xptrdev/WPPluginFramework" : "dev-master"
+  }
+}

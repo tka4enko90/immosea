@@ -1,0 +1,91 @@
+.wcfe-sysfilters-tab-advanced-panel    
+{
+    max-width: 242px;
+    background-color: #F9F9F9;
+    padding: 14px 10px 24px;
+    border: 1px dashed #B0B0B0;
+    overflow: auto;
+    position: absolute;
+    right: 10px;
+    height: 422px;
+    font-size: 84%;
+    display: none;
+    margin: -5px 0px 0 0;
+}
+
+.wcfe-sysfilters-tab-advanced-panel label
+{
+	width: 100px;
+}
+
+strong.advanced-options-title {
+    background-color: #DFDFDF;
+    padding: 5px 5px;
+    display: inherit;
+    color: black;
+}
+
+.fields-container
+{
+    margin-top: 10px;
+    padding: 10px 14px;
+}
+
+a.toggle-advanced-options-panel {
+    float: right;
+}
+
+#save-sysfilters-form {
+    padding: 1px 33px;
+    margin-top: 9px;
+}
+#wcfe-config-form-main-menu
+{
+	width: 105px;
+}
+
+#wcfe-sysfilters-editor-editorCSS-value
+{
+	width: 300px;
+	height: 130px;
+}
+
+.compound-field {
+  background-color: #F5F5F5;
+  display: inline-block;
+  padding: 10px 10px;
+}
+
+
+ul#wcfe-sysfilters-misc-uploadAllowedMimes-value,
+ul#wcfe-sysfilters-kses-postTags-value,
+ul#wcfe-sysfilters-kses-commentTags-value
+{
+	width: 400px;
+	height: 300px;
+	overflow:auto;
+}
+
+ul#wcfe-sysfilters-misc-uploadAllowedMimes-value span,
+ul#wcfe-sysfilters-kses-postTags-value span,
+ul#wcfe-sysfilters-kses-commentTags-value span
+{
+  overflow: hidden;
+  width: 350px;
+  display: inline-block;
+  height: 17px;
+  cursor: pointer;
+}
+
+#wcfe-sysfilters-misc-uploadAllowedMimes-value-row input[type="text"],
+#wcfe-sysfilters-kses-postTags-value-row input[type="text"]
+#wcfe-sysfilters-kses-commentTags-value-row input[type="text"]
+{
+	width: 430px;
+}
+
+ul#wcfe-sysfilters-misc-uploadAllowedMimes-value li,
+ul#wcfe-sysfilters-kses-postTags-value li
+ul#wcfe-sysfilters-kses-commentTags-value li {
+  padding: 3px 0px;
+}

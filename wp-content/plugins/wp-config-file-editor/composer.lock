@@ -1,0 +1,56 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "64009236fb73cb39c6a080e675bfb26d",
+    "packages": [
+        {
+            "name": "xptrdev/WPPluginFramework",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xptrdev/WPPluginFramework.git",
+                "reference": "17d0f8d92967a696a219eb83033d970fa52d43db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xptrdev/WPPluginFramework/zipball/17d0f8d92967a696a219eb83033d970fa52d43db",
+                "reference": "17d0f8d92967a696a219eb83033d970fa52d43db",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "Include/"
+                ]
+            },
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Ahmed Said",
+                    "email": "asaid@xptrdev.com"
+                }
+            ],
+            "description": "Wordpress Plugin Framework",
+            "homepage": "https://github.com/xptrdev/WPPluginFramework",
+            "support": {
+                "source": "https://github.com/xptrdev/WPPluginFramework/tree/master",
+                "issues": "https://github.com/xptrdev/WPPluginFramework/issues"
+            },
+            "time": "2014-12-01 20:27:28"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "xptrdev/wppluginframework": 20
+    },
+    "prefer-stable": false,
+    "platform": [],
+    "platform-dev": []
+}
