@@ -28,9 +28,9 @@ $text_align = is_rtl() ? 'right' : 'left';
 			<tr>
 				<th class="th" scope="col" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php esc_html_e( 'Pos.', 'woocommerce' ); ?></th>
 				<th class="th" scope="col" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php esc_html_e( 'Leistungsbeschreibung', 'woocommerce' ); ?></th>
-				<th class="th" scope="col" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php esc_html_e( 'Einzelpreis netto', 'woocommerce' ); ?></th>
+				<th class="th" scope="col" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php esc_html_e( 'Einzelpreis', 'woocommerce' ); ?></th>
 				<th class="th" scope="col" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php esc_html_e( 'Menge', 'woocommerce' ); ?></th>
-				<th class="th" scope="col" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php esc_html_e( 'Summe', 'woocommerce' ); ?></th>
+				<th class="th" scope="col" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php esc_html_e( 'Nettopreis', 'woocommerce' ); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -48,14 +48,14 @@ $text_align = is_rtl() ? 'right' : 'left';
 			?>
 		</tbody>
 		<tfoot>
-			<?php 
+			<?php
 				$price_no_tax = number_format( (float) $order->get_total() - $order->get_total_tax() - $order->get_total_shipping() - $order->get_shipping_tax(), wc_get_price_decimals(), '.', '' );
 				$total_tax = number_format( (float) $order->get_total() - $price_no_tax , wc_get_price_decimals(), '.', '' );
 			?>
 			<tr style="height: 30px;"></tr>
 
-			<?php 
-				$order_item = $order->get_items(); 
+			<?php
+				$order_item = $order->get_items();
 
 				foreach( $order_item as $item_id => $item) {
 					$product  = $item->get_product();
@@ -120,7 +120,7 @@ $text_align = is_rtl() ? 'right' : 'left';
 						</tr>
 						<?php
 					}
-					
+
 				}
 			} ?>
 
@@ -131,7 +131,7 @@ $text_align = is_rtl() ? 'right' : 'left';
 					<td class="td" scope="row" colspan="2" style="text-align:<?php echo esc_attr( $text_align ); ?>;"><?php esc_html_e( 'Note:', 'woocommerce' ); ?></td>
 					<td class="td" style="text-align:right;"><?php echo wp_kses_post( nl2br( wptexturize( $order->get_customer_note() ) ) ); ?></td>
 				</tr>
-			<?php } ?> 
+			<?php } ?>
 		</tfoot>
 	</table>
 </div>
