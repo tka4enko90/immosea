@@ -221,6 +221,7 @@
   display: inline-flex;
   > a {
     margin-left: 5px;
+    color: #595959;
   }
   input[type='checkbox'] {
     position: absolute;
@@ -242,6 +243,7 @@
   .wpcf7-list-item-label {
     padding-left: 34px;
     position: relative;
+    color: #595959;
     //display: inline-flex;
     @media (max-width: $breakpoint-small-max) {
       padding-top: 3px;
@@ -375,5 +377,6 @@
 
   .form__area & {
     padding-left: 16px;
+    color: #595959;
   }
 }
