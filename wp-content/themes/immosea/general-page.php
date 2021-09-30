@@ -158,7 +158,7 @@ get_header(); ?>
                             <div class="banner__holder">
                                 <div class="banner__line">
                                     <strong>S</strong>
-                                    chnell deine Werbetexte <br/>erhalten
+                                    chnell  Ihre Werbetexte <br/>erhalten
                                 </div>
                                 <div class="banner__line">
                                     von
@@ -166,9 +166,9 @@ get_header(); ?>
                                     xperten erstellt
                                 </div>
                                 <div class="banner__line">
-                                    <div>auf dich und<br/>deine Immobillie</div>
+                                    <div>auf Sie und Ihre<br/>Immobilie angepasst<br/> (instead of capital etter</div>
                                     <strong>A</strong>
-                                    <div>ngepasst</div>
+                                    <div>, please capital letter I)</div>
                                 </div>
                             </div>
                         </div>
