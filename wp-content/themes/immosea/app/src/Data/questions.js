@@ -4,34 +4,34 @@ export const questions = [
     component: 'Step1',
   },
   {
-    title: 'Möchtest du deine Immobilie verkaufen oder vermieten?',
+    title: 'Möchten Sie Ihre Immobilie verkaufen oder vermieten?',
     component: 'Step2'
   },
   {
-    title: 'Aus welchem Baujahr stammt dein Objekt?',
+    title: 'Aus welchem Baujahr stammt Ihr Objekt?',
     component: 'Step3'
   },
   {
-    title: 'Schreibst du deine Werbetexte selbst?',
+    title: 'Schreiben Sie Ihre Werbetexte selbst?',
     component: 'Step4',
     text: `<p>Eine aussagefähige Objektbeschreibung erhöht die Quantität und Qualität der Anfragen auf dein Immobilieninserat.</p>
-        <p>Bei Immosea erhältst du deinen Werbetext von erfahrenen Immobilienexperten mit langjähriger 
+        <p>Bei Immosea Erhalten Sie Ihren Werbetext von erfahrenen Immobilienexperten mit langjähriger 
         Marketing-Erfahrung.</p>`
   },
   {
-    title: 'Womit können wir dich zusätzlich bei der Vermarktung deiner Immobilie unterstützen?',
+    title: 'Womit können wir Sie zusätzlich bei der Vermarktung Ihrer Immobilie unterstützen?',
     component: 'Step5',
     showPrice: true
   },
   {
-    title: 'Damit wir dein Objekt besser verstehen, benötigen wir ein paar weitere Informationen.',
+    title: 'Damit wir Ihr Objekt besser verstehen, benötigen wir ein paar weitere Informationen.',
     component: 'Step6',
     showPrice: true
   },
   {
     title: 'Daten deines Energieausweises:',
     component: 'Step7',
-    text: 'Für eine rechtssichere Vermarktung deiner Immobilie benötigst du einen Energieausweis',
+    text: 'Für eine rechtssichere Vermarktung deiner Immobilie benötigen Sie du einen Energieausweis',
     showPrice: true
   },
   {
@@ -42,7 +42,7 @@ export const questions = [
     showPrice: true
   },
   {
-    title: 'Damit wir das Exposé für dich erstellen können, benötigen wir noch deine Werbetexte:',
+    title: 'Damit wir das Exposé für Sie erstellen können, benötigen wir noch Ihre Werbetexte:',
     component: 'Step9',
     showPrice: true
   },
@@ -52,7 +52,7 @@ export const questions = [
     showPrice: true
   },
   {
-    title: 'Wie lautet die Anschrift deiner Immobilie?',
+    title: 'Wie lautet die Anschrift Ihrer Immobilie?',
     text: 'Keine Sorge, wir verwenden diese Information lediglich, um die Objektlage im Exposé optimal zu beschreiben und / oder, um die Objektfotografie zu beauftragen.',
     component: 'Step11',
     showPrice: true
