@@ -77,11 +77,9 @@
             <div class="header__nav-right">
 				<?php if (!empty($header_phone)) { ?>
                     <a href="tel:<?php echo $n_phone; ?>" class="header__nav-link">
-                        380634279660
 						<?php echo $header_phone; ?>
                     </a>
 				<?php } ?>
-
 				<?php
 				$body_classes = get_body_class();
 				if(in_array('page-template-page-wizard', $body_classes)) {}
