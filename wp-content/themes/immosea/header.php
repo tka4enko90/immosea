@@ -70,7 +70,16 @@
 
             <?php
                 $button = get_field('link_to_form', 'option');
+                $header_phone = get_field('header_phone', 'option');
+                $vowels = array("(", ")", " ", "-");
+                $n_phone = str_replace($vowels, "", $header_phone);
             ?>
+            <?php if (!empty($header_phone)) { ?>
+            <a href="tel:<?php echo $n_phone; ?>" class="header__nav-link">
+                <?php echo $header_phone; ?>
+            </a>
+            <?php } ?>
+
             <?php
                 $body_classes = get_body_class();
                 if(in_array('page-template-page-wizard', $body_classes)) {}

@@ -122,9 +122,28 @@
         @media (min-width: $breakpoint-small) {
             display: flex;
         }
+        &-link {
+            padding-left: 18px;
+            position: relative;
+            line-height: 1;
+            &:before {
+                content: '';
+                //content: url("/assets/images/phone.png");
+                background-image: url('/assets/images/phone-2.png');
+                background-size: 15px;
+                background-repeat: no-repeat;
+                width: 15px;
+                height: 15px;
+                display: flex;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
         li {
             position: relative;
-            padding: 10px 60px 10px 0;
+            padding: 10px 50px 10px 0;
             @media (max-width: $breakpoint-small-max) {
                 padding: 0 0 16px;
             }
@@ -197,6 +216,7 @@
             }
         }
     }
+
     
     &__button {
         @media (max-width: $breakpoint-small-max) {
