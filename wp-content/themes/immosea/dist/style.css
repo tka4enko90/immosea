@@ -318,7 +318,7 @@ h4 {
   top: 0;
   background: #fff;
   z-index: 10; }
-  @media (min-width: 760px) {
+  @media (min-width: 1200px) {
     .header {
       padding-left: 24px;
       padding-right: 24px;
@@ -336,7 +336,10 @@ h4 {
     flex: 1 1 auto;
     align-items: center;
     justify-content: space-between; }
-    @media (max-width: 759px) {
+    @media (max-width: 1599px) {
+      .header__content {
+        flex: 1 1 100%; } }
+    @media (max-width: 1199px) {
       .header__content {
         position: fixed;
         top: 0;
@@ -356,12 +359,9 @@ h4 {
     width: 200px;
     height: 29px;
     margin: 0 auto; }
-    @media (min-width: 760px) {
-      .header__logo {
-        margin-right: 50px; } }
     @media (min-width: 1200px) {
       .header__logo {
-        margin-right: 100px; } }
+        margin-right: 50px; } }
   .header__toggle {
     width: 26px;
     height: 26px;
@@ -376,7 +376,7 @@ h4 {
     border: 0;
     cursor: pointer;
     background: none; }
-    @media (min-width: 760px) {
+    @media (min-width: 1200px) {
       .header__toggle {
         display: none; } }
     .header__toggle::before, .header__toggle::after,
@@ -405,13 +405,21 @@ h4 {
         transform: rotate(-45deg); }
   .header__nav {
     font-size: 18px; }
-    @media (min-width: 760px) {
+    @media (min-width: 1200px) {
       .header__nav {
         display: flex; } }
+    .header__nav-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; }
     .header__nav-link {
       padding-left: 18px;
       position: relative;
-      line-height: 1; }
+      line-height: 1;
+      margin-right: 18px; }
+      @media (max-width: 1199px) {
+        .header__nav-link {
+          margin: 0; } }
       .header__nav-link:before {
         content: '';
         background-image: url(images/3a58ebb218f56c359ed852d4447a35dc.png);
@@ -427,6 +435,9 @@ h4 {
     .header__nav li {
       position: relative;
       padding: 10px 50px 10px 0; }
+      @media (max-width: 1599px) {
+        .header__nav li {
+          padding: 10px 30px 10px 0; } }
       @media (max-width: 759px) {
         .header__nav li {
           padding: 0 0 16px; } }
@@ -473,7 +484,7 @@ h4 {
           display: none; } }
       .header__nav .sub-menu li {
         padding: 6px 0; }
-  @media (max-width: 759px) {
+  @media (max-width: 1199px) {
     .header__button {
       position: absolute;
       bottom: 20px;
@@ -484,10 +495,10 @@ h4 {
       top: 200px;
       left: 30px;
       background: #fff; } }
-  @media (max-width: 1320px) {
+  @media (min-width: 1200px) {
     .header .social-links {
       display: none; } }
-  @media (max-width: 759px) {
+  @media (max-width: 1199px) {
     .header .social-links {
       display: block;
       position: absolute;

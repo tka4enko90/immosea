@@ -4,8 +4,7 @@
     top: 0;
     background: #fff;
     z-index: 10;
-    
-    @media (min-width: $breakpoint-small) {
+    @media (min-width: $breakpoint-large) {
         padding-left: 24px;
         padding-right: 24px;
         display: flex;
@@ -18,13 +17,16 @@
     @media (min-width: $breakpoint-xlarge) {
         padding: 30px 50px;
     }
-    
+
     &__content {
         display: flex;
         flex: 1 1 auto;
         align-items: center;
         justify-content: space-between;
-        @media (max-width: $breakpoint-small-max) {
+        @media (max-width: $breakpoint-xlarge-max) {
+            flex: 1 1 100%;
+        }
+        @media (max-width: $breakpoint-large-max) {
             position: fixed;
             top: 0;
             bottom: 0;
@@ -35,29 +37,26 @@
             transform: translateY(-100%);
             transition: transform .2s;
             padding: 50px 30px;
-            
+
             .nav-open & {
                 transform: translateY(0);
             }
-            
+
             .admin-bar & {
                 padding-top: 140px;
             }
         }
     }
-    
+
     &__logo {
         width: 200px;
         height: 29px;
         margin: 0 auto;
-        @media (min-width: $breakpoint-small) {
+        @media (min-width: $breakpoint-large) {
             margin-right: 50px;
         }
-        @media (min-width: $breakpoint-large) {
-            margin-right: 100px;
-        }
     }
-    
+
     &__toggle {
         width: 26px;
         height: 26px;
@@ -72,11 +71,11 @@
         border: 0;
         cursor: pointer;
         background: none;
-    
-        @media (min-width: $breakpoint-small) {
+
+        @media (min-width: $breakpoint-large) {
             display: none;
         }
-        
+
         &::before,
         &::after,
         span {
@@ -90,42 +89,53 @@
             background: $base-color;
             transition: transform .2s;
         }
-        
+
         span {
             top: 11px;
             transition: opacity .2s;
-            
+
             .nav-open & {
                 opacity: 0;
             }
         }
-        
+
         &::before {
             .nav-open & {
                 top: 11px;
                 transform: rotate(45deg);
             }
         }
-        
+
         &::after {
             top: 18px;
-            
+
             .nav-open & {
                 top: 11px;
                 transform: rotate(-45deg);
             }
         }
     }
-    
+
     &__nav {
         font-size: 18px;
-        @media (min-width: $breakpoint-small) {
+        @media (min-width: $breakpoint-large) {
             display: flex;
+            //flex: 1 1 100%;
+        }
+        &-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            //flex: 1 1 450px;
         }
         &-link {
             padding-left: 18px;
             position: relative;
             line-height: 1;
+            margin-right: 18px;
+            @media (max-width: $breakpoint-large-max) {
+                margin: 0;
+            }
             &:before {
                 content: '';
                 //content: url("/assets/images/phone.png");
@@ -144,16 +154,19 @@
         li {
             position: relative;
             padding: 10px 50px 10px 0;
+            @media (max-width: $breakpoint-xlarge-max) {
+                padding: 10px 30px 10px 0;
+            }
             @media (max-width: $breakpoint-small-max) {
                 padding: 0 0 16px;
             }
-    
+
             &.current-menu-item {
                 a {
                     color: $link-color;
                 }
             }
-    
+
             &.menu-item-has-children {
                 > a {
                     &::after {
@@ -167,14 +180,14 @@
                     }
                 }
             }
-            
+
             &:hover,
             &.hover {
                 .sub-menu {
                     @media (min-width: $breakpoint-small) {
                         opacity: 1;
                         visibility: visible;
-    
+
                     }
                     @media (max-width: $breakpoint-small-max) {
                         display: block;
@@ -189,13 +202,13 @@
                 text-decoration: none;
             }
         }
-        
+
         .sub-menu {
             background: #fff;
             font-size: 16px;
             min-width: 210px;
             padding: 10px 0 0 20px;
-            
+
             @media (min-width: $breakpoint-small) {
                 box-shadow: 0 2px 14px rgba(0,0,0,.2);
                 padding: 16px;
@@ -210,23 +223,23 @@
             @media (max-width: $breakpoint-small-max) {
                 display: none;
             }
-            
+
             li {
                 padding: 6px 0;
             }
         }
     }
 
-    
+
     &__button {
-        @media (max-width: $breakpoint-small-max) {
+        @media (max-width: $breakpoint-large-max) {
             position: absolute;
             bottom: 20px;
             right: 30px;
         }
     }
-    
-    
+
+
     .social-links {
         @media (min-width: 1321px) {
             position: fixed;
@@ -234,12 +247,12 @@
             left: 30px;
             background: #fff;
         }
-        
-        @media (max-width: 1320px) {
+
+        @media (min-width: $breakpoint-large) {
             display: none;
         }
-        
-        @media (max-width: $breakpoint-small-max) {
+
+        @media (max-width: $breakpoint-large-max) {
             display: block;
             position: absolute;
             left: 30px;

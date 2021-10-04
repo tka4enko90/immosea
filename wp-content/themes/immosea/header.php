@@ -57,7 +57,7 @@
                 $social = get_field('social_links', 'option');
             ?>
             <?php if($social): ?>
-                <ul class="social-links tablet-visible">
+                <ul class="social-links">
                     <?php foreach($social as $row) { ?>
                         <li>
                             <a href="<?php echo $row['link']['url'] ?>" target="_blank">
@@ -74,24 +74,27 @@
                 $vowels = array("(", ")", " ", "-");
                 $n_phone = str_replace($vowels, "", $header_phone);
             ?>
-            <?php if (!empty($header_phone)) { ?>
-            <a href="tel:<?php echo $n_phone; ?>" class="header__nav-link">
-                <?php echo $header_phone; ?>
-            </a>
-            <?php } ?>
+            <div class="header__nav-right">
+				<?php if (!empty($header_phone)) { ?>
+                    <a href="tel:<?php echo $n_phone; ?>" class="header__nav-link">
+                        380634279660
+						<?php echo $header_phone; ?>
+                    </a>
+				<?php } ?>
 
-            <?php
-                $body_classes = get_body_class();
-                if(in_array('page-template-page-wizard', $body_classes)) {}
-                else { ?>
-                    <?php if($button): ?>
+				<?php
+				$body_classes = get_body_class();
+				if(in_array('page-template-page-wizard', $body_classes)) {}
+				else { ?>
+					<?php if($button): ?>
                         <a href="<?php echo $button['url'] ?>"
                            class="button button--outline button--small header__button"
                         >
-                            <?php echo $button['title'] ?>
+							<?php echo $button['title'] ?>
                         </a>
-                    <?php endif; ?>
-                <?php }
-            ?>
+					<?php endif; ?>
+				<?php }
+				?>
+            </div>
         </div>
     </header>
