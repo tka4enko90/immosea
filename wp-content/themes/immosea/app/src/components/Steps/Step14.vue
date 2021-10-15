@@ -2,8 +2,9 @@
     <StepWrap
             :title="title"
             :text="text"
+            :preOrderTemplate="preOrderTemplate"
             :buttonPreOrder="{
-                ...buttonPreOrder,
+                title: 'Anfrage senden',
                 click: handlerPreOrderClick,
                 disabled: !$v.contactData.name.required
                         || !$v.contactData.last_name.required
@@ -12,7 +13,6 @@
                         || !$v.contactData.email.email
                         || !$v.contactData.zip.required
                         || !$v.contactData.address.required
-                // disabled: !cart.zustimmung_agb_datenschutz || !cart.zustimmung_ablauf_widerruf
             }"
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
@@ -92,7 +92,7 @@
         components: {
             StepWrap, InputText
         },
-        props: ['title', 'text', 'buttonPrev', 'buttonNext', 'buttonPreOrder', 'showPrice'],
+        props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice', 'preOrderTemplate'],
         data() {
             return {}
         },

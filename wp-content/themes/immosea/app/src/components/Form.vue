@@ -10,13 +10,11 @@
                         :title="item.title"
                         :text="item.text"
                         :showPrice="item.showPrice"
+                        :preOrderTemplate="item.preOrderTemplate"
                         :buttonPrev="{
                             title: buttonPrev.title,
                             click: showPrevScreen,
                             show: buttonPrev.show
-                        }"
-                        :buttonPreOrder="{
-                            title: 'Anfrage senden'
                         }"
                         :buttonNext="{
                             title: buttonNext.title,
@@ -68,10 +66,6 @@
         buttonPrev: {
           title: 'Zurück',
           show: this.activeStep === 0 && false || true
-        },
-        buttonPreOrder: {
-          title: 'Anfrage senden',
-          show: false
         },
         passedSteps: JSON.parse(localStorage.getItem('passedSteps')) || [],
         questions,

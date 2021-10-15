@@ -71,7 +71,8 @@ export const questions = [
   },
   {
     title: 'Zu guter Letzt benötigen wir noch deine Kontaktdaten, um deinen Auftrag bearbeiten zu können.',
-    component: 'Step14'
+    component: 'Step14',
+    preOrderTemplate: true
   },
   {
     title: 'Bestellung überprüfen',

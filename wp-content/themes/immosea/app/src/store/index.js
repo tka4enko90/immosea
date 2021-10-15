@@ -169,6 +169,7 @@ export default new Vuex.Store({
     SET_IS_COUPON (state, payload) {
       state.isCoupon = payload
     },
+
     SET_IS_PRE_ORDER (state, payload) {
       state.preOrder = payload
     },

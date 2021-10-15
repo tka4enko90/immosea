@@ -1,5 +1,5 @@
 <template>
-    <div class="step" :class="{'step--price': showPrice}">
+    <div class="step" :class="{'step--price': showPrice, 'step-with-pre-order': preOrderTemplate}">
         <div class="step__title">
             <h1>{{ title }}</h1>
             <div class="step__info" v-if="text">
@@ -29,10 +29,10 @@
                     {{ buttonPrev.title }}
                 </button>
                 <button
-                        @click="buttonPreOrder.click"
                         v-if="buttonPreOrder"
-                        class="button button--primary"
-                        :class="{'button--disabled': buttonNext.disabled || buttonNext.sending}"
+                        @click="buttonPreOrder.click"
+                        class="button button--outline button--small header__button"
+                        :class="{'button--disabled': buttonPreOrder.disabled || buttonPreOrder.sending}"
                 >
                     {{ buttonPreOrder.title }}
                 </button>
@@ -41,7 +41,9 @@
                         :class="{'button--disabled': buttonNext.disabled || buttonNext.sending}"
                 >
                     {{ buttonNext.title }}
-                    <div v-if="buttonNext.sending" class="loader loader--small loader--position" />
+                    <div v-if="buttonNext.sending"
+                         class="loader loader--small loader--position"
+                    />
                 </button>
             </div>
         </div>
@@ -51,17 +53,23 @@
 <script>
   import { mapGetters } from 'vuex'
 
+
   export default {
     name: 'app-step-wrap',
     components: {},
-    props: ['title', 'text', 'showPrice', 'buttonPrev', 'buttonNext', 'buttonPreOrder', 'isLoading' ],
+    props: ['title', 'text', 'showPrice', 'buttonPrev', 'buttonNext', 'buttonPreOrder', 'isLoading' , 'preOrderTemplate'],
     computed: {
+
       ...mapGetters([
         'price'
       ]),
     },
-    methods: {},
-    create: {}
+    methods: {
+
+    },
+    create: {
+
+    }
   }
 </script>
 
