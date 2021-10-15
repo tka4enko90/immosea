@@ -2,6 +2,18 @@
     <StepWrap
             :title="title"
             :text="text"
+            :buttonPreOrder="{
+                ...buttonPreOrder,
+                click: handlerPreOrderClick,
+                disabled: !$v.contactData.name.required
+                        || !$v.contactData.last_name.required
+                        || !$v.contactData.email.required
+                        || !$v.contactData.phone.required
+                        || !$v.contactData.email.email
+                        || !$v.contactData.zip.required
+                        || !$v.contactData.address.required
+                // disabled: !cart.zustimmung_agb_datenschutz || !cart.zustimmung_ablauf_widerruf
+            }"
             :buttonPrev="{...buttonPrev}"
             :buttonNext="{
                 ...buttonNext,
@@ -46,7 +58,7 @@
                        @blur="$v.contactData.zip.$touch()"
                        :error="!$v.contactData.zip.length"
                        placeholder="Hier eintragen"
-                       inline required />
+                       inline required/>
         </div>
         <div class="form__row">
             <InputText v-model="contactData.email"
@@ -69,48 +81,78 @@
 </template>
 
 <script>
-  import StepWrap from '../Layout/StepWrap';
-  import InputText from '../Form/InputText';
-  import { required, email, minLength } from 'vuelidate/lib/validators';
+    import StepWrap from '../Layout/StepWrap';
+    import InputText from '../Form/InputText';
+    import {required, email, minLength} from 'vuelidate/lib/validators';
+    import {Order} from "../../api";
 
 
-  export default {
-    name: 'app-step14',
-    components: {
-      StepWrap, InputText
-    },
-    props: ['title', 'text', 'buttonPrev', 'buttonNext', 'showPrice'],
-    data() {return {}},
-    computed: {
-      contactData: {
-        get() {
-          return this.$store.state.contactData
+    export default {
+        name: 'app-step14',
+        components: {
+            StepWrap, InputText
         },
-        set(value) {
-          this.$store.commit('SET_CONTACT_DATA', { value })
+        props: ['title', 'text', 'buttonPrev', 'buttonNext', 'buttonPreOrder', 'showPrice'],
+        data() {
+            return {}
+        },
+        computed: {
+            contactData: {
+                get() {
+                    return this.$store.state.contactData
+                },
+                set(value) {
+                    this.$store.commit('SET_CONTACT_DATA', {value})
+                }
+            }
+        },
+        validations: {
+            contactData: {
+                name: {required, length: minLength(1)},
+                last_name: {required, length: minLength(1)},
+                email: {required, email},
+                phone: {required, length: minLength(6)},
+                zip: {required, length: minLength(2)},
+                address: {required, length: minLength(5)}
+            },
+        },
+        methods: {
+            handlerClick() {
+                this.$store.dispatch('createOrder', {
+                    cart: this.$store.state.cart,
+                    collectData: this.$store.state.collectData,
+                    contactData: this.$store.state.contactData
+                });
+                this.buttonNext.click()
+            },
+            async handlerPreOrderClick() {
+                this.$store.commit('SET_IS_PRE_ORDER', true);
+                this.sending = true;
+                const res = await Order.post({
+                    cart: this.$store.state.cart,
+                    collectData: this.$store.state.collectData,
+                    contactData: this.$store.state.contactData,
+                    action: 'redirect',
+                    pre_order: this.$store.state.preOrder
+                });
+                if (res.data && res.data.result === 'success') {
+                    window.location.href = res.data.redirect
+                }
+                // this.buttonNext.click()
+            },
+            async onClick() {
+                this.sending = true
+                const res = await Order.post({
+                    cart: this.$store.state.cart,
+                    collectData: this.$store.state.collectData,
+                    contactData: this.$store.state.contactData,
+                    action: 'redirect'
+                });
+                if (res.data && res.data.result === 'success') {
+                    window.location.href = res.data.redirect
+                }
+            }
         }
-      }
-    },
-    validations: {
-      contactData: {
-        name: { required, length: minLength(1) },
-        last_name: { required, length: minLength(1) },
-        email: { required, email },
-        phone: { required, length: minLength(6) },
-        zip: { required, length: minLength(2) },
-        address: { required, length: minLength(5) }
-      },
-    },
-    methods: {
-      handlerClick() {
-        this.$store.dispatch('createOrder', {
-          cart: this.$store.state.cart,
-          collectData: this.$store.state.collectData,
-          contactData: this.$store.state.contactData
-        });
-        this.buttonNext.click()
-      }
     }
-  }
 </script>
 

@@ -77,7 +77,7 @@
         <div class="heading">Zahlungsmöglichkeiten</div>
         <div class="table__method">
             <div v-if="order.payment_method && order.payment_method.paypal"  class="form-radio">
-                <input type="radio" 
+                <input type="radio"
                        :id="order.payment_method.paypal.data.title"
                        :value="order.payment_method.paypal.data.title"
                        v-model="method">

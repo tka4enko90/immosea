@@ -48,6 +48,7 @@ export default new Vuex.Store({
     coupon: {
       amount: 0
     },
+    preOrder : false,
     isLoading: false,
     isSending: false,
     error: '',
@@ -167,6 +168,9 @@ export default new Vuex.Store({
 
     SET_IS_COUPON (state, payload) {
       state.isCoupon = payload
+    },
+    SET_IS_PRE_ORDER (state, payload) {
+      state.preOrder = payload
     },
   },
 

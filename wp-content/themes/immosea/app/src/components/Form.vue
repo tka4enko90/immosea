@@ -15,6 +15,9 @@
                             click: showPrevScreen,
                             show: buttonPrev.show
                         }"
+                        :buttonPreOrder="{
+                            title: 'Anfrage senden'
+                        }"
                         :buttonNext="{
                             title: buttonNext.title,
                             click: showNextScreen
@@ -65,6 +68,10 @@
         buttonPrev: {
           title: 'Zurück',
           show: this.activeStep === 0 && false || true
+        },
+        buttonPreOrder: {
+          title: 'Anfrage senden',
+          show: false
         },
         passedSteps: JSON.parse(localStorage.getItem('passedSteps')) || [],
         questions,

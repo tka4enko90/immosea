@@ -28,6 +28,14 @@
                 >
                     {{ buttonPrev.title }}
                 </button>
+                <button
+                        @click="buttonPreOrder.click"
+                        v-if="buttonPreOrder"
+                        class="button button--primary"
+                        :class="{'button--disabled': buttonNext.disabled || buttonNext.sending}"
+                >
+                    {{ buttonPreOrder.title }}
+                </button>
                 <button @click="buttonNext.click"
                         class="button button--primary"
                         :class="{'button--disabled': buttonNext.disabled || buttonNext.sending}"
@@ -46,7 +54,7 @@
   export default {
     name: 'app-step-wrap',
     components: {},
-    props: ['title', 'text', 'showPrice', 'buttonPrev', 'buttonNext', 'isLoading' ],
+    props: ['title', 'text', 'showPrice', 'buttonPrev', 'buttonNext', 'buttonPreOrder', 'isLoading' ],
     computed: {
       ...mapGetters([
         'price'
