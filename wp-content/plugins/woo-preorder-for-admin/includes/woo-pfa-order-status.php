@@ -22,19 +22,19 @@ add_action( 'init', 'woo_pfa_register_preorder_for_admin_status' );
  */
 function woo_pfa_add_preorder_for_admin_to_order_statuses( $order_statuses ) {
 
-    $new_order_statuses = array();
+//    $new_order_statuses = array();
 
     // add new order status after processing
-    foreach ( $order_statuses as $key => $status ) {
+//    foreach ( $order_statuses as $key => $status ) {
+//
+//        $new_order_statuses[ $key ] = $status;
 
-        $new_order_statuses[ $key ] = $status;
+//        if ( 'wc-processing' === $key ) {
+    $order_statuses['wc-admin-preorder'] = 'Pre-Order for Admin';
+//        }
+//    }
 
-        if ( 'wc-processing' === $key ) {
-            $new_order_statuses['wc-admin-preorder'] = 'Pre-Order for Admin';
-        }
-    }
-
-    return $new_order_statuses;
+    return $order_statuses;
 }
 add_filter( 'wc_order_statuses', 'woo_pfa_add_preorder_for_admin_to_order_statuses' );
 

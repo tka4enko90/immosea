@@ -23,8 +23,6 @@ function woo_pfa_check_woocommerce() {
     if (is_plugin_active('woocommerce/woocommerce.php') && class_exists('WooCommerce')) {
 
         $woo_is_active = true;
-        require_once ('includes/woo-pfa-inc-email.php');
-        require_once ('includes/woo-pfa-order-status.php');
 
     }
     return $woo_is_active;
@@ -32,6 +30,12 @@ function woo_pfa_check_woocommerce() {
 }
 
 add_action('admin_notices', 'woo_pfa_admin_notices');
+
+/**
+ * Todo: Don't include files if Woocommerce is not installed or activated
+ */
+require_once ('includes/woo-pfa-inc-email.php');
+require_once ('includes/woo-pfa-order-status.php');
 
 /**
  * Show Admin Notice if Woocommerce not installed or empty WooCommerce Class

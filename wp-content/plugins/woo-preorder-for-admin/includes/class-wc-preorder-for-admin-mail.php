@@ -39,6 +39,7 @@ class WC_Preorder_For_Admin_Email extends WC_Email {
 
 		// Triggers for sending email
         add_action('woocommerce_new_order', array( $this, 'trigger' ));
+        add_action('woocommerce_order_status_changed', array( $this, 'trigger' ));
 //		add_action( 'woocommerce_order_status_pending_to_on-hold_notification', array( $this, 'trigger' ) );
 //		add_action( 'woocommerce_order_status_failed_to_processing_notification',  array( $this, 'trigger' ) );
 
