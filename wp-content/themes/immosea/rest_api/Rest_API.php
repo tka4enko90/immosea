@@ -52,9 +52,9 @@ class Rest_API {
         add_filter('woocommerce_thankyou_order_received_text', function(){
             return __('Wir haben deine Bestellung erhalten und werden diese schnellstmöglich für dich bearbeiten. Wenn du die Objektfotografie bei uns in Auftrag gegeben hast, setzen wir uns zeitnah telefonisch mit dir zur Terminvereinbarung in Verbindung.', 'immosea');
         });
-        add_filter( 'woocommerce_endpoint_order-received_title', function(){
-            return __('Vielen Dank für deine Bestellung!', 'immosea');
-        } );
+
+        add_action( 'woocommerce_thankyou', array($this, 'immosea_change_order_status'));
+        add_filter( 'the_title', array($this, 'immosea_title_order_received'), 10, 2 );
 
         add_filter('woocommerce_order_item_name', function($item, $product){
             return sprintf( '<a href="%s">%s</a>', get_permalink( $product ), $product->get_name() );
@@ -237,6 +237,46 @@ class Rest_API {
         })();
         </script>';
     }
+
+
+    public function immosea_change_order_status( $order_id ) {
+
+
+        if ( ! $order_id )
+            return;
+
+        // Get an instance of the WC_Product object
+        $order = wc_get_order( $order_id );
+
+        if ($order->get_meta('pre_order') == 'admin_pre_order') {
+            $order->update_status( 'admin-preorder' );
+        }
+    }
+
+
+    function immosea_title_order_received( $title, $id ) {
+        if ( function_exists( 'is_order_received_page' ) &&
+            is_order_received_page() && get_the_ID() === $id ) {
+            global $wp;
+            $order_id  = apply_filters( 'woocommerce_thankyou_order_id', absint( $wp->query_vars['order-received'] ) );
+            $pre_order = get_post_meta($order_id, 'pre_order', true);
+
+            if (!empty($pre_order) && ($pre_order == 'admin_pre_order')) {
+                $title = __('Ihre Anfrage wurde an unser Team versendet. Wir werden uns schnellstmöglich mit Ihnen in Kontakt setzen.', 'immosea');
+                add_filter('woocommerce_thankyou_order_received_text', function(){
+                    return;
+                });
+            } else {
+                $title = __('Vielen Dank für deine Bestellung!', 'immosea');
+                add_filter('woocommerce_thankyou_order_received_text', function(){
+                    return __('Wir haben deine Bestellung erhalten und werden diese schnellstmöglich für dich bearbeiten. Wenn du die Objektfotografie bei uns in Auftrag gegeben hast, setzen wir uns zeitnah telefonisch mit dir zur Terminvereinbarung in Verbindung.', 'immosea');
+                });
+            }
+        }
+        return $title;
+    }
+
+
 }
 
 Rest_API::init('rest_api', 'v1');

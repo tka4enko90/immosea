@@ -58,6 +58,13 @@ class Order extends HttpError {
 
             $this->update_order_post_meta($this->getOrderMetas(), $this->getOrderID());
 
+            if (($this->getParams('pre_order') === true)  && ($this->getParams('action') === 'redirect')) {
+                $this->update_order_post_meta(array('pre_order' => 'admin_pre_order'), $this->getOrder()->get_id());
+
+                return $this->payment->get_payments_response('german_market_purchase_on_account');
+
+            }
+
             if ($this->getParams('payment_method') && $this->getParams('action') === 'redirect') {
 
                 return $this->payment->get_payments_response($this->getParams('payment_method'));
@@ -79,7 +86,6 @@ class Order extends HttpError {
             }
 
             $order_items = $this->getOrder()->get_items();
-
 
             if ($order_items) {
                 foreach ($order_items as $order_item) {
@@ -149,6 +155,11 @@ class Order extends HttpError {
 
         $this->getOrder()->set_address( $address, 'billing' );
         $this->getOrder()->set_address( $address, 'shipping' );
+
+        if ($this->getParams('pre_order') === true) {
+            $this->getOrder()->set_status('admin-preorder');
+        };
+
 
     }
 
@@ -416,7 +427,6 @@ class Order extends HttpError {
      */
     public function getParams($param = false)
     {
-
         if ($param) {
             if (!$this->params[$param]) {
                 return $this->error->setStatusCode(400)->setMessage("Param `$param` wasn't set")->report();
