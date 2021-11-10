@@ -39,7 +39,7 @@
                     <label for="photography">
                         <span>{{ prices.photography }} EUR</span>
                         <strong>Fotografie</strong>
-                        Professionelles Fotoshooting für dein Objekt.
+                        Professionelles Fotoshooting für Ihr Objekt.
                     </label>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                     <label for="energy_certificate">
                         <span>{{ prices.energy_certificate }} EUR</span>
                         <strong>Energieausweis</strong>
-                        Erfülle die gesetzlichen Anforderungen an einen Energieausweis
+                        Erfüllen Sie die gesetzlichen Anforderungen an einen Energieausweis
                     </label>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     <label for="floor_plan">
                         <span>{{ prices.floor_plan }} EUR</span>
                         <strong>Grundriss</strong>
-                        Professionelle Grundriss-Coloration für dein Objekt
+                        Professionelle Grundriss-Coloration für Ihr Objekt
                     </label>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                     <label for="drone_footage">
                         <span>{{ prices.drone_footage }} EUR</span>
                         <strong>Drohnenaufnahmen</strong>
-                        Das I-Tüpfelchen für deinen Werbeauftritt
+                        Das I-Tüpfelchen für Ihren Werbeauftritt
                     </label>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                     <label for="mailaddress">
                         <span>{{ prices.mailaddress }} EUR</span>
                         <strong>Mailadresse</strong>
-                        mit der Endung @beyourownmakler.com zur Anzeige im Online-Inserat, Mails werden an deine Mailadresse weitergeleitet
+                        mit der Endung @beyourownmakler.com zur Anzeige im Online-Inserat, Mails werden an Ihre Mailadresse weitergeleitet
                     </label>
                 </div>
             </div>
@@ -89,7 +89,7 @@
                     <label for="online_inserat">
                         <span>{{ prices.online_inserat }} EUR</span>
                         <strong>Online-Inserat</strong>
-                        14 Tage bei Immoscout24 und Immowelt, nach 10 Tagen erhältst du die Möglichkeit, um weitere 14 Tage zu verlängern
+                        14 Tage bei Immoscout24 und Immowelt, nach 10 Tagen erhalt en Sie die Möglichkeit, um weitere 14 Tage zu verlängern
                     </label>
                 </div>
             </div>

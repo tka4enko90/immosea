@@ -11,7 +11,7 @@
                     <input type="radio" v-model="advertising_copy" value=false id="no">
                     <label for="no" class="choose-box__label">
                         <strong>Geld sparen</strong>
-                        <p>Du brauchst keine Zeit in die oder Erstellung von Exposé und Werbetexten zu investieren.</p>
+                        <p>Sie brauchen keine Zeit in die oder Erstellung von Exposé und Werbetexten zu investieren.</p>
                         <span class="button button--outline">Eigene Texte verwenden</span>
                     </label>
                 </div>
@@ -21,7 +21,7 @@
                     <input type="radio" v-model="advertising_copy" value=true id="yes">
                     <label for="yes" class="choose-box__label">
                         <strong>Zeit sparen</strong>
-                        <p>Leerstand kostet. Daher spielt dir eine kürzere Vermarktungs- zeit Geld in dein Sparschwein.</p>
+                        <p>Leerstand kostet. Daher spielt Ihnen eine kürzere Vermarktungszeit Geld in Ihr Sparschwein.</p>
                         <span class="button button--outline">Texte erstellen lassen</span>
                     </label>
                 </div>

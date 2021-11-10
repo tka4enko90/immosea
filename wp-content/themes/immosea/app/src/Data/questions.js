@@ -70,7 +70,7 @@ export const questions = [
     showPrice: true
   },
   {
-    title: 'Zu guter Letzt benötigen wir noch deine Kontaktdaten, um deinen Auftrag bearbeiten zu können.',
+    title: 'Zu guter Letzt benötigen wir noch Ihre Kontaktdaten, um deinen Auftrag bearbeiten zu können.',
     component: 'Step14',
     preOrderTemplate: true
   },
