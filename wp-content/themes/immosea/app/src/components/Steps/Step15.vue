@@ -36,12 +36,12 @@
         </div>
         <div class="table__coupon">
             <div v-if="order.coupon">
-                <div class="form__label">Dein Rabattcode</div>
+                <div class="form__label">Rabattcode</div>
                 <div class="table__coupon--apply">{{ order.coupon }}</div>
             </div>
             <div v-else>
                 <div class="table__coupon-form">
-                    <InputText label="Dein Rabattcode" placeholder="Gustcheincode" v-model="couponInput" />
+                    <InputText label="Rabattcode" placeholder="Gustcheincode" v-model="couponInput" />
                     <button class="button button--small button--primary"
                             :class="{'button--disabled': isSending || !couponInput || isCoupon}"
                             @click="apply"

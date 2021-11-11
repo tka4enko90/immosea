@@ -14,9 +14,8 @@ export const questions = [
   {
     title: 'Schreiben Sie Ihre Werbetexte selbst?',
     component: 'Step4',
-    text: `<p>Eine aussagefähige Objektbeschreibung erhöht die Quantität und Qualität der Anfragen auf dein Immobilieninserat.</p>
-        <p>Bei Immosea Erhalten Sie Ihren Werbetext von erfahrenen Immobilienexperten mit langjähriger 
-        Marketing-Erfahrung.</p>`
+    text: `<p>Eine aussagefähige Objektbeschreibung erhöht die Quantität und Qualität der Anfragen auf Ihr Immobilieninserat.</p>
+        <p>Bei Immosea erhalten Sie Ihren Werbetext von erfahrenen Immobilienexperten mit langjähriger Marketing-Erfahrung.</p>`
   },
   {
     title: 'Womit können wir Sie zusätzlich bei der Vermarktung Ihrer Immobilie unterstützen?',
@@ -58,8 +57,8 @@ export const questions = [
     showPrice: true
   },
   {
-    title: 'Für die Erstellung des Exposés benötigen wir noch deine Objektbilder und Grundrisse.',
-    text: 'Wird nicht benötigt, wenn du mit deiner Bestellung die Erstellung dieser Dateien in Auftrag gibst.',
+    title: 'Für die Erstellung des Exposés benötigen wir noch IHRE Objektbilder und Grundrisse.',
+    text: 'Dateien werden nicht benötigt, wenn Sie diese mit Ihrer Bestellung bei uns in Auftrag geben. Sollten Ihnen an dieser Stelle die Dateien noch nicht vorliegen, laden Sie eine Demo-Datei hoch.',
     component: 'Step12',
     showPrice: true
   },
@@ -70,7 +69,7 @@ export const questions = [
     showPrice: true
   },
   {
-    title: 'Zu guter Letzt benötigen wir noch Ihre Kontaktdaten, um deinen Auftrag bearbeiten zu können.',
+    title: 'Zu guter Letzt benötigen wir noch Ihre Kontaktdaten, um IHREN Auftrag bearbeiten zu können.',
     component: 'Step14',
     preOrderTemplate: true
   },

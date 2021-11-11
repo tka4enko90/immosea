@@ -151,7 +151,7 @@ get_header(); ?>
                             <img src="<?php echo $banner['url'] ?>">
                         </div>
                         <div class="banner__content">
-                            <h3>Deine Vorteile</h3>
+                            <h3>Ihre Vorteile</h3>
                             <div class="banner__logo">
                                 <img src="<?php echo $logo['url'] ?>" alt="immosea">
                             </div>
@@ -166,9 +166,7 @@ get_header(); ?>
                                     xperten erstellt
                                 </div>
                                 <div class="banner__line">
-                                    <div>auf Sie und Ihre<br/>Immobilie angepasst<br/> (instead of capital etter</div>
-                                    <strong>A</strong>
-                                    <div>, please capital letter I)</div>
+                                    <div>auf Sie und Ihre<br/>Immobilie <strong>A</strong>ngepasst</div>
                                 </div>
                             </div>
                         </div>

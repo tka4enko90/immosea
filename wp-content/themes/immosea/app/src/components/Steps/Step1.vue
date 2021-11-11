@@ -95,7 +95,7 @@
 
             <div class="info">
                 <div>
-                    <p>Wenn keine der Immobilienarten Ihrem Objekt passt, wählen Sie einfach aus, was am ehesten zutrifft. Bevor Sie Ihre Daten abschicken, haben Sie die Möglichkeit, uns weitere Details zu Ihrer Immobilie zu nennen.</p>
+                    <p>Wenn keine der Immobilienarten zu Ihrem Objekt passt, wählen Sie einfach aus, was am ehesten zutrifft. Bevor Sie Ihre Daten abschicken, haben Sie die Möglichkeit, uns weitere Details zu Ihrer Immobilie zu nennen.</p>
                     <p>Bitte berücksichtige, dass wir derzeit unsere Leistungen nicht für Gewerbeimmobilien anbieten.</p>
                 </div>
                 <button @click="buttonNext.click"
