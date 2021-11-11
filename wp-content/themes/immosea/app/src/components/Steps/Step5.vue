@@ -13,7 +13,7 @@
     >
 
         <div class="step__row">
-            <div>
+            <div v-show="prices.advertising_copy">
                 <div class="form-checkbox form-checkbox--custom">
                     <input id="advertising_copy" type='checkbox' v-model="data.advertising_copy">
                     <label for="advertising_copy">
@@ -23,7 +23,7 @@
                     </label>
                 </div>
             </div>
-            <div>
+            <div v-show="prices.expose">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--green">
                     <input id="expose" type='checkbox' v-model="data.expose">
                     <label for="expose">
@@ -33,7 +33,7 @@
                     </label>
                 </div>
             </div>
-            <div>
+            <div v-show="prices.photography">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--yellow">
                     <input id="photography" type='checkbox' v-model="data.photography">
                     <label for="photography">
@@ -53,7 +53,7 @@
                     </label>
                 </div>
             </div>
-            <div>
+            <div v-show="prices.floor_plan">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--gray">
                     <input id="floor_plan" type='checkbox' v-model="data.floor_plan">
                     <label for="floor_plan">
@@ -63,7 +63,7 @@
                     </label>
                 </div>
             </div>
-            <div>
+            <div v-show="prices.drone_footage">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--red">
                     <input id="drone_footage" type='checkbox' v-model="data.drone_footage">
                     <label for="drone_footage">
@@ -73,7 +73,7 @@
                     </label>
                 </div>
             </div>
-            <div>
+            <div v-show="prices.mailaddress">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--purple">
                     <input id="mailaddress" type='checkbox' v-model="data.mailaddress">
                     <label for="mailaddress">
@@ -83,7 +83,7 @@
                     </label>
                 </div>
             </div>
-            <div>
+            <div v-show="prices.online_inserat">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--light-green">
                     <input id="online_inserat" type='checkbox' v-model="data.online_inserat">
                     <label for="online_inserat">
@@ -129,7 +129,7 @@
           photography: getPriceByFieldName(this.$store.state.products, `photography_${this.$store.state.cart.type}`),
           drone_footage: getPriceByFieldName(this.$store.state.products, 'drone_footage'),
           mailaddress: getPriceByFieldName(this.$store.state.products, 'mailaddress'),
-          online_inserat: getPriceByFieldName(this.$store.state.products, 'online_inserat'),
+          online_inserat: getPriceByFieldName(this.$store.state.products, 'online_inserat')
         }
       }
     },

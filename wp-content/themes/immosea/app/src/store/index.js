@@ -85,11 +85,11 @@ export default new Vuex.Store({
                               ? getPriceByFieldName(state.products, 'drone_footage')
                               : 0
 
-      let mailaddress  = state.cart.drone_footage
+      let mailaddress  = state.cart.mailaddress
                           ? getPriceByFieldName(state.products, 'mailaddress')
                           : 0
 
-      let online_inserat = state.cart.drone_footage
+      let online_inserat = state.cart.online_inserat
                               ? getPriceByFieldName(state.products, 'online_inserat')
                               : 0
 
