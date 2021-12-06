@@ -9966,9 +9966,9 @@ var axios = __webpack_require__("bc3a");
 var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 
 // CONCATENATED MODULE: ./src/api/index.js
- // const hostName = window.location.origin;
 
-var hostName = 'http://immosea.lvh.me/'; // const hostName = 'http://immosea.markupus.tech';
+var hostName = window.location.origin; // const hostName = 'http://immosea.lvh.me/'
+// const hostName = 'http://immosea.markupus.tech';
 
 var BASE_URL = "".concat(hostName, "/wp-json/rest_api/v1");
 var headers = {
