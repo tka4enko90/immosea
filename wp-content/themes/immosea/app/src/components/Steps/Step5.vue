@@ -13,33 +13,33 @@
     >
 
         <div class="step__row">
-            <div v-show="prices.advertising_copy">
+            <div v-show="product_data.advertising_copy.price">
                 <div class="form-checkbox form-checkbox--custom">
                     <input id="advertising_copy" type='checkbox' v-model="data.advertising_copy">
                     <label for="advertising_copy">
-                        <span>{{ prices.advertising_copy }} EUR</span>
-                        <strong>Werbetexte</strong>
-                        Angepasst auf die gängigen Immobilienportale
+                        <span>{{ product_data.advertising_copy.price }} EUR</span>
+                        <strong>{{product_data.advertising_copy.title ? product_data.advertising_copy.title : 'Werbetexte' }}</strong>
+                        {{ product_data.advertising_copy.description ? product_data.advertising_copy.description : 'Angepasst auf die gängigen Immobilienportale' }}
                     </label>
                 </div>
             </div>
-            <div v-show="prices.expose">
+            <div v-show="product_data.expose.price">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--green">
                     <input id="expose" type='checkbox' v-model="data.expose">
                     <label for="expose">
-                        <span>{{ prices.expose }} EUR</span>
-                        <strong>Exposé</strong>
-                        Professionelle Objekt broschüre im PDF Format
+                        <span>{{ product_data.expose.price }} EUR</span>
+                        <strong>{{product_data.expose.title ? product_data.expose.title : 'Exposé' }}</strong>
+                        {{ product_data.expose.description ? product_data.expose.description : 'Professionelle Objekt broschüre im PDF Format' }}
                     </label>
                 </div>
             </div>
-            <div v-show="prices.photography">
+            <div v-show="product_data.photography.price">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--yellow">
                     <input id="photography" type='checkbox' v-model="data.photography">
                     <label for="photography">
-                        <span>{{ prices.photography }} EUR</span>
-                        <strong>Fotografie</strong>
-                        Professionelles Fotoshooting für Ihr Objekt.
+                        <span>{{ product_data.photography.price }} EUR</span>
+                        <strong>{{product_data.photography.title ? product_data.photography.title : 'Fotografie' }}</strong>
+                        {{ product_data.photography.description ? product_data.photography.description : 'Professionelles Fotoshooting für Ihr Objekt.' }}
                     </label>
                 </div>
             </div>
@@ -47,49 +47,49 @@
                 <div class="form-checkbox form-checkbox--custom form-checkbox--orange">
                     <input id="energy_certificate" type='checkbox' v-model="data.energy_certificate">
                     <label for="energy_certificate">
-                        <span>{{ prices.energy_certificate }} EUR</span>
-                        <strong>Energieausweis</strong>
-                        Erfüllen Sie die gesetzlichen Anforderungen an einen Energieausweis
+                        <span>{{ product_data.energy_certificate.price }} EUR</span>
+                        <strong>{{product_data.energy_certificate.title ? product_data.energy_certificate.title : 'Energieausweis' }}</strong>
+                        {{ product_data.energy_certificate.description ? product_data.energy_certificate.description : 'Erfüllen Sie die gesetzlichen Anforderungen an einen Energieausweis' }}
                     </label>
                 </div>
             </div>
-            <div v-show="prices.floor_plan">
+            <div v-show="product_data.floor_plan.price">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--gray">
                     <input id="floor_plan" type='checkbox' v-model="data.floor_plan">
                     <label for="floor_plan">
-                        <span>{{ prices.floor_plan }} EUR</span>
-                        <strong>Grundriss</strong>
-                        Professionelle Grundriss-Coloration für Ihr Objekt
+                        <span>{{ product_data.floor_plan.price }} EUR</span>
+                        <strong>{{product_data.floor_plan.title ? product_data.floor_plan.title : 'Grundriss' }}</strong>
+                        {{ product_data.floor_plan.description ?  product_data.floor_plan.description : 'Professionelle Grundriss-Coloration für Ihr Objekt' }}
                     </label>
                 </div>
             </div>
-            <div v-show="prices.drone_footage">
+            <div v-show="product_data.drone_footage.price">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--red">
                     <input id="drone_footage" type='checkbox' v-model="data.drone_footage">
                     <label for="drone_footage">
-                        <span>{{ prices.drone_footage }} EUR</span>
-                        <strong>Drohnenaufnahmen</strong>
-                        Das I-Tüpfelchen für Ihren Werbeauftritt
+                        <span>{{ product_data.drone_footage.price }} EUR</span>
+                        <strong>{{product_data.drone_footage.title ? product_data.drone_footage.title : 'Drohnenaufnahmen' }}</strong>
+                        {{ product_data.floor_plan.description ? product_data.floor_plan.description : ' Das I-Tüpfelchen für Ihren Werbeauftritt' }}
                     </label>
                 </div>
             </div>
-            <div v-show="prices.mailaddress">
+            <div v-show="product_data.mailaddress.price">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--purple">
                     <input id="mailaddress" type='checkbox' v-model="data.mailaddress">
                     <label for="mailaddress">
-                        <span>{{ prices.mailaddress }} EUR</span>
-                        <strong>Mailadresse</strong>
-                        mit der Endung @beyourownmakler.com zur Anzeige im Online-Inserat, Mails werden an Ihre Mailadresse weitergeleitet
+                        <span>{{ product_data.mailaddress.price }} EUR</span>
+                        <strong>{{ product_data.mailaddress.title ? product_data.mailaddress.title : 'Mailadresse' }}</strong>
+                        {{ product_data.mailaddress.description ?  product_data.mailaddress.description : 'mit der Endung @beyourownmakler.com zur Anzeige im Online-Inserat, Mails werden an Ihre Mailadresse weitergeleitet' }}
                     </label>
                 </div>
             </div>
-            <div v-show="prices.online_inserat">
+            <div v-show="product_data.online_inserat.price">
                 <div class="form-checkbox form-checkbox--custom form-checkbox--light-green">
                     <input id="online_inserat" type='checkbox' v-model="data.online_inserat">
                     <label for="online_inserat">
-                        <span>{{ prices.online_inserat }} EUR</span>
-                        <strong>Online-Inserat</strong>
-                        14 Tage bei Immoscout24 und Immowelt, nach 10 Tagen erhalt en Sie die Möglichkeit, um weitere 14 Tage zu verlängern
+                        <span>{{ product_data.online_inserat.price }} EUR</span>
+                        <strong>{{ product_data.online_inserat.title ? product_data.online_inserat.title : 'Online-Inserat' }}</strong>
+                        {{ product_data.online_inserat.description ? product_data.online_inserat.description : '14 Tage bei Immoscout24 und Immowelt, nach 10 Tagen erhalt en Sie die Möglichkeit, um weitere 14 Tage zu verlängern' }}
                     </label>
                 </div>
             </div>
@@ -99,7 +99,7 @@
 
 <script>
   import StepWrap from '../Layout/StepWrap';
-  import { getPriceByFieldName } from '../../utils';
+  import { getPriceByFieldName, getDescriptionByFieldName, getTitleByFieldName } from '../../utils';
 
 
   export default {
@@ -118,19 +118,55 @@
           this.$store.commit('SET_CART_OPTIONS', value)
         }
       },
-      prices() {
-        return {
-          advertising_copy: getPriceByFieldName(this.$store.state.products, 'advertising_copy'),
-          expose: getPriceByFieldName(this.$store.state.products, 'expose'),
-          floor_plan: getPriceByFieldName(this.$store.state.products, 'floor_plan'),
-          energy_certificate: this.$store.state.cart.type === 'house' && this.$store.state.cart.year < 1979
-                                ? getPriceByFieldName(this.$store.state.products, 'energy_certificate_bg_house')
-                                : getPriceByFieldName(this.$store.state.products, 'energy_certificate'),
-          photography: getPriceByFieldName(this.$store.state.products, `photography_${this.$store.state.cart.type}`),
-          drone_footage: getPriceByFieldName(this.$store.state.products, 'drone_footage'),
-          mailaddress: getPriceByFieldName(this.$store.state.products, 'mailaddress'),
-          online_inserat: getPriceByFieldName(this.$store.state.products, 'online_inserat')
-        }
+      product_data() {
+         return {
+             advertising_copy: {
+                 price: getPriceByFieldName(this.$store.state.products, 'advertising_copy'),
+                 description: getDescriptionByFieldName(this.$store.state.products, 'advertising_copy'),
+                 title: getTitleByFieldName(this.$store.state.products, 'advertising_copy'),
+             },
+             expose: {
+                 price: getPriceByFieldName(this.$store.state.products, 'expose'),
+                 description: getDescriptionByFieldName(this.$store.state.products, 'expose'),
+                 title: getTitleByFieldName(this.$store.state.products, 'expose'),
+             },
+             floor_plan: {
+                 price: getPriceByFieldName(this.$store.state.products, 'floor_plan'),
+                 description: getDescriptionByFieldName(this.$store.state.products, 'floor_plan'),
+                 title: getTitleByFieldName(this.$store.state.products, 'floor_plan'),
+             },
+             energy_certificate:{
+                 price: this.$store.state.cart.type === 'house' && this.$store.state.cart.year < 1979
+                     ? getPriceByFieldName(this.$store.state.products, 'energy_certificate_bg_house')
+                     : getPriceByFieldName(this.$store.state.products, 'energy_certificate'),
+                 description: this.$store.state.cart.type === 'house' && this.$store.state.cart.year < 1979
+                     ? getDescriptionByFieldName(this.$store.state.products, 'energy_certificate_bg_house')
+                     : getDescriptionByFieldName(this.$store.state.products, 'energy_certificate'),
+                 title: this.$store.state.cart.type === 'house' && this.$store.state.cart.year < 1979
+                     ? getTitleByFieldName(this.$store.state.products, 'energy_certificate_bg_house')
+                     : getTitleByFieldName(this.$store.state.products, 'energy_certificate'),
+             },
+             photography:{
+                 price: getPriceByFieldName(this.$store.state.products, 'photography'),
+                 description: getDescriptionByFieldName(this.$store.state.products, 'photography'),
+                 title: getTitleByFieldName(this.$store.state.products, 'photography'),
+             },
+             drone_footage:{
+                 price: getPriceByFieldName(this.$store.state.products, 'drone_footage'),
+                 description: getDescriptionByFieldName(this.$store.state.products, 'drone_footage'),
+                 title: getTitleByFieldName(this.$store.state.products, 'drone_footage'),
+             },
+             mailaddress:{
+                 price: getPriceByFieldName(this.$store.state.products, 'mailaddress'),
+                 description: getDescriptionByFieldName(this.$store.state.products, 'mailaddress'),
+                 title: getTitleByFieldName(this.$store.state.products, 'mailaddress'),
+             },
+             online_inserat:{
+                 price: getPriceByFieldName(this.$store.state.products, 'online_inserat'),
+                 description: getDescriptionByFieldName(this.$store.state.products, 'online_inserat'),
+                 title: getTitleByFieldName(this.$store.state.products, 'online_inserat'),
+             }
+         }
       }
     },
     methods: {
